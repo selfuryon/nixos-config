@@ -1,0 +1,14 @@
+# Image
+image=/home/syakovlev/Pictures/lock.jpg
+scaling=fill
+
+# Font
+font=Noto Sans
+font-size=16
+
+# Indicators
+indicator-caps-lock
+indicator-radius=50
+indicator-thickness=10
+
+# Ring
