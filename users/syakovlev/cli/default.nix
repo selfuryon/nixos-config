@@ -7,11 +7,13 @@
     ./shell.nix
     ./skim.nix
     ./starship.nix
-    ./xdg.nix
+    ./nvim.nix
     ./zsh.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
+  xdg.mimeApps.defaultApplications = {};
+
   home.packages = with pkgs; [ 
     htop 
     ripgrep

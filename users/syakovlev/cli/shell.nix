@@ -13,12 +13,18 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    TERMINAL = "alacritty";
   };
 
   programs = {
-    bat.enable = true;
+    bat = {
+      enable = true;
+      config.theme = "GitHub";
+    };
+    exa = {
+      enable = true;
+      enableAliases = true;
+    };
     jq.enable = true;
-    exa.enable = true;
-    exa.enableAliases = true;
   };
 }

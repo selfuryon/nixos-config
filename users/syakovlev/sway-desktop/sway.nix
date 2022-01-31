@@ -75,7 +75,7 @@
         { command = "mako"; }
         { command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "sh ~/nixos-config/import_gsettings"; always = true; }
+        { command = "import_gsettings"; always = true; }
       ];
 
       assigns = {
@@ -150,78 +150,5 @@
       bindswitch --reload --locked lid:off output eDP-1 enable
     '';
   };
-
-  services.wlsunset = {
-    enable = true;
-    latitude = "55.7";
-    longitude = "37.6";
-  };
-
-  services.swayidle = {
-    enable = true;
-    events = [{event = "before-sleep"; command = "swaylock -f";}];
-    timeouts = [
-      {timeout = 300; command = "swaylock -f";}
-      {timeout = 600; command = "swaymsg \"output * dpms off\""; resumeCommand = "swaymsg \"output * dpms on \"";}
-    ];
-  };
-
-  programs.mako = {
-    enable = true;
-    font = "JetBrainsMono Nerd Font Mono 12";
-  };
-
-  gtk = {
-    enable = true;
-    gtk3.bookmarks = [ "file:///home/syakovlev/documents" "file:///home/syakovlev/mega" "file:///home/syakovlev/Downloads"];
-    gtk3.extraConfig = {
-      gtk-cursor-theme-name = "capitaine-cursors";
-    };
-    font = {
-      package = pkgs.noto-fonts;
-      name = "Noto Sans";
-      size = 12;
-    };
-    iconTheme = {
-      package = pkgs.whitesur-icon-theme;
-      name = "WhiteSur";
-    };
-    theme = {
-      package = pkgs.whitesur-gtk-theme;
-      name = "WhiteSur-light-alt-blue";
-    };
-
-  };
-
-  home.packages = with pkgs; [
-    grim
-    slurp
-    swappy
-    qt5.qtwayland
-    libsForQt5.lightly
-    swaylock
-    waybar
-    wl-clipboard
-    clipman
-    wofi
-    xwayland
-    alacritty
-    xdg-utils
-    xorg.xrdb
-    gsettings_desktop_schemas
-    glib
-    feh
-    networkmanagerapplet
-    adwaita-qt
-    capitaine-cursors
-    wf-recorder
-    virt-manager
-    virt-viewer
-    gtk-engine-murrine
-    gtk_engines
-    gsettings-desktop-schemas
-    lxappearance
-  ];
-
 }
 
