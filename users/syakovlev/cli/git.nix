@@ -3,11 +3,11 @@
   programs.git = {
     enable = true;
     userName  = "Sergey Yakovlev";
-    userEmail = "sergey.y@p2p.org";
+    userEmail = "selfuryon@gmail.com";
     extraConfig = { init.defaultBranch = "main"; };
     signing = {
       signByDefault = true;
-      key = "0x61BCC0D1DE7E0448";
+      key = "0x9933BC25075D15A2";
     };
     delta = {
       enable = true;
