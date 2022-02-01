@@ -9,6 +9,9 @@
     gph = "git push";
     gl  = "git ll";
     gpl = "git pull";
+
+    nrs = "sudo nixos-rebuild switch --flake /home/syakovlev/nixos-config";
+    hms = "home-manager switch --flake /home/syakovlev/nixos-config";
   };
 
   home.sessionVariables = {

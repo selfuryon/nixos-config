@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./alacritty.nix
+    ./firefox.nix
     #./gsettings.nix
     ./gtk.nix
     ./mako.nix
@@ -12,10 +13,11 @@
     ./wlsunset.nix
   ];
 
+  xdg.mimeApps.defaultApplications = {};
+
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [ 
     keepassxc
-    firefox-wayland
     brave
     thunderbird
     slack

@@ -12,8 +12,6 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  xdg.mimeApps.defaultApplications = {};
-
   home.packages = with pkgs; [ 
     htop 
     ripgrep
@@ -30,7 +28,6 @@
     haskellPackages.ghcup
     rustup
     yubikey-manager
-
     neovim
     curl
     wget
