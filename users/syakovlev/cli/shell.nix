@@ -16,7 +16,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    TERMINAL = "alacritty";
+    TERMINAL = "xterm-256color";
   };
 
   programs = {
