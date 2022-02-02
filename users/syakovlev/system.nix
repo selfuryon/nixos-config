@@ -2,7 +2,7 @@
   users.users.syakovlev = {
     isNormalUser = true;
     extraGroups = [ "wheel" "sudo" "video" "audio" "libvirtd" "usb" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   programs = {
@@ -14,15 +14,6 @@
       enable = true;
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [];
-    };
-
-    fish = {
-      enable = true;
-      vendor = {
-        completions.enable = true;
-        config.enable = true;
-        functions.enable = true;
-      };
     };
   };
   security.pam.services.swaylock = { };

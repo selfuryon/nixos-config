@@ -22,6 +22,7 @@
     thunderbird
     slack
     discord
+    pavucontrol
     skype
     tdesktop
     okular

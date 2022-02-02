@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./direnv.nix
+    ./fish.nix
+    ./fzf.nix
     ./git.nix
     ./gpg.nix
     ./mpd.nix
