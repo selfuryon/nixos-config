@@ -12,10 +12,14 @@
       };
     }
     ];
-    shellInit = ''
-      # VI Mode
+    shellAliases = {
+      # Get ip
+      getip = "curl ifconfig.me";
+    };
+    interactiveShellInit = ''
       fish_vi_key_bindings
-
+    '';
+    shellInit = ''
       # SSH-Agent
       if test -z "$SSH_AUTH_SOCK" -a -n "$XDG_RUNTIME_DIR"
         set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent"
@@ -23,7 +27,7 @@
     '';
     loginShellInit = ''
       if test (tty) = /dev/tty1
-        exec sway
+        systemd-cat -t sway ${pkgs.sway}/bin/sway
       end
     '';
   };
