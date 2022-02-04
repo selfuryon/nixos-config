@@ -10,6 +10,10 @@
 
   outputs = { self, nixpkgs, home-manager, utils, ...  }@inputs:
     let
+      # My overlays
+      overlay  = (import ./overlays);
+      overlays = [ overlay ];
+
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users }:
         nixpkgs.lib.nixosSystem {
@@ -21,6 +25,8 @@
             (./hosts + "/${hostname}")
             {
               networking.hostName = hostname;
+              # Apply overlay
+              nixpkgs = { inherit overlays; };
               # Add each input as a registry
               nix.registry = nixpkgs.lib.mapAttrs'
                 (n: v:
@@ -31,6 +37,7 @@
           ] ++ nixpkgs.lib.forEach users
             (u: ./users + "/${u}" + /system.nix);
         };
+
       # Make home configuration, given username, required features, and system type
       mkHome = { username, system, hostname }:
         home-manager.lib.homeManagerConfiguration {
@@ -40,8 +47,11 @@
           };
           homeDirectory = "/home/${username}";
           configuration = ./users + "/${username}";
+          extraModules = [ { nixpkgs = { inherit overlays; }; } ];
         };
     in {
+      inherit overlay overlays;
+
       nixosConfigurations = {
         # Main laptop
         jumo = mkSystem {

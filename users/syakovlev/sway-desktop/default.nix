@@ -15,7 +15,9 @@
 
   xdg.mimeApps.defaultApplications = {};
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "megasync"
+  ];
   home.packages = with pkgs; [ 
     keepassxc
     brave
@@ -55,5 +57,6 @@
     gtk_engines
     gsettings-desktop-schemas
     lxappearance
+    megasync
   ]; 
 }
