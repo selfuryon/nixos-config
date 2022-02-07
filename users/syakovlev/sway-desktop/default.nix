@@ -44,7 +44,6 @@
     xwayland
     xdg-utils
     xorg.xrdb
-    gsettings_desktop_schemas
     glib
     feh
     networkmanagerapplet
@@ -55,6 +54,7 @@
     virt-viewer
     gtk-engine-murrine
     gtk_engines
+    dconf
     gsettings-desktop-schemas
     lxappearance
     megasync
