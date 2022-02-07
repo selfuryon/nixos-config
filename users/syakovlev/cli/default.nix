@@ -17,6 +17,7 @@
   home.packages = with pkgs; [ 
     htop 
     ripgrep
+    lsof
     fd
     tree 
     git

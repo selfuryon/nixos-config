@@ -1,4 +1,15 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: 
+let
+  checkNixosUpdates = pkgs.writeShellScript "checkUpdates.sh" ''
+    UPDATE='{"text": "Update", "alt": "upd"}'
+    NO_UPDATE='{"text": "No Update", "alt": "noupd"}'
+
+    GITHUB_URL="https://api.github.com/repos/NixOS/nixpkgs/git/refs/heads/nixos-unstable"
+    CURRENT_REVISION=$(nixos-version --revision)
+    REMOTE_REVISION=$(curl -s $GITHUB_URL | jq '.object.sha' -r )
+    [ $CURRENT_REVISION == $REMOTE_REVISION ] && echo $NO_UPDATE || echo $UPDATE
+  '';
+in {
   programs.waybar = {
     enable = true;
     settings = [{
@@ -21,6 +32,7 @@
         "battery"
         "tray"
         "clock"
+        "custom/update"
       ];
       modules = {
         "sway/workspaces" = {
@@ -57,6 +69,15 @@
             activated = "";
             deactivated = "";
           };
+        };
+        "custom/update" = {
+          exec = checkNixosUpdates;
+          return-type = "json";
+          format = "{icon}";
+          format-icons = { 
+            upd = ""; 
+          };
+          interval = 21600;
         };
         clock = {
             format = "{:%R}";
