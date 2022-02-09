@@ -72,12 +72,13 @@ in {
         };
         "custom/update" = {
           exec = checkNixosUpdates;
+          on-click = checkNixosUpdates;
           return-type = "json";
           format = "{icon}";
           format-icons = { 
             upd = ""; 
           };
-          interval = 21600;
+          interval = 10800;
         };
         clock = {
             format = "{:%R}";
