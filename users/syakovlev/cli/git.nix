@@ -4,7 +4,10 @@
     enable = true;
     userName  = "Sergey Yakovlev";
     userEmail = "selfuryon@gmail.com";
-    extraConfig = { init.defaultBranch = "main"; };
+    extraConfig = { 
+      init.defaultBranch = "main";
+      pull.rebase = true;
+    };
     signing = {
       signByDefault = true;
       key = "0x9933BC25075D15A2";

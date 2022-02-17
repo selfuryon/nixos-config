@@ -58,5 +58,6 @@
     gsettings-desktop-schemas
     lxappearance
     megasync
+    wireshark
   ]; 
 }
