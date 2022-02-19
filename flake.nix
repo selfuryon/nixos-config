@@ -61,5 +61,10 @@
           system = "x86_64-linux";
         };
       };
-    };
+    } // utils.lib.eachDefaultSystem (system:
+      let pkgs = import nixpkgs { inherit system overlays; };
+      in {
+        devShell =
+          pkgs.mkShell { buildInputs = with pkgs; [ nixfmt rnix-lsp ]; };
+      });
 }

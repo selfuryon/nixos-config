@@ -51,6 +51,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-commentary'
   use 'phaazon/hop.nvim'
-  use 'blackCauldron7/surround.nvim'
+  use 'ur4ltz/surround.nvim'
 
 end)

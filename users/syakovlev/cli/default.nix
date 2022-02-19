@@ -15,7 +15,6 @@
 
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    nixfmt
     htop
     ripgrep
     lsof
