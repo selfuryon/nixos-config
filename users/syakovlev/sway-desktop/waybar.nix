@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: 
+{ config, lib, pkgs, ... }:
 let
   checkNixosUpdates = pkgs.writeShellScript "checkUpdates.sh" ''
     UPDATE='{"text": "Update", "alt": "upd"}'
@@ -16,14 +16,8 @@ in {
       layer = "top";
       height = 42;
       position = "top";
-      modules-left = [
-        "sway/workspaces"
-        "sway/mode"
-        "idle_inhibitor"
-      ];
-      modules-center = [
-        "sway/window"
-      ];
+      modules-left = [ "sway/workspaces" "sway/mode" "idle_inhibitor" ];
+      modules-center = [ "sway/window" ];
       modules-right = [
         "pulseaudio"
         "cpu"
@@ -36,32 +30,30 @@ in {
       ];
       modules = {
         "sway/workspaces" = {
-            disable-scroll = true;
-            all-outputs = true;
-            format = "{icon}";
-            "format-icons" = {
-                "1"  = "";
-                "2"  = "";
-                "3"  = "";
-                "4"  = "";
-                "5"  = "";
-                "6"  = "";
-                "7"  = "";
-                "8"  = "";
-                "9"  = "";
-                "10" = "";
-                default = "";
-                focused = "";
-                urgent  = "";
-            };
-            icon-size = 24;
+          disable-scroll = true;
+          all-outputs = true;
+          format = "{icon}";
+          "format-icons" = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "6" = "";
+            "7" = "";
+            "8" = "";
+            "9" = "";
+            "10" = "";
+            default = "";
+            focused = "";
+            urgent = "";
+          };
+          icon-size = 24;
         };
-        "sway/mode" = {
-            format = "<span style=\"italic\">{}</span>";
-        };
+        "sway/mode" = { format = ''<span style="italic">{}</span>''; };
         tray = {
-            icon-size = 21;
-            spacing = 5;
+          icon-size = 21;
+          spacing = 5;
         };
         idle_inhibitor = {
           format = "{icon}";
@@ -75,30 +67,26 @@ in {
           on-click = checkNixosUpdates;
           return-type = "json";
           format = "{icon}";
-          format-icons = { 
-            upd = ""; 
-          };
+          format-icons = { upd = ""; };
           interval = 10800;
         };
         clock = {
-            format = "{:%R}";
-            format-alt = "{:%Y-%m-%d}";
-            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format = "{:%R}";
+          format-alt = "{:%Y-%m-%d}";
+          tooltip-format = ''
+            <big>{:%Y %B}</big>
+            <tt><small>{calendar}</small></tt>'';
         };
-        cpu = {
-            format = "{usage}% ";
-        };
-        memory = {
-            format = "{}% ";
-        };
+        cpu = { format = "{usage}% "; };
+        memory = { format = "{}% "; };
         temperature = {
-            thermal-zone = 2;
-            hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
-            critical-threshold = 80;
-            format-critical = "{temperatureC}°C {icon}";
-            format = "{temperatureC}°C {icon}";
-            interval = 60;
-            format-icons = ["" "" ""];
+          thermal-zone = 2;
+          hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
+          critical-threshold = 80;
+          format-critical = "{temperatureC}°C {icon}";
+          format = "{temperatureC}°C {icon}";
+          interval = 60;
+          format-icons = [ "" "" "" ];
         };
         battery = {
           bat = "BAT0";

@@ -15,7 +15,7 @@ let
     gsettings --schemadir $gnome_schema_dir set "$gnome_schema" cursor-theme "$cursor_theme"
     gsettings --schemadir $gnome_schema_dir set "$gnome_schema" font-name "$font_name"
   '';
-in { 
+in {
   # ws1: terminal
   # ws2: code
   # ws3: browser
@@ -44,7 +44,8 @@ in {
       bars = [{ command = "waybar"; }];
       terminal = "${pkgs.alacritty}/bin/alacritty";
       modifier = "Mod4"; # Windows
-      menu = "${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wofi}/bin/wofi --show drun -i | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+      menu =
+        "${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wofi}/bin/wofi --show drun -i | ${pkgs.findutils}/bin/xargs swaymsg exec --";
       fonts = {
         names = [ "JetBrainsMono Nerd Font Mono" ];
         size = 10.0;
@@ -61,28 +62,28 @@ in {
         xkb_options = "grp:shift_caps_switch";
       };
       input."type:touchpad" = {
-          dwt = "enabled";
-          tap = "enabled";
-          natural_scroll = "enabled";
-          middle_emulation = "enabled";
-          pointer_accel  = "0.7";
+        dwt = "enabled";
+        tap = "enabled";
+        natural_scroll = "enabled";
+        middle_emulation = "enabled";
+        pointer_accel = "0.7";
       };
 
       # Output configuration
       output."*" = { bg = "/home/syakovlev/Pictures/wife2.jpg fill"; };
       output."DP-1" = {
-          mode = "3840x2160";
-          pos  = "0,0";
+        mode = "3840x2160";
+        pos = "0,0";
       };
 
       output."eDP-1" = {
-          mode = "1920x1080";
-          pos  = "0,2160";
+        mode = "1920x1080";
+        pos = "0,2160";
       };
 
       output."HDMI-A-1" = {
-          mode = "1280x720";
-          pos  = "1920,2160";
+        mode = "1280x720";
+        pos = "1920,2160";
       };
 
       startup = [
@@ -90,72 +91,101 @@ in {
         { command = "wlsunset"; }
         { command = "mako"; }
         { command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
-        { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "${import_gsettings}/bin/import_gsettings"; always = true; }
+        {
+          command =
+            "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        }
+        {
+          command = "${import_gsettings}/bin/import_gsettings";
+          always = true;
+        }
       ];
 
       assigns = {
-        "2" = [{app_id = "code";}];
-        "3" = [{class  = "firefox";}];
-        "4" = [{class  = "Thunderbird";}];
-        "8" = [{class  = "Slack";} {class = "discord";} {app_id = "telegramdesktop";}];
-        "9" = [{class  = "KeePassXC";}];
+        "2" = [{ app_id = "code"; }];
+        "3" = [{ class = "firefox"; }];
+        "4" = [{ class = "Thunderbird"; }];
+        "8" = [
+          { class = "Slack"; }
+          { class = "discord"; }
+          { app_id = "telegramdesktop"; }
+        ];
+        "9" = [{ class = "KeePassXC"; }];
       };
 
       floating.criteria = [
-        { window_role ="pop-up"; }
-        { window_role="task_dialog"; }
-        { app_id="org.keepassxc.KeePassXC"; }
-        { app_id="nz.co.mega."; }
+        { window_role = "pop-up"; }
+        { window_role = "task_dialog"; }
+        { app_id = "org.keepassxc.KeePassXC"; }
+        { app_id = "nz.co.mega."; }
       ];
 
       window.commands = [
-        {criteria = { floating = true; };           command = "border pixel 2"; }
-        {criteria = { workspace="3: browser"; };    command = "layout tabbed"; }
-        {criteria = { workspace="8: chat"; };       command = "layout tabbed"; }
-        {criteria = { class="firefox"; };           command = "inhibit_idle fullscreen"; }
-        {criteria = { app_id="pavucontrol"; };      command = "floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 330"; }
+        {
+          criteria = { floating = true; };
+          command = "border pixel 2";
+        }
+        {
+          criteria = { workspace = "3: browser"; };
+          command = "layout tabbed";
+        }
+        {
+          criteria = { workspace = "8: chat"; };
+          command = "layout tabbed";
+        }
+        {
+          criteria = { class = "firefox"; };
+          command = "inhibit_idle fullscreen";
+        }
+        {
+          criteria = { app_id = "pavucontrol"; };
+          command =
+            "floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 330";
+        }
       ];
 
-      keybindings = let
-        modifier = config.wayland.windowManager.sway.config.modifier;
-      in lib.mkOptionDefault {
-        # Control volume
-        XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
-        XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
-        XF86AudioMute        = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-        XF86AudioMicMute     = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+      keybindings =
+        let modifier = config.wayland.windowManager.sway.config.modifier;
+        in lib.mkOptionDefault {
+          # Control volume
+          XF86AudioRaiseVolume =
+            "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+          XF86AudioLowerVolume =
+            "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+          XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          XF86AudioMicMute =
+            "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 
-        # Control media
-        #XF86AudioPlay  = "exec playerctl play-pause";
-        #XF86AudioPause = "exec playerctl play-pause";
-        #XF86AudioNext  = "exec playerctl next";
-        #XF86AudioPrev  = "exec playerctl previous";
+          # Control media
+          #XF86AudioPlay  = "exec playerctl play-pause";
+          #XF86AudioPause = "exec playerctl play-pause";
+          #XF86AudioNext  = "exec playerctl next";
+          #XF86AudioPrev  = "exec playerctl previous";
 
-        # Control brightness
-        XF86MonBrightnessUp   = "exec light -A 5";
-        XF86MonBrightnessDown = "exec light -U 5";
+          # Control brightness
+          XF86MonBrightnessUp = "exec light -A 5";
+          XF86MonBrightnessDown = "exec light -U 5";
 
-        # Screenshots
-        "print" = "exec grim -g \"\$(slurp)\" - | swappy -f -";
-        "Shift+print" = "exec grim - | swappy -f -";
+          # Screenshots
+          "print" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+          "Shift+print" = "exec grim - | swappy -f -";
 
-        # Focus
-        "${modifier}+z"       = "focus child";
+          # Focus
+          "${modifier}+z" = "focus child";
 
-        # Lock
-        "${modifier}+Shift+x" = "exec ${pkgs.swaylock}/bin/swaylock -f";
+          # Lock
+          "${modifier}+Shift+x" = "exec ${pkgs.swaylock}/bin/swaylock -f";
 
-        # Workspace 10
-        "${modifier}+0"       = "workspace number 10";
-        "${modifier}+Shift+0" = "move container to workspace number 10";
+          # Workspace 10
+          "${modifier}+0" = "workspace number 10";
+          "${modifier}+Shift+0" = "move container to workspace number 10";
 
-        # Moving workspaces between screens
-        "${modifier}+Mod1+Up"    = "move workspace to output up";
-        "${modifier}+Mod1+Down"  = "move workspace to output down";
-        "${modifier}+Mod1+Left"  = "move workspace to output left";
-        "${modifier}+Mod1+Right" = "move workspace to output right";
-      };
+          # Moving workspaces between screens
+          "${modifier}+Mod1+Up" = "move workspace to output up";
+          "${modifier}+Mod1+Down" = "move workspace to output down";
+          "${modifier}+Mod1+Left" = "move workspace to output left";
+          "${modifier}+Mod1+Right" = "move workspace to output right";
+        };
     };
 
     extraConfig = ''

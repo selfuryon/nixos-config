@@ -1,8 +1,7 @@
 { pkgs, config, ... }: {
   programs.fish = {
     enable = true;
-    plugins = [
-    {
+    plugins = [{
       name = "z";
       src = pkgs.fetchFromGitHub {
         owner = "jethrokuan";
@@ -10,8 +9,7 @@
         rev = "45a9ff6d0932b0e9835cbeb60b9794ba706eef10";
         hash = "sha256-pWkEhjbcxXduyKz1mAFo90IuQdX7R8bLCQgb0R+hXs4=";
       };
-    }
-    ];
+    }];
     shellAliases = {
       # Get ip
       getip = "curl ifconfig.me";

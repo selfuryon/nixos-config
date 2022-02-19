@@ -9,5 +9,5 @@
     pinentryFlavor = "gtk2";
   };
 
-  home.packages = with pkgs; [ pinentry-gtk2 ]; 
+  home.packages = with pkgs; [ pinentry-gtk2 ];
 }

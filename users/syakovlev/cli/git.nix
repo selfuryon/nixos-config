@@ -2,9 +2,9 @@
   # Git configuration
   programs.git = {
     enable = true;
-    userName  = "Sergey Yakovlev";
+    userName = "Sergey Yakovlev";
     userEmail = "selfuryon@gmail.com";
-    extraConfig = { 
+    extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = true;
     };
@@ -32,7 +32,8 @@
       ci = "commit";
       st = "status";
       br = "branch";
-      ll = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) <%an>%C(reset)%C(bold yellow)%d%C(reset)' --all";
+      ll =
+        "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) <%an>%C(reset)%C(bold yellow)%d%C(reset)' --all";
     };
   };
 }

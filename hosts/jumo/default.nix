@@ -1,20 +1,20 @@
 { config, pkgs, ... }: {
-  imports = [ 
-    ./hardware-configuration.nix 
-    ./dns.nix 
-    ./fonts.nix 
-    ./networking.nix 
-    ./pipewire.nix 
-    ./sound.nix 
-    ./virtualization.nix 
-    ./zfs.nix 
+  imports = [
+    ./hardware-configuration.nix
+    ./dns.nix
+    ./fonts.nix
+    ./networking.nix
+    ./pipewire.nix
+    ./sound.nix
+    ./virtualization.nix
+    ./zfs.nix
   ];
 
   networking.hostName = "jumo";
   networking.hostId = "ea39aa79";
 
   time.timeZone = "Europe/Moscow";
-  system.stateVersion = "unstable"; 
+  system.stateVersion = "unstable";
 
   # Hardware configuration
   hardware = {
@@ -50,9 +50,7 @@
     #printing.enable = true;
   };
 
-  programs = {
-    ssh.startAgent = true;
-  };
+  programs = { ssh.startAgent = true; };
 
   # Nix 
   nixpkgs.config.allowUnfree = true;

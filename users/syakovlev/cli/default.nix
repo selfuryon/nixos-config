@@ -14,12 +14,13 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  home.packages = with pkgs; [ 
-    htop 
+  home.packages = with pkgs; [
+    nixfmt
+    htop
     ripgrep
     lsof
     fd
-    tree 
+    tree
     git
     tmux
     cryfs
@@ -37,5 +38,5 @@
     pango
     polkit_gnome
     bind
-  ]; 
+  ];
 }

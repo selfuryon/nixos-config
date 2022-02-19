@@ -13,7 +13,7 @@
     sway = {
       enable = true;
       wrapperFeatures.gtk = true;
-      extraPackages = with pkgs; [];
+      extraPackages = with pkgs; [ ];
     };
   };
   security.pam.services.swaylock = { };

@@ -39,6 +39,16 @@ require('formatter').setup({
         }
       end
     },
+    nix = {
+      -- gofmt
+      function()
+        return {
+          exe = "nixfmt",
+          args = {},
+          stdin = true,
+        }
+      end
+    },
     terraform = {
       -- terraform
       function()

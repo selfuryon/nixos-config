@@ -8,19 +8,17 @@
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, utils, ...  }@inputs:
+  outputs = { self, nixpkgs, home-manager, utils, ... }@inputs:
     let
       # My overlays
-      overlay  = (import ./overlays);
+      overlay = (import ./overlays);
       overlays = [ overlay ];
 
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {
-            inherit inputs system;
-          };
+          specialArgs = { inherit inputs system; };
           modules = [
             (./hosts + "/${hostname}")
             {
@@ -29,25 +27,20 @@
               nixpkgs = { inherit overlays; };
               # Add each input as a registry
               nix.registry = nixpkgs.lib.mapAttrs'
-                (n: v:
-                  nixpkgs.lib.nameValuePair (n) ({ flake = v; }))
-                inputs;
+                (n: v: nixpkgs.lib.nameValuePair (n) ({ flake = v; })) inputs;
             }
             # System wide config for each user
-          ] ++ nixpkgs.lib.forEach users
-            (u: ./users + "/${u}" + /system.nix);
+          ] ++ nixpkgs.lib.forEach users (u: ./users + "/${u}" + /system.nix);
         };
 
       # Make home configuration, given username, required features, and system type
       mkHome = { username, system, hostname }:
         home-manager.lib.homeManagerConfiguration {
           inherit username system;
-          extraSpecialArgs = {
-            inherit hostname inputs system;
-          };
+          extraSpecialArgs = { inherit hostname inputs system; };
           homeDirectory = "/home/${username}";
           configuration = ./users + "/${username}";
-          extraModules = [ { nixpkgs = { inherit overlays; }; } ];
+          extraModules = [{ nixpkgs = { inherit overlays; }; }];
         };
     in {
       inherit overlay overlays;
@@ -68,5 +61,5 @@
           system = "x86_64-linux";
         };
       };
-  };
+    };
 }

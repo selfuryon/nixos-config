@@ -13,12 +13,11 @@
     ./wlsunset.nix
   ];
 
-  xdg.mimeApps.defaultApplications = {};
+  xdg.mimeApps.defaultApplications = { };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "megasync"
-  ];
-  home.packages = with pkgs; [ 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [ "megasync" ];
+  home.packages = with pkgs; [
     keepassxc
     brave
     thunderbird
@@ -59,5 +58,5 @@
     lxappearance
     megasync
     wireshark
-  ]; 
+  ];
 }

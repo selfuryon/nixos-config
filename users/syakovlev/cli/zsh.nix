@@ -3,9 +3,9 @@
     enable = true;
     enableSyntaxHighlighting = true;
     loginExtra = ''
-    if [[ $TTY == "/dev/tty1" ]]; then
-      exec sway
-    fi
+      if [[ $TTY == "/dev/tty1" ]]; then
+        exec sway
+      fi
     '';
     defaultKeymap = "viins";
     dotDir = ".config/zsh";

@@ -6,7 +6,7 @@
     defaultCommand = "fd --type f";
     defaultOptions = [ "--height 40%" "--prompt ⟫" ];
     fileWidgetCommand = "fd --type f";
-    fileWidgetOptions =  [ "--preview 'head {}'" ];
+    fileWidgetOptions = [ "--preview 'head {}'" ];
     historyWidgetOptions = [ "--tac" "--exact" ];
   };
 }
