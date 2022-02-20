@@ -50,8 +50,8 @@
     adwaita-qt
     capitaine-cursors
     wf-recorder
-    virt-manager
-    virt-viewer
+    #virt-manager
+    #virt-viewer
     gtk-engine-murrine
     gtk_engines
     dconf
