@@ -2,6 +2,7 @@
   imports = [
     ./alacritty.nix
     ./firefox.nix
+    ./foot.nix
     #./gsettings.nix
     ./gtk.nix
     ./mako.nix
