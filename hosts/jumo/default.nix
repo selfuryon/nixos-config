@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./dns.nix
+    ./firewall.nix
     ./fonts.nix
     ./networking.nix
     ./pipewire.nix
