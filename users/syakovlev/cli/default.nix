@@ -10,6 +10,7 @@
     ./skim.nix
     ./starship.nix
     ./nvim.nix
+    ./tmux.nix
     ./zsh.nix
   ];
 

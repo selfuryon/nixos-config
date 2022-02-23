@@ -14,7 +14,7 @@ return require('packer').startup(function(use)
   -- Navigation
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}}}
   use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
-  use 'sunaku/tmux-navigate'
+  use 'christoomey/vim-tmux-navigator'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
