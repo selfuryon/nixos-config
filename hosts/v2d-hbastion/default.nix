@@ -6,6 +6,7 @@
     ./groups.nix
     ./networking.nix
     ./ssh.nix
+    ./wireguard.nix
   ];
 
   networking.hostName = "v2d-hbastion";

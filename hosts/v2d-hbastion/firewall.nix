@@ -42,6 +42,7 @@
             ip protocol icmp counter accept comment "accept all ICMP types"
             ip6 nexthdr icmpv6 counter accept comment "accept all ICMP types"
             tcp dport 22 counter accept comment "accept SSH"
+            udp dport 51820 counter accept comment "accept Wireguard"
             counter comment "count dropped packets"
           }
 

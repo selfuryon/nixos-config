@@ -41,6 +41,7 @@
             iif != lo ip6 daddr ::1/128 counter drop comment "drop connections to loopback not coming from loopback"
             ip protocol icmp counter accept comment "accept all ICMP types"
             ip6 nexthdr icmpv6 counter accept comment "accept all ICMP types"
+            udp dport 51820 counter accept comment "accept Wireguard"
             counter comment "count dropped packets"
           }
 

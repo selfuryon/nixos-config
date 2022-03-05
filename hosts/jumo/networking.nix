@@ -8,6 +8,8 @@
 
     networkmanager.enable = true;
     networkmanager.wifi.powersave = false;
+
+    networkmanager.unmanaged = [ "type:wireguard" ];
   };
 
 }
