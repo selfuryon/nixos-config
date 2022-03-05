@@ -51,7 +51,20 @@
     #printing.enable = true;
   };
 
-  programs = { ssh.startAgent = true; };
+  programs = {
+    ssh.startAgent = true;
+    firejail.enable = true;
+    light.enable = true;
+    qt5ct.enable = true;
+
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+      extraPackages = with pkgs; [ ];
+    };
+  };
+
+  security.pam.services.swaylock = { };
 
   # Nix 
   nixpkgs.config.allowUnfree = true;

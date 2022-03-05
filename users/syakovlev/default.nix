@@ -1,4 +1,5 @@
-{ config, lib, pkgs, ... }: {
-  imports = [ ./cli ./sway-desktop ];
+{ features, lib, ... }: {
+  imports = lib.forEach features (f: ./features + "/${f}");
+
   programs.home-manager.enable = true;
 }

@@ -18,7 +18,7 @@
       mkSystem = { hostname, system, users }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs system; };
+          specialArgs = { inherit hostname inputs system; };
           modules = [
             (./hosts + "/${hostname}")
             {
@@ -34,10 +34,10 @@
         };
 
       # Make home configuration, given username, required features, and system type
-      mkHome = { username, system, hostname }:
+      mkHome = { username, system, hostname, features ? [ ] }:
         home-manager.lib.homeManagerConfiguration {
           inherit username system;
-          extraSpecialArgs = { inherit hostname inputs system; };
+          extraSpecialArgs = { inherit features hostname inputs system; };
           homeDirectory = "/home/${username}";
           configuration = ./users + "/${username}";
           extraModules = [{ nixpkgs = { inherit overlays; }; }];
@@ -52,12 +52,27 @@
           system = "x86_64-linux";
           users = [ "syakovlev" ];
         };
+        # HBastion
+        v2d-hbastion = mkSystem {
+          hostname = "v2d-hbastion";
+          system = "x86_64-linux";
+          users = [ "syakovlev" ];
+        };
       };
 
       homeConfigurations = {
+        # Main Laptop
         "syakovlev@jumo" = mkHome {
           username = "syakovlev";
           hostname = "jumo";
+          features = [ "cli" "sway-desktop" "music" ];
+          system = "x86_64-linux";
+        };
+        # HBastion
+        "syakovlev@v2d-hbastion" = mkHome {
+          username = "syakovlev";
+          hostname = "v2d-hbastion";
+          features = [ "cli" ];
           system = "x86_64-linux";
         };
       };

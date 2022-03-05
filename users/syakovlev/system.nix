@@ -1,20 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, hostname, ... }: {
   users.users.syakovlev = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "sudo" "video" "audio" "libvirtd" "usb" ];
+    extraGroups = [ "wheel" "sudo" "video" "audio" "libvirtd" "usb" "ssh" ];
     shell = pkgs.fish;
+    openssh.authorizedKeys.keyFiles = [ (./keys + "/${hostname}.pub") ];
   };
 
-  programs = {
-    firejail.enable = true;
-    light.enable = true;
-    qt5ct.enable = true;
-
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-      extraPackages = with pkgs; [ ];
-    };
-  };
-  security.pam.services.swaylock = { };
 }

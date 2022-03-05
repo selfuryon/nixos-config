@@ -41,6 +41,7 @@
             iif != lo ip6 daddr ::1/128 counter drop comment "drop connections to loopback not coming from loopback"
             ip protocol icmp counter accept comment "accept all ICMP types"
             ip6 nexthdr icmpv6 counter accept comment "accept all ICMP types"
+            tcp dport 22 counter accept comment "accept SSH"
             counter comment "count dropped packets"
           }
 
@@ -48,14 +49,13 @@
             type filter hook forward priority 0; policy drop;
             ct state invalid counter drop comment "early drop of invalid packets"
             ct state {established, related} counter accept comment "accept all connections related to connections made by us"
-            iifname "virbr0" counter accept comment "accept kvm"
+            iifname "wg0" counter accept comment "accept wireguard"
             counter comment "count dropped packets"
           }
 
           chain postrouting {
             type nat hook postrouting priority 100; policy accept;
-            oifname "wlp5s0" counter masquerade comment "NAT all traffic"
-            oifname "enp4s0" counter masquerade comment "NAT all traffic"
+            oifname "ens3" counter masquerade comment "NAT all traffic"
           }
 
           chain output {

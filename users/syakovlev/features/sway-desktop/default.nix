@@ -25,7 +25,7 @@
     slack
     discord
     pavucontrol
-    skype
+    skypeforlinux
     tdesktop
     okular
     xfce.thunar

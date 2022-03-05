@@ -5,7 +5,6 @@
     ./fzf.nix
     ./git.nix
     ./gpg.nix
-    ./mpd.nix
     ./shell.nix
     ./skim.nix
     ./starship.nix
