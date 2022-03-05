@@ -31,6 +31,7 @@
     xfce.thunar
     xfce.thunar-media-tags-plugin
     vlc
+    librewolf
     xarchiver
     libreoffice
     grim
