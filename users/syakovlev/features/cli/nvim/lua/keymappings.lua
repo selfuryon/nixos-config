@@ -1,10 +1,9 @@
-local utils = require('utils')
-
 -- Common
-utils.map('n', '<F3>', '<cmd>set list!<CR>')
-utils.map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>')
-utils.map('n', '<A-3>', '<cmd>SymbolsOutline<CR>')
-utils.map('n', '<leader>F', '<cmd>Format<CR>')
+local options = {noremap = true}
+vim.api.nvim_set_keymap('n', '<F3>', '<cmd>set list!<CR>', options)
+vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', options)
+vim.api.nvim_set_keymap('n', '<A-3>', '<cmd>SymbolsOutline<CR>', options)
+vim.api.nvim_set_keymap('n', '<leader>F', '<cmd>Format<CR>', options)
 
 -- Window navigation
 -- utils.map('n', '<A-h>', '<C-W>h')
@@ -12,19 +11,20 @@ utils.map('n', '<leader>F', '<cmd>Format<CR>')
 -- utils.map('n', '<A-k>', '<C-W>k')
 -- utils.map('n', '<A-l>', '<C-W>l')
 
+local silent_options = {noremap = true, silent=true}
 vim.g.tmux_navigator_no_mappings = 1
-utils.map('n', '<m-h>', '<cmd>TmuxNavigateLeft<CR>', {noremap=true, silent=true})
-utils.map('n', '<m-j>', '<cmd>TmuxNavigateDown<CR>', {noremap=true, silent=true})
-utils.map('n', '<m-k>', '<cmd>TmuxNavigateUp<CR>', {noremap=true, silent=true})
-utils.map('n', '<m-l>', '<cmd>TmuxNavigateRight<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<m-h>', '<cmd>TmuxNavigateLeft<CR>', silent_options)
+vim.api.nvim_set_keymap('n', '<m-j>', '<cmd>TmuxNavigateDown<CR>', silent_options)
+vim.api.nvim_set_keymap('n', '<m-k>', '<cmd>TmuxNavigateUp<CR>', silent_options)
+vim.api.nvim_set_keymap('n', '<m-l>', '<cmd>TmuxNavigateRight<CR>', silent_options)
 
 -- Disable arrows
-utils.map('n', '<Up>', '<Nop>')
-utils.map('n', '<Down>', '<Nop>')
-utils.map('n', '<Left>', '<Nop>')
-utils.map('n', '<Right>', '<Nop>')
+vim.api.nvim_set_keymap('n', '<Up>', '<Nop>', options)
+vim.api.nvim_set_keymap('n', '<Down>', '<Nop>', options)
+vim.api.nvim_set_keymap('n', '<Left>', '<Nop>', options)
+vim.api.nvim_set_keymap('n', '<Right>', '<Nop>', options)
 
 -- Hop bindings
-utils.map('n', '//', [[<cmd>lua require('hop').hint_patterns()<CR>]])
-utils.map('n', '<leader>j', [[<cmd>lua require('hop').hint_words()<CR>]])
-utils.map('n', '<leader>l', [[<cmd>lua require('hop').hint_lines()<CR>]])
+vim.api.nvim_set_keymap ('n', '//', [[<cmd>lua require('hop').hint_patterns()<CR>]], options)
+vim.api.nvim_set_keymap ('n', '<leader>j', [[<cmd>lua require('hop').hint_words()<CR>]], options)
+vim.api.nvim_set_keymap ('n', '<leader>l', [[<cmd>lua require('hop').hint_lines()<CR>]], options)

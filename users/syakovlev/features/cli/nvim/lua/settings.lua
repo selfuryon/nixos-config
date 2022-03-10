@@ -1,5 +1,3 @@
-local utils = require('utils')
-
 local cmd = vim.cmd
 local indent = 2
 
@@ -11,54 +9,51 @@ vim.g.t_Co = 256
 vim.o.updatetime = 100
 
 -- general
-utils.opt('o', 'mouse', 'a')
-utils.opt('o', 'hidden', true)
-utils.opt('w', 'number', true)
-utils.opt('o', 'clipboard', 'unnamedplus')
--- utils.opt('o', 'clipboard','unnamed,unnamedplus')
-utils.opt('o', 'completeopt', 'menuone,noselect')
+vim.o.mouse = 'a'
+vim.o.hidden = true
+vim.w.number = true
+vim.o.clipboard = 'unnamedplus'
+vim.o.completeopt = 'menuone,noselect'
 
 -- visual
-utils.opt('w', 'cursorline', true)
-utils.opt('o', 'scrolloff', 2)
-utils.opt('o', 'shiftround', true)
-utils.opt('o', 'splitbelow', true)
-utils.opt('o', 'splitright', true)
-utils.opt('o', 'wildmode', 'list:longest')
+vim.w.cursorline = true
+vim.o.scrolloff = 2
+vim.o.shiftround = true
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.wildmode = 'list:longest'
 
 -- tabs
-utils.opt('b', 'tabstop', indent)
-utils.opt('b', 'softtabstop', indent)
-utils.opt('b', 'shiftwidth', indent)
-utils.opt('b', 'expandtab', true)
-utils.opt('b', 'smartindent', true)
-utils.opt('o', 'smarttab', true)
-utils.opt('o', 'foldenable', false)
-utils.opt('o', 'foldmethod', 'indent')
-utils.opt('o', 'foldlevelstart', 2)
-utils.opt('o', 'listchars',
-          'eol:$,tab:>-,space:.,trail:~,extends:>,precedes:<,nbsp:+')
+vim.b.tabstop = 'indent'
+vim.b.softtabstop = 'indent'
+vim.b.shiftwidth = 'indent'
+vim.b.expandtab = true
+vim.b.smartindent = true
+vim.o.smarttab = true
+vim.o.foldenable = false
+vim.o.foldmethod = 'indent'
+vim.o.foldlevelstart = 2
+vim.o.listchars = 'eol:$,tab:>-,space:.,trail:~,extends:>,precedes:<,nbsp:+'
 
 -- search 
-utils.opt('o', 'smartcase', true)
-utils.opt('o', 'showmatch', true)
-utils.opt('o', 'ignorecase', true)
-utils.opt('o', 'incsearch', true)
-utils.opt('o', 'hlsearch', true)
-utils.opt('o', 'inccommand', 'nosplit')
+vim.o.smartcase = true
+vim.o.showmatch = true
+vim.o.ignorecase = true
+vim.o.incsearch = true
+vim.o.hlsearch = true
+vim.o.inccommand = 'nosplit'
 
 -- language
-utils.opt('o', 'spelllang', 'ru,en_us')
-utils.opt('o', 'keymap', 'russian-jcukenwin')
-utils.opt('o', 'iminsert', 0)
-utils.opt('o', 'imsearch', 0)
+vim.o.spelllang = 'ru,en_us'
+vim.o.keymap = 'russian-jcukenwin'
+vim.o.iminsert = 0
+vim.o.imsearch = 0
 
 -- Highlight on yank
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- UI
-utils.opt('o', 'termguicolors', true)
-utils.opt('o', 'signcolumn', "auto:3")
-utils.opt('o', 'showmode', false)
-utils.opt('o', 'guicursor',
-          'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175')
+vim.o.termguicolors = true
+vim.o.signcolumn = "auto:3"
+vim.o.showmode = false
+vim.o.guicursor ='n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'

@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   use 'akinsho/nvim-toggleterm.lua'
-  use 'chentau/marks.nvim'
+  --use 'chentau/marks.nvim'
 
   -- Navigation
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}}}
@@ -27,11 +27,12 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
   use 'mhartington/formatter.nvim'
+  use 'mfussenegger/nvim-lint'
 
   -- Treesitter
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'nvim-treesitter/playground'
+  --use 'nvim-treesitter/playground'
 
   -- Snippets
   use 'dcampos/nvim-snippy'

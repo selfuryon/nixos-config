@@ -61,6 +61,7 @@
     gsettings-desktop-schemas
     lxappearance
     megasync
+    qbittorrent
     wireshark
   ];
 }

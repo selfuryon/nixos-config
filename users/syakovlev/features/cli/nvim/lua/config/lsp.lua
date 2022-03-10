@@ -4,7 +4,7 @@ local disabled_lsp = {
   "jedi_language_server", "jdtls", "vimls","solargraph", "cssls",
   "clangd", "ccls", "sqls", "denols", "graphql", "dartls", "dotls",
   "kotlin_language_server", "nimls", "intelephense", "vuels", "phpactor", "omnisharp",
-  "r_language_server", "terraformls", "texlab", "svelte", "yamlls"
+  "r_language_server", "terraformls", "texlab", "svelte"
 }
 
 require('navigator').setup({

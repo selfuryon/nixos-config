@@ -31,7 +31,7 @@
     haskellPackages.ghcup
     rustup
     yubikey-manager
-    neovim
+    neovim-nightly
     curl
     wget
     pango

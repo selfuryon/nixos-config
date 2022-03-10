@@ -11,27 +11,12 @@ require("toggleterm").setup {
   shell = vim.o.shell -- change the default shell
 }
 
--- lualine configuration
-require('lualine').setup {options = {theme = 'github'}}
-
 -- github theme
-vim.o.background = "light"
 require('github-theme').setup({
   theme_style = 'light',
-  keyword_style = false,
-  hide_inactive_statusline = false,
   sidebars = {"terminal"},
   dark_sidebar = false
 })
 
--- marks.nvim configuration
-require('marks').setup {
-  default_mappings = true,
-  builtin_marks = {".", "<", ">", "^"},
-  cyclic = true,
-  force_write_shada = false,
-  refresh_interval = 250,
-  sign_priority = {lower = 10, upper = 15, builtin = 8, bookmark = 20},
-  bookmark_0 = {sign = "⚑", virt_text = "hello world"},
-  mappings = {}
-}
+-- lualine configuration
+require('lualine').setup{options = {theme = 'auto'}}
