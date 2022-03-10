@@ -11,7 +11,7 @@ vim.o.updatetime = 100
 -- general
 vim.o.mouse = 'a'
 vim.o.hidden = true
-vim.w.number = true
+vim.opt.number = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.completeopt = 'menuone,noselect'
 
