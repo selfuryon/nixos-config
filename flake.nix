@@ -54,9 +54,15 @@
           system = "x86_64-linux";
           users = [ "syakovlev" ];
         };
-        # HBastion
+        # V2D HBastion
         v2d-hbastion = mkSystem {
           hostname = "v2d-hbastion";
+          system = "x86_64-linux";
+          users = [ "syakovlev" ];
+        };
+        # SB HBastion
+        sb-hbastion = mkSystem {
+          hostname = "sb-hbastion";
           system = "x86_64-linux";
           users = [ "syakovlev" ];
         };
@@ -70,10 +76,17 @@
           features = [ "cli" "sway-desktop" "music" ];
           system = "x86_64-linux";
         };
-        # HBastion
+        # V2D HBastion
         "syakovlev@v2d-hbastion" = mkHome {
           username = "syakovlev";
           hostname = "v2d-hbastion";
+          features = [ "cli" ];
+          system = "x86_64-linux";
+        };
+        # SB HBastion
+        "syakovlev@sb-hbastion" = mkHome {
+          username = "syakovlev";
+          hostname = "sb-hbastion";
           features = [ "cli" ];
           system = "x86_64-linux";
         };
