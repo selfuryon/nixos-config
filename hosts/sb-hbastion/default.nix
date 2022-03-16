@@ -13,7 +13,7 @@
   networking.hostId = "d16f7859";
 
   time.timeZone = "Europe/Moscow";
-  system.stateVersion = "21.11";
+  system.stateVersion = "unstable";
 
   # Kernel parameters
   boot = {
@@ -40,6 +40,7 @@
   # Nix 
   nixpkgs.config.allowUnfree = true;
   nix = {
+    settings.trusted-users = [ "root" "@wheel" ];
     extraOptions = "experimental-features = nix-command flakes";
     gc = {
       automatic = true;

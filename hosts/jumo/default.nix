@@ -4,9 +4,11 @@
     ./dns.nix
     ./firewall.nix
     ./fonts.nix
+    ./groups.nix
     ./networking.nix
     ./pipewire.nix
     ./sound.nix
+    ./ssh.nix
     ./virtualization.nix
     ./wireguard.nix
     ./zfs.nix
@@ -44,7 +46,7 @@
   };
 
   environment.pathsToLink = [ "/libexec" ];
-  environment.systemPackages = with pkgs; [ polkit_gnome ];
+  environment.systemPackages = with pkgs; [ polkit_gnome vim ];
 
   services = {
     dbus.packages = [ pkgs.gcr ];
@@ -70,6 +72,7 @@
   # Nix 
   nixpkgs.config.allowUnfree = true;
   nix = {
+    settings.trusted-users = [ "root" "@wheel" ];
     extraOptions = "experimental-features = nix-command flakes";
     gc = {
       automatic = true;

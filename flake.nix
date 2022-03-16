@@ -6,15 +6,15 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+    deploy-rs.url = "github:serokell/deploy-rs";
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    { self, nixpkgs, home-manager, neovim-nightly-overlay, utils, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, utils
+    , deploy-rs, ... }@inputs:
     let
       # My overlays
-      overlay = (import ./overlays);
-      overlays = [ overlay neovim-nightly-overlay.overlay ];
+      overlays = [ (import ./overlays) neovim-nightly-overlay.overlay ];
 
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users }:
@@ -45,8 +45,6 @@
           extraModules = [{ nixpkgs = { inherit overlays; }; }];
         };
     in {
-      inherit overlay overlays;
-
       nixosConfigurations = {
         # Main laptop
         jumo = mkSystem {
@@ -91,6 +89,65 @@
           system = "x86_64-linux";
         };
       };
+
+      # Deploy-rs
+      deploy.nodes = {
+        sb-hbastion = {
+          hostname = "sb-hbastion";
+          sshUser = "syakovlev";
+          profilesOrder = [ "system" "syakovlev" ];
+          profiles = {
+            system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations.sb-hbastion;
+            };
+            syakovlev = {
+              user = "syakovlev";
+              path = deploy-rs.lib.x86_64-linux.activate.home-manager
+                self.homeConfigurations."syakovlev@sb-hbastion";
+            };
+          };
+        };
+        v2d-hbastion = {
+          hostname = "v2d-hbastion";
+          sshUser = "syakovlev";
+          profilesOrder = [ "system" "syakovlev" ];
+          profiles = {
+            system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations.v2d-hbastion;
+            };
+            syakovlev = {
+              user = "syakovlev";
+              path = deploy-rs.lib.x86_64-linux.activate.home-manager
+                self.homeConfigurations."syakovlev@v2d-hbastion";
+            };
+          };
+        };
+        jumo = {
+          hostname = "jumo";
+          sshUser = "syakovlev";
+          profilesOrder = [ "system" "syakovlev" ];
+          profiles = {
+            system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations.jumo;
+            };
+            syakovlev = {
+              user = "syakovlev";
+              path = deploy-rs.lib.x86_64-linux.activate.home-manager
+                self.homeConfigurations."syakovlev@jumo";
+            };
+          };
+        };
+      };
+
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+
     } // utils.lib.eachDefaultSystem (system:
       let pkgs = import nixpkgs { inherit system overlays; };
       in {
