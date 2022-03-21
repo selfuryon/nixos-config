@@ -148,13 +148,10 @@ in {
         let modifier = config.wayland.windowManager.sway.config.modifier;
         in lib.mkOptionDefault {
           # Control volume
-          XF86AudioRaiseVolume =
-            "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
-          XF86AudioLowerVolume =
-            "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
-          XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-          XF86AudioMicMute =
-            "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+          XF86AudioRaiseVolume = "exec pamixer -i 5";
+          XF86AudioLowerVolume = "exec pamixer -d 5";
+          XF86AudioMute = "exec pamixer -t";
+          #XF86AudioMicMute = "";
 
           # Control media
           #XF86AudioPlay  = "exec playerctl play-pause";
@@ -197,4 +194,3 @@ in {
     '';
   };
 }
-

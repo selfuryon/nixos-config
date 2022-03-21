@@ -10,5 +10,5 @@
     '';
   };
 
-  home.packages = with pkgs; [ ario mpc_cli ];
+  home.packages = with pkgs; [ ario mpc_cli pamixer ];
 }
