@@ -7,7 +7,6 @@
     ./groups.nix
     ./networking.nix
     ./pipewire.nix
-    ./sound.nix
     ./ssh.nix
     ./virtualization.nix
     ./wireguard.nix
