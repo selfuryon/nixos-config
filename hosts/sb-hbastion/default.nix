@@ -12,7 +12,7 @@
   networking.hostName = "sb-hbastion";
   networking.hostId = "d16f7859";
 
-  time.timeZone = "Europe/Moscow";
+  time.timeZone = "Etc/UTC";
   system.stateVersion = "unstable";
 
   # Kernel parameters

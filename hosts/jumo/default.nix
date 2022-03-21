@@ -17,7 +17,7 @@
   networking.hostName = "jumo";
   networking.hostId = "ea39aa79";
 
-  time.timeZone = "Europe/Moscow";
+  time.timeZone = "Asia/Nicosia";
   system.stateVersion = "unstable";
 
   # Hardware configuration
@@ -28,8 +28,8 @@
 
   # Kernel parameters
   boot = {
-    #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_5_15;
+    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxPackages_5_15;
     kernelParams = [ "nohibernate" "elevator=none" ];
 
     loader = {
