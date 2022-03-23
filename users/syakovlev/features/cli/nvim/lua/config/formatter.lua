@@ -3,7 +3,6 @@ require('formatter').setup({
   logging = false,
   filetype = {
     javascript = {
-      -- prettier
       function()
         return {
           exe = "prettier",
@@ -15,11 +14,12 @@ require('formatter').setup({
       end
     },
     python = {
-      -- prettier
       function() return {exe = "black", args = {"--safe"}, stdin = false} end
     },
+    yaml = {
+      function() return {exe = "yamlfix", args = {"-"}, stdin = true} end
+    },
     rust = {
-      -- Rustfmt
       function()
         return {
           exe = "rustfmt",
@@ -29,7 +29,6 @@ require('formatter').setup({
       end
     },
     go = {
-      -- gofmt
       function()
         return {
           exe = "gofmt",
@@ -40,7 +39,6 @@ require('formatter').setup({
       end
     },
     nix = {
-      -- gofmt
       function()
         return {
           exe = "nixfmt",
@@ -50,7 +48,6 @@ require('formatter').setup({
       end
     },
     terraform = {
-      -- terraform
       function()
         return {exe = "terraform", args = {"fmt", "-"}, stdin = true}
       end

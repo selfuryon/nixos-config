@@ -42,7 +42,7 @@ in {
     '';
     config = {
       bars = [{ command = "waybar"; }];
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${pkgs.foot}/bin/foot";
       modifier = "Mod4"; # Windows
       menu =
         "${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wofi}/bin/wofi --show drun -i | ${pkgs.findutils}/bin/xargs swaymsg exec --";

@@ -2,6 +2,7 @@
 require('config.completion')
 require('config.formatter')
 require('config.git')
+require('config.linter')
 require('config.lsp')
 require('config.navigation')
 require('config.telescope')

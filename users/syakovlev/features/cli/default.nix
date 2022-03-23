@@ -15,27 +15,30 @@
 
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    htop
-    ripgrep
-    lsof
-    fd
-    tree
-    git
-    tmux
+    bind
+    bubblewrap
+    crosvm
     cryfs
+    curl
+    fd
+    git
+    haskellPackages.ghcup
+    htop
     kind
     kubectl
-    protonvpn-cli
-    p7zip
-    crosvm
-    haskellPackages.ghcup
-    rustup
-    yubikey-manager
+    lsof
     neovim-nightly
-    curl
-    wget
+    p7zip
     pango
+    pijul
     polkit_gnome
-    bind
+    protonvpn-cli
+    ripgrep
+    rustup
+    sequoia
+    tmux
+    tree
+    wget
+    yubikey-manager
   ];
 }
