@@ -1,6 +1,6 @@
 -- Navigator configurations
 local disabled_lsp = {
-  "angularls", "tsserver", "flow", "julials", "pylsp", "clojure_lsp",
+  "angularls", "tsserver", "flow", "julials", "clojure_lsp",
   "jedi_language_server", "jdtls", "vimls","solargraph", "cssls",
   "clangd", "ccls", "sqls", "denols", "graphql", "dartls", "dotls",
   "kotlin_language_server", "nimls", "intelephense", "vuels", "phpactor", "omnisharp",
