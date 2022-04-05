@@ -71,7 +71,7 @@
         "syakovlev@jumo" = mkHome {
           username = "syakovlev";
           hostname = "jumo";
-          features = [ "cli" "sway-desktop" "music" ];
+          features = [ "cli" "sway-desktop" "music" "development" ];
           system = "x86_64-linux";
         };
         # V2D HBastion
@@ -148,10 +148,8 @@
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
-    } // utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system overlays; };
-      in {
-        devShell =
-          pkgs.mkShell { buildInputs = with pkgs; [ nixfmt rnix-lsp ]; };
-      });
+      devShells.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux;
+        mkShell { packages = [ nixfmt ]; };
+
+    };
 }

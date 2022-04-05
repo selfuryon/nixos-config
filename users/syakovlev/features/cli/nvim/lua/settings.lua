@@ -24,11 +24,11 @@ vim.o.splitright = true
 vim.o.wildmode = 'list:longest'
 
 -- tabs
-vim.b.tabstop = 4
-vim.b.softtabstop = 4
-vim.b.shiftwidth = 4
-vim.b.expandtab = true
-vim.b.smartindent = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 vim.o.smarttab = true
 vim.o.foldenable = false
 vim.o.foldmethod = 'indent'

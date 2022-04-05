@@ -63,5 +63,6 @@
     megasync
     qbittorrent
     wireshark
+    fractal
   ];
 }
