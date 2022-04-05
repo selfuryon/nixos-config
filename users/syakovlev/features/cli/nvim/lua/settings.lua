@@ -11,12 +11,12 @@ vim.o.updatetime = 100
 -- general
 vim.o.mouse = 'a'
 vim.o.hidden = true
-vim.opt.number = true
+vim.o.number = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.completeopt = 'menuone,noselect'
 
 -- visual
-vim.w.cursorline = true
+vim.o.cursorline = true
 vim.o.scrolloff = 2
 vim.o.shiftround = true
 vim.o.splitbelow = true
@@ -24,11 +24,11 @@ vim.o.splitright = true
 vim.o.wildmode = 'list:longest'
 
 -- tabs
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
 vim.o.smarttab = true
 vim.o.foldenable = false
 vim.o.foldmethod = 'indent'
