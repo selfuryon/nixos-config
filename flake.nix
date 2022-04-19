@@ -16,6 +16,9 @@
       # My overlays
       overlays = [ (import ./overlays) neovim-nightly-overlay.overlay ];
 
+      # Load inventory
+      inventory = import ./machines/inventory.nix;
+
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users }:
         nixpkgs.lib.nixosSystem {
@@ -32,7 +35,8 @@
                 (n: v: nixpkgs.lib.nameValuePair (n) ({ flake = v; })) inputs;
             }
             # System wide config for each user
-          ] ++ nixpkgs.lib.forEach users (u: ./users + "/${u}" + /system.nix);
+          ] ++ nixpkgs.lib.forEach (builtins.attrNames users)
+            (u: ./users + "/${u}" + /system.nix);
         };
 
       # Make home configuration, given username, required features, and system type
@@ -45,26 +49,8 @@
           extraModules = [{ nixpkgs = { inherit overlays; }; }];
         };
     in {
-      nixosConfigurations = {
-        # Main laptop
-        jumo = mkSystem {
-          hostname = "jumo";
-          system = "x86_64-linux";
-          users = [ "syakovlev" ];
-        };
-        # V2D HBastion
-        v2d-hbastion = mkSystem {
-          hostname = "v2d-hbastion";
-          system = "x86_64-linux";
-          users = [ "syakovlev" ];
-        };
-        # SB HBastion
-        sb-hbastion = mkSystem {
-          hostname = "sb-hbastion";
-          system = "x86_64-linux";
-          users = [ "syakovlev" ];
-        };
-      };
+      nixosConfigurations =
+        nixpkgs.lib.mapAttrs (name: config: mkSystem config) inventory;
 
       homeConfigurations = {
         # Main Laptop
