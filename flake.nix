@@ -22,7 +22,7 @@
           inherit system;
           specialArgs = { inherit hostname inputs system; };
           modules = [
-            (./hosts + "/${hostname}")
+            (./machines + "/${hostname}")
             {
               networking.hostName = hostname;
               # Apply overlay
