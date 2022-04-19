@@ -5,5 +5,4 @@
     shell = pkgs.fish;
     openssh.authorizedKeys.keyFiles = [ (./keys + "/${hostname}.pub") ];
   };
-
 }

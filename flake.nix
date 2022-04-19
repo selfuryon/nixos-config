@@ -7,11 +7,10 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     deploy-rs.url = "github:serokell/deploy-rs";
-    utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, utils
-    , deploy-rs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, deploy-rs
+    , ... }@inputs:
     let
       # My overlays
       overlays = [ (import ./overlays) neovim-nightly-overlay.overlay ];
@@ -31,101 +30,64 @@
               # Apply overlay
               nixpkgs = { inherit overlays; };
               # Add each input as a registry
-              nix.registry = nixpkgs.lib.mapAttrs'
-                (n: v: nixpkgs.lib.nameValuePair (n) ({ flake = v; })) inputs;
+              nix.registry = nixpkgs.lib.mapAttrs (n: v: { flake = v; }) inputs;
+            }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit hostname inputs system nixpkgs; };
+                users = nixpkgs.lib.mapAttrs (user: features:
+                  import (./users + "/${user}") {
+                    features = users.syakovlev;
+                    lib = nixpkgs.lib;
+                  }) users;
+              };
             }
             # System wide config for each user
           ] ++ nixpkgs.lib.forEach (builtins.attrNames users)
             (u: ./users + "/${u}" + /system.nix);
         };
-
-      # Make home configuration, given username, required features, and system type
-      mkHome = { username, system, hostname, features ? [ ] }:
-        home-manager.lib.homeManagerConfiguration {
-          inherit username system;
-          extraSpecialArgs = { inherit features hostname inputs system; };
-          homeDirectory = "/home/${username}";
-          configuration = ./users + "/${username}";
-          extraModules = [{ nixpkgs = { inherit overlays; }; }];
-        };
     in {
       nixosConfigurations =
         nixpkgs.lib.mapAttrs (name: config: mkSystem config) inventory;
-
-      homeConfigurations = {
-        # Main Laptop
-        "syakovlev@jumo" = mkHome {
-          username = "syakovlev";
-          hostname = "jumo";
-          features = [ "cli" "sway-desktop" "music" "development" ];
-          system = "x86_64-linux";
-        };
-        # V2D HBastion
-        "syakovlev@v2d-hbastion" = mkHome {
-          username = "syakovlev";
-          hostname = "v2d-hbastion";
-          features = [ "cli" ];
-          system = "x86_64-linux";
-        };
-        # SB HBastion
-        "syakovlev@sb-hbastion" = mkHome {
-          username = "syakovlev";
-          hostname = "sb-hbastion";
-          features = [ "cli" ];
-          system = "x86_64-linux";
-        };
-      };
 
       # Deploy-rs
       deploy.nodes = {
         sb-hbastion = {
           hostname = "sb-hbastion";
           sshUser = "syakovlev";
-          profilesOrder = [ "system" "syakovlev" ];
+          profilesOrder = [ "system" ];
           profiles = {
             system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.sb-hbastion;
             };
-            syakovlev = {
-              user = "syakovlev";
-              path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                self.homeConfigurations."syakovlev@sb-hbastion";
-            };
           };
         };
         v2d-hbastion = {
           hostname = "v2d-hbastion";
           sshUser = "syakovlev";
-          profilesOrder = [ "system" "syakovlev" ];
+          profilesOrder = [ "system" ];
           profiles = {
             system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.v2d-hbastion;
             };
-            syakovlev = {
-              user = "syakovlev";
-              path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                self.homeConfigurations."syakovlev@v2d-hbastion";
-            };
           };
         };
         jumo = {
           hostname = "jumo";
           sshUser = "syakovlev";
-          profilesOrder = [ "system" "syakovlev" ];
+          profilesOrder = [ "system" ];
           profiles = {
             system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.jumo;
-            };
-            syakovlev = {
-              user = "syakovlev";
-              path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                self.homeConfigurations."syakovlev@jumo";
             };
           };
         };
