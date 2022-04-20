@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   services.mpd = {
     enable = true;
-    musicDirectory = ~/data/music;
+    musicDirectory = /home/syakovlev/data/music;
     extraConfig = ''
       audio_output {
         type "pipewire"
