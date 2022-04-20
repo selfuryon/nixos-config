@@ -1,8 +1,5 @@
-local cmd = vim.cmd
-local indent = 2
-
-cmd 'syntax enable'
-cmd 'filetype plugin indent on'
+vim.cmd ('syntax enable')
+vim.cmd ('filetype plugin indent on')
 
 -- Global variables
 vim.g.t_Co = 256
