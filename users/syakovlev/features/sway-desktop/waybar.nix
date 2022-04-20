@@ -12,112 +12,114 @@ let
 in {
   programs.waybar = {
     enable = true;
-    settings = [{
-      layer = "top";
-      height = 42;
-      position = "top";
-      modules-left = [ "sway/workspaces" "sway/mode" "idle_inhibitor" ];
-      modules-center = [ "sway/window" ];
-      modules-right = [
-        "pulseaudio"
-        "cpu"
-        "memory"
-        "temperature"
-        "battery"
-        "tray"
-        "clock"
-        "custom/update"
-      ];
-      "sway/workspaces" = {
-        disable-scroll = true;
-        all-outputs = true;
-        format = "{icon}";
-        "format-icons" = {
-          "1" = "";
-          "2" = "";
-          "3" = "";
-          "4" = "";
-          "5" = "";
-          "6" = "";
-          "7" = "";
-          "8" = "";
-          "9" = "";
-          "10" = "";
-          default = "";
-          focused = "";
-          urgent = "";
+    settings = {
+      mainBar = {
+        layer = "top";
+        height = 42;
+        position = "top";
+        modules-left = [ "sway/workspaces" "sway/mode" "idle_inhibitor" ];
+        modules-center = [ "sway/window" ];
+        modules-right = [
+          "pulseaudio"
+          "cpu"
+          "memory"
+          "temperature"
+          "battery"
+          "tray"
+          "clock"
+          "custom/update"
+        ];
+        "sway/workspaces" = {
+          disable-scroll = true;
+          all-outputs = true;
+          format = "{icon}";
+          "format-icons" = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "6" = "";
+            "7" = "";
+            "8" = "";
+            "9" = "";
+            "10" = "";
+            default = "";
+            focused = "";
+            urgent = "";
+          };
+          icon-size = 24;
         };
-        icon-size = 24;
-      };
-      "sway/mode" = { format = ''<span style="italic">{}</span>''; };
-      tray = {
-        icon-size = 21;
-        spacing = 5;
-      };
-      idle_inhibitor = {
-        format = "{icon}";
-        format-icons = {
-          activated = "";
-          deactivated = "";
+        "sway/mode" = { format = ''<span style="italic">{}</span>''; };
+        tray = {
+          icon-size = 21;
+          spacing = 5;
+        };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
+        };
+        "custom/update" = {
+          exec = checkNixosUpdates;
+          on-click = checkNixosUpdates;
+          return-type = "json";
+          format = "{icon}";
+          format-icons = { upd = ""; };
+          interval = 10800;
+        };
+        clock = {
+          format = "{:%R}";
+          format-alt = "{:%Y-%m-%d}";
+          tooltip-format = ''
+            <big>{:%Y %B}</big>
+            <tt><small>{calendar}</small></tt>'';
+        };
+        cpu = { format = "{usage}% "; };
+        memory = { format = "{}% "; };
+        temperature = {
+          thermal-zone = 2;
+          hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
+          critical-threshold = 80;
+          format-critical = "{temperatureC}°C {icon}";
+          format = "{temperatureC}°C {icon}";
+          interval = 60;
+          format-icons = [ "" "" "" ];
+        };
+        battery = {
+          bat = "BAT0";
+          interval = 40;
+          format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+          format = "{capacity}% {icon}";
+          format-charging = "{capacity}% ";
+        };
+        network = {
+          interval = 5;
+          format-wifi = "{essid}  ";
+          format-ethernet = "Connected ";
+          format-disconnected = "";
+          on-click-middle = "exec alacritty -e nmtui";
+          tooltip-format = ''
+            {ifname}
+            {ipaddr}/{cidr}
+            Up: {bandwidthUpBits}
+            Down: {bandwidthDownBits}'';
+        };
+        pulseaudio = {
+          on-click = "pavucontrol";
+          format = "{volume}% {icon}";
+          format-muted = "0%  ";
+          format-icons = {
+            headphone = "";
+            headset = "";
+            portable = "";
+            default = [ "" "" "" ];
+          };
         };
       };
-      "custom/update" = {
-        exec = checkNixosUpdates;
-        on-click = checkNixosUpdates;
-        return-type = "json";
-        format = "{icon}";
-        format-icons = { upd = ""; };
-        interval = 10800;
-      };
-      clock = {
-        format = "{:%R}";
-        format-alt = "{:%Y-%m-%d}";
-        tooltip-format = ''
-          <big>{:%Y %B}</big>
-          <tt><small>{calendar}</small></tt>'';
-      };
-      cpu = { format = "{usage}% "; };
-      memory = { format = "{}% "; };
-      temperature = {
-        thermal-zone = 2;
-        hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
-        critical-threshold = 80;
-        format-critical = "{temperatureC}°C {icon}";
-        format = "{temperatureC}°C {icon}";
-        interval = 60;
-        format-icons = [ "" "" "" ];
-      };
-      battery = {
-        bat = "BAT0";
-        interval = 40;
-        format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-        format = "{capacity}% {icon}";
-        format-charging = "{capacity}% ";
-      };
-      network = {
-        interval = 5;
-        format-wifi = "{essid}  ";
-        format-ethernet = "Connected ";
-        format-disconnected = "";
-        on-click-middle = "exec alacritty -e nmtui";
-        tooltip-format = ''
-          {ifname}
-          {ipaddr}/{cidr}
-          Up: {bandwidthUpBits}
-          Down: {bandwidthDownBits}'';
-      };
-      pulseaudio = {
-        on-click = "pavucontrol";
-        format = "{volume}% {icon}";
-        format-muted = "0%  ";
-        format-icons = {
-          headphone = "";
-          headset = "";
-          portable = "";
-          default = [ "" "" "" ];
-        };
-      };
-    }];
+    };
     style = ''
       * {
         border: none;
