@@ -64,5 +64,6 @@
     qbittorrent
     wireshark
     fractal
+    xournal
   ];
 }

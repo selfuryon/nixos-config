@@ -10,7 +10,7 @@
     gl = "git ll";
     gpl = "git pull";
 
-    nrs = "sudo nixos-rebuild switch --flake /home/syakovlev/nixos-config";
+    nrs = "sudo nixos-rebuild switch --flake path:/home/syakovlev/nixos-config";
     hms = "home-manager switch --flake /home/syakovlev/nixos-config";
   };
 
