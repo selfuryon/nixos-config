@@ -32,7 +32,6 @@
     xfce.thunar-media-tags-plugin
     vlc
     xarchiver
-    librewolf
     mpv
     qutebrowser
     libreoffice

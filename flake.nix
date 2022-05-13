@@ -40,7 +40,7 @@
                 extraSpecialArgs = { inherit hostname inputs system nixpkgs; };
                 users = nixpkgs.lib.mapAttrs (user: features:
                   import (./users + "/${user}") {
-                    features = users.syakovlev;
+                    features = users.syakovlev.features;
                     lib = nixpkgs.lib;
                   }) users;
               };

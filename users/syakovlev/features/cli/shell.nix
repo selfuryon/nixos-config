@@ -12,9 +12,17 @@
 
     nrs = "sudo nixos-rebuild switch --flake path:/home/syakovlev/nixos-config";
     hms = "home-manager switch --flake /home/syakovlev/nixos-config";
+
+    k = "kubectl";
+    kx = "kubectx";
+    kns = "kubens";
+    ke = "kubie";
   };
 
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    KUBECONFIG = "~/.config/kubernetes";
+  };
 
   programs = {
     bat = {

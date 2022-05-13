@@ -22,8 +22,6 @@
     git
     htop
     kind
-    kubectl
-    kubie
     lsof
     neovim-nightly
     p7zip
