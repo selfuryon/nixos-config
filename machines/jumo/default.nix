@@ -1,14 +1,15 @@
-{ config, pkgs, ... }: {
-  imports = [
+{ config, pkgs, inputs, ... }: {
+  imports = with inputs.self.nixosProfiles; [
     ./hardware-configuration.nix
-    ./dns.nix
+    dns
+    ssh
+    virtualization
+    pipewire
+    net-sysctl
     ./firewall.nix
     ./fonts.nix
     ./groups.nix
     ./networking.nix
-    ./pipewire.nix
-    ./ssh.nix
-    ./virtualization.nix
     ./wireguard.nix
     ./zfs.nix
   ];

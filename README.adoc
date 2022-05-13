@@ -1,0 +1,8 @@
+# My NixOS configurations
+
+My several machine configurations based upon flakes.
+
+Main logic:
+* machines - list of VM/laptops
+* roles - typical configuration for machines
+* profiles - typical configuration for users

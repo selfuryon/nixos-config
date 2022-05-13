@@ -4,19 +4,21 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     deploy-rs.url = "github:serokell/deploy-rs";
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, deploy-rs
-    , ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, deploy-rs, ... }@inputs:
     let
       # My overlays
-      overlays = [ (import ./overlays) neovim-nightly-overlay.overlay ];
+      overlays = [ (import ./overlays) inputs.neovim-overlay.overlay ];
 
       # Load inventory
       inventory = import ./machines/inventory.nix;
+
+      # Load lib
+      myLib = import ./lib.nix nixpkgs.lib;
 
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users }:
@@ -50,6 +52,8 @@
             (u: ./users + "/${u}" + /system.nix);
         };
     in {
+
+      nixosProfiles = builtins.listToAttrs (myLib.findModules ./profiles);
       nixosConfigurations =
         nixpkgs.lib.mapAttrs (name: config: mkSystem config) inventory;
 
