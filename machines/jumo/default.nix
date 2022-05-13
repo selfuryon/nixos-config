@@ -1,5 +1,5 @@
 { config, pkgs, inputs, ... }: {
-  imports = with inputs.self.nixosProfiles; [
+  imports = with inputs.self.systemProfiles; [
     ./hardware-configuration.nix
     dns
     sshd

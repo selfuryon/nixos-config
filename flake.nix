@@ -53,7 +53,9 @@
         };
     in {
 
-      nixosProfiles = builtins.listToAttrs (myLib.findModules ./profiles);
+      systemProfiles =
+        builtins.listToAttrs (myLib.findModules ./profiles/system);
+      userProfiles = builtins.listToAttrs (myLib.findModules ./profiles/user);
       nixosConfigurations =
         nixpkgs.lib.mapAttrs (name: config: mkSystem config) inventory;
 
