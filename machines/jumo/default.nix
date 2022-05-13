@@ -2,7 +2,7 @@
   imports = with inputs.self.nixosProfiles; [
     ./hardware-configuration.nix
     dns
-    ssh
+    sshd
     virtualization
     pipewire
     net-sysctl
