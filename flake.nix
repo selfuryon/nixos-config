@@ -97,6 +97,12 @@
           };
         };
       };
+      colmena = {
+        meta = { nixpkgs = import nixpkgs { system = "x86_64-linux"; }; };
+
+        sb-hbastion = self.nixosConfigurations.sb-hbastion.config;
+        v2d-hbastion = self.nixosConfigurations.v2d-hbastion.config;
+      };
 
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
@@ -106,7 +112,7 @@
           packages = [
             nixfmt
             inputs.deploy-rs.defaultPackage.x86_64-linux
-            inputs.colmena
+            inputs.colmena.defaultPackage.x86_64-linux
           ];
         };
 
