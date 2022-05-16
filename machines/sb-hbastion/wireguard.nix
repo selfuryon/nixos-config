@@ -1,6 +1,4 @@
 { config, pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ wireguard-tools ];
-
   # Wireguard configuration
   networking.wireguard.interfaces = {
     wg0 = {

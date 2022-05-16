@@ -1,11 +1,12 @@
-{ config, pkgs, ... }: {
-  imports = [
-    ./hardware-configuration.nix
-    ./dns.nix
+{ inputs, config, pkgs, ... }: {
+  imports = with inputs.self.roles; [
+    # Global role
+    server
+    # Local role
     ./firewall.nix
     ./groups.nix
+    ./hardware-configuration.nix
     ./networking.nix
-    ./ssh.nix
     ./wireguard.nix
   ];
 
@@ -27,25 +28,4 @@
   };
   boot.cleanTmpDir = true;
   zramSwap.enable = true;
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
-  environment.systemPackages = with pkgs; [ vim ];
-
-  # Nix 
-  nixpkgs.config.allowUnfree = true;
-  nix = {
-    settings.trusted-users = [ "root" "@wheel" ];
-    extraOptions = "experimental-features = nix-command flakes";
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 14d";
-      dates = "03:15";
-    };
-  };
 }

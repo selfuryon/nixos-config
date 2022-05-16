@@ -1,5 +1,4 @@
 { inputs, config, pkgs, ... }: {
-
   imports = with inputs.self.roles; [
     # Global role
     desktop

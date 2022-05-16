@@ -2,7 +2,6 @@
   imports = [
     ./suites/dns.nix
     ./suites/net-sysctl.nix
-    ./suites/networking.nix
     ./suites/sshd.nix
     ./suites/wireguard.nix
   ];
