@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ inputs, ... }: {
   # DNS
   networking = {
     dhcpcd.extraConfig = "nohook resolv.conf";

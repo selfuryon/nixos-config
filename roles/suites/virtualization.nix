@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ inputs, ... }: {
   virtualisation = {
     libvirtd.enable = true;
     podman = {

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {
@@ -7,6 +7,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
   xdg = {
     portal = {
       enable = true;

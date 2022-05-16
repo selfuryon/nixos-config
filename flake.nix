@@ -7,6 +7,7 @@
     neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     deploy-rs.url = "github:serokell/deploy-rs";
+    colmena.url = "github:zhaofengli/colmena";
   };
 
   outputs = { self, nixpkgs, home-manager, deploy-rs, ... }@inputs:
@@ -18,7 +19,8 @@
       inventory = import ./machines/inventory.nix;
 
       # Load lib
-      myLib = import ./lib.nix nixpkgs.lib;
+      lib = nixpkgs.lib;
+      myLib = import ./lib.nix lib;
 
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users }:
@@ -52,12 +54,9 @@
             (u: ./users + "/${u}" + /system.nix);
         };
     in {
-
-      systemProfiles =
-        builtins.listToAttrs (myLib.findModules ./profiles/system);
-      userProfiles = builtins.listToAttrs (myLib.findModules ./profiles/user);
+      roles = myLib.findRoles ./roles;
       nixosConfigurations =
-        nixpkgs.lib.mapAttrs (name: config: mkSystem config) inventory;
+        lib.mapAttrs (name: config: mkSystem config) inventory;
 
       # Deploy-rs
       deploy.nodes = {
@@ -104,7 +103,11 @@
 
       devShells.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux;
         mkShell {
-          packages = [ nixfmt inputs.deploy-rs.defaultPackage.x86_64-linux ];
+          packages = [
+            nixfmt
+            inputs.deploy-rs.defaultPackage.x86_64-linux
+            inputs.colmena
+          ];
         };
 
     };
