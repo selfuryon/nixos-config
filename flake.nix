@@ -30,7 +30,6 @@
           modules = [
             (./machines + "/${hostname}")
             {
-              networking.hostName = hostname;
               # Apply overlay
               nixpkgs = { inherit overlays; };
               # Add each input as a registry
