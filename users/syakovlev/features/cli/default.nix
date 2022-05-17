@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ inputs, config, lib, pkgs, ... }: {
   imports = [
     ./direnv.nix
     ./fish.nix
@@ -23,7 +23,6 @@
     htop
     kind
     lsof
-    neovim-nightly
     p7zip
     pango
     polkit_gnome

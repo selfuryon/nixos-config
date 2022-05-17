@@ -4,7 +4,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim = {
+      url = "github:neovim/neovim?dir=contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     deploy-rs.url = "github:serokell/deploy-rs";
     colmena.url = "github:zhaofengli/colmena";
@@ -12,8 +15,9 @@
 
   outputs = { self, nixpkgs, home-manager, deploy-rs, ... }@inputs:
     let
+      mapAttrs = nixpkgs.lib.mapAttrs;
       # My overlays
-      overlays = [ (import ./overlays) inputs.neovim-overlay.overlay ];
+      overlays = [ (import ./overlays) ];
 
       # Load inventory
       inventory = import ./machines/inventory.nix;
@@ -29,21 +33,16 @@
           specialArgs = { inherit hostname inputs system; };
           modules = [
             (./machines + "/${hostname}")
-            {
-              # Apply overlay
-              nixpkgs = { inherit overlays; };
-              # Add each input as a registry
-              nix.registry = nixpkgs.lib.mapAttrs (n: v: { flake = v; }) inputs;
-            }
+            { nixpkgs = { inherit overlays; }; }
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit hostname inputs system nixpkgs; };
-                users = nixpkgs.lib.mapAttrs (user: features:
+                users = mapAttrs (user: features:
                   import (./users + "/${user}") {
-                    features = users.syakovlev.features;
+                    features = users.${user}.features;
                     lib = nixpkgs.lib;
                   }) users;
               };
