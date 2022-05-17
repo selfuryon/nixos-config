@@ -6,7 +6,6 @@
     users = {
       "syakovlev" = {
         features = [ "cli" "sway-desktop" "music" "development" ];
-        extraGroups = [ "wheel" "sudo" "video" "audio" "libvirtd" "usb" "ssh" ];
       };
     };
   };
@@ -16,7 +15,6 @@
     hostname = "v2d-hbastion";
     system = "x86_64-linux";
     users = { "syakovlev" = { features = [ "cli" ]; }; };
-    extraGroups = [ "wheel" "sudo" "video" "audio" "libvirtd" "usb" "ssh" ];
   };
 
   # RU VPS 
@@ -24,6 +22,5 @@
     hostname = "sb-hbastion";
     system = "x86_64-linux";
     users = { "syakovlev" = { features = [ "cli" ]; }; };
-    extraGroups = [ "wheel" "sudo" "video" "audio" "libvirtd" "usb" "ssh" ];
   };
 }
