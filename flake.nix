@@ -60,8 +60,8 @@
       colmena = {
         meta = { nixpkgs = import nixpkgs { system = "x86_64-linux"; }; };
 
-        sb-hbastion = self.nixosConfigurations.sb-hbastion.config;
-        v2d-hbastion = self.nixosConfigurations.v2d-hbastion.config;
+        sb-hbastion = self.nixosConfigurations.sb-hbastion;
+        v2d-hbastion = self.nixosConfigurations.v2d-hbastion;
       };
 
       checks = builtins.mapAttrs
