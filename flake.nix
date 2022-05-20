@@ -27,7 +27,7 @@
       myLib = import ./lib.nix lib;
 
       # Make system configuration, given hostname and system type
-      mkSystem = { hostname, system, users }:
+      mkSystem = { hostname, system, users, ... }:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs hostname system users; };
@@ -37,50 +37,26 @@
             ./users
           ];
         };
-    in {
-      roles = myLib.findRoles ./roles;
-      nixosConfigurations =
-        lib.mapAttrs (name: config: mkSystem config) inventory;
-
-      # Deploy-rs
-      deploy.nodes = {
-        sb-hbastion = {
-          hostname = "sb-hbastion";
-          sshUser = "syakovlev";
-          profilesOrder = [ "system" ];
-          profiles = {
-            system = {
-              user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos
-                self.nixosConfigurations.sb-hbastion;
-            };
-          };
-        };
-        v2d-hbastion = {
-          hostname = "v2d-hbastion";
-          sshUser = "syakovlev";
-          profilesOrder = [ "system" ];
-          profiles = {
-            system = {
-              user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos
-                self.nixosConfigurations.v2d-hbastion;
-            };
-          };
-        };
-        jumo = {
-          hostname = "jumo";
-          sshUser = "syakovlev";
-          profilesOrder = [ "system" ];
-          profiles = {
-            system = {
-              user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos
-                self.nixosConfigurations.jumo;
-            };
+      mkDeployNode = { hostname, system, sshUser, ... }: {
+        hostname = "${hostname}";
+        sshUser = "${sshUser}";
+        profilesOrder = [ "system" ];
+        profiles = {
+          system = {
+            user = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos
+              self.nixosConfigurations.${hostname};
           };
         };
       };
+    in {
+      roles = myLib.findRoles ./roles;
+
+      nixosConfigurations =
+        lib.mapAttrs (name: config: mkSystem config) inventory;
+
+      deploy.nodes = lib.mapAttrs (name: config: mkDeployNode config) inventory;
+
       colmena = {
         meta = { nixpkgs = import nixpkgs { system = "x86_64-linux"; }; };
 
