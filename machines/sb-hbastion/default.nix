@@ -1,10 +1,9 @@
-{ inputs, config, pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = with inputs.self.roles; [
     # Global role
     server
     # Local role
     ./firewall.nix
-    ./groups.nix
     ./hardware-configuration.nix
     ./networking.nix
     ./wireguard.nix

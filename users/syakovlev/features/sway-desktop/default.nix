@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./alacritty.nix
     ./firefox.nix
@@ -14,10 +14,13 @@
     ./wlsunset.nix
   ];
 
-  xdg.mimeApps.defaultApplications = { };
+  xdg.mimeApps.defaultApplications = {
+    browser = {
+      cmd = "${pkgs.firefox-wayland}/bin/firefox";
+      desktop = "firefox";
+    };
+  };
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "megasync" ];
   home.packages = with pkgs; [
     keepassxc
     brave
@@ -40,7 +43,6 @@
     swappy
     qt5.qtwayland
     libsForQt5.lightly
-    swaylock
     wl-clipboard
     clipman
     xwayland

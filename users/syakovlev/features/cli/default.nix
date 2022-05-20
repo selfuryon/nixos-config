@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./direnv.nix
     ./fish.nix
@@ -12,7 +12,6 @@
     ./tmux.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     bind
     bubblewrap

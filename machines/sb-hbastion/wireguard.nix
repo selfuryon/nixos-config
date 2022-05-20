@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ ... }: {
   # Wireguard configuration
   networking.wireguard.interfaces = {
     wg0 = {

@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, ... }: {
   home.packages = [ inputs.neovim.defaultPackage.x86_64-linux ];
   xdg.configFile = {
     nvim = {

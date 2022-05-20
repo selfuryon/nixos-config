@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   checkNixosUpdates = pkgs.writeShellScript "checkUpdates.sh" ''
     UPDATE='{"text": "Update", "alt": "upd"}'

@@ -3,7 +3,6 @@
   nix.registry = pkgs.lib.mapAttrs (n: v: { flake = v; }) inputs;
 
   # Nix 
-  nixpkgs.config.allowUnfree = true;
   nix = {
     settings.trusted-users = [ "root" "@wheel" ];
     extraOptions = "experimental-features = nix-command flakes";

@@ -13,7 +13,7 @@
     colmena.url = "github:zhaofengli/colmena";
   };
 
-  outputs = { self, nixpkgs, home-manager, deploy-rs, ... }@inputs:
+  outputs = { self, nixpkgs, deploy-rs, ... }@inputs:
     let
       mapAttrs = nixpkgs.lib.mapAttrs;
       # My overlays
@@ -30,26 +30,12 @@
       mkSystem = { hostname, system, users }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit hostname inputs system; };
+          specialArgs = { inherit inputs hostname system users; };
           modules = [
-            (./machines + "/${hostname}")
             { nixpkgs = { inherit overlays; }; }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit hostname inputs system nixpkgs; };
-                users = mapAttrs (user: features:
-                  import (./users + "/${user}") {
-                    features = users.${user}.features;
-                    lib = nixpkgs.lib;
-                  }) users;
-              };
-            }
-            # System wide config for each user
-          ] ++ nixpkgs.lib.forEach (builtins.attrNames users)
-            (u: ./users + "/${u}" + /system.nix);
+            (./machines + "/${hostname}")
+            ./users
+          ];
         };
     in {
       roles = myLib.findRoles ./roles;

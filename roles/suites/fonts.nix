@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ pkgs, ... }: {
   fonts.fonts = with pkgs; [
     noto-fonts
     jetbrains-mono

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
   gtk = {
     enable = true;
     gtk3.bookmarks = [

@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ ... }: {
   # Network Manager
   networking = {
     networkmanager.enable = true;

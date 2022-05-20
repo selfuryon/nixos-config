@@ -142,6 +142,11 @@ in {
           command =
             "floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 330";
         }
+        {
+          criteria = { title = "Firefox — Sharing Indicator"; };
+          command =
+            "floating enable, no_focus, resize set 0 0, move absolute position 10 10";
+        }
       ];
 
       keybindings =

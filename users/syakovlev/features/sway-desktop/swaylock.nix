@@ -1,4 +1,5 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ swaylock ];
   xdg.configFile."swaylock/config".text = ''
     image=/home/syakovlev/Pictures/lock.jpg
     scaling=fill
