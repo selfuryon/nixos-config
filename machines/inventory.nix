@@ -26,4 +26,12 @@
     sshUser = "syakovlev";
     users = { "syakovlev" = { features = [ "cli" ]; }; };
   };
+
+  # AM VPS
+  rn-hbastion = {
+    hostname = "rn-hbastion";
+    system = "x86_64-linux";
+    sshUser = "syakovlev";
+    users = { "syakovlev" = { features = [ "cli" ]; }; };
+  };
 }
