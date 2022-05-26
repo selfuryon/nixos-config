@@ -5,4 +5,4 @@ require('lint').linters_by_ft = {
 }
 
 -- Enable linter
-vim.cmd [[au BufWritePost *.yaml,*.yml lua require('lint').try_lint()]]
+-- vim.cmd [[au BufWritePost *.yaml,*.yml lua require('lint').try_lint()]]
