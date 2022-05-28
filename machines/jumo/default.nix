@@ -22,8 +22,8 @@
 
   # Kernel parameters
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    #kernelPackages = pkgs.linuxPackages_5_16;
+    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_5_17;
     kernelParams = [ "nohibernate" "elevator=none" ];
 
     loader = {
