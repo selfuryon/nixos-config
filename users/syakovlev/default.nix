@@ -35,6 +35,7 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
+    #_module.args = { inherit inputs; };
     users.${userName} = {
       imports = lib.forEach features (f: ./features + "/${f}");
       programs.home-manager.enable = true;

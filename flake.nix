@@ -28,14 +28,14 @@
 
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users, ... }:
-        nixpkgs.lib.nixosSystem {
+        let userList = builtins.attrNames users;
+        in nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs hostname system users; };
           modules = [
             { nixpkgs = { inherit overlays; }; }
             (./machines + "/${hostname}")
-            ./users
-          ];
+          ] ++ lib.forEach userList (f: ./users + "/${f}");
         };
       mkDeployNode = { hostname, system, sshUser, ... }: {
         hostname = "${hostname}";
@@ -56,13 +56,6 @@
         lib.mapAttrs (name: config: mkSystem config) inventory;
 
       deploy.nodes = lib.mapAttrs (name: config: mkDeployNode config) inventory;
-
-      colmena = {
-        meta = { nixpkgs = import nixpkgs { system = "x86_64-linux"; }; };
-
-        sb-hbastion = self.nixosConfigurations.sb-hbastion;
-        v2d-hbastion = self.nixosConfigurations.v2d-hbastion;
-      };
 
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
