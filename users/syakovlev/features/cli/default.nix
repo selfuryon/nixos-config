@@ -13,6 +13,9 @@
   ];
 
   home.packages = with pkgs; [
+    rage
+    signify
+    magic-wormhole
     bind
     bubblewrap
     cryfs

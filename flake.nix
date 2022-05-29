@@ -9,11 +9,10 @@
       url = "github:neovim/neovim?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix = {
-      url = "github:ryantm/agenix";
+    ragenix = {
+      url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     deploy-rs.url = "github:serokell/deploy-rs";
   };
 
@@ -37,7 +36,7 @@
           inherit system;
           specialArgs = { inherit inputs hostname system users; };
           modules = [
-            inputs.agenix.nixosModule
+            inputs.ragenix.nixosModules.age
             { nixpkgs = { inherit overlays; }; }
             (./machines + "/${hostname}")
           ] ++ lib.forEach userList (f: ./users + "/${f}");
@@ -70,7 +69,7 @@
           packages = [
             nixfmt
             inputs.deploy-rs.defaultPackage.x86_64-linux
-            inputs.agenix.defaultPackage.x86_64-linux
+            inputs.ragenix.defaultPackage.x86_64-linux
           ];
         };
 
