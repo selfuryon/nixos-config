@@ -4,13 +4,17 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     neovim = {
       url = "github:neovim/neovim?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     deploy-rs.url = "github:serokell/deploy-rs";
-    colmena.url = "github:zhaofengli/colmena";
   };
 
   outputs = { self, nixpkgs, deploy-rs, ... }@inputs:
@@ -33,6 +37,7 @@
           inherit system;
           specialArgs = { inherit inputs hostname system users; };
           modules = [
+            inputs.agenix.nixosModule
             { nixpkgs = { inherit overlays; }; }
             (./machines + "/${hostname}")
           ] ++ lib.forEach userList (f: ./users + "/${f}");
@@ -65,7 +70,7 @@
           packages = [
             nixfmt
             inputs.deploy-rs.defaultPackage.x86_64-linux
-            inputs.colmena.defaultPackage.x86_64-linux
+            inputs.agenix.defaultPackage.x86_64-linux
           ];
         };
 

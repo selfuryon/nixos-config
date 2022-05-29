@@ -22,6 +22,7 @@
   };
 
   home.packages = with pkgs; [
+    tigervnc
     keepassxc
     brave
     thunderbird

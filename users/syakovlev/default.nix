@@ -16,7 +16,7 @@ in {
   };
 
   security.sudo.extraRules = [{
-    users = [ "syakovlev" ];
+    users = [ "${userName}" ];
     commands = [{
       command = "ALL";
       options = [ "NOPASSWD" "SETENV" ];

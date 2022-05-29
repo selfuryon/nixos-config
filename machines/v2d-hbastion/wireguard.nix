@@ -1,10 +1,11 @@
-{ ... }: {
+{ config, ... }: {
   # Wireguard configuration
+  age.secrets.v2d-wireguard.file = ./secrets/wireguard.age;
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "172.31.255.1/24" ];
       listenPort = 51820;
-      privateKeyFile = "/etc/wireguard/keys/private";
+      privateKeyFile = config.age.secrets.v2d-wireguard.path;
 
       peers = [
         { # Jumo
