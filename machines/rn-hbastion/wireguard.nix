@@ -1,6 +1,5 @@
 { config, ... }: {
   # Wireguard configuration
-  age.secrets.rn-wireguard.file = ./secrets/wireguard.age;
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "172.31.253.1/24" ];

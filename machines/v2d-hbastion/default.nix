@@ -3,6 +3,7 @@
     # Global role
     server
     # Local role
+    ./agenix.nix
     ./firewall.nix
     ./hardware-configuration.nix
     ./networking.nix
