@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, ... }: {
   imports = with inputs.self.roles; [
     # Global role
     desktop
@@ -13,22 +13,4 @@
 
   time.timeZone = "Asia/Nicosia";
   system.stateVersion = "unstable";
-
-  # Hardware configuration
-  hardware = {
-    cpu.intel.updateMicrocode = true;
-    bluetooth.enable = true;
-  };
-
-  # Kernel parameters
-  boot = {
-    #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_5_17;
-    kernelParams = [ "nohibernate" "elevator=none" ];
-
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
 }

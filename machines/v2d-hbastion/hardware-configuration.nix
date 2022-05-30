@@ -1,12 +1,25 @@
-{ modulesPath, ... }: {
+{ modulesPath, pkgs, ... }: {
 
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+  # Kernel parameters
+  boot = {
+    initrd.kernelModules = [ ];
+    initrd.availableKernelModules =
+      [ "ata_piix" "uhci_hcd" "ehci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
 
-  boot.initrd.availableKernelModules =
-    [ "ata_piix" "uhci_hcd" "ehci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [ ];
+
+    loader.grub = {
+      enable = true;
+      version = 2;
+      device = "/dev/vda";
+    };
+
+    extraModulePackages = [ ];
+    cleanTmpDir = true;
+  };
+  zramSwap.enable = false;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/73131b3c-e5ca-4b4e-ae9b-3617074e1c22";

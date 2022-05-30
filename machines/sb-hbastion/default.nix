@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, ... }: {
   imports = with inputs.self.roles; [
     # Global role
     server
@@ -15,17 +15,4 @@
 
   time.timeZone = "Etc/UTC";
   system.stateVersion = "unstable";
-
-  # Kernel parameters
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-
-    loader.grub = {
-      enable = true;
-      version = 2;
-      device = "/dev/vda";
-    };
-  };
-  boot.cleanTmpDir = true;
-  zramSwap.enable = true;
 }
