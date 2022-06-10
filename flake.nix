@@ -11,9 +11,12 @@
     };
     ragenix = {
       url = "github:yaxitech/ragenix";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    deploy-rs.url = "github:serokell/deploy-rs";
   };
 
   outputs = { self, nixpkgs, deploy-rs, ... }@inputs:
