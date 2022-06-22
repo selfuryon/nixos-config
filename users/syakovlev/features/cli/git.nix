@@ -1,6 +1,8 @@
-{ ... }: {
+{ ... }:
+let userName = "syakovlev";
+in {
   # Git configuration
-  programs.git = {
+  home-manager.users.${userName}.programs.git = {
     enable = true;
     userName = "Sergey Yakovlev";
     userEmail = "selfuryon@gmail.com";

@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let userName = "syakovlev";
+in {
   #  programs.firefox = {
   #    enable = true;
   #    package = pkgs.firefox-wayland;
@@ -15,23 +17,25 @@
   #      extraConfig = builtins.readFile ./arkenfox/user.js;
   #    };
   #  };
-  home.packages = with pkgs; [ firefox-wayland ];
-  xdg.desktopEntries = {
-    firefox-work = {
-      name = "Firefox (Work)";
-      genericName = "Web Browser";
-      exec = "firefox -P work %U";
-      terminal = false;
-      categories = [ "Application" "Network" "WebBrowser" ];
-      mimeType = [ "text/html" "text/xml" ];
-    };
-    firefox-crypto = {
-      name = "Firefox (Crypto)";
-      genericName = "Web Browser";
-      exec = "firefox -P crypto %U";
-      terminal = false;
-      categories = [ "Application" "Network" "WebBrowser" ];
-      mimeType = [ "text/html" "text/xml" ];
+  home-manager.users.${userName} = {
+    home.packages = with pkgs; [ firefox-wayland ];
+    xdg.desktopEntries = {
+      firefox-work = {
+        name = "Firefox (Work)";
+        genericName = "Web Browser";
+        exec = "firefox -P work %U";
+        terminal = false;
+        categories = [ "Application" "Network" "WebBrowser" ];
+        mimeType = [ "text/html" "text/xml" ];
+      };
+      firefox-crypto = {
+        name = "Firefox (Crypto)";
+        genericName = "Web Browser";
+        exec = "firefox -P crypto %U";
+        terminal = false;
+        categories = [ "Application" "Network" "WebBrowser" ];
+        mimeType = [ "text/html" "text/xml" ];
+      };
     };
   };
 }

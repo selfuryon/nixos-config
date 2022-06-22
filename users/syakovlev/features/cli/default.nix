@@ -1,4 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }:
+let
+  userName = "syakovlev";
+in {
   imports = [
     ./direnv.nix
     ./fish.nix
@@ -12,7 +15,7 @@
     ./tmux.nix
   ];
 
-  home.packages = with pkgs; [
+  home-manager.users.${userName}.home.packages = with pkgs; [
     rage
     signify
     magic-wormhole

@@ -1,5 +1,7 @@
-{ ... }: {
-  programs.skim = {
+{ ... }:
+let userName = "syakovlev";
+in {
+  home-manager.users.${userName}.programs.skim = {
     enable = true;
     changeDirWidgetCommand = "fd --type d";
     changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'" ];

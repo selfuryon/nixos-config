@@ -8,6 +8,7 @@
     paratype-pt-sans
     paratype-pt-mono
     paratype-pt-serif
+    inter
     font-awesome
     (nerdfonts.override {
       fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ];

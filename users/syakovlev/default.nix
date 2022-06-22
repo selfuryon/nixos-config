@@ -4,7 +4,8 @@ let
   features = users.${userName}.features;
   lib = inputs.nixpkgs.lib;
 in {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [ inputs.home-manager.nixosModules.home-manager ]
+    ++ lib.forEach features (f: ./features + "/${f}");
 
   users.users.${userName} = {
     isNormalUser = true;
@@ -37,7 +38,7 @@ in {
     extraSpecialArgs = { inherit inputs; };
     #_module.args = { inherit inputs; };
     users.${userName} = {
-      imports = lib.forEach features (f: ./features + "/${f}");
+      #imports = lib.forEach features (f: ./features + "/${f}");
       programs.home-manager.enable = true;
       home.stateVersion = "22.05";
     };

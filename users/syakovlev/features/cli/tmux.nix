@@ -1,5 +1,7 @@
-{ pkgs, ... }: {
-  programs.tmux = {
+{ pkgs, ... }:
+let userName = "syakovlev";
+in {
+  home-manager.users.${userName}.programs.tmux = {
     enable = true;
     baseIndex = 1;
     clock24 = true;

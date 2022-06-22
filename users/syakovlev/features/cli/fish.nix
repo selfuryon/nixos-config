@@ -1,5 +1,7 @@
-{ pkgs, ... }: {
-  programs.fish = {
+{ pkgs, ... }:
+let userName = "syakovlev";
+in {
+  home-manager.users.${userName}.programs.fish = {
     enable = true;
     plugins = [{
       name = "z";
@@ -16,12 +18,6 @@
     };
     interactiveShellInit = ''
       fish_vi_key_bindings
-    '';
-    shellInit = ''
-      # SSH-Agent
-      if test -z "$SSH_AUTH_SOCK" -a -n "$XDG_RUNTIME_DIR"
-        set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent"
-      end
     '';
     loginShellInit = ''
       if test (tty) = /dev/tty1
