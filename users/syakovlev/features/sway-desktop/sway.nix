@@ -152,11 +152,19 @@ in {
             command = "border pixel 2";
           }
           {
-            criteria = { workspace = "3: browser"; };
+            criteria = { workspace = "1"; };
+            command = "layout stacking";
+          }
+          {
+            criteria = { workspace = "2"; };
             command = "layout tabbed";
           }
           {
-            criteria = { workspace = "8: chat"; };
+            criteria = { workspace = "3"; };
+            command = "layout tabbed";
+          }
+          {
+            criteria = { workspace = "8"; };
             command = "layout tabbed";
           }
           {
