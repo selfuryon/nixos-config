@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let userName = "syakovlev";
 in {
   home-manager.users.${userName} = {
     home.shellAliases = {
-      vim = "${pkgs.neovim}/bin/nvim";
       cat = "${pkgs.bat}/bin/bat";
       gc = "git commit";
       gd = "git diff";

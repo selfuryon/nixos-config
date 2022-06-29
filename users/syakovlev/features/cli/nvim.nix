@@ -2,13 +2,13 @@
 let userName = "syakovlev";
 in {
   home-manager.users.${userName} = {
-    home.packages = [ inputs.neovim.defaultPackage.x86_64-linux ];
-    xdg.configFile = {
-      nvim = {
-        source = ./nvim;
-        recursive = true;
-      };
-    };
+    home.packages = [ inputs.neovimSY.defaultPackage.x86_64-linux ];
+    # xdg.configFile = {
+    # nvim = {
+    # source = ./nvim;
+    # recursive = true;
+    # };
+    # };
   };
   # programs.neovim = {
   # enable = true;
