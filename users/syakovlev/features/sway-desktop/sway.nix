@@ -54,19 +54,21 @@ in {
       glib # gsettings
     ];
 
+    home.sessionVariables = {
+      #MOZ_ENABLE_WAYLAND = 1;
+      #SDL_VIDEODRIVER = wayland;
+      XDG_CURRENT_DESKTOP = "sway";
+      XDG_SESSION_TYPE = "sway";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      _JAVA_AWT_WM_NONREPARENTING = 1;
+      GTK_USE_PORTAL = 1;
+    };
+
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
       systemdIntegration = true;
-      extraSessionCommands = ''
-        export SDL_VIDEODRIVER=wayland
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-        export _JAVA_AWT_WM_NONREPARENTING=1
-        export MOZ_ENABLE_WAYLAND="1"
-        export XDG_CURRENT_DESKTOP="sway"
-        export XDG_SESSION_TYPE="sway"
-      '';
       config = {
         bars = [{ command = "waybar"; }];
         terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -126,6 +128,7 @@ in {
           }
           { command = "dbus-sway-environment"; }
           { command = "configure-gtk"; }
+          { command = "systemctl --user import-environment"; }
         ];
 
         assigns = {
