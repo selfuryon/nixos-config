@@ -45,6 +45,11 @@ in {
   # ws8: chat
   # ws9: secure
   # ws10: general
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [ ];
+  };
 
   home-manager.users.${userName} = {
     home.packages = with pkgs; [
@@ -68,7 +73,7 @@ in {
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
-      systemdIntegration = true;
+      systemdIntegration = true; # sway-session.target
       config = {
         bars = [{ command = "waybar"; }];
         terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -128,7 +133,6 @@ in {
           }
           { command = "dbus-sway-environment"; }
           { command = "configure-gtk"; }
-          { command = "systemctl --user import-environment"; }
         ];
 
         assigns = {

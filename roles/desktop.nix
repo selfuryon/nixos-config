@@ -20,26 +20,6 @@
     keyMap = "us";
   };
 
-  environment.pathsToLink = [ "/libexec" ];
-  environment.systemPackages = with pkgs; [ polkit_gnome vim ];
+  environment.systemPackages = with pkgs; [ vim ];
 
-  services = {
-    dbus.packages = [ pkgs.gcr ];
-    #printing.enable = true;
-  };
-
-  programs = {
-    ssh.startAgent = true;
-    firejail.enable = true;
-    light.enable = true;
-    qt5ct.enable = true;
-
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-      extraPackages = with pkgs; [ ];
-    };
-  };
-
-  security.pam.services.swaylock = { };
 }

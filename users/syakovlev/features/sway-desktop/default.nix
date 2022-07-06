@@ -16,6 +16,20 @@ in {
     ./wlsunset.nix
   ];
 
+  environment.pathsToLink = [ "/libexec" ];
+  environment.systemPackages = with pkgs; [ polkit_gnome ];
+
+  services = {
+    dbus.packages = [ pkgs.gcr ];
+  };
+
+  programs = {
+    ssh.startAgent = true;
+    firejail.enable = true;
+    light.enable = true;
+    qt5ct.enable = true;
+  };
+
   home-manager.users.${userName} = {
     xdg.mimeApps.defaultApplications = {
       browser = {
