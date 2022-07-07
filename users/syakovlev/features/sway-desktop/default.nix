@@ -27,8 +27,9 @@ in {
     ssh.startAgent = true;
     firejail.enable = true;
     light.enable = true;
-    qt5ct.enable = true;
   };
+
+  qt5.platformTheme = "qt5ct";
 
   home-manager.users.${userName} = {
     xdg.mimeApps.defaultApplications = {
