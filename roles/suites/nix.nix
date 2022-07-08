@@ -12,4 +12,6 @@
       dates = "03:15";
     };
   };
+
+  environment.etc.nixpkgs.source = inputs.nixpkgs;
 }
