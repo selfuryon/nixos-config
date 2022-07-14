@@ -14,6 +14,11 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lollypops.url = "github:pinpox/lollypops";
   };
 
   outputs = { self, nixpkgs, deploy-rs, ... }@inputs:
@@ -37,10 +42,12 @@
           specialArgs = { inherit inputs hostname system users; };
           modules = [
             inputs.ragenix.nixosModules.age
+            inputs.lollypops.nixosModules.lollypops
             { nixpkgs = { inherit overlays; }; }
             (./machines + "/${hostname}")
           ] ++ lib.forEach userList (f: ./users + "/${f}");
         };
+      # Make Deploy-rs node
       mkDeployNode = { hostname, system, sshUser, ... }: {
         hostname = "${hostname}";
         sshUser = "${sshUser}";
@@ -53,6 +60,15 @@
           };
         };
       };
+      # Make Colmena configuration
+      mkColmenaNode = { hostname, system, users, ... }:
+        let userList = builtins.attrNames users;
+        in {
+          specialArgs = { inherit inputs hostname system users; };
+          imports =
+            [ inputs.ragenix.nixosModules.age (./machines + "/${hostname}") ]
+            ++ lib.forEach userList (f: ./users + "/${f}");
+        };
     in {
       roles = myLib.findRoles ./roles;
 
@@ -60,6 +76,14 @@
         lib.mapAttrs (name: config: mkSystem config) inventory;
 
       deploy.nodes = lib.mapAttrs (name: config: mkDeployNode config) inventory;
+      colmena = lib.mapAttrs (name: config: mkColmenaNode config) inventory // {
+        meta = {
+          nixpkgs = import nixpkgs {
+            system = "x86_64-linux";
+            overlays = [ ];
+          };
+        };
+      };
 
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
@@ -70,8 +94,11 @@
             nixfmt
             inputs.deploy-rs.defaultPackage.x86_64-linux
             inputs.ragenix.defaultPackage.x86_64-linux
+            inputs.colmena.defaultPackage.x86_64-linux
           ];
         };
 
+      apps."x86_64-linux".default =
+        inputs.lollypops.apps."x86_64-linux".default { configFlake = self; };
     };
 }
