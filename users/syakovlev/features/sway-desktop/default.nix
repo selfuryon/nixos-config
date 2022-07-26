@@ -38,6 +38,16 @@ in {
         desktop = "firefox";
       };
     };
+    xdg.desktopEntries = {
+      megasync = {
+        name = "Megasync (Wayland)";
+        genericName = "File Synchronizer";
+        exec = "megasync -platform xcb";
+        icon = "mega";
+        terminal = false;
+        categories = [ "Network" "System" ];
+      };
+    };
 
     home.packages = with pkgs; [
       tigervnc
