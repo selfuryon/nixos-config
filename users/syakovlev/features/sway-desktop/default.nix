@@ -12,8 +12,9 @@ in {
     ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix
-    ./wofi.nix
+    ./wezterm.nix
     ./wlsunset.nix
+    ./wofi.nix
   ];
 
   environment.pathsToLink = [ "/libexec" ];
