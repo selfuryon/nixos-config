@@ -40,9 +40,15 @@ in {
         };
 
         character = {
-          success_symbol = "[λ](bold green)";
-          error_symbol = "[λ](bold red)";
-          vicmd_symbol = "[V](bold green)";
+          success_symbol = "[ I ](fg:black bg:green)";
+          error_symbol = "[ I ](fg:black bg:red)";
+          vicmd_symbol = "[ N ](fg:black bg:#54aeff)";
+          vimcmd_replace_one_symbol =
+            "[ r ](fg:black bg:red)";
+          vimcmd_replace_symbol =
+            "[ R ](fg:black bg:red)";
+          vimcmd_visual_symbol =
+            "[ V ](fg:black bg:yellow)";
         };
       };
     };
