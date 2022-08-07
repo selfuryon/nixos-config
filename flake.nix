@@ -5,7 +5,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    neovimSY = { url = "github:selfuryon/neovim-flake"; };
+    neovimSY.url = "path:./flakes/neovim";
     ragenix = {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -19,10 +19,5 @@ in {
     interactiveShellInit = ''
       fish_vi_key_bindings
     '';
-    loginShellInit = ''
-      if test (tty) = /dev/tty1
-        systemd-cat -t sway ${pkgs.sway}/bin/sway
-      end
-    '';
   };
 }

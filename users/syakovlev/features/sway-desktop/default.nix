@@ -19,9 +19,7 @@ in {
   environment.pathsToLink = [ "/libexec" ];
   environment.systemPackages = with pkgs; [ polkit_gnome ];
 
-  services = {
-    dbus.packages = [ pkgs.gcr ];
-  };
+  services = { dbus.packages = [ pkgs.gcr ]; };
 
   programs = {
     ssh.startAgent = true;
@@ -32,6 +30,12 @@ in {
   qt5.platformTheme = "qt5ct";
 
   home-manager.users.${userName} = {
+    programs.fish.loginShellInit = ''
+      if test (tty) = /dev/tty1
+        systemd-cat -t sway ${pkgs.sway}/bin/sway
+      end
+    '';
+
     xdg.mimeApps.defaultApplications = {
       browser = {
         cmd = "${pkgs.firefox-wayland}/bin/firefox";

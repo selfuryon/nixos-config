@@ -13,6 +13,7 @@ in {
     ./starship.nix
     ./nvim.nix
     ./tmux.nix
+    ./zellij.nix
   ];
 
   home-manager.users.${userName}.home.packages = with pkgs; [
@@ -34,7 +35,6 @@ in {
     protonvpn-cli
     ripgrep
     sequoia
-    tmux
     tree
     wget
     yubikey-manager
