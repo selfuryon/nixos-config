@@ -87,11 +87,10 @@ in {
           font-family: "JetBrainsMono Nerd Font Mono", "Font Awesome 6 Free";
         	font-size: 14px;
           border: 3px;
-        	border-radius: 10px;
+        	border-radius: 12px;
           margin: 0 0 0 0;
-        	min-height: 24px;
+        	min-height: 21px;
         }
-
         window#waybar {
         	background: transparent;
         }
@@ -100,9 +99,8 @@ in {
         }
 
         .modules-left {
-          border-color: white;
-          border-style: solid;
-        	background: #8E6F98;
+          border: 3px solid white;
+          background: white;
           margin: 4px 4px 0px 4px;
         }
         .modules-center {
@@ -110,28 +108,34 @@ in {
           margin: 4px 4px 0px 4px;
         }
         .modules-right {
-          border-color: white;
-          border-style: solid;
-        	background: #8E6F98;
+          border: 3px solid white;
           margin: 4px 4px 0px 4px;
         }
 
         #custom-nixos {
-        	font-size: 23px;
+        	font-size: 30px;
           color: white;
-        	background: #6CA8CF;
-          padding-left: 8px;
-          padding-right: 8px;
+        	background: #e4b371;
+        	border-radius: 12px 0px 0px 12px;
+          padding-left: 15px;
+          padding-right: 15px;
         }
         #custom-nixos.update {
-          color: blue;
+          color: red;
+        }
+        #tray {
+        	background: #6CA8CF;
+        	border-radius: 0px;
+          padding-left: 15px;
+          padding-right: 15px;
         }
         #idle_inhibitor {
-        	font-size: 23px;
+        	font-size: 26px;
           color: white;
-        	background: #6CA8CF;
-          padding-left: 8px;
-          padding-right: 8px;
+        	background: #7CA198;
+        	border-radius: 0px 12px 12px 0px;
+          padding-left: 15px;
+          padding-right: 15px;
         }
         #workspaces {
           background: white;
@@ -147,26 +151,33 @@ in {
         }
         #pulseaudio {
           color: white;
-          padding-left: 8px;
-          padding-right: 8px;
+        	background: #8e6d98;
+        	border-radius: 12px 0px 0px 12px;
+          padding-left: 15px;
+          padding-right: 30px;
         }
         #clock {
           color: white;
         	background: #7CA198;
-          padding-left: 8px;
-          padding-right: 8px;
+        	border-radius: 12px 0px 0px 12px;
+          padding-left: 15px;
+          padding-right: 30px;
+          margin-left: -15px;
         }
         #clock.calendar {
           color: white;
         	background: #6CA8CF;
-          padding-left: 8px;
-          padding-right: 8px;
+        	border-radius: 12px 0px 0px 12px;
+          padding-left: 15px;
+          padding-right: 30px;
+          margin-left: -15px;
         }
         #battery {
           color: white;
-        	background: #C98093;
-          padding-left: 8px;
-          padding-right: 8px;
+        	background: #e4b371;
+          padding-left: 15px;
+          padding-right: 15px;
+          margin-left: -15px;
         }
       '';
     };
