@@ -159,14 +159,6 @@ in {
             command = "border pixel 2";
           }
           {
-            criteria = { workspace = "1"; };
-            command = "layout stacking";
-          }
-          {
-            criteria = { workspace = "2"; };
-            command = "layout tabbed";
-          }
-          {
             criteria = { workspace = "3"; };
             command = "layout tabbed";
           }
@@ -181,7 +173,7 @@ in {
           {
             criteria = { app_id = "pavucontrol"; };
             command =
-              "floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 330";
+              "floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 100";
           }
           {
             criteria = { class = "MEGAsync"; };
