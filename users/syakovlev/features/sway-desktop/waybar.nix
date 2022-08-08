@@ -20,7 +20,7 @@ in {
           height = 42;
           spacing = 5;
           position = "top";
-          modules-left = [ "custom/nixos" "tray" "idle_inhibitor" ];
+          modules-left = [ "custom/nixos" "tray" "mpd" "idle_inhibitor" ];
           modules-center = [ "sway/workspaces" ];
           modules-right = [ "pulseaudio" "clock" "clock#calendar" "battery" ];
           "custom/nixos" = {
@@ -46,6 +46,17 @@ in {
           tray = {
             icon-size = 19;
             spacing = 5;
+          };
+          mpd = {
+            format = "{stateIcon}";
+            format-stopped = "";
+            interval = 10;
+            state-icons = {
+              paused = "";
+              playing = "";
+            };
+            tooltip-format = "MPD (connected)";
+            tooltip-format-disconnected = "MPD (disconnected)";
           };
           idle_inhibitor = {
             format = "{icon}";
@@ -99,8 +110,8 @@ in {
         }
 
         .modules-left {
-          border: 3px solid white;
           background: white;
+          border: 3px solid white;
           margin: 4px 4px 0px 4px;
         }
         .modules-center {
@@ -108,6 +119,7 @@ in {
           margin: 4px 4px 0px 4px;
         }
         .modules-right {
+          background: white;
           border: 3px solid white;
           margin: 4px 4px 0px 4px;
         }
@@ -129,10 +141,17 @@ in {
           padding-left: 15px;
           padding-right: 15px;
         }
+        #mpd {
+        	font-size: 21px;
+        	background: #7CA198;
+        	border-radius: 0px;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
         #idle_inhibitor {
         	font-size: 26px;
           color: white;
-        	background: #7CA198;
+        	background: #8e6d98;
         	border-radius: 0px 12px 12px 0px;
           padding-left: 15px;
           padding-right: 15px;
@@ -154,30 +173,28 @@ in {
         	background: #8e6d98;
         	border-radius: 12px 0px 0px 12px;
           padding-left: 15px;
-          padding-right: 30px;
+          padding-right: 15px;
         }
         #clock {
           color: white;
         	background: #7CA198;
-        	border-radius: 12px 0px 0px 12px;
+        	border-radius: 0px;
           padding-left: 15px;
-          padding-right: 30px;
-          margin-left: -15px;
+          padding-right: 15px;
         }
         #clock.calendar {
           color: white;
         	background: #6CA8CF;
-        	border-radius: 12px 0px 0px 12px;
+        	border-radius: 0px;
           padding-left: 15px;
-          padding-right: 30px;
-          margin-left: -15px;
+          padding-right: 15px;
         }
         #battery {
           color: white;
         	background: #e4b371;
+        	border-radius: 0px 12px 12px 0px;
           padding-left: 15px;
           padding-right: 15px;
-          margin-left: -15px;
         }
       '';
     };
