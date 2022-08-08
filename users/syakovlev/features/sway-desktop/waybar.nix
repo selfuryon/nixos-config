@@ -64,15 +64,20 @@ in {
             format-charging = "{capacity}% ";
           };
           pulseaudio = {
-            on-click = "pavucontrol";
-            format = "{icon} {volume}%}";
-            format-muted = "  0%";
+            format = "{icon} {volume}%";
+            format-bluetooth = "{volume}% {icon}";
+            format-muted = " ";
             format-icons = {
               headphone = "";
-              headset = "";
+              hands-free = "";
+              headset = "";
+              phone = "";
               portable = "";
-              default = [ "" "" "" ];
+              car = "";
+              default = [ "" "" ];
             };
+            scroll-step = 1;
+            on-click = "pavucontrol";
           };
         };
       };
