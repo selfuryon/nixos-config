@@ -76,6 +76,7 @@ in {
           };
         };
       };
+      # Heavily inspired by https://github.com/Rashad-707/dotfiles
       style = ''
         * {
           font-family: "JetBrainsMono Nerd Font Mono", "Font Awesome 6 Free";
