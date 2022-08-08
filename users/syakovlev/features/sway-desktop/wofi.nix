@@ -26,6 +26,7 @@ in {
         background-color: #ffffff;
         padding: 10px;
         border: 1px solid black;
+        border-radius: 10px;
       }
       #input {
         background-color: #ffffff;
