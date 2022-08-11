@@ -83,6 +83,7 @@ in {
       xdg-utils
       xorg.xrdb
       feh
+      drawio
       networkmanagerapplet
       adwaita-qt
       capitaine-cursors
