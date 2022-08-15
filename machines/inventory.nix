@@ -11,6 +11,18 @@
     };
   };
 
+  # Beelink U59
+  tylze = {
+    hostname = "tylze";
+    system = "x86_64-linux";
+    sshUser = "syakovlev";
+    users = {
+      "syakovlev" = {
+        features = [ "cli" ];
+      };
+    };
+  };
+
   # GE VPS
   v2d-hbastion = {
     hostname = "v2d-hbastion";
