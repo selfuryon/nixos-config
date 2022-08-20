@@ -24,7 +24,6 @@ in {
 
   security.doas.extraRules = [{
     users = [ "${userName}" ];
-    keepEnv = true;
     noPass = true;
   }];
 
