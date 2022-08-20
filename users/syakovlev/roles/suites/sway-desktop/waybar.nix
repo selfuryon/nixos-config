@@ -100,6 +100,7 @@ in {
           border: 3px;
         	border-radius: 12px;
           margin: 0 0 0 0;
+          padding: 0 0 0 0;
         	min-height: 21px;
         }
         window#waybar {
@@ -158,12 +159,12 @@ in {
         }
         #workspaces {
           background: white;
-          padding-left: 30px;
-          padding-right: 30px;
+          padding-left: 15px;
+          padding-right: 15px;
         }
         #workspaces button {
-          padding-left: 8px;
-          padding-right: 8px;
+          padding-left: 0px;
+          padding-right: 0px;
         }
         #workspaces button.focused {
         	color: #6080B0;

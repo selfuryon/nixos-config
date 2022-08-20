@@ -12,16 +12,16 @@ in {
       gtk3.extraConfig = { gtk-cursor-theme-name = "capitaine-cursors"; };
       font = {
         package = pkgs.noto-fonts;
-        name = "Noto Sans";
+        name = "Inter";
         size = 12;
       };
       iconTheme = {
-        package = pkgs.whitesur-icon-theme;
-        name = "WhiteSur";
+        package = pkgs.tela-icon-theme;
+        name = "Tela";
       };
       theme = {
-        package = pkgs.whitesur-gtk-theme;
-        name = "WhiteSur-light-alt-blue";
+        package = pkgs.orchis-theme;
+        name = "Orchis-Light";
       };
     };
   };

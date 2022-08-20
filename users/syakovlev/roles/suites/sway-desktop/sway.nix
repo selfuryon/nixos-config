@@ -28,10 +28,10 @@ let
     in ''
       export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
       gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'WhiteSur-light-alt-blue'
-      gsettings set $gnome_schema icon-theme 'WhiteSur'
+      gsettings set $gnome_schema gtk-theme 'Orchis-Light'
+      gsettings set $gnome_schema icon-theme 'Tela'
       gsettings set $gnome_schema cursor-theme 'capitaine-cursors'
-      gsettings set $gnome_schema font-name 'Noto Sans 12'
+      gsettings set $gnome_schema font-name 'Inter 12'
     '';
   };
 in {
@@ -81,7 +81,7 @@ in {
         menu =
           "${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wofi}/bin/wofi --show drun -i | ${pkgs.findutils}/bin/xargs swaymsg exec --";
         fonts = {
-          names = [ "JetBrainsMono Nerd Font Mono" ];
+          names = [ "JetBrainsMono Nerd Font" ];
           size = 10.0;
         };
 
