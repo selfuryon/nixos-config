@@ -8,6 +8,8 @@
     ./suites/wireguard.nix
   ];
 
+  security.sudo.enable = false;
+
   # services.greetd = {
   # enable = true;
   # settings = {

@@ -1,13 +1,13 @@
 { inputs, hostname, roles, pkgs, lib, ... }:
-let
-  userName = "syakovlev";
+let userName = "syakovlev";
 in {
   imports = [ inputs.home-manager.nixosModules.home-manager ]
     ++ lib.forEach roles (r: ./roles + "/${r}.nix");
 
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "sudo" "video" "audio" "libvirtd" "usb" "ssh" ];
+    extraGroups =
+      [ "wheel" "sudo" "doas" "video" "audio" "libvirtd" "usb" "ssh" ];
     shell = pkgs.fish;
     hashedPassword =
       "$6$skRJZuaIN8S0Ohgf$UwgLyx9DGZ8acjl/EwsaEnecPSZAwAwp42NS449CQpoLaGZKK7uo2GdiF0Tl6eMfIg6gxz5Rb6rudC34r5V0C/";
@@ -20,6 +20,12 @@ in {
       command = "ALL";
       options = [ "NOPASSWD" "SETENV" ];
     }];
+  }];
+
+  security.doas.extraRules = [{
+    users = [ "${userName}" ];
+    keepEnv = true;
+    noPass = true;
   }];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

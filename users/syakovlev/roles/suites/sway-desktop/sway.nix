@@ -60,8 +60,6 @@ in {
     ];
 
     home.sessionVariables = {
-      #MOZ_ENABLE_WAYLAND = 1;
-      #SDL_VIDEODRIVER = wayland;
       XDG_CURRENT_DESKTOP = "sway";
       XDG_SESSION_TYPE = "sway";
       QT_QPA_PLATFORM = "wayland;xcb";
@@ -89,6 +87,11 @@ in {
         window.border = 1;
         floating.border = 2;
         gaps.inner = 10;
+        colors = {
+          focused = { background = "#0969da"; border = "#1b1f24"; childBorder = "#1b1f24"; indicator = "#0969da"; text = "#ffffff"; } ;
+          focusedInactive = { background = "#80ccff"; border = "#1b1f24"; childBorder = "#1b1f24"; indicator = "#aceebb"; text = "#ffffff"; } ;
+          unfocused = { background = "#d0d7de"; border = "#1b1f24"; childBorder = "#1b1f24"; indicator = "#aceebb"; text = "#1b1f24"; } ;
+        };
 
         # Input configuration
         input."type:keyboard" = {

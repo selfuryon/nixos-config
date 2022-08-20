@@ -16,4 +16,7 @@
   users.mutableUsers = false;
 
   environment.systemPackages = with pkgs; [ vim ];
+
+  security.doas.enable = true;
+  #security.sudo.enable = false;
 }
