@@ -12,7 +12,7 @@ in {
     ./skim.nix
     ./starship.nix
     ./nvim.nix
-    ./tmux.nix
+    #./tmux.nix
     ./zellij.nix
   ];
 
@@ -26,6 +26,7 @@ in {
     curl
     fd
     git
+    pijul
     htop
     kind
     lsof

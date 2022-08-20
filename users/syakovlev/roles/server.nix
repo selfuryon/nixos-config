@@ -1,0 +1,5 @@
+{ inputs, ... }: {
+  imports = [
+    ./suites/cli
+  ];
+}

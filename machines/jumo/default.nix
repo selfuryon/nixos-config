@@ -1,7 +1,5 @@
 { inputs, ... }: {
   imports = with inputs.self.roles; [
-    # Global role
-    desktop
     # Local configuration
     ./hardware-configuration.nix
     ./firewall.nix

@@ -151,6 +151,7 @@ in {
           { window_role = "pop-up"; }
           { window_role = "task_dialog"; }
           { app_id = "nz.co.mega."; }
+          { app_id = "org.keepassxc.KeePassXC"; }
         ];
 
         window.commands = [
@@ -177,8 +178,7 @@ in {
           }
           {
             criteria = { class = "MEGAsync"; };
-            command =
-              "floating enable, move position center";
+            command = "floating enable, move position center";
           }
           {
             criteria = { title = "Firefox — Sharing Indicator"; };

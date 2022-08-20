@@ -1,7 +1,5 @@
 { inputs, ... }: {
   imports = with inputs.self.roles; [
-    # Global role
-    server
     # Local role
     ./agenix.nix
     ./firewall.nix

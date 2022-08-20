@@ -1,26 +1,12 @@
 { pkgs, inputs, ... }: {
   imports = [
-    ./suites/dns.nix
+    ./common.nix
     ./suites/fonts.nix
-    ./suites/net-sysctl.nix
-    ./suites/network-manager.nix
     ./suites/pipewire.nix
-    ./suites/sshd.nix
     ./suites/virtualization.nix
+    ./suites/network-manager.nix
     ./suites/wireguard.nix
-    ./suites/nix.nix
   ];
-
-  users.mutableUsers = false;
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
-  environment.systemPackages = with pkgs; [ vim ];
 
   # services.greetd = {
   # enable = true;

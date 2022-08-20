@@ -5,7 +5,6 @@ in {
     ./alacritty.nix
     ./firefox.nix
     ./foot.nix
-    #./gsettings.nix
     ./gtk.nix
     ./mako.nix
     ./sway.nix
@@ -90,6 +89,7 @@ in {
       wf-recorder
       virt-manager
       virt-viewer
+      crosvm
       gtk-engine-murrine
       gtk_engines
       dconf

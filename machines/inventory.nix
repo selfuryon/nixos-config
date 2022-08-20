@@ -4,6 +4,7 @@
     hostname = "jumo";
     system = "x86_64-linux";
     sshUser = "syakovlev";
+    roles = [ "desktop" ];
     users = {
       "syakovlev" = {
         features = [ "cli" "sway-desktop" "music" "development" ];
@@ -16,6 +17,7 @@
     hostname = "tylze";
     system = "x86_64-linux";
     sshUser = "syakovlev";
+    roles = [ "server" ];
     users = {
       "syakovlev" = {
         features = [ "cli" ];
@@ -28,6 +30,7 @@
     hostname = "v2d-hbastion";
     system = "x86_64-linux";
     sshUser = "syakovlev";
+    roles = [ "server" ];
     users = { "syakovlev" = { features = [ "cli" ]; }; };
   };
 
@@ -36,6 +39,7 @@
     hostname = "sb-hbastion";
     system = "x86_64-linux";
     sshUser = "syakovlev";
+    roles = [ "server" ];
     users = { "syakovlev" = { features = [ "cli" ]; }; };
   };
 
@@ -44,6 +48,7 @@
     hostname = "rn-hbastion";
     system = "x86_64-linux";
     sshUser = "syakovlev";
+    roles = [ "server" ];
     users = { "syakovlev" = { features = [ "cli" ]; }; };
   };
 }

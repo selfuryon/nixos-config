@@ -1,11 +1,9 @@
-{ inputs, hostname, users, pkgs, ... }:
+{ inputs, hostname, roles, pkgs, lib, ... }:
 let
   userName = "syakovlev";
-  features = users.${userName}.features;
-  lib = inputs.nixpkgs.lib;
 in {
   imports = [ inputs.home-manager.nixosModules.home-manager ]
-    ++ lib.forEach features (f: ./features + "/${f}");
+    ++ lib.forEach roles (r: ./roles + "/${r}.nix");
 
   users.users.${userName} = {
     isNormalUser = true;
@@ -39,7 +37,7 @@ in {
     #_module.args = { inherit inputs; };
     users.${userName} = {
       programs.home-manager.enable = true;
-      home.stateVersion = "22.05";
+      home.stateVersion = "22.11";
     };
 
   };
