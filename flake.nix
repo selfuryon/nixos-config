@@ -19,18 +19,24 @@
 
   outputs = { self, nixpkgs, deploy-rs, ... }@inputs:
     let
+      # Load lib
+      lib = nixpkgs.lib;
+      myLib = import ./lib.nix lib;
+
       # My overlays
       overlays = [ (import ./overlays) ];
 
       # Load inventory
-      inventory = import ./machines/inventory.nix;
-
-      # Load lib
-      lib = nixpkgs.lib;
+      # inventory = import ./machines/inventory.nix;
+      inventory = myLib.createInventory ./machines;
 
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users, roles, ... }:
-        let userList = builtins.attrNames users;
+        let
+          userNames = builtins.attrNames users;
+          userList = builtins.map (u: ./users + "/${u}") userNames;
+          rolePaths = builtins.map (r: ./roles + "/${r}.nix") roles;
+          roleList = builtins.filter (p: builtins.pathExists p) rolePaths;
         in nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs hostname system roles; };
@@ -39,18 +45,18 @@
             inputs.lollypops.nixosModules.lollypops
             { nixpkgs = { inherit overlays; }; }
             (./machines + "/${hostname}")
-          ] ++ lib.forEach roles (r: ./roles + "/${r}.nix")
-            ++ lib.forEach userList (u: ./users + "/${u}");
+          ] ++ roleList ++ userList;
         };
       # Make Deploy-rs node
-      mkDeployNode = { hostname, system, sshUser, ... }: {
+      mkDeployNode = { hostname, system, sshUser, sudo ? "sudo -u", ... }: {
         hostname = "${hostname}";
         sshUser = "${sshUser}";
+        sudo = "${sudo}";
         profilesOrder = [ "system" ];
         profiles = {
           system = {
             user = "root";
-            path = deploy-rs.lib.x86_64-linux.activate.nixos
+            path = deploy-rs.lib."${system}".activate.nixos
               self.nixosConfigurations.${hostname};
           };
         };

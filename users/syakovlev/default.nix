@@ -1,8 +1,10 @@
 { inputs, hostname, roles, pkgs, lib, ... }:
-let userName = "syakovlev";
+let
+  userName = "syakovlev";
+  rolePaths = builtins.map (r: ./roles + "/${r}.nix") roles;
+  roleList = builtins.filter (p: builtins.pathExists p) rolePaths;
 in {
-  imports = [ inputs.home-manager.nixosModules.home-manager ]
-    ++ lib.forEach roles (r: ./roles + "/${r}.nix");
+  imports = [ inputs.home-manager.nixosModules.home-manager ] ++ roleList;
 
   users.users.${userName} = {
     isNormalUser = true;
