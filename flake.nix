@@ -34,8 +34,8 @@
       mkSystem = { hostname, system, users, roles, ... }:
         let
           userNames = builtins.attrNames users;
-          userList = builtins.map (u: ./users + "/${u}") userNames;
-          rolePaths = builtins.map (r: ./roles + "/${r}.nix") roles;
+          userList = builtins.map (u: ./users/${u}) userNames;
+          rolePaths = builtins.map (r: ./roles/${r}.nix) roles;
           roleList = builtins.filter (p: builtins.pathExists p) rolePaths;
         in nixpkgs.lib.nixosSystem {
           inherit system;
@@ -44,7 +44,7 @@
             inputs.ragenix.nixosModules.age
             inputs.lollypops.nixosModules.lollypops
             { nixpkgs = { inherit overlays; }; }
-            (./machines + "/${hostname}")
+            (./machines/${hostname})
           ] ++ roleList ++ userList;
         };
       # Make Deploy-rs node

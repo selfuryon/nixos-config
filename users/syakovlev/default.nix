@@ -1,7 +1,7 @@
 { inputs, hostname, roles, pkgs, lib, ... }:
 let
   userName = "syakovlev";
-  rolePaths = builtins.map (r: ./roles + "/${r}.nix") roles;
+  rolePaths = builtins.map (r: ./roles/${r}.nix) roles;
   roleList = builtins.filter (p: builtins.pathExists p) rolePaths;
 in {
   imports = [ inputs.home-manager.nixosModules.home-manager ] ++ roleList;
@@ -13,7 +13,7 @@ in {
     shell = pkgs.fish;
     hashedPassword =
       "$6$skRJZuaIN8S0Ohgf$UwgLyx9DGZ8acjl/EwsaEnecPSZAwAwp42NS449CQpoLaGZKK7uo2GdiF0Tl6eMfIg6gxz5Rb6rudC34r5V0C/";
-    openssh.authorizedKeys.keyFiles = [ (./keys + "/${hostname}.pub") ];
+    openssh.authorizedKeys.keyFiles = [ (./keys/${hostname}.pub) ];
   };
 
   security.sudo.extraRules = [{
