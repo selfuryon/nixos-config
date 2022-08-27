@@ -54,10 +54,6 @@
       url = "github:kyazdani42/nvim-tree.lua";
       flake = false;
     };
-    "plugin:vim-tmux-navigator" = {
-      url = "github:christoomey/vim-tmux-navigator";
-      flake = false;
-    };
 
     # LSP
     "plugin:nvim-lspconfig" = {
@@ -159,13 +155,13 @@
 
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [
-            pluginOverlay
-            (final: prev: {
-              neovim-unwrapped =
-                inputs.neovim.packages.${prev.system}.neovim;
-            })
-          ];
+          # overlays = [
+          # pluginOverlay
+          # (final: prev: {
+          # neovim-unwrapped =
+          # inputs.neovim.packages.${prev.system}.neovim;
+          # })
+          # ];
         };
 
         lib = import ./lib { inherit pkgs inputs; };

@@ -5,7 +5,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    neovimSY.url = "path:./flakes/neovim";
     ragenix = {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +14,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lollypops.url = "github:pinpox/lollypops";
+
+    # Neovim plugins
+    # UI
+    "plugin:github-nvim-theme" = {
+      url = "github:projekt0n/github-nvim-theme";
+      flake = false;
+    };
+    # LSP
+    "plugin:navigator" = {
+      url = "github:ray-x/navigator.lua";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, deploy-rs, ... }@inputs:

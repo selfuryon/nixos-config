@@ -19,7 +19,7 @@ in {
   home-manager.users.${userName}.home.packages = with pkgs; [
     rage
     signify
-    magic-wormhole
+    #magic-wormhole
     bind
     bubblewrap
     cryfs
