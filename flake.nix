@@ -17,12 +17,12 @@
 
     # Neovim plugins
     # UI
-    "plugin:github-nvim-theme" = {
+    "github-nvim-theme" = {
       url = "github:projekt0n/github-nvim-theme";
       flake = false;
     };
     # LSP
-    "plugin:navigator" = {
+    "navigator" = {
       url = "github:ray-x/navigator.lua";
       flake = false;
     };

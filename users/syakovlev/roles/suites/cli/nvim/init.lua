@@ -304,8 +304,6 @@ require('nvim-autopairs').setup{
   vim.cmd("autocmd FileType guihua lua require('cmp').setup.buffer { enabled = false }"),
   vim.cmd("autocmd FileType guihua_rust lua require('cmp').setup.buffer { enabled = false }")
 }
--- nvim-tree configuration
-require('nvim-tree').setup {}
 -- surround configuration
 require("surround").setup({})
 -- toggleterm configuration

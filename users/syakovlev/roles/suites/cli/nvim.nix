@@ -1,28 +1,28 @@
 { inputs, pkgs, lib, ... }:
 let
   userName = "syakovlev";
-  buildVimPluginFrom2Nix = pkgs.vimUtils.buildVimPluginFrom2Nix;
-  treesitterGrammars =
-    pkgs.tree-sitter.withPlugins (_: pkgs.tree-sitter.allGrammars);
-  plugins = builtins.filter (s: (builtins.match "plugin:.*" s) != null)
-    (builtins.attrNames inputs);
-  plugName = input:
-    builtins.substring (builtins.stringLength "plugin:")
-    (builtins.stringLength input) input;
-  buildPlug = name:
-    buildVimPluginFrom2Nix {
-      pname = plugName name;
+  buildPlugin = name:
+    pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = name;
       version = "master";
       src = builtins.getAttr name inputs;
     };
-  neovimPlugins = map (plugin: {
-    type = "lua";
-    plugin = buildPlug plugin;
-    config = if builtins.pathExists ./nvim/${plugin}.lua then
-      lib.strings.fileContents ./nvim/${plugin}.lua
+  normalizeName =
+    let extension = name: "." + lib.last (lib.splitString "." name);
+    in name:
+    if lib.hasInfix "." name then
+      lib.removeSuffix (extension name) name
     else
-      "";
-  }) plugins;
+      name;
+  configPlugins = plugins:
+    map (plug:
+      if builtins.pathExists ./nvim/${normalizeName plug.pname}.lua then {
+        type = "lua";
+        plugin = plug;
+        config =
+          lib.strings.fileContents ./nvim/${normalizeName plug.pname}.lua;
+      } else
+        plug) plugins;
 in {
   home-manager.users.${userName} = {
     #home.packages = [ inputs.neovimSY.defaultPackage.x86_64-linux ];
@@ -38,7 +38,7 @@ in {
       '';
       extraPackages = with pkgs; [ gopls rust-analyzer ];
       plugins = with pkgs.vimPlugins;
-        [
+        configPlugins [
           diffview-nvim
           lualine-nvim
           toggleterm-nvim
@@ -54,8 +54,7 @@ in {
           formatter-nvim
           nvim-lint
           #nvim-treesitter
-          (nvim-treesitter.withPlugins
-            (plugins: pkgs.tree-sitter.allGrammars))
+          (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
           nvim-treesitter-textobjects
           nvim-snippy
           neogit
@@ -66,7 +65,9 @@ in {
           vim-commentary
           hop-nvim
           surround-nvim
-        ] ++ neovimPlugins;
+          (buildPlugin "github-nvim-theme")
+          (buildPlugin "navigator")
+        ];
     };
   };
 }

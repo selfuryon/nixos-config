@@ -89,6 +89,22 @@
         "type": "github"
       }
     },
+    "github-nvim-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1659528005,
+        "narHash": "sha256-wLX81wgl4E50mRig9erbLyrxyGbZllFbHFAQ9+v60W4=",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "rev": "b3f15193d1733cc4e9c9fe65fbfec329af4bdc2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -97,11 +113,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1661544694,
-        "narHash": "sha256-p8r4HWEe/1Nobupzd4jOkhu0cqSH1Y/1kqEJA6ycLXw=",
+        "lastModified": 1661573386,
+        "narHash": "sha256-pBEg8iY00Af/SAtU2dlmOAv+2x7kScaGlFRDjNoVJO8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0884d6c6e47e75bdd1c40045d4d73e7f6c8e5cb8",
+        "rev": "d89bdff445eadff03fe414e9c30486bc8166b72b",
         "type": "github"
       },
       "original": {
@@ -129,6 +145,22 @@
         "type": "github"
       }
     },
+    "navigator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1661747281,
+        "narHash": "sha256-kOC4tpTBg/+mmDExp6eakBssugocCr2ETZ2U6IRbOKc=",
+        "owner": "ray-x",
+        "repo": "navigator.lua",
+        "rev": "e9a40aca40b73d9f278757e1180152191ca9bcab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ray-x",
+        "repo": "navigator.lua",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1657265485,
@@ -147,49 +179,17 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1661361016,
-        "narHash": "sha256-Bjf6ZDnDc6glTwIIItvwfcaeJ5zWFM6GYfPajSArdUY=",
+        "lastModified": 1661628722,
+        "narHash": "sha256-oR/7NhG7pPkACToUtaaT6hH+rONE2z5/4NzjoUwEZt8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b784c5ae63dd288375af1b4d37b8a27dd8061887",
+        "rev": "324c8aaf25b2f2027af7798e5582ce3040a793b6",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "plugin:github-nvim-theme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1659528005,
-        "narHash": "sha256-wLX81wgl4E50mRig9erbLyrxyGbZllFbHFAQ9+v60W4=",
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "rev": "b3f15193d1733cc4e9c9fe65fbfec329af4bdc2a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "type": "github"
-      }
-    },
-    "plugin:navigator": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1661381940,
-        "narHash": "sha256-37nZZ+gnBKzwsO9UtozoYyaRIzYTmjOmVQJ6C99+C9A=",
-        "owner": "ray-x",
-        "repo": "navigator.lua",
-        "rev": "a7886fc0552cd34a8595b508cb987e0ed702f33a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ray-x",
-        "repo": "navigator.lua",
         "type": "github"
       }
     },
@@ -203,11 +203,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1660607130,
-        "narHash": "sha256-pi3hcrJPSR7+woB8VSbryGInSPKZE6lO1wDLg3Ykw3Q=",
+        "lastModified": 1661678924,
+        "narHash": "sha256-c3F8qr9ke8jHRQeb9+acMl9k/sg+l1U4TiT8iCPI294=",
         "owner": "yaxitech",
         "repo": "ragenix",
-        "rev": "47cec29d0c9f1da3a03cfff7406bd10cc7968926",
+        "rev": "e9321af49eafc17b7472aa8c53077d02f23796b4",
         "type": "github"
       },
       "original": {
@@ -219,11 +219,11 @@
     "root": {
       "inputs": {
         "deploy-rs": "deploy-rs",
+        "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
         "lollypops": "lollypops",
+        "navigator": "navigator",
         "nixpkgs": "nixpkgs_2",
-        "plugin:github-nvim-theme": "plugin:github-nvim-theme",
-        "plugin:navigator": "plugin:navigator",
         "ragenix": "ragenix"
       }
     },
@@ -239,11 +239,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660358625,
-        "narHash": "sha256-uv+ZtOAEeM5tw78CLdRQmbZyDZYc0piSflthG2kNnrc=",
+        "lastModified": 1661568992,
+        "narHash": "sha256-BKoSLBBI7tXHyulp9AnB1SINU2+zzSZEt6mdhkR5uvw=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "18354cce8137aaef0d505d6f677e9bbdd542020d",
+        "rev": "790c16639c7d8da8b36d0aa6a7c1f589af8c5f68",
         "type": "github"
       },
       "original": {
