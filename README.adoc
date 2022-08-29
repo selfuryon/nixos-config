@@ -1,2 +1,22 @@
 # My NixOS configurations
 
+For configurations purposes I use these tools:
+
+* NixOS as basic OS
+* flakes for configuration
+* deploy-rs for deploying configuration
+* ragenix for secret management
+
+## Configuration organization
+
+My current configuration organization:
+
+* `machines` consist of a different VPS/notebook specific configurations. Each configuration usually contains:
+** `secrets` folder for different specific to this hots secrets like wireguard keys and so organization
+** `config.nix` which determines inventory properties for this host such as name, system and deploy-rs configuration
+* `overlays` contains overlays used in configuration
+* `roles` folder determines a role for specific machine. Each roles consist from small configurations called `suites`.
+* `users` folder contains specific user configurations, and it also has some subfolders:
+** `keys` determines ssh-keys per host (I use unique ssh keys per host)
+** `roles` determines role definition for specific user, it also consist from small configurations called `suites`.
+
