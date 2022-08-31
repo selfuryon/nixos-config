@@ -13,10 +13,8 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lollypops.url = "github:pinpox/lollypops";
 
     # Neovim plugins
-    # UI
     "github-nvim-theme" = {
       url = "github:projekt0n/github-nvim-theme";
       flake = false;
@@ -89,8 +87,5 @@
             inputs.ragenix.defaultPackage.x86_64-linux
           ];
         };
-
-      apps."x86_64-linux".default =
-        inputs.lollypops.apps."x86_64-linux".default { configFlake = self; };
     };
 }
