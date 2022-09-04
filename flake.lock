@@ -111,22 +111,6 @@
         "type": "github"
       }
     },
-    "navigator": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1661987977,
-        "narHash": "sha256-w8yYCfyAAdIQ0L6CmvpWay3+N5JlNs08is//zBhpjrw=",
-        "owner": "ray-x",
-        "repo": "navigator.lua",
-        "rev": "df7f4d72291820891a78687ef18629975c3acad3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ray-x",
-        "repo": "navigator.lua",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1662019588,
@@ -171,7 +155,6 @@
         "deploy-rs": "deploy-rs",
         "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
-        "navigator": "navigator",
         "nixpkgs": "nixpkgs",
         "ragenix": "ragenix"
       }

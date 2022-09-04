@@ -35,37 +35,44 @@ in {
         ${lib.strings.fileContents ./nvim/init.lua}
         EOF
       '';
-      extraPackages = with pkgs; [ gopls rust-analyzer ];
+      extraPackages = with pkgs; [ gopls rust-analyzer rnix-lsp];
       plugins = with pkgs.vimPlugins;
         configPlugins [
-          diffview-nvim
-          lualine-nvim
-          toggleterm-nvim
-          marks-nvim
-          telescope-nvim
-          nvim-tree-lua
+          # LSP
           nvim-lspconfig
           lsp_signature-nvim
+          lspsaga-nvim
+
+          # UI
+          telescope-nvim
+          nvim-tree-lua
           symbols-outline-nvim
+          marks-nvim
+          lualine-nvim
+          (buildPlugin "github-nvim-theme")
+
+          # Tree-sitter
+          (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+          nvim-treesitter-textobjects
+
+          # Git
+          diffview-nvim
+          neogit
+          gitsigns-nvim
+
+          # Others
           cmp-nvim-lsp
           cmp-buffer
           nvim-cmp
           formatter-nvim
           nvim-lint
-          #nvim-treesitter
-          (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
-          nvim-treesitter-textobjects
           nvim-snippy
-          neogit
-          gitsigns-nvim
           nvim-autopairs
           vim-wordmotion
           vim-unimpaired
           vim-commentary
           hop-nvim
           surround-nvim
-          (buildPlugin "github-nvim-theme")
-          (buildPlugin "navigator")
         ];
     };
   };

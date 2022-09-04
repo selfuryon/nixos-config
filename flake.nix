@@ -19,11 +19,6 @@
       url = "github:projekt0n/github-nvim-theme";
       flake = false;
     };
-    # LSP
-    "navigator" = {
-      url = "github:ray-x/navigator.lua";
-      flake = false;
-    };
   };
 
   outputs = { self, nixpkgs, deploy-rs, ... }@inputs:
