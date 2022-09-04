@@ -19,8 +19,7 @@ let
       if builtins.pathExists ./nvim/${normalizeName plug.pname}.lua then {
         type = "lua";
         plugin = plug;
-        config =
-          lib.strings.fileContents ./nvim/${normalizeName plug.pname}.lua;
+        config = builtins.readFile ./nvim/${normalizeName plug.pname}.lua;
       } else
         plug) plugins;
 in {

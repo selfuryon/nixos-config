@@ -70,9 +70,13 @@ in {
           battery = {
             bat = "BAT0";
             interval = 40;
+            states = {
+              warning = 30;
+              critical = 15;
+            };
             format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
             format = "{icon} {capacity}%";
-            format-charging = "{capacity}% ";
+            format-charging = " {capacity}%";
           };
           pulseaudio = {
             format = "{icon} {volume}%";
@@ -196,6 +200,9 @@ in {
         	border-radius: 0px 12px 12px 0px;
           padding-left: 15px;
           padding-right: 15px;
+        }
+        #battery.critical {
+        	background: #cf222e;
         }
       '';
     };

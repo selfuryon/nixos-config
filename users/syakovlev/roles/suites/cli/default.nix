@@ -25,6 +25,7 @@ in {
     cryfs
     curl
     fd
+    nnn
     git
     pijul
     htop

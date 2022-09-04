@@ -51,7 +51,6 @@
           specialArgs = { inherit inputs hostname system roles; };
           modules = [
             inputs.ragenix.nixosModules.age
-            inputs.lollypops.nixosModules.lollypops
             { nixpkgs = { inherit overlays; }; }
             (./machines/${hostname})
           ] ++ roleList ++ userList;
