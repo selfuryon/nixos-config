@@ -55,15 +55,17 @@ in {
           (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
           nvim-treesitter-textobjects
 
+          # Completion
+          nvim-cmp
+          cmp-nvim-lsp
+          cmp-buffer
+
           # Git
           diffview-nvim
           neogit
           gitsigns-nvim
 
           # Others
-          cmp-nvim-lsp
-          cmp-buffer
-          nvim-cmp
           formatter-nvim
           nvim-lint
           nvim-snippy

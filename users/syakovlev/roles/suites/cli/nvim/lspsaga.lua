@@ -20,6 +20,6 @@ keymap("n", "]E", function()
 end, { silent = true })
 keymap("n","<leader>o", "<cmd>LSoutlineToggle<CR>",{ silent = true })
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
-keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
-keymap("t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+keymap("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
+keymap("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
 
