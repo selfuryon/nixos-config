@@ -49,11 +49,14 @@ in {
           symbols-outline-nvim
           marks-nvim
           lualine-nvim
+          lualine-lsp-progress
           (buildPlugin "github-nvim-theme")
 
           # Tree-sitter
           (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
-          nvim-treesitter-textobjects
+          (buildPlugin "syntax-tree-surfer")
+          playground
+
 
           # Completion
           nvim-cmp

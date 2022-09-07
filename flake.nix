@@ -15,6 +15,10 @@
     };
 
     # Neovim plugins
+    "syntax-tree-surfer" = {
+      url = "github:ziontee113/syntax-tree-surfer";
+      flake = false;
+    };
     "github-nvim-theme" = {
       url = "github:projekt0n/github-nvim-theme";
       flake = false;

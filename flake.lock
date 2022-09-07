@@ -156,7 +156,8 @@
         "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "ragenix": "ragenix"
+        "ragenix": "ragenix",
+        "syntax-tree-surfer": "syntax-tree-surfer"
       }
     },
     "rust-overlay": {
@@ -181,6 +182,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "syntax-tree-surfer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1662138209,
+        "narHash": "sha256-GwANFTcG1I9IkVajFMXuUrNwrHUVkKWreQjfpOhi484=",
+        "owner": "ziontee113",
+        "repo": "syntax-tree-surfer",
+        "rev": "97f2003836bac01af845c70d8365f8fe17b620a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ziontee113",
+        "repo": "syntax-tree-surfer",
         "type": "github"
       }
     },

@@ -2,9 +2,10 @@
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.rnix.setup{}
+require'lspconfig'.yamlls.setup{}
 local nvim_lsp = require('lspconfig')
 
-local servers = { "rust_analyzer", "gopls", "rnix"}
+local servers = { "rust_analyzer", "gopls", "rnix", "yamlls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
 	on_attach = on_attach,
