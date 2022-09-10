@@ -11,13 +11,6 @@ let
       systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
     '';
   };
-
-  # currently, there is some friction between sway and gtk:
-  # https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-  # the suggested way to set gtk settings is with gsettings
-  # for gsettings to work, we need to tell it where the schemas are
-  # using the XDG_DATA_DIR environment variable
-  # run at the end of sway config
   configure-gtk = pkgs.writeTextFile {
     name = "configure-gtk";
     destination = "/bin/configure-gtk";
@@ -57,21 +50,23 @@ in {
       configure-gtk
       wayland
       glib # gsettings
+      qt5.qtwayland
+      libsForQt5.lightly
+      wlogout
     ];
-
-    home.sessionVariables = {
-      XDG_CURRENT_DESKTOP = "sway";
-      XDG_SESSION_TYPE = "sway";
-      QT_QPA_PLATFORM = "wayland;xcb";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      _JAVA_AWT_WM_NONREPARENTING = 1;
-      GTK_USE_PORTAL = 1;
-    };
 
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
       systemdIntegration = true; # sway-session.target
+      extraSessionCommands = ''
+        SDL_VIDEODRIVER=wayland
+        QT_QPA_PLATFORM = "wayland;xcb";
+        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+        _JAVA_AWT_WM_NONREPARENTING = 1;
+        GTK_USE_PORTAL = 1;
+      '';
+
       config = {
         bars = [{ command = "waybar"; }];
         terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -88,9 +83,27 @@ in {
         floating.border = 2;
         gaps.inner = 10;
         colors = {
-          focused = { background = "#0969da"; border = "#1b1f24"; childBorder = "#1b1f24"; indicator = "#0969da"; text = "#ffffff"; } ;
-          focusedInactive = { background = "#80ccff"; border = "#1b1f24"; childBorder = "#1b1f24"; indicator = "#aceebb"; text = "#ffffff"; } ;
-          unfocused = { background = "#d0d7de"; border = "#1b1f24"; childBorder = "#1b1f24"; indicator = "#aceebb"; text = "#1b1f24"; } ;
+          focused = {
+            background = "#0969da";
+            border = "#1b1f24";
+            childBorder = "#1b1f24";
+            indicator = "#0969da";
+            text = "#ffffff";
+          };
+          focusedInactive = {
+            background = "#80ccff";
+            border = "#1b1f24";
+            childBorder = "#1b1f24";
+            indicator = "#aceebb";
+            text = "#ffffff";
+          };
+          unfocused = {
+            background = "#d0d7de";
+            border = "#1b1f24";
+            childBorder = "#1b1f24";
+            indicator = "#aceebb";
+            text = "#1b1f24";
+          };
         };
 
         # Input configuration
@@ -108,24 +121,13 @@ in {
 
         # Output configuration
         output."*" = { bg = "/home/syakovlev/Pictures/wife2.jpg fill"; };
-        output."DP-1" = {
-          mode = "3840x2160";
-          pos = "0,0";
-        };
-
         output."eDP-1" = {
           mode = "1920x1080";
           pos = "0,2160";
         };
 
-        output."HDMI-A-1" = {
-          mode = "1280x720";
-          pos = "1920,2160";
-        };
-
         startup = [
           # Services
-          { command = "wlsunset"; }
           { command = "mako"; }
           {
             command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
@@ -219,6 +221,9 @@ in {
 
           # Lock
           "${modifier}+Shift+x" = "exec ${pkgs.swaylock}/bin/swaylock -f";
+
+          # Exit
+          "${modifier}+Shift+e" = "${pkgs.wlogout}/bin/wlogout";
 
           # Workspace 10
           "${modifier}+0" = "workspace number 10";

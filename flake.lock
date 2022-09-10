@@ -98,16 +98,37 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1662627907,
-        "narHash": "sha256-eKgAeloXr7gAjKjcOaiywAuVe9M4f73lMHDKuAZW1XE=",
+        "lastModified": 1662659484,
+        "narHash": "sha256-+uanOaNQCOkwZhzdtLEce1L8IZcGhTgEw8mXKVLGVxQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "340ec22f6f2e9c52e2b555e48ab44ee8c53e0275",
+        "rev": "4cfc0a1e02c6374f66acdfd2ff8ae3e87c80c818",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "hyprland": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "wlroots": "wlroots"
+      },
+      "locked": {
+        "lastModified": 1662655659,
+        "narHash": "sha256-YtD+oO5TogaP05AZX/srWeDZLKzkgsh0xgZFCUI1RDQ=",
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "rev": "0eb5ecafb9cb8dcd4242abd03fe69f51b7930505",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "Hyprland",
         "type": "github"
       }
     },
@@ -155,6 +176,7 @@
         "deploy-rs": "deploy-rs",
         "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
+        "hyprland": "hyprland",
         "nixpkgs": "nixpkgs",
         "ragenix": "ragenix",
         "syntax-tree-surfer": "syntax-tree-surfer"
@@ -229,6 +251,24 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "type": "github"
+      }
+    },
+    "wlroots": {
+      "flake": false,
+      "locked": {
+        "host": "gitlab.freedesktop.org",
+        "lastModified": 1661882030,
+        "narHash": "sha256-Kw0MG4rXdTnbndVLLCNwkXDmNszwdQZmm7pwI1R3Kds=",
+        "owner": "wlroots",
+        "repo": "wlroots",
+        "rev": "fd0b0276c9ecc159549acff48b932b83ec3b4f12",
+        "type": "gitlab"
+      },
+      "original": {
+        "host": "gitlab.freedesktop.org",
+        "owner": "wlroots",
+        "repo": "wlroots",
+        "type": "gitlab"
       }
     }
   },

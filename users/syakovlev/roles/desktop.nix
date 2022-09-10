@@ -2,6 +2,6 @@
   imports = [
     ./suites/cli
     ./suites/music
-    ./suites/sway-desktop
+    ./suites/desktop
   ];
 }

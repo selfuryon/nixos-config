@@ -7,6 +7,7 @@ in {
     ./foot.nix
     ./gtk.nix
     ./mako.nix
+    ./hyprland.nix
     ./sway.nix
     ./swayidle.nix
     ./swaylock.nix
@@ -27,12 +28,19 @@ in {
     light.enable = true;
   };
 
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
+  };
+
   qt5.platformTheme = "qt5ct";
 
   home-manager.users.${userName} = {
     programs.fish.loginShellInit = ''
       if test (tty) = /dev/tty1
-        systemd-cat -t sway ${pkgs.sway}/bin/sway
+      systemd-cat -t sway ${pkgs.sway}/bin/sway
       end
     '';
 
@@ -74,8 +82,6 @@ in {
       grim
       slurp
       swappy
-      qt5.qtwayland
-      libsForQt5.lightly
       wl-clipboard
       clipman
       xwayland
@@ -94,7 +100,6 @@ in {
       gtk_engines
       dconf
       gsettings-desktop-schemas
-      lxappearance
       megasync
       qbittorrent
       wireshark
