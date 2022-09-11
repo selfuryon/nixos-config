@@ -1,10 +1,11 @@
 { config, ... }: {
   # Wireguard configuration
+  age.secrets.wireguard.file = ../../secrets/wireguard.sb-hbastion.age;
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "172.31.254.1/24" ];
       listenPort = 51820;
-      privateKeyFile = config.age.secrets.sb-wireguard.path;
+      privateKeyFile = config.age.secrets.wireguard.path;
 
       peers = [
         { # Jumo

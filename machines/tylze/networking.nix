@@ -1,4 +1,5 @@
 { config, ... }: {
+  age.secrets.cyhome.file = ../../secrets/wireless.cyhome.age;
   networking = {
     useDHCP = false;
     interfaces.enp2s0.useDHCP = true;
@@ -6,7 +7,7 @@
     wireless = {
       enable = true;
       interfaces = [ "wlp1s0" ];
-      environmentFile = config.age.secrets.tylze-wireless.path;
+      environmentFile = config.age.secrets.cyhome.path;
       networks."CYHome 5Ghz" = {
         authProtocols = [ "SAE" ];
         auth = ''

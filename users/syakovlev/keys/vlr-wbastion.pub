@@ -1,2 +1,1 @@
-sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKTOjalqlnzMO8O5LfevX2Uj4ju0P74POma4lDU1kDHHAAAABHNzaDo= selfuryon@yubikey-blue [private]
-sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIEVlwIENTVk4yHEPMeHpkvG/B/DTw42Nq/Wy354HVanXAAAABHNzaDo= selfuryon@yubikey-gray [private]
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBeIAzch0QmKtoJNBtt3jInMXyl2NMK+OPofpE4sxmgU sergey.y@vlr-wbastion [private]
