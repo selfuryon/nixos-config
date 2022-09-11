@@ -243,6 +243,8 @@ in {
         # Disable laptop screen on lid action
         bindswitch --reload --locked lid:on output eDP-1 disable
         bindswitch --reload --locked lid:off output eDP-1 enable
+        # Marks
+        bindsym --to-code Mod4+m exec swaymsg "mark $(wofi -d -L 1)"
       '';
     };
   };

@@ -1,7 +1,7 @@
 { inputs, ... }: {
   imports = with inputs.self.roles; [
     # Local role
-    #./agenix.nix
+    ./agenix.nix
     ./firewall.nix
     ./hardware-configuration.nix
     ./networking.nix
