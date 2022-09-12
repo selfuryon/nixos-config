@@ -6,7 +6,7 @@ in {
     ./firefox.nix
     ./foot.nix
     ./gtk.nix
-    ./mako.nix
+    #./mako.nix
     ./hyprland.nix
     ./sway.nix
     ./swayidle.nix

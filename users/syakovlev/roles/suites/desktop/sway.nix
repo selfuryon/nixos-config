@@ -53,6 +53,7 @@ in {
       qt5.qtwayland
       libsForQt5.lightly
       wlogout
+      swaynotificationcenter
     ];
 
     wayland.windowManager.sway = {
@@ -128,7 +129,7 @@ in {
 
         startup = [
           # Services
-          { command = "mako"; }
+          { command = "swaync"; }
           {
             command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
           }
@@ -234,6 +235,15 @@ in {
           "${modifier}+Mod1+Down" = "move workspace to output down";
           "${modifier}+Mod1+Left" = "move workspace to output left";
           "${modifier}+Mod1+Right" = "move workspace to output right";
+
+          # swaync
+          "${modifier}+Shift+n" = "exec swaync-client -t -sw";
+          # Marks
+          "${modifier}+m" = ''
+            exec swaymsg "mark --toggle $(swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.focused==true) | .marks []' | wofi -d)" '';
+          "${modifier}+grave" = ''
+            exec swaymsg "[con_mark=$(swaymsg -t get_marks | jq -r '. []' | wofi -d)] focus"
+          '';
         };
       };
 
@@ -243,8 +253,6 @@ in {
         # Disable laptop screen on lid action
         bindswitch --reload --locked lid:on output eDP-1 disable
         bindswitch --reload --locked lid:off output eDP-1 enable
-        # Marks
-        bindsym --to-code Mod4+m exec swaymsg "mark $(wofi -d -L 1)"
       '';
     };
   };
