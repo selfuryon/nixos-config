@@ -83,29 +83,6 @@ in {
         window.border = 1;
         floating.border = 2;
         gaps.inner = 10;
-        colors = {
-          focused = {
-            background = "#0969da";
-            border = "#1b1f24";
-            childBorder = "#1b1f24";
-            indicator = "#0969da";
-            text = "#ffffff";
-          };
-          focusedInactive = {
-            background = "#80ccff";
-            border = "#1b1f24";
-            childBorder = "#1b1f24";
-            indicator = "#aceebb";
-            text = "#ffffff";
-          };
-          unfocused = {
-            background = "#d0d7de";
-            border = "#1b1f24";
-            childBorder = "#1b1f24";
-            indicator = "#aceebb";
-            text = "#1b1f24";
-          };
-        };
 
         # Input configuration
         input."type:keyboard" = {
@@ -253,6 +230,30 @@ in {
         # Disable laptop screen on lid action
         bindswitch --reload --locked lid:on output eDP-1 disable
         bindswitch --reload --locked lid:off output eDP-1 enable
+        
+        # Google light theme: https://github.com/rkubosz/base16-sway/blob/master/themes/base16-google-light.config
+        set $base00 #ffffff
+        set $base01 #e0e0e0
+        set $base02 #c5c8c6
+        set $base03 #b4b7b4
+        set $base04 #969896
+        set $base05 #373b41
+        set $base06 #282a2e
+        set $base07 #1d1f21
+        set $base08 #CC342B
+        set $base09 #F96A38
+        set $base0A #FBA922
+        set $base0B #198844
+        set $base0C #3971ED
+        set $base0D #3971ED
+        set $base0E #A36AC7
+        set $base0F #3971ED
+        client.focused          $base05 $base0D $base00 $base0D $base0D
+        client.focused_inactive $base01 $base01 $base05 $base03 $base01
+        client.unfocused        $base01 $base00 $base05 $base01 $base01
+        client.urgent           $base08 $base08 $base00 $base08 $base08
+        client.placeholder      $base00 $base00 $base05 $base00 $base00
+        client.background       $base07
       '';
     };
   };
