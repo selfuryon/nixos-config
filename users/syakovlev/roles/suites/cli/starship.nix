@@ -40,15 +40,15 @@ in {
         };
 
         character = {
-          success_symbol = "[ I ](fg:black bg:green)";
-          error_symbol = "[ I ](fg:black bg:red)";
-          vicmd_symbol = "[ N ](fg:black bg:#54aeff)";
+          success_symbol = "[ I ](fg:#ffffff bg:#2da44e)";
+          error_symbol = "[ I ](fg:#ffffff bg:#cf222e)";
+          vicmd_symbol = "[ N ](fg:#ffffff bg:#0969da)";
           vimcmd_replace_one_symbol =
-            "[ r ](fg:black bg:red)";
+            "[ r ](fg:#ffffff bg:#cf222e)";
           vimcmd_replace_symbol =
-            "[ R ](fg:black bg:red)";
+            "[ R ](fg:#ffffff bg:#cf222e)";
           vimcmd_visual_symbol =
-            "[ V ](fg:black bg:yellow)";
+            "[ V ](fg:#ffffff bg:#bf8700)";
         };
       };
     };
