@@ -22,9 +22,8 @@ in {
 
     xdg.configFile."wofi/style.css".text = ''
       #window {
-        font-family: "JetBrainsMono Nerd Font Mono";
         background-color: #ffffff;
-        padding: 10px;
+        padding: 5px;
         border: 1px solid black;
         border-radius: 10px;
       }
@@ -34,7 +33,7 @@ in {
       }
       #entry {
         color: #24292f;
-        padding: 16px;
+        padding: 10px;
       }
       #entry:selected {
         color: #ffffff;

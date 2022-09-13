@@ -50,8 +50,8 @@ in {
           marks-nvim
           lualine-nvim
           lualine-lsp-progress
-          #(buildPlugin "github-nvim-theme")
-          nvim-base16
+          (buildPlugin "github-nvim-theme")
+          #nvim-base16
 
           # Tree-sitter
           (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
