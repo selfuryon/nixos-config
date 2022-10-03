@@ -17,7 +17,7 @@
           allowedIPs = [ "172.31.255.12/32" ];
         }
         { # iPhone
-          publicKey = "d/aaWRiVPTb+9BcTrGcHYEG93OJKKd+xvhZwF4JeH2k=";
+          publicKey = "G635RxNjP00+aoJ3sabQOkM5D37eJBcUOh2fOL0czWM=";
           allowedIPs = [ "172.31.255.22/32" ];
         }
       ];
