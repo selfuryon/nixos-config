@@ -36,13 +36,13 @@ in {
       "slack"
       "discord"
       "skypeforlinux"
+      "languagetool"
     ];
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
-    #_module.args = { inherit inputs; };
     users.${userName} = {
       programs.home-manager.enable = true;
       home.stateVersion = "22.11";

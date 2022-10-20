@@ -36,7 +36,7 @@ in {
     polkit_gnome
     protonvpn-cli
     ripgrep
-    sequoia
+    #sequoia
     tree
     wget
     yubikey-manager

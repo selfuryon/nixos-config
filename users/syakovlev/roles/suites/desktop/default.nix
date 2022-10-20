@@ -6,13 +6,10 @@ in {
     ./firefox.nix
     ./foot.nix
     ./gtk.nix
-    #./mako.nix
-    ./hyprland.nix
     ./sway.nix
     ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix
-    ./wezterm.nix
     ./wlsunset.nix
     ./wofi.nix
   ];
@@ -77,7 +74,7 @@ in {
       vlc
       xarchiver
       mpv
-      qutebrowser
+      #qutebrowser
       libreoffice
       grim
       slurp

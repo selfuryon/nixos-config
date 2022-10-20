@@ -9,3 +9,5 @@ user_pref("network.dns.disableIPv6", false);
 
 /* override: disable letterboxing ***/
 user_pref("privacy.resistFingerprinting.letterboxing", false); // [HIDDEN PREF]
+
+user_pref("extensions.pocket.enabled", false); // Pocket Account [FF46+]

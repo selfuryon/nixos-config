@@ -10,7 +10,7 @@
       [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
 
     #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_5_18;
+    kernelPackages = pkgs.linuxPackages_5_19;
     kernelParams = [ "nohibernate" "elevator=none" ];
     kernelModules = [ "kvm-intel" ];
 

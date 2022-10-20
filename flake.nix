@@ -2,6 +2,7 @@
   description = "My NixOS Configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,10 +14,6 @@
     };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -56,6 +53,7 @@
           specialArgs = { inherit inputs hostname system roles; };
           modules = [
             inputs.ragenix.nixosModules.age
+            inputs.nur.nixosModules.nur
             { nixpkgs = { inherit overlays; }; }
             (./machines/${hostname})
           ] ++ roleList ++ userList;
