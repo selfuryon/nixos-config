@@ -72,7 +72,7 @@ in {
       xfce.thunar
       xfce.thunar-media-tags-plugin
       vlc
-      xarchiver
+      #xarchiver
       mpv
       #qutebrowser
       libreoffice
