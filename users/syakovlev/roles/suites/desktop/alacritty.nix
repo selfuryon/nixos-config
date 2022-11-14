@@ -12,9 +12,9 @@ in {
             y = 5;
           };
         };
-
         font = {
           normal.family = "JetBrainsMono Nerd Font";
+          #normal.family = "B612 Mono";
           size = 13.0;
         };
 

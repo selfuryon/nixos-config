@@ -102,6 +102,8 @@ in {
       wireshark
       fractal
       xournal
+      zotero
+      insomnia
     ];
   };
 }

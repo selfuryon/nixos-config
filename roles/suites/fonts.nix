@@ -2,6 +2,8 @@
   fonts.fonts = with pkgs; [
     noto-fonts
     jetbrains-mono
+    hermit
+    b612
     source-code-pro
     fira-code
     fira-code-symbols
