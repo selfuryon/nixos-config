@@ -7,17 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     ragenix = {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    eww = {
-      url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
