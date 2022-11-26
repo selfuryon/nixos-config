@@ -74,7 +74,7 @@ in {
       vlc
       #xarchiver
       mpv
-      #qutebrowser
+      qutebrowser
       libreoffice
       grim
       slurp
