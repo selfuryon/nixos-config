@@ -12,5 +12,5 @@
   networking.hostId = "59cb960f";
 
   time.timeZone = "Etc/UTC";
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
 }

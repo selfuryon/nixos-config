@@ -10,5 +10,5 @@
   networking.hostId = "ea39aa79";
 
   time.timeZone = "Asia/Nicosia";
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
 }
