@@ -54,7 +54,7 @@ in {
           #nvim-base16
 
           # Tree-sitter
-          (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+          nvim-treesitter.withAllGrammars
           (buildPlugin "syntax-tree-surfer")
           playground
 
