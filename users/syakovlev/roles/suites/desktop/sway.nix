@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   userName = "syakovlev";
+  sway_mod = "Mod4";
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
     destination = "/bin/dbus-sway-environment";
@@ -28,16 +29,6 @@ let
     '';
   };
 in {
-  # ws1: terminal
-  # ws2: code
-  # ws3: browser
-  # ws4: mail
-  # ws5: files
-  # ws6: media
-  # ws7: editor
-  # ws8: chat
-  # ws9: secure
-  # ws10: general
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -71,7 +62,7 @@ in {
       config = {
         bars = [{ command = "waybar"; }];
         terminal = "${pkgs.alacritty}/bin/alacritty";
-        modifier = "Mod4"; # Windows
+        modifier = "${sway_mod}";
         menu =
           "${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wofi}/bin/wofi --show drun -i | ${pkgs.findutils}/bin/xargs swaymsg exec --";
         fonts = {
@@ -119,15 +110,15 @@ in {
         ];
 
         assigns = {
-          "2" = [{ app_id = "code"; }];
-          "3" = [{ class = "firefox"; }];
-          "4" = [{ class = "Thunderbird"; }];
-          "8" = [
+          "20" = [{ app_id = "code"; }];
+          "30" = [{ class = "firefox"; }];
+          "40" = [{ class = "Thunderbird"; }];
+          "80" = [
             { class = "Slack"; }
             { class = "discord"; }
             { app_id = "telegramdesktop"; }
           ];
-          "9" = [{ class = "KeePassXC"; }];
+          "90" = [{ class = "KeePassXC"; }];
         };
 
         floating.criteria = [
@@ -203,9 +194,28 @@ in {
           # Exit
           "${modifier}+Shift+e" = "${pkgs.wlogout}/bin/wlogout";
 
-          # Workspace 10
-          "${modifier}+0" = "workspace number 10";
-          "${modifier}+Shift+0" = "move container to workspace number 10";
+          # Workspaces
+          "${modifier}+1" = "mode ws1";
+          "${modifier}+Shift+1" = "mode cws1";
+          "${modifier}+2" = "mode ws2";
+          "${modifier}+Shift+2" = "mode cws2";
+
+          "${modifier}+3" = "workspace number 30";
+          "${modifier}+Shift+3" = "move container to workspace number 30";
+          "${modifier}+4" = "workspace number 40";
+          "${modifier}+Shift+4" = "move container to workspace number 40";
+          "${modifier}+5" = "workspace number 50";
+          "${modifier}+Shift+5" = "move container to workspace number 50";
+          "${modifier}+6" = "workspace number 60";
+          "${modifier}+Shift+6" = "move container to workspace number 60";
+          "${modifier}+7" = "workspace number 70";
+          "${modifier}+Shift+7" = "move container to workspace number 70";
+          "${modifier}+8" = "workspace number 80";
+          "${modifier}+Shift+8" = "move container to workspace number 80";
+          "${modifier}+9" = "workspace number 90";
+          "${modifier}+Shift+9" = "move container to workspace number 90";
+          "${modifier}+0" = "workspace number 100";
+          "${modifier}+Shift+0" = "move container to workspace number 100";
 
           # Moving workspaces between screens
           "${modifier}+Mod1+Up" = "move workspace to output up";
@@ -225,12 +235,88 @@ in {
       };
 
       extraConfig = ''
+        mode "ws1" {
+            bindsym 0 mode default, workspace 10
+            bindsym ${sway_mod}+0 mode default, workspace 10
+            bindsym 1 mode default, workspace 11
+            bindsym ${sway_mod}+1 mode default, workspace 11
+            bindsym 2 mode default, workspace 12
+            bindsym ${sway_mod}+2 mode default, workspace 12
+            bindsym 3 mode default, workspace 13
+            bindsym ${sway_mod}+3 mode default, workspace 13
+            bindsym 4 mode default, workspace 14
+            bindsym ${sway_mod}+4 mode default, workspace 14
+            bindsym 5 mode default, workspace 15
+            bindsym ${sway_mod}+5 mode default, workspace 15
+            bindsym 6 mode default, workspace 16
+            bindsym ${sway_mod}+6 mode default, workspace 16
+            bindsym 7 mode default, workspace 17
+            bindsym ${sway_mod}+7 mode default, workspace 17
+            bindsym 8 mode default, workspace 18
+            bindsym ${sway_mod}+8 mode default, workspace 18
+            bindsym 9 mode default, workspace 19
+            bindsym ${sway_mod}+9 mode default, workspace 19
+            bindsym Escape mode "default"
+            bindsym Return mode "default"
+        }
+
+        mode "ws2" {
+            bindsym 0 mode default, workspace 20
+            bindsym ${sway_mod}+0 mode default, workspace 20
+            bindsym 1 mode default, workspace 21
+            bindsym ${sway_mod}+1 mode default, workspace 21
+            bindsym 2 mode default, workspace 22
+            bindsym ${sway_mod}+2 mode default, workspace 22
+            bindsym 3 mode default, workspace 23
+            bindsym ${sway_mod}+3 mode default, workspace 23
+            bindsym 4 mode default, workspace 24
+            bindsym ${sway_mod}+4 mode default, workspace 24
+            bindsym 5 mode default, workspace 25
+            bindsym ${sway_mod}+5 mode default, workspace 25
+            bindsym 6 mode default, workspace 26
+            bindsym ${sway_mod}+6 mode default, workspace 26
+            bindsym 7 mode default, workspace 27
+            bindsym ${sway_mod}+7 mode default, workspace 27
+            bindsym 8 mode default, workspace 28
+            bindsym ${sway_mod}+8 mode default, workspace 28
+            bindsym 9 mode default, workspace 29
+            bindsym ${sway_mod}+9 mode default, workspace 29
+            bindsym Escape mode "default"
+            bindsym Return mode "default"
+        }
+
+        mode "cws1" {
+            bindsym 0 mode default, move container to workspace 10
+            bindsym 1 mode default, move container to workspace 11
+            bindsym 2 mode default, move container to workspace 12
+            bindsym 3 mode default, move container to workspace 13
+            bindsym 4 mode default, move container to workspace 14
+            bindsym 5 mode default, move container to workspace 15
+            bindsym 6 mode default, move container to workspace 16
+            bindsym 7 mode default, move container to workspace 17
+            bindsym 8 mode default, move container to workspace 18
+            bindsym 9 mode default, move container to workspace 19
+        }
+
+
+        mode "cws2" {
+            bindsym 0 mode default, move container to workspace 20
+            bindsym 1 mode default, move container to workspace 21
+            bindsym 2 mode default, move container to workspace 22
+            bindsym 3 mode default, move container to workspace 23
+            bindsym 4 mode default, move container to workspace 24
+            bindsym 5 mode default, move container to workspace 25
+            bindsym 6 mode default, move container to workspace 26
+            bindsym 7 mode default, move container to workspace 27
+            bindsym 8 mode default, move container to workspace 28
+            bindsym 9 mode default, move container to workspace 29
+        }
         # Setting cursor theme
         seat seat0 xcursor_theme capitaine-cursors 16
         # Disable laptop screen on lid action
         bindswitch --reload --locked lid:on output eDP-1 disable
         bindswitch --reload --locked lid:off output eDP-1 enable
-        
+
         # Google light theme: https://github.com/rkubosz/base16-sway/blob/master/themes/base16-google-light.config
         set $base00 #ffffff
         set $base01 #e0e0e0
