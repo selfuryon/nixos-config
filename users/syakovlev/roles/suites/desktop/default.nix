@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let userName = "syakovlev";
 in {
   imports = [
@@ -6,6 +6,7 @@ in {
     ./firefox.nix
     ./foot.nix
     ./gtk.nix
+    ./hyprland.nix
     ./sway.nix
     ./swayidle.nix
     ./swaylock.nix
@@ -37,7 +38,7 @@ in {
   home-manager.users.${userName} = {
     programs.fish.loginShellInit = ''
       if test (tty) = /dev/tty1
-      systemd-cat -t sway ${pkgs.sway}/bin/sway
+      systemd-cat -t hyprland ${inputs.hyprland.packages."x86_64-linux".hyprland}/bin/Hyprland
       end
     '';
 

@@ -52,7 +52,7 @@ in {
       wrapperFeatures.gtk = true;
       systemdIntegration = true; # sway-session.target
       extraSessionCommands = ''
-        SDL_VIDEODRIVER=wayland
+        SDL_VIDEODRIVER=wayland;
         QT_QPA_PLATFORM = "wayland;xcb";
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         _JAVA_AWT_WM_NONREPARENTING = 1;

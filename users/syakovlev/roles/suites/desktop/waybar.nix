@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   userName = "syakovlev";
   checkNixosUpdates = pkgs.writeShellScript "checkUpdates.sh" ''
@@ -14,6 +14,7 @@ in {
   home-manager.users.${userName} = {
     programs.waybar = {
       enable = true;
+      package = inputs.hyprland.packages."x86_64-linux".waybar-hyprland;
       settings = {
         mainBar = {
           layer = "top";
@@ -21,7 +22,7 @@ in {
           spacing = 5;
           position = "top";
           modules-left = [ "custom/nixos" "tray" "mpd" "idle_inhibitor" ];
-          modules-center = [ "sway/workspaces" ];
+          modules-center = [ "sway/workspaces" "wlr/workspaces" ];
           modules-right = [ "pulseaudio" "clock" "clock#calendar" "battery" ];
           "custom/nixos" = {
             exec = checkNixosUpdates;
@@ -42,6 +43,11 @@ in {
               default = " ";
               focused = " ";
             };
+          };
+          "wlr/workspaces" = {
+            all-outputs = true;
+            "on-click" = "activate";
+            format = "{name}";
           };
           tray = {
             icon-size = 19;
@@ -167,8 +173,8 @@ in {
           padding-right: 15px;
         }
         #workspaces button {
-          padding-left: 0px;
-          padding-right: 0px;
+          padding-left: 5px;
+          padding-right: 5px;
         }
         #workspaces button.focused {
         	color: #6080B0;
