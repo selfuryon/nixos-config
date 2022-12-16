@@ -257,6 +257,7 @@ in {
         bind=SUPER,D,exec,wofi --show drun
         bind=SUPER,P,pseudo,
         bind=SUPERSHIFT,print,exec,sh -c 'slurp | grim -g - -t png - | wl-copy -t image/png'
+        bind=SUPERSHIFT,x,exec,${pkgs.swaylock}/bin/swaylock -f
         bind=,print,exec,sh -c 'grim -g "$(slurp)" - | swappy -f -'
         # Special
         bind=SUPER,minus,togglespecialworkspace,
@@ -264,8 +265,8 @@ in {
         # Split
         bind=SUPER,F,fullscreen,
         bind=SUPER,E,togglegroup,
-        bind=SUPERSHIFT,L,changegroupactive,f
-        bind=SUPERSHIFT,H,changegroupactive,b
+        bind=SUPER,L,changegroupactive,f
+        bind=SUPER,H,changegroupactive,b
         bind=ALT,S,togglesplit,
         # Resize Mode with Alt + R : Press Escape to quit
         bind=SUPER,R,submap,resize # will switch to a submap called resize

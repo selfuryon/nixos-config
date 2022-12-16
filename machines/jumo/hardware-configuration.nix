@@ -9,8 +9,8 @@
     initrd.availableKernelModules =
       [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
-    #kernelPackages = pkgs.linuxPackages_5_15;
+    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_0;
     kernelParams = [ "nohibernate" "elevator=none" ];
     kernelModules = [ "kvm-intel" ];
 
