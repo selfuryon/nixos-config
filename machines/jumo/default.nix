@@ -7,6 +7,7 @@
   ];
 
   networking.hostName = "jumo";
+  networking.domain = "ys7.me";
   networking.hostId = "ea39aa79";
 
   time.timeZone = "Asia/Nicosia";

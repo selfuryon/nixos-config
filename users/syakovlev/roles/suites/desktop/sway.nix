@@ -44,20 +44,13 @@ in {
       qt5.qtwayland
       libsForQt5.lightly
       wlogout
-      swaynotificationcenter
+      #swaotificationcenter
     ];
 
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
-      systemdIntegration = true; # sway-session.target
-      extraSessionCommands = ''
-        SDL_VIDEODRIVER=wayland;
-        QT_QPA_PLATFORM = "wayland;xcb";
-        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-        _JAVA_AWT_WM_NONREPARENTING = 1;
-        GTK_USE_PORTAL = 1;
-      '';
+      systemdIntegration = false; # sway-session.target
 
       config = {
         bars = [{ command = "waybar"; }];

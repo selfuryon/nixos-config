@@ -8,6 +8,7 @@
   ];
 
   networking.hostName = "tylze";
+  networking.domain = "ys7.me";
   networking.hostId = "ceb59ca1";
 
   time.timeZone = "Etc/UTC";

@@ -3,6 +3,13 @@ let userName = "syakovlev";
 in {
   home-manager.users.${userName} = {
     imports = [ inputs.hyprland.homeManagerModules.default ];
+    home.packages = with pkgs; [
+      wayland
+      glib # gsettings
+      qt5.qtwayland
+      libsForQt5.lightly
+      wlogout
+    ];
     home.sessionVariables = {
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
@@ -17,6 +24,7 @@ in {
       SDL_VIDEODRIVER = "wayland";
       GDK_BACKEND = "wayland,x11";
       GTK_USE_PORTAL = 1;
+      NIXOS_OZONE_WL = 1;
 
     };
     wayland.windowManager.hyprland = {
@@ -73,7 +81,7 @@ in {
         # Workspaces
         bind=SUPER,1,submap,ws1
         bind=SUPER,2,submap,ws2
-        bind=SUPER,3,workspace,30
+        bind=SUPER,3,submap,ws3
         bind=SUPER,4,workspace,40
         bind=SUPER,5,workspace,50
         bind=SUPER,6,workspace,60
@@ -172,6 +180,50 @@ in {
         bind=,return,submap,reset
         submap=reset
 
+        submap=ws3
+        bind=SUPER,0,workspace,30
+        bind=,0,workspace,30
+        bind=,0,submap,reset
+        bind=SUPER,1,workspace,31
+        bind=SUPER,1,submap,reset
+        bind=,1,workspace,31
+        bind=,1,submap,reset
+        bind=SUPER,2,workspace,32
+        bind=SUPER,2,submap,reset
+        bind=,2,workspace,32
+        bind=,2,submap,reset
+        bind=SUPER,3,workspace,33
+        bind=SUPER,3,submap,reset
+        bind=,3,workspace,33
+        bind=,3,submap,reset
+        bind=SUPER,4,workspace,34
+        bind=SUPER,4,submap,reset
+        bind=,4,workspace,34
+        bind=,4,submap,reset
+        bind=SUPER,5,workspace,35
+        bind=SUPER,5,submap,reset
+        bind=,5,workspace,35
+        bind=,5,submap,reset
+        bind=SUPER,6,workspace,36
+        bind=SUPER,6,submap,reset
+        bind=,6,workspace,36
+        bind=,6,submap,reset
+        bind=SUPER,7,workspace,37
+        bind=SUPER,7,submap,reset
+        bind=,7,workspace,37
+        bind=,7,submap,reset
+        bind=SUPER,8,workspace,38
+        bind=SUPER,8,submap,reset
+        bind=,8,workspace,38
+        bind=,8,submap,reset
+        bind=SUPER,9,workspace,39
+        bind=SUPER,9,submap,reset
+        bind=,9,workspace,39
+        bind=,9,submap,reset
+        bind=,escape,submap,reset
+        bind=,return,submap,reset
+        submap=reset
+
         # Focus
         bind=SUPER,h,movefocus,l
         bind=SUPER,l,movefocus,r
@@ -184,7 +236,7 @@ in {
         bind=SUPERSHIFT,j,movewindow,d
         bind=SUPERSHIFT,1,submap,cws1
         bind=SUPERSHIFT,2,submap,cws2
-        bind=SUPERSHIFT,3,movetoworkspace,30
+        bind=SUPERSHIFT,3,submap,cws3
         bind=SUPERSHIFT,4,movetoworkspace,40
         bind=SUPERSHIFT,5,movetoworkspace,50
         bind=SUPERSHIFT,6,movetoworkspace,60
@@ -217,6 +269,7 @@ in {
         bind=,escape,submap,reset
         bind=,return,submap,reset
         submap=reset
+
         submap=cws2
         bind=,0,movetoworkspace,20
         bind=,0,submap,reset
@@ -241,7 +294,32 @@ in {
         bind=,escape,submap,reset
         bind=,return,submap,reset
         submap=reset
-        # Media
+
+        submap=cws3
+        bind=,0,movetoworkspace,30
+        bind=,0,submap,reset
+        bind=,1,movetoworkspace,31
+        bind=,1,submap,reset
+        bind=,2,movetoworkspace,32
+        bind=,2,submap,reset
+        bind=,3,movetoworkspace,33
+        bind=,3,submap,reset
+        bind=,4,movetoworkspace,34
+        bind=,4,submap,reset
+        bind=,5,movetoworkspace,35
+        bind=,5,submap,reset
+        bind=,6,movetoworkspace,36
+        bind=,6,submap,reset
+        bind=,7,movetoworkspace,37
+        bind=,7,submap,reset
+        bind=,8,movetoworkspace,38
+        bind=,8,submap,reset
+        bind=,9,movetoworkspace,39
+        bind=,9,submap,reset
+        bind=,escape,submap,reset
+        bind=,return,submap,reset
+        submap=reset
+         # Media
         bind=,XF86AudioLowerVolume,exec,pamixer -d 5
         bind=,XF86AudioMute,exec,pamixer -t
         bind=,XF86AudioRaiseVolume,exec,pamixer -i 5
@@ -277,7 +355,7 @@ in {
         bind=,j,resizeactive,0 30
         bind=,escape,submap,reset # use reset to go back to the global submap
         submap=reset # will reset the submap, meaning end the current one and return to the global one.
-        exec-once=waybar & swaync
+        exec-once=waybar
         exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
         exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
 

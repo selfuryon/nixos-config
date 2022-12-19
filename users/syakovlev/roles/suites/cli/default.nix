@@ -9,6 +9,7 @@ in {
     ./git.nix
     ./gpg.nix
     ./shell.nix
+    ./helix.nix
     ./skim.nix
     ./starship.nix
     ./nvim.nix
@@ -25,6 +26,7 @@ in {
     cryfs
     curl
     fd
+    xplr
     nnn
     git
     pijul

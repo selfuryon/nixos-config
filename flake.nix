@@ -91,6 +91,7 @@
         mkShell {
           packages = [
             nixfmt
+            nil
             inputs.deploy-rs.defaultPackage.x86_64-linux
             inputs.ragenix.defaultPackage.x86_64-linux
           ];
