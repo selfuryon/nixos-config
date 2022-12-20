@@ -11,7 +11,7 @@ in {
       };
       settings = {
         global = {
-          width = 400;
+          width = 600;
           height = 200;
           offset = "30x50";
           origin = "top-right";
