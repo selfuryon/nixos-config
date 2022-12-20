@@ -35,7 +35,6 @@ in {
     lsof
     p7zip
     pango
-    polkit_gnome
     protonvpn-cli
     ripgrep
     #sequoia

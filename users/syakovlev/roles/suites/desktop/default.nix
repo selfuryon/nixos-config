@@ -16,7 +16,7 @@ in {
     ./wofi.nix
   ];
 
-  environment.pathsToLink = [ "/libexec" ];
+  security.polkit.enable = true;
   environment.systemPackages = with pkgs; [ polkit_gnome ];
 
   services = { dbus.packages = [ pkgs.gcr ]; };
@@ -43,6 +43,12 @@ in {
       }/bin/Hyprland
       end
     '';
+
+    home.activation."mimeapps-remove" = {
+      before = [ "checkLinkTargets" ];
+      after = [ ];
+      data = "rm -f /home/syakovlev/.config/mimeapps.list";
+    };
 
     xdg = {
       mimeApps = {
