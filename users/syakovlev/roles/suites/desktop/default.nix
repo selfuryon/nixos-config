@@ -70,7 +70,7 @@ in {
           "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
           "x-scheme-handler/matrix" = [ "fractal.desktop" ];
           "video/*" = [ "vlc.desktop" ];
-          "application/pdf" = [ "org.kde.okular.desktop" ];
+          "application/pdf" = [ "org.kde.okular" ];
 
           "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ];
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document" =

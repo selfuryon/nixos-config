@@ -15,9 +15,7 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
+    hyprland = { url = "github:hyprwm/Hyprland"; };
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -90,8 +88,6 @@
       devShells.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux;
         mkShell {
           packages = [
-            nixfmt
-            nil
             inputs.deploy-rs.defaultPackage.x86_64-linux
             inputs.ragenix.defaultPackage.x86_64-linux
           ];

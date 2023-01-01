@@ -24,7 +24,6 @@ let
         plug) plugins;
 in {
   home-manager.users.${userName} = {
-    #home.packages = [ inputs.neovimSY.defaultPackage.x86_64-linux ];
     programs.neovim = {
       enable = true;
       viAlias = true;
@@ -35,7 +34,14 @@ in {
         ${lib.strings.fileContents ./nvim/init.lua}
         EOF
       '';
-      extraPackages = with pkgs; [ gopls rust-analyzer rnix-lsp];
+      extraPackages = with pkgs; [
+        gopls
+        rust-analyzer
+        #rnix-lsp
+        nixfmt
+        nil
+        yaml-language-server
+      ];
       plugins = with pkgs.vimPlugins;
         configPlugins [
           # LSP
@@ -57,7 +63,6 @@ in {
           nvim-treesitter.withAllGrammars
           (buildPlugin "syntax-tree-surfer")
           playground
-
 
           # Completion
           nvim-cmp
