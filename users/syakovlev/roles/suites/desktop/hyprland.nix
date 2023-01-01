@@ -24,7 +24,7 @@ in {
       SDL_VIDEODRIVER = "wayland";
       GDK_BACKEND = "wayland,x11";
       GTK_USE_PORTAL = 1;
-      NIXOS_OZONE_WL = 1;
+      #NIXOS_OZONE_WL = 1;
 
     };
     wayland.windowManager.hyprland = {
@@ -33,6 +33,7 @@ in {
       recommendedEnvironment = true;
       extraConfig = ''
         monitor=eDP-1,1920x1080,0x0,1
+        monitor=HDMI-A-1,1920x1080,0x1080,1
         monitor=,preferred,auto,1
         workspace=eDP-1,11
 
@@ -66,6 +67,7 @@ in {
         }
         input {
           kb_layout=us,ru
+          kb_variant=,chm
           kb_options=grp:shift_caps_switch
           follow_mouse=0
         }
