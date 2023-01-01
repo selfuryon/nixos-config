@@ -1,10 +1,11 @@
-{ inputs, hostname, roles, pkgs, lib, ... }:
+{ inputs, hostname, pkgs, lib, ... }:
 let
   userName = "syakovlev";
-  rolePaths = builtins.map (r: ./roles/${r}.nix) roles;
-  roleList = builtins.filter (p: builtins.pathExists p) rolePaths;
+  hostConfig =
+    builtins.filter (p: builtins.pathExists p) [ ./${hostname}.nix ];
 in {
-  imports = [ inputs.home-manager.nixosModules.home-manager ] ++ roleList;
+  imports = [ inputs.home-manager.nixosModules.home-manager ./features/global ]
+    ++ hostConfig;
 
   users.users.${userName} = {
     isNormalUser = true;
@@ -47,7 +48,5 @@ in {
       programs.home-manager.enable = true;
       home.stateVersion = "23.05";
     };
-
   };
-
 }

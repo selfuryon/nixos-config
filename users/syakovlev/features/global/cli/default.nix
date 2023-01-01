@@ -12,8 +12,6 @@ in {
     ./helix.nix
     ./skim.nix
     ./starship.nix
-    ./nvim.nix
-    #./tmux.nix
     ./zellij.nix
   ];
 

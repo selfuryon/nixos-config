@@ -13,4 +13,6 @@
 
   time.timeZone = "Etc/UTC";
   system.stateVersion = "23.05";
+
+  services.netbird.enable = true;
 }

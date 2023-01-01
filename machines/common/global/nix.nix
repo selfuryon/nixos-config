@@ -1,7 +1,4 @@
-{ inputs, pkgs, ... }: {
-  # Add each input as a registry
-  nix.registry = pkgs.lib.mapAttrs (n: v: { flake = v; }) inputs;
-
+{ inputs, config, pkgs, lib, ... }: {
   # Nix 
   nix = {
     settings = {
@@ -11,13 +8,16 @@
       ];
       trusted-users = [ "root" "@wheel" ];
     };
-    extraOptions = "experimental-features = nix-command flakes";
+    extraOptions = "experimental-features = nix-command flakes repl-flake";
     gc = {
       automatic = true;
-      options = "--delete-older-than 7d";
-      dates = "03:15";
+      dates = "weekly";
     };
   };
 
+  # Map nixpkgs to /etc/nixpkgs
   environment.etc.nixpkgs.source = inputs.nixpkgs;
+
+  # Add each input as a registry
+  nix.registry = pkgs.lib.mapAttrs (_: v: { flake = v; }) inputs;
 }

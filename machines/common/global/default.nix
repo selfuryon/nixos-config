@@ -1,9 +1,11 @@
 { pkgs, inputs, ... }: {
   imports = [
-    ./suites/dns.nix
-    ./suites/net-sysctl.nix
-    ./suites/sshd.nix
-    ./suites/nix.nix
+    ./dns.nix
+    ./net-sysctl.nix
+    ./netbird.nix
+    ./nix.nix
+    ./podman.nix
+    ./sshd.nix
   ];
 
   # Select internationalisation properties.

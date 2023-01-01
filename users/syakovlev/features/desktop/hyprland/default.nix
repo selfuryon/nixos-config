@@ -1,6 +1,7 @@
 { inputs, config, lib, pkgs, ... }:
 let userName = "syakovlev";
 in {
+  imports = [ ../common ];
   home-manager.users.${userName} = {
     imports = [ inputs.hyprland.homeManagerModules.default ];
     home.packages = with pkgs; [
@@ -17,7 +18,7 @@ in {
 
       QT_AUTO_SCREEN_SCALE_FACTOR = 1;
       QT_QPA_PLATFORM = "wayland;xcb";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
+      #QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
 
       _JAVA_AWT_WM_NONREPARENTING = 1;

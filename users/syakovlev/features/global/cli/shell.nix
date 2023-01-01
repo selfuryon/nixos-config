@@ -14,6 +14,8 @@ in {
 
       nrs =
         "doas nixos-rebuild switch --flake path:/home/syakovlev/nixos-config";
+      nrb =
+        "doas nixos-rebuild build --flake path:/home/syakovlev/nixos-config";
 
       k = "kubectl";
       kx = "kubectx";

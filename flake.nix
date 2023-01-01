@@ -46,21 +46,18 @@
       inventory = myLib.createInventory ./machines;
 
       # Make system configuration, given hostname and system type
-      mkSystem = { hostname, system, users, roles, ... }:
+      mkSystem = { hostname, system, users, ... }:
         let
-          userNames = builtins.attrNames users;
-          userList = builtins.map (u: ./users/${u}) userNames;
-          rolePaths = builtins.map (r: ./roles/${r}.nix) roles;
-          roleList = builtins.filter (p: builtins.pathExists p) rolePaths;
+          userList = builtins.map (u: ./users/${u}) users;
         in nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs hostname system roles; };
+          specialArgs = { inherit inputs hostname system; };
           modules = [
             inputs.ragenix.nixosModules.age
             inputs.nur.nixosModules.nur
             { nixpkgs = { inherit overlays; }; }
             (./machines/${hostname})
-          ] ++ roleList ++ userList;
+          ] ++ userList;
         };
       # Make Deploy-rs node
       mkDeployNode = { hostname, system, sshUser, sudo ? "sudo -u", ... }: {

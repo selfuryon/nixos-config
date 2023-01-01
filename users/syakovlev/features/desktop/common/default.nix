@@ -7,8 +7,8 @@ in {
     ./dunst.nix
     ./foot.nix
     ./gtk.nix
-    ./hyprland.nix
-    ./sway.nix
+    ./qt.nix
+    ./mpd.nix
     ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix
@@ -96,6 +96,7 @@ in {
 
     home.packages = with pkgs; [
       adwaita-qt
+      libsForQt5.lightly
       brave
       capitaine-cursors
       crosvm

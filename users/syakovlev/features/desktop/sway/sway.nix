@@ -36,6 +36,7 @@ in {
   };
 
   home-manager.users.${userName} = {
+    imports = [ ../common ];
     home.packages = with pkgs; [
       dbus-sway-environment
       configure-gtk
