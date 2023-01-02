@@ -1,11 +1,9 @@
-{ inputs, hostname, pkgs, lib, ... }:
+{ inputs, config, hostname, pkgs, lib, ... }:
 let
   userName = "syakovlev";
-  hostConfig =
-    builtins.filter (p: builtins.pathExists p) [ ./${hostname}.nix ];
+  hostConfig = builtins.filter (p: builtins.pathExists p) [ ./${hostname}.nix ];
 in {
-  imports = [ inputs.home-manager.nixosModules.home-manager ./features/global ]
-    ++ hostConfig;
+  imports = hostConfig;
 
   users.users.${userName} = {
     isNormalUser = true;
@@ -31,22 +29,10 @@ in {
     noPass = true;
   }];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "megasync"
-      "slack"
-      "discord"
-      "skypeforlinux"
-      "languagetool"
-    ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users.${userName} = {
-      programs.home-manager.enable = true;
-      home.stateVersion = "23.05";
-    };
+  home-manager.users.${userName} = {
+    imports = [ ./features/global ];
+    programs.home-manager.enable = true;
+    home.stateVersion = "23.05";
   };
 }

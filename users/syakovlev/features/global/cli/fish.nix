@@ -1,7 +1,5 @@
-{ ... }:
-let userName = "syakovlev";
-in {
-  home-manager.users.${userName}.programs = {
+{ ... }: {
+  programs = {
     zoxide.enable = true;
     fish = {
       enable = true;

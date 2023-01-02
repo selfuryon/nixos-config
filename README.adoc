@@ -20,3 +20,6 @@ My current configuration organization:
 ** `keys` determines ssh-keys per host (I use unique ssh keys per host)
 ** `roles` determines role definition for specific user, it also consist from small configurations called `suites`.
 
+Inspiration:
+* https://github.com/Misterio77/nix-config
+* https://github.com/balsoft/nixos-config

@@ -2,7 +2,10 @@
   description = "My NixOS Configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/NUR";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,12 +37,9 @@
 
   outputs = { self, nixpkgs, deploy-rs, ... }@inputs:
     let
-      # Load lib
+      inherit (self) outputs;
       lib = nixpkgs.lib;
-      myLib = import ./lib.nix lib;
-
-      # My overlays
-      overlays = [ (import ./overlays) ];
+      myLib = import ./lib.nix nixpkgs.lib;
 
       # Load inventory
       # inventory = import ./machines/inventory.nix;
@@ -47,17 +47,11 @@
 
       # Make system configuration, given hostname and system type
       mkSystem = { hostname, system, users, ... }:
-        let
-          userList = builtins.map (u: ./users/${u}) users;
+        let userList = builtins.map (u: ./users/${u}) users;
         in nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs hostname system; };
-          modules = [
-            inputs.ragenix.nixosModules.age
-            inputs.nur.nixosModules.nur
-            { nixpkgs = { inherit overlays; }; }
-            (./machines/${hostname})
-          ] ++ userList;
+          specialArgs = { inherit inputs outputs hostname system; };
+          modules = [ (./machines/${hostname}) ] ++ userList;
         };
       # Make Deploy-rs node
       mkDeployNode = { hostname, system, sshUser, sudo ? "sudo -u", ... }: {
@@ -74,6 +68,7 @@
         };
       };
     in {
+      overlays = import ./overlays;
       nixosConfigurations =
         lib.mapAttrs (name: config: mkSystem config) inventory;
 

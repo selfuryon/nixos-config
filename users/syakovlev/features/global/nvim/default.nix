@@ -1,6 +1,5 @@
 { inputs, pkgs, lib, ... }:
 let
-  userName = "syakovlev";
   buildPlugin = name:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       pname = name;
@@ -23,68 +22,66 @@ let
       } else
         plug) plugins;
 in {
-  home-manager.users.${userName} = {
-    programs.neovim = {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-      withRuby = false;
-      extraConfig = ''
-        lua << EOF
-        ${lib.strings.fileContents ./nvim/init.lua}
-        EOF
-      '';
-      extraPackages = with pkgs; [
-        gopls
-        rust-analyzer
-        #rnix-lsp
-        nixfmt
-        nil
-        yaml-language-server
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    withRuby = false;
+    extraConfig = ''
+      lua << EOF
+      ${lib.strings.fileContents ./nvim/init.lua}
+      EOF
+    '';
+    extraPackages = with pkgs; [
+      gopls
+      rust-analyzer
+      #rnix-lsp
+      nixfmt
+      nil
+      yaml-language-server
+    ];
+    plugins = with pkgs.vimPlugins;
+      configPlugins [
+        # LSP
+        nvim-lspconfig
+        lsp_signature-nvim
+        lspsaga-nvim
+
+        # UI
+        telescope-nvim
+        nvim-tree-lua
+        symbols-outline-nvim
+        marks-nvim
+        lualine-nvim
+        lualine-lsp-progress
+        (buildPlugin "github-nvim-theme")
+        #nvim-base16
+
+        # Tree-sitter
+        nvim-treesitter.withAllGrammars
+        (buildPlugin "syntax-tree-surfer")
+        playground
+
+        # Completion
+        nvim-cmp
+        cmp-nvim-lsp
+        cmp-buffer
+
+        # Git
+        diffview-nvim
+        neogit
+        gitsigns-nvim
+
+        # Others
+        formatter-nvim
+        nvim-lint
+        nvim-snippy
+        nvim-autopairs
+        vim-wordmotion
+        vim-unimpaired
+        vim-commentary
+        hop-nvim
+        surround-nvim
       ];
-      plugins = with pkgs.vimPlugins;
-        configPlugins [
-          # LSP
-          nvim-lspconfig
-          lsp_signature-nvim
-          lspsaga-nvim
-
-          # UI
-          telescope-nvim
-          nvim-tree-lua
-          symbols-outline-nvim
-          marks-nvim
-          lualine-nvim
-          lualine-lsp-progress
-          (buildPlugin "github-nvim-theme")
-          #nvim-base16
-
-          # Tree-sitter
-          nvim-treesitter.withAllGrammars
-          (buildPlugin "syntax-tree-surfer")
-          playground
-
-          # Completion
-          nvim-cmp
-          cmp-nvim-lsp
-          cmp-buffer
-
-          # Git
-          diffview-nvim
-          neogit
-          gitsigns-nvim
-
-          # Others
-          formatter-nvim
-          nvim-lint
-          nvim-snippy
-          nvim-autopairs
-          vim-wordmotion
-          vim-unimpaired
-          vim-commentary
-          hop-nvim
-          surround-nvim
-        ];
-    };
   };
 }

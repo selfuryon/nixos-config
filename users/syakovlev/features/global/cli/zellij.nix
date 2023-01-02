@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-let userName = "syakovlev";
-in {
-  home-manager.users.${userName}.programs.zellij = {
+{ pkgs, ... }: {
+  programs.zellij = {
     enable = true;
     settings = {
       ui.pane_frames.rounded_corners = true;

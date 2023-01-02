@@ -1,3 +1,1 @@
-{ inputs, pkgs, ... }:
-let userName = "syakovlev";
-in { imports = [ ./cli ./nvim ]; }
+{ inputs, pkgs, ... }: { imports = [ ./cli ./nvim ]; }

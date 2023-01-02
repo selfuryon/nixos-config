@@ -1,5 +1,7 @@
 { inputs, ... }: {
   imports = with inputs.self.roles; [
+    # Global configuration
+    ../common/global
     # Local role
     ./firewall.nix
     ./hardware-configuration.nix
