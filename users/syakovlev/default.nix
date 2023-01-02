@@ -29,7 +29,6 @@ in {
     noPass = true;
   }];
 
-
   home-manager.users.${userName} = {
     imports = [ ./features/global ];
     programs.home-manager.enable = true;

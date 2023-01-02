@@ -4,7 +4,7 @@
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "172.31.253.1/24" ];
-      listenPort = 51820;
+      listenPort = 51821;
       privateKeyFile = config.age.secrets.wireguard.path;
 
       peers = [

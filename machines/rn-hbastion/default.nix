@@ -6,7 +6,6 @@
     ./firewall.nix
     ./hardware-configuration.nix
     ./networking.nix
-    ./wireguard.nix
   ];
 
   networking.hostName = "rn-hbastion";
