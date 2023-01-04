@@ -2,8 +2,8 @@
   environment.systemPackages = with pkgs; [ podman-compose ];
   virtualisation.podman = {
     enable = true;
+    extraPackages = [ pkgs.zfs ];
     dockerCompat = true;
-    dockerSocket.enable = true;
     defaultNetwork.dnsname.enable = true;
   };
 }
