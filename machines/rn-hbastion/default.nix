@@ -1,5 +1,5 @@
-{ inputs, ... }: {
-  imports = with inputs.self.roles; [
+{ ... }: {
+  imports = [
     # Global configuration
     ../common/global
     # Local role
