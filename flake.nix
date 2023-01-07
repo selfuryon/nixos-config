@@ -69,6 +69,8 @@
       };
     in {
       overlays = import ./overlays;
+      homeManagerModules = import ./modules/home-manager;
+      nixosModules = import ./modules/nixos;
       nixosConfigurations =
         lib.mapAttrs (name: config: mkSystem config) inventory;
 

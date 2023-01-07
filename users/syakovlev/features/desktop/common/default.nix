@@ -4,6 +4,7 @@
     ./firefox.nix
     ./dunst.nix
     ./foot.nix
+    ./font.nix
     ./gtk.nix
     ./qt.nix
     ./mpd.nix

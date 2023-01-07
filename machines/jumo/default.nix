@@ -2,7 +2,6 @@
   imports = [
     # Global configuration
     ../common/global
-    ../common/optional/fonts.nix
     ../common/optional/pipewire.nix
     ../common/optional/libvirt.nix
     ../common/optional/network-manager.nix

@@ -1,1 +1,7 @@
-{ inputs, pkgs, ... }: { imports = [ ./cli ./nvim ]; }
+{ inputs, pkgs, lib, ... }: {
+  imports = [
+    inputs.self.homeManagerModules
+    ./cli
+    ./nvim
+  ];
+}
