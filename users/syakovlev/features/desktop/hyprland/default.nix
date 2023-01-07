@@ -66,6 +66,9 @@
         kb_variant=,chm
         kb_options=grp:shift_caps_switch
         follow_mouse=0
+        touchpad {
+          natural_scroll=true
+        }
       }
       dwindle {
         force_split=2

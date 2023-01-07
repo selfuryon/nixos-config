@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -10,8 +10,7 @@
         };
       };
       font = {
-        normal.family = "JetBrainsMono Nerd Font";
-        #normal.family = "B612 Mono";
+        normal.family = "${config.themes.fontProfile.monospace.family}";
         size = 13.0;
       };
 

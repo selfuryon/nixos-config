@@ -14,9 +14,9 @@ let
       example = "pkgs.fira-code";
     };
   };
-  cfg = config.fontProfiles;
+  cfg = config.themes.fontProfile;
 in {
-  options.fontProfiles = {
+  options.themes.fontProfile = {
     enable = lib.mkEnableOption "Whether to enable font profiles";
     monospace = mkFontOption "monospace";
     regular = mkFontOption "regular";

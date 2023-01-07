@@ -30,8 +30,9 @@ in {
   }];
 
   home-manager.users.${userName} = {
-    imports = [ ./features/global ];
+    imports = [ inputs.base16.homeManagerModule ./features/global ];
     programs.home-manager.enable = true;
     home.stateVersion = "23.05";
+    scheme = "${inputs.base16-schemes}/github.yaml";
   };
 }

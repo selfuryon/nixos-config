@@ -1,8 +1,8 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     noto-fonts
-    hermit
-    b612
+    #hermit
+    #b612
     fira-code
     paratype-pt-sans
     paratype-pt-mono
@@ -11,7 +11,7 @@
     inter
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-  fontProfiles = {
+  themes.fontProfile = {
     enable = true;
     monospace = {
       family = "JetBrainsMono Nerd Font";

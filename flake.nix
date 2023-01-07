@@ -23,6 +23,14 @@
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    base16 = {
+      url = "github:SenchoPens/base16.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    base16-schemes = {
+      url = "github:base16-project/base16-schemes";
+      flake = false;
+    };
 
     # Neovim plugins
     "syntax-tree-surfer" = {
