@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   home.packages = with pkgs; [ wofi ];
 
   xdg.configFile."wofi/config".text = ''
@@ -17,24 +17,21 @@
     display_generic=true
   '';
 
-  xdg.configFile."wofi/style.css".text = ''
-    #window {
-      background-color: #ffffff;
-      padding: 5px;
-      border: 1px solid black;
-      border-radius: 10px;
-    }
-    #input {
-      background-color: #ffffff;
-      border: 1px solid;
-    }
-    #entry {
-      color: #24292f;
-      padding: 10px;
+  # https://git.sr.ht/~knezi/base16-wofi
+  xdg.configFile."wofi/style.css".text = with config.scheme.withHashtag; ''
+    window {
+    	background-color: ${base00};
+    	color: ${base05};
     }
     #entry:selected {
-      color: #ffffff;
-      background-color: #0969da;
+    	border-color: ${base0A}; 
+    }
+    #input {
+    	background-color: ${base00};
+    	border-color: ${base02}; 
+    }
+    #input:focus {
+    	border-color: ${base0A}; 
     }
   '';
 }
