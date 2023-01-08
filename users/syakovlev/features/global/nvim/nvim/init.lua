@@ -33,6 +33,7 @@ vim.o.foldenable = false
 vim.o.foldmethod = 'indent'
 vim.o.foldlevelstart = 2
 vim.o.listchars = 'eol:$,tab:>-,space:.,trail:~,extends:>,precedes:<,nbsp:+'
+vim.o.wildmode = "full:longest"
 
 -- search 
 vim.o.smartcase = true

@@ -304,10 +304,10 @@ in {
       margin-bottom: 0;
       border-radius: 10px;
       }
+      #tray {
+      color: ${base05};
+      }
     '';
-    # #tray {
-    # color: ${base05};
-    # }
     #   style = ''
     #     * {
     #     font-family: "JetBrainsMono Nerd Font Mono", "Font Awesome 6 Free";

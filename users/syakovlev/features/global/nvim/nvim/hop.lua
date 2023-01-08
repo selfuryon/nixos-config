@@ -6,7 +6,7 @@ local options = {noremap=true}
 
 -- Hop bindings
 vim.api.nvim_set_keymap ('n', '//', [[<cmd>lua require('hop').hint_patterns()<CR>]], options)
-vim.api.nvim_set_keymap ('n', '<leader>s', [[<cmd>lua require('hop').hint_patterns()<CR>]], options)
+vim.api.nvim_set_keymap ('n', '<leader>h', [[<cmd>lua require('hop').hint_patterns()<CR>]], options)
 vim.api.nvim_set_keymap ('n', '<leader>j', [[<cmd>lua require('hop').hint_words()<CR>]], options)
 vim.api.nvim_set_keymap ('n', '<leader>l', [[<cmd>lua require('hop').hint_lines()<CR>]], options)
 vim.api.nvim_set_keymap ('n', '<leader>2', [[<cmd>lua require('hop').hint_char2()<CR>]], options)
