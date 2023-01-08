@@ -2,6 +2,7 @@
   imports = [ inputs.hyprland.homeManagerModules.default ../common ];
   home.packages = with pkgs; [
     wayland
+    swaybg
     glib # gsettings
     qt5.qtwayland
     libsForQt5.lightly
@@ -22,13 +23,12 @@
     GDK_BACKEND = "wayland,x11";
     GTK_USE_PORTAL = 1;
     #NIXOS_OZONE_WL = 1;
-
   };
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
     recommendedEnvironment = true;
-    extraConfig = ''
+    extraConfig = with config.scheme; ''
       monitor=eDP-1,1920x1080,0x0,1
       monitor=HDMI-A-1,1920x1080,0x1080,1
       monitor=,preferred,auto,1
@@ -36,30 +36,47 @@
 
       general {
         gaps_in=15
-        gaps_out=10
-        border_size=2
-        col.active_border=0xffc0caf5
-        col.inactive_border=0xffc0caf5
+        gaps_out=20
+        border_size=3
+        cursor_inactive_timeout=4
+
+        col.active_border=0xff${base0C}
+        col.inactive_border=0xff${base02}
       }
       decoration {
-        rounding=12
-        multisample_edges=true
+        active_opacity=1
         blur=true
-        blur_size=12 # minimum 1
-        blur_passes=3 # minimum 1
-        blur_new_optimizations=1
-        drop_shadow=true
-        shadow_range=20
-        shadow_render_power	= 3
+        blur_ignore_opacity=true
+        blur_new_optimizations=true
+        blur_passes=3
+        blur_size=6  # old 12
         dim_inactive = true
         dim_strength = .105
+        drop_shadow=true
+        fullscreen_opacity=1.0
+        rounding=12
+        shadow_offset=3 3
+        shadow_range=12 # old 20
+
+        inactive_opacity=0.80
+        col.shadow=0x44000000
+        col.shadow_inactive=0x66000000
       }
       animations {
         enabled=true
-        animation=windows,1,7,default
-        animation=border,1,10,default
-        animation=fade,1,10,default
-        animation=workspaces,1,6,default
+        bezier=easein,0.11, 0, 0.5, 0
+        bezier=easeout,0.5, 1, 0.89, 1
+        bezier=easeinout,0.45, 0, 0.55, 1
+        animation=windowsIn,1,3,easeout,slide
+        animation=windowsOut,1,3,easein,slide
+        animation=windowsMove,1,3,easeout
+        animation=fadeIn,1,3,easeout
+        animation=fadeOut,1,3,easein
+        animation=fadeSwitch,1,3,easeout
+        animation=fadeShadow,1,3,easeout
+        animation=fadeDim,1,3,easeout
+        animation=border,1,3,easeout
+        animation=workspaces,1,2,easeout,slide
       }
       input {
         kb_layout=us,ru
@@ -74,6 +91,10 @@
         force_split=2
         pseudotile=0 # enable pseudotiling on dwindle
         no_gaps_when_only=false
+
+        col.group_border_active=0xff${base0B}
+        col.group_border=0xff${base04}
+        split_width_multiplier=1.35
       }
       # Mouse
       bindm=SUPER,mouse:272,movewindow
@@ -348,12 +369,15 @@
       # Special
       bind=SUPER,minus,togglespecialworkspace,
       bind=SUPERSHIFT,minus,movetoworkspace,special
+
       # Split
       bind=SUPER,F,fullscreen,
       bind=SUPER,E,togglegroup,
       bind=SUPER,L,changegroupactive,f
       bind=SUPER,H,changegroupactive,b
-      bind=ALT,S,togglesplit,
+      bind=SUPER,apostrophe,changegroupactive,f
+      bind=SUPERSHIFT,apostrophe,changegroupactive,b
+
       # Resize Mode with Alt + R : Press Escape to quit
       bind=SUPER,R,submap,resize # will switch to a submap called resize
       submap=resize # will start a submap called "resize"
@@ -365,9 +389,11 @@
       submap=reset # will reset the submap, meaning end the current one and return to the global one.
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
       exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+      exec-once=${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill
 
       windowrulev2=float,class:^(MEGAsync)$
       windowrulev2=float,size 0 0, move 10 10,title:(Sharing Indicator)
+      windowrulev2=float,pin,class:(pavucontrol)
     '';
   };
 }
