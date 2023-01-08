@@ -321,6 +321,13 @@
       bind=,return,submap,reset
       submap=reset
        # Media
+      bind=,XF86AudioNext,exec,playerctl next
+      bind=,XF86AudioPrev,exec,playerctl previous
+      bind=,XF86AudioPlay,exec,playerctl play-pause
+      bind=,XF86AudioStop,exec,playerctl stop
+      bind=ALT,XF86AudioNext,exec,playerctld shift
+      bind=ALT,XF86AudioPrev,exec,playerctld unshift
+      bind=ALT,XF86AudioPlay,exec,systemctl --user restart playerctld
       bind=,XF86AudioLowerVolume,exec,pamixer -d 5
       bind=,XF86AudioMute,exec,pamixer -t
       bind=,XF86AudioRaiseVolume,exec,pamixer -i 5
@@ -356,7 +363,6 @@
       bind=,j,resizeactive,0 30
       bind=,escape,submap,reset # use reset to go back to the global submap
       submap=reset # will reset the submap, meaning end the current one and return to the global one.
-      exec-once=waybar
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
       exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
 

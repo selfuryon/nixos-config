@@ -8,6 +8,7 @@
     ./gtk.nix
     ./qt.nix
     ./mpd.nix
+    ./playerctl.nix
     ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix

@@ -22,6 +22,8 @@
     window {
     	background-color: ${base00};
     	color: ${base05};
+      font-size: 13pt;
+      font-family: "${config.themes.fontProfile.regular.family}";
     }
     #entry:selected {
     	border-color: ${base0A}; 

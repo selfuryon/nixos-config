@@ -3,14 +3,12 @@
     noto-fonts
     #hermit
     #b612
-    fira-code
     paratype-pt-sans
     paratype-pt-mono
     paratype-pt-serif
     font-awesome
-    inter
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
+
   themes.fontProfile = {
     enable = true;
     monospace = {
