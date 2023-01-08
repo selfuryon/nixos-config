@@ -46,138 +46,138 @@ in {
     package = inputs.hyprland.packages."x86_64-linux".waybar-hyprland;
     settings = {
       # secondary = {
-      # mode = "dock";
-      # layer = "top";
-      # height = 32;
-      # width = 100;
-      # margin = "6";
-      # position = "bottom";
-      # modules-center = [ "wlr/workspaces" ];
-
-      # "wlr/workspaces" = { on-click = "activate"; };
+      #   mode = "dock";
+      #   layer = "top";
+      #   height = 32;
+      #   width = 100;
+      #   margin = "6";
+      #   position = "bottom";
+      #   modules-center = [ "wlr/workspaces" ];
+      #
+      #   "wlr/workspaces" = { on-click = "activate"; };
       # };
       # primary = {
-      # mode = "dock";
-      # layer = "top";
-      # height = 40;
-      # margin = "6";
-      # position = "top";
-      # modules-left = [
-      # "custom/nixos"
-      # "idle_inhibitor"
-      # "custom/currentplayer"
-      # "custom/player"
-      # ];
-      # modules-center = [ "cpu" "memory" "clock" "pulseaudio" ];
-      # modules-right = [ "network" "battery" "tray" "custom/hostname" ];
-
-      # "custom/nixos" = {
-      # exec = checkNixosUpdates;
-      # on-click = checkNixosUpdates;
-      # return-type = "json";
-      # format = "{icon}";
-      # format-icons = {
-      # update = "";
-      # noupdate = "";
-      # };
-      # interval = 10800;
-      # };
-      # clock = {
-      # format = "{:%d/%m %H:%M}";
-      # tooltip-format = ''
-      # <big>{:%Y %B}</big>
-      # <tt><small>{calendar}</small></tt>'';
-      # on-click = calendar;
-      # };
-      # cpu = {
-      # format = "   {usage}%";
-      # on-click = systemMonitor;
-      # };
-      # memory = {
-      # format = "  {}%";
-      # interval = 5;
-      # on-click = systemMonitor;
-      # };
-      # pulseaudio = {
-      # format = "{icon}  {volume}%";
-      # format-muted = "   0%";
-      # format-icons = {
-      # headphone = "";
-      # headset = "";
-      # portable = "";
-      # default = [ "" "" "" ];
-      # };
-      # on-click = pavucontrol;
-      # };
-      # idle_inhibitor = {
-      # format = "{icon}";
-      # format-icons = {
-      # activated = "零";
-      # deactivated = "鈴";
-      # };
-      # };
-      # battery = {
-      # bat = "BAT0";
-      # interval = 10;
-      # format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-      # format = "{icon} {capacity}%";
-      # format-charging = " {capacity}%";
-      # onclick = "";
-      # };
-      # network = {
-      # interval = 3;
-      # format-wifi = "   {essid}";
-      # format-ethernet = " Connected";
-      # format-disconnected = "";
-      # tooltip-format = ''
-      # {ifname}
-      # {ipaddr}/{cidr}
-      # Up: {bandwidthUpBits}
-      # Down: {bandwidthDownBits}'';
-      # on-click = "";
-      # };
-      # "custom/hostname" = {
-      # exec = "echo $USER@$(hostname)";
-      # on-click = terminal;
-      # };
-      # "custom/currentplayer" = {
-      # interval = 2;
-      # return-type = "json";
-      # exec = jsonOutput "currentplayer" {
-      # pre = ''
-      # player="$(${playerctl} status -f "{{playerName}}" 2>/dev/null || echo "No players found" | cut -d '.' -f1)"'';
-      # alt = "$player";
-      # tooltip = "$player";
-      # };
-      # format = "{icon}";
-      # format-icons = {
-      # "No players found" = "ﱘ";
-      # "Celluloid" = "";
-      # "spotify" = "阮";
-      # "ncspot" = "阮";
-      # "qutebrowser" = "爵";
-      # "firefox" = "";
-      # "discord" = "ﭮ";
-      # "sublimemusic" = "";
-      # };
-      # on-click = "${playerctld} shift";
-      # on-click-right = "${playerctld} unshift";
-      # };
-      # "custom/player" = {
-      # exec-if = "${playerctl} status";
-      # exec = ''
-      # ${playerctl} metadata --format '{"text": "{{artist}} - {{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' '';
-      # return-type = "json";
-      # interval = 2;
-      # max-length = 30;
-      # format = "{icon} {}";
-      # format-icons = {
-      # "Playing" = "契";
-      # "Paused" = " ";
-      # "Stopped" = "栗";
-      # };
-      # on-click = "${playerctl} play-pause";
-      # };
+      #   mode = "dock";
+      #   layer = "top";
+      #   height = 40;
+      #   margin = "6";
+      #   position = "top";
+      #   modules-left = [
+      #     "custom/nixos"
+      #     "idle_inhibitor"
+      #     "custom/currentplayer"
+      #     "custom/player"
+      #   ];
+      #   modules-center = [ "cpu" "memory" "clock" "pulseaudio" ];
+      #   modules-right = [ "network" "battery" "tray" "custom/hostname" ];
+      #
+      #   "custom/nixos" = {
+      #     exec = checkNixosUpdates;
+      #     on-click = checkNixosUpdates;
+      #     return-type = "json";
+      #     format = "{icon}";
+      #     format-icons = {
+      #       update = "";
+      #       noupdate = "";
+      #     };
+      #     interval = 10800;
+      #   };
+      #   clock = {
+      #     format = "{:%d/%m %H:%M}";
+      #     tooltip-format = ''
+      #       <big>{:%Y %B}</big>
+      #       <tt><small>{calendar}</small></tt>'';
+      #     on-click = calendar;
+      #   };
+      #   cpu = {
+      #     format = "   {usage}%";
+      #     on-click = systemMonitor;
+      #   };
+      #   memory = {
+      #     format = "  {}%";
+      #     interval = 5;
+      #     on-click = systemMonitor;
+      #   };
+      #   pulseaudio = {
+      #     format = "{icon}  {volume}%";
+      #     format-muted = "   0%";
+      #     format-icons = {
+      #       headphone = "";
+      #       headset = "";
+      #       portable = "";
+      #       default = [ "" "" "" ];
+      #     };
+      #     on-click = pavucontrol;
+      #   };
+      #   idle_inhibitor = {
+      #     format = "{icon}";
+      #     format-icons = {
+      #       activated = "零";
+      #       deactivated = "鈴";
+      #     };
+      #   };
+      #   battery = {
+      #     bat = "BAT0";
+      #     interval = 10;
+      #     format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+      #     format = "{icon} {capacity}%";
+      #     format-charging = " {capacity}%";
+      #     onclick = "";
+      #   };
+      #   network = {
+      #     interval = 3;
+      #     format-wifi = "   {essid}";
+      #     format-ethernet = " Connected";
+      #     format-disconnected = "";
+      #     tooltip-format = ''
+      #       {ifname}
+      #       {ipaddr}/{cidr}
+      #       Up: {bandwidthUpBits}
+      #       Down: {bandwidthDownBits}'';
+      #     on-click = "";
+      #   };
+      #   "custom/hostname" = {
+      #     exec = "echo $USER@$(hostname)";
+      #     on-click = terminal;
+      #   };
+      #   "custom/currentplayer" = {
+      #     interval = 2;
+      #     return-type = "json";
+      #     exec = jsonOutput "currentplayer" {
+      #       pre = ''
+      #         player="$(${playerctl} status -f "{{playerName}}" 2>/dev/null || echo "No players found" | cut -d '.' -f1)"'';
+      #       alt = "$player";
+      #       tooltip = "$player";
+      #     };
+      #     format = "{icon}";
+      #     format-icons = {
+      #       "No players found" = "ﱘ";
+      #       "Celluloid" = "";
+      #       "spotify" = "阮";
+      #       "ncspot" = "阮";
+      #       "qutebrowser" = "爵";
+      #       "firefox" = "";
+      #       "discord" = "ﭮ";
+      #       "sublimemusic" = "";
+      #     };
+      #     on-click = "${playerctld} shift";
+      #     on-click-right = "${playerctld} unshift";
+      #   };
+      #   "custom/player" = {
+      #     exec-if = "${playerctl} status";
+      #     exec = ''
+      #       ${playerctl} metadata --format '{"text": "{{artist}} - {{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' '';
+      #     return-type = "json";
+      #     interval = 2;
+      #     max-length = 30;
+      #     format = "{icon} {}";
+      #     format-icons = {
+      #       "Playing" = "契";
+      #       "Paused" = " ";
+      #       "Stopped" = "栗";
+      #     };
+      #     on-click = "${playerctl} play-pause";
+      #   };
       # };
       mainBar = {
         layer = "top";

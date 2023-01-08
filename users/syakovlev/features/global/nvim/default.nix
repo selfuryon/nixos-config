@@ -45,12 +45,11 @@ in {
         # LSP
         nvim-lspconfig
         lsp_signature-nvim
-        lspsaga-nvim
+        lspsaga-nvim-original
 
         # UI
         telescope-nvim
         nvim-tree-lua
-        symbols-outline-nvim
         marks-nvim
         lualine-nvim
         lualine-lsp-progress
@@ -79,7 +78,7 @@ in {
         nvim-autopairs
         vim-wordmotion
         vim-unimpaired
-        vim-commentary
+        comment-nvim
         hop-nvim
         surround-nvim
       ];
