@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+in {
   services.swayidle = {
     enable = true;
     events = [{
@@ -12,8 +14,8 @@
       }
       {
         timeout = 600;
-        command = ''swaymsg "output * dpms off"'';
-        resumeCommand = ''swaymsg "output * dpms on "'';
+        command = "${hyprctl} 'output * dpms off'";
+        resumeCommand = "${hyprctl} 'output * dpms on'";
       }
     ];
   };
