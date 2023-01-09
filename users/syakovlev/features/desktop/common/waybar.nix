@@ -28,7 +28,8 @@ in {
         position = "top";
         modules-left = [ "custom/nixos" "tray" "idle_inhibitor" "mpris" ];
         modules-center = [ "wlr/workspaces" ];
-        modules-right = [ "network" "wireplumber" "battery" "clock" "custom/hostname" ];
+        modules-right =
+          [ "network" "wireplumber" "battery" "clock" "custom/hostname" ];
 
         "wlr/workspaces" = { on-click = "activate"; };
         "custom/nixos" = {
@@ -67,8 +68,8 @@ in {
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
-            activated = "零";
-            deactivated = "鈴";
+            activated = "";
+            deactivated = "";
           };
         };
         battery = {
