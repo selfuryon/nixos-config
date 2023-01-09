@@ -44,10 +44,15 @@ in {
           interval = 10800;
         };
         clock = {
-          format = "{:%d/%m %H:%M}";
+          format = " {:%Y-%d-%m %H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
+          today-format = "<span color='#ff6699'><b><u>{}</u></b></span>";
+          format-calendar = "<span color='#ecc6d9'><b>{}</b></span>";
+          format-calendar-weeks = "<span color='#99ffdd'><b>W{:%U}</b></span>";
+          format-calendar-weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+          on-scroll = { calendar = 1; };
         };
         pulseaudio = {
           format = "{icon}  {volume}%";
@@ -61,7 +66,7 @@ in {
           on-click = pavucontrol;
         };
         wireplumber = {
-          format = "{volume}%";
+          format = " {volume}%";
           format-muted = "   0%";
           on-click = pavucontrol;
         };
@@ -128,23 +133,20 @@ in {
       padding: 0;
       background-color: ${base00};
       border: 2px solid ${base0C};
+      border-top-width: 4px;
       border-radius: 10px;
       }
       window#waybar {
       color: ${base05};
       }
-      #workspaces {
-      margin: 5px;
-      padding: 0px;
+      #workspaces * {
+      padding: 0 4px;
       }
       #workspaces button {
       color: ${base05};
       border-radius: 0px;
-      margin: 0px;
-      padding: 0px 2px 0px 0px;
-      border-bottom-style: solid;
-      border-bottom-width: 4px;
-      border-bottom-color: ${base02};
+      margin: 4px 2px;
+      border-bottom: 4px solid ${base02};
       }
       #workspaces button.hidden {
       background-color: ${base00};
@@ -152,9 +154,7 @@ in {
       }
       #workspaces button.focused,
       #workspaces button.active {
-      border-bottom-style: solid;
-      border-bottom-width: 4px;
-      border-bottom-color: ${base0C};
+      border-bottom: 4px solid ${base0C};
       }
       #custom-nixos {
       font-size: 24px;
