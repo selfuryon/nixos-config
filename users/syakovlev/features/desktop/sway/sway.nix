@@ -147,7 +147,7 @@ in {
 
       keybindings = let
         modifier =
-          config.home-manager.users.${userName}.wayland.windowManager.sway.config.modifier;
+          config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
         # Control volume
         XF86AudioRaiseVolume = "exec pamixer -i 5";

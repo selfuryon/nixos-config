@@ -44,13 +44,13 @@ in {
           interval = 10800;
         };
         clock = {
-          format = " {:%Y-%d-%m %H:%M}";
+          format = " {:%Y-%m-%d %H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
           today-format = "<span color='#ff6699'><b><u>{}</u></b></span>";
           format-calendar = "<span color='#ecc6d9'><b>{}</b></span>";
-          format-calendar-weeks = "<span color='#99ffdd'><b>W{:%U}</b></span>";
+          format-calendar-weeks = "<span color='#99ffdd'><b>W{:%V}</b></span>";
           format-calendar-weekdays = "<span color='#ffcc66'><b>{}</b></span>";
           on-scroll = { calendar = 1; };
         };
