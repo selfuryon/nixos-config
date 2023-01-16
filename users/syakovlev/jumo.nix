@@ -24,6 +24,4 @@ in {
       driSupport = true;
     };
   };
-
-  qt5.platformTheme = "qt5ct";
 }
