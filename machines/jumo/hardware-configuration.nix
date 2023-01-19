@@ -52,6 +52,7 @@
   hardware = {
     cpu.intel.updateMicrocode = true;
     bluetooth.enable = true;
+    ledger.enable = true;
   };
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }

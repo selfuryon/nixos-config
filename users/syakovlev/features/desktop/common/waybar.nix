@@ -2,6 +2,7 @@
 let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   hostname = "${pkgs.nettools}/bin/hostname";
+  dunstctl = "${pkgs.dunst}/bin/dunstctl";
 
   checkNixosUpdates = pkgs.writeShellScript "checkUpdates.sh" ''
     UPDATE='{"text": "Update", "alt": "update", "class": "update"}'
@@ -11,6 +12,14 @@ let
     CURRENT_REVISION=$(nixos-version --revision)
     REMOTE_REVISION=$(curl -s $GITHUB_URL | jq '.object.sha' -r )
     [ $CURRENT_REVISION == $REMOTE_REVISION ] && echo $NO_UPDATE || echo $UPDATE
+  '';
+  dusntNotifications = pkgs.writeShellScript "dunstNotifications.sh" ''
+    PAUSED='{"text": "Paused", "alt": "paused", "class": "paused"}'
+    ENABLED='{"text": "Enabled", "alt": "enabled", "class": "enabled"}'
+    COUNT=$(${dunstctl} count waiting)
+    STATUS=$(${dunstctl} is-paused)
+
+    [ $STATUS == "true" ] && echo $PAUSED || echo $ENABLED
   '';
 in {
   programs.waybar = {
@@ -26,7 +35,13 @@ in {
         height = 40;
         margin = "6";
         position = "top";
-        modules-left = [ "custom/nixos" "tray" "idle_inhibitor" "mpris" ];
+        modules-left = [
+          "custom/nixos"
+          "tray"
+          "idle_inhibitor"
+          #"custom/notifications"
+          "mpris"
+        ];
         modules-center = [ "wlr/workspaces" ];
         modules-right =
           [ "network" "wireplumber" "battery" "clock" "custom/hostname" ];
@@ -42,6 +57,16 @@ in {
             noupdate = "";
           };
           interval = 10800;
+        };
+        "custom/notifications" = {
+          exec = dusntNotifications;
+          on-click = "${dunstctl} set-paused toggle";
+          return-type = "json";
+          format = "{icon}";
+          format-icons = {
+            paused = "";
+            enabled = "";
+          };
         };
         clock = {
           format = " {:%Y-%m-%d %H:%M}";
@@ -102,17 +127,17 @@ in {
         };
         "custom/hostname" = { exec = "echo $USER@$(${hostname})"; };
         "mpris" = {
-          format = "DEFAULT: {player_icon} {dynamic}";
-          format-paused = "DEFAULT: {status_icon} <i>{dynamic}</i>";
+          format = "{player_icon}";
+          format-paused = "{status_icon}";
+          format-stopped = "{status_icon}";
           player-icons = {
-            default = "▶";
-            mpv = "🎵";
-            spotify = "阮";
-            qutebrowser = "爵";
+            default = "";
             firefox = "";
-            discord = "ﭮ";
           };
-          status-icons = { paused = "⏸"; };
+          status-icons = {
+            paused = "";
+            stopped = "";
+          };
         };
       };
     };

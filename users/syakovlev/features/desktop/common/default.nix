@@ -91,6 +91,7 @@
     insomnia
     keepassxc
     libreoffice
+    ledger-live-desktop
     megasync
     mpv
     networkmanagerapplet
