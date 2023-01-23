@@ -33,6 +33,10 @@
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
     mission-control.url = "github:Platonic-Systems/mission-control";
+    statix = {
+      url = "github:nerdypepper/statix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Neovim plugins
     "syntax-tree-surfer" = {
@@ -52,7 +56,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    lib = nixpkgs.lib;
+    inherit (nixpkgs) lib;
     myLib = import ./lib.nix nixpkgs.lib;
     system = "x86_64-linux";
 
@@ -100,9 +104,9 @@
     homeManagerModules = import ./modules/home-manager;
     nixosModules = import ./modules/nixos;
     nixosConfigurations =
-      lib.mapAttrs (name: config: mkSystem config) inventory;
+      lib.mapAttrs (name: mkSystem) inventory;
 
-    deploy.nodes = lib.mapAttrs (name: config: mkDeployNode config) inventory;
+    deploy.nodes = lib.mapAttrs (name: mkDeployNode) inventory;
 
     checks =
       builtins.mapAttrs
@@ -114,6 +118,7 @@
         packages = [
           inputs.deploy-rs.defaultPackage.${system}
           inputs.ragenix.defaultPackage.${system}
+          statix
         ];
       };
     formatter.${system} = inputs.treefmt-nix.lib.mkWrapper nixpkgs.legacyPackages.${system} {
