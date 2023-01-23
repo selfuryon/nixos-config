@@ -1,5 +1,11 @@
-{ inputs, config, lib, pkgs, ... }: {
-  imports = [ inputs.hyprland.homeManagerModules.default ../common ];
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [inputs.hyprland.homeManagerModules.default ../common];
   home.packages = with pkgs; [
     wayland
     swaybg

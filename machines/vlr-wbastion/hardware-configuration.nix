@@ -1,15 +1,19 @@
-{ modulesPath, pkgs, config, lib, ... }: {
-
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+{
+  modulesPath,
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
+  imports = [(modulesPath + "/profiles/qemu-guest.nix")];
 
   # Kernel parameters
   boot = {
-    initrd.availableKernelModules =
-      [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
-    initrd.kernelModules = [ ];
+    initrd.availableKernelModules = ["ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk"];
+    initrd.kernelModules = [];
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ ];
-    extraModulePackages = [ ];
+    kernelModules = [];
+    extraModulePackages = [];
     loader.grub = {
       enable = true;
       version = 2;
@@ -24,11 +28,13 @@
     fsType = "ext4";
   };
 
-  swapDevices = [{
-    device = "/swapfile";
-    priority = 0;
-    size = 4096;
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      priority = 0;
+      size = 4096;
+    }
+  ];
 
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;

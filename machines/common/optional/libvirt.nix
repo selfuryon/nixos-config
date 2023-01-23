@@ -1,1 +1,1 @@
-{ pkgs, ... }: { virtualisation.libvirtd.enable = true; }
+{pkgs, ...}: {virtualisation.libvirtd.enable = true;}

@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   sway_mod = "Mod4";
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
@@ -28,7 +32,7 @@ let
     '';
   };
 in {
-  imports = [ ../common ];
+  imports = [../common];
   home.packages = with pkgs; [
     dbus-sway-environment
     configure-gtk
@@ -46,13 +50,12 @@ in {
     systemdIntegration = false; # sway-session.target
 
     config = {
-      bars = [{ command = "waybar"; }];
+      bars = [{command = "waybar";}];
       terminal = "${pkgs.alacritty}/bin/alacritty";
       modifier = "${sway_mod}";
-      menu =
-        "${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wofi}/bin/wofi --show drun -i | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+      menu = "${pkgs.dmenu}/bin/dmenu_path | ${pkgs.wofi}/bin/wofi --show drun -i | ${pkgs.findutils}/bin/xargs swaymsg exec --";
       fonts = {
-        names = [ "JetBrainsMono Nerd Font" ];
+        names = ["JetBrainsMono Nerd Font"];
         size = 10.0;
       };
 
@@ -75,7 +78,7 @@ in {
       };
 
       # Output configuration
-      output."*" = { bg = "/home/syakovlev/Pictures/wife2.jpg fill"; };
+      output."*" = {bg = "/home/syakovlev/Pictures/wife2.jpg fill";};
       output."eDP-1" = {
         mode = "1920x1080";
         pos = "0,2160";
@@ -83,139 +86,137 @@ in {
 
       startup = [
         # Services
-        { command = "swaync"; }
-        { command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
+        {command = "swaync";}
+        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";}
         {
-          command =
-            "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         }
-        { command = "dbus-sway-environment"; }
-        { command = "configure-gtk"; }
+        {command = "dbus-sway-environment";}
+        {command = "configure-gtk";}
       ];
 
       assigns = {
-        "20" = [{ app_id = "code"; }];
-        "30" = [{ class = "firefox"; }];
-        "40" = [{ class = "Thunderbird"; }];
+        "20" = [{app_id = "code";}];
+        "30" = [{class = "firefox";}];
+        "40" = [{class = "Thunderbird";}];
         "80" = [
-          { class = "Slack"; }
-          { class = "discord"; }
-          { app_id = "telegramdesktop"; }
+          {class = "Slack";}
+          {class = "discord";}
+          {app_id = "telegramdesktop";}
         ];
-        "90" = [{ class = "KeePassXC"; }];
+        "90" = [{class = "KeePassXC";}];
       };
 
       floating.criteria = [
-        { window_role = "pop-up"; }
-        { window_role = "task_dialog"; }
-        { app_id = "nz.co.mega."; }
-        { app_id = "org.keepassxc.KeePassXC"; }
+        {window_role = "pop-up";}
+        {window_role = "task_dialog";}
+        {app_id = "nz.co.mega.";}
+        {app_id = "org.keepassxc.KeePassXC";}
       ];
 
       window.commands = [
         {
-          criteria = { floating = true; };
+          criteria = {floating = true;};
           command = "border pixel 2";
         }
         {
-          criteria = { workspace = "3"; };
+          criteria = {workspace = "3";};
           command = "layout tabbed";
         }
         {
-          criteria = { workspace = "8"; };
+          criteria = {workspace = "8";};
           command = "layout tabbed";
         }
         {
-          criteria = { class = "firefox"; };
+          criteria = {class = "firefox";};
           command = "inhibit_idle fullscreen";
         }
         {
-          criteria = { app_id = "pavucontrol"; };
-          command =
-            "floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 100";
+          criteria = {app_id = "pavucontrol";};
+          command = "floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 100";
         }
         {
-          criteria = { class = "MEGAsync"; };
+          criteria = {class = "MEGAsync";};
           command = "floating enable, move position center";
         }
         {
-          criteria = { title = "Firefox — Sharing Indicator"; };
-          command =
-            "floating enable, no_focus, resize set 0 0, move absolute position 10 10";
+          criteria = {title = "Firefox — Sharing Indicator";};
+          command = "floating enable, no_focus, resize set 0 0, move absolute position 10 10";
         }
       ];
 
       keybindings = let
         modifier =
           config.wayland.windowManager.sway.config.modifier;
-      in lib.mkOptionDefault {
-        # Control volume
-        XF86AudioRaiseVolume = "exec pamixer -i 5";
-        XF86AudioLowerVolume = "exec pamixer -d 5";
-        XF86AudioMute = "exec pamixer -t";
-        #XF86AudioMicMute = "";
+      in
+        lib.mkOptionDefault {
+          # Control volume
+          XF86AudioRaiseVolume = "exec pamixer -i 5";
+          XF86AudioLowerVolume = "exec pamixer -d 5";
+          XF86AudioMute = "exec pamixer -t";
+          #XF86AudioMicMute = "";
 
-        # Control media
-        #XF86AudioPlay  = "exec playerctl play-pause";
-        #XF86AudioPause = "exec playerctl play-pause";
-        #XF86AudioNext  = "exec playerctl next";
-        #XF86AudioPrev  = "exec playerctl previous";
+          # Control media
+          #XF86AudioPlay  = "exec playerctl play-pause";
+          #XF86AudioPause = "exec playerctl play-pause";
+          #XF86AudioNext  = "exec playerctl next";
+          #XF86AudioPrev  = "exec playerctl previous";
 
-        # Control brightness
-        XF86MonBrightnessUp = "exec light -A 5";
-        XF86MonBrightnessDown = "exec light -U 5";
+          # Control brightness
+          XF86MonBrightnessUp = "exec light -A 5";
+          XF86MonBrightnessDown = "exec light -U 5";
 
-        # Screenshots
-        "print" = ''exec grim -g "$(slurp)" - | swappy -f -'';
-        "Shift+print" = "exec grim - | swappy -f -";
+          # Screenshots
+          "print" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+          "Shift+print" = "exec grim - | swappy -f -";
 
-        # Focus
-        "${modifier}+z" = "focus child";
+          # Focus
+          "${modifier}+z" = "focus child";
 
-        # Lock
-        "${modifier}+Shift+x" = "exec ${pkgs.swaylock}/bin/swaylock -f";
+          # Lock
+          "${modifier}+Shift+x" = "exec ${pkgs.swaylock}/bin/swaylock -f";
 
-        # Exit
-        "${modifier}+Shift+e" = "${pkgs.wlogout}/bin/wlogout";
+          # Exit
+          "${modifier}+Shift+e" = "${pkgs.wlogout}/bin/wlogout";
 
-        # Workspaces
-        "${modifier}+1" = "mode ws1";
-        "${modifier}+Shift+1" = "mode cws1";
-        "${modifier}+2" = "mode ws2";
-        "${modifier}+Shift+2" = "mode cws2";
+          # Workspaces
+          "${modifier}+1" = "mode ws1";
+          "${modifier}+Shift+1" = "mode cws1";
+          "${modifier}+2" = "mode ws2";
+          "${modifier}+Shift+2" = "mode cws2";
 
-        "${modifier}+3" = "workspace number 30";
-        "${modifier}+Shift+3" = "move container to workspace number 30";
-        "${modifier}+4" = "workspace number 40";
-        "${modifier}+Shift+4" = "move container to workspace number 40";
-        "${modifier}+5" = "workspace number 50";
-        "${modifier}+Shift+5" = "move container to workspace number 50";
-        "${modifier}+6" = "workspace number 60";
-        "${modifier}+Shift+6" = "move container to workspace number 60";
-        "${modifier}+7" = "workspace number 70";
-        "${modifier}+Shift+7" = "move container to workspace number 70";
-        "${modifier}+8" = "workspace number 80";
-        "${modifier}+Shift+8" = "move container to workspace number 80";
-        "${modifier}+9" = "workspace number 90";
-        "${modifier}+Shift+9" = "move container to workspace number 90";
-        "${modifier}+0" = "workspace number 100";
-        "${modifier}+Shift+0" = "move container to workspace number 100";
+          "${modifier}+3" = "workspace number 30";
+          "${modifier}+Shift+3" = "move container to workspace number 30";
+          "${modifier}+4" = "workspace number 40";
+          "${modifier}+Shift+4" = "move container to workspace number 40";
+          "${modifier}+5" = "workspace number 50";
+          "${modifier}+Shift+5" = "move container to workspace number 50";
+          "${modifier}+6" = "workspace number 60";
+          "${modifier}+Shift+6" = "move container to workspace number 60";
+          "${modifier}+7" = "workspace number 70";
+          "${modifier}+Shift+7" = "move container to workspace number 70";
+          "${modifier}+8" = "workspace number 80";
+          "${modifier}+Shift+8" = "move container to workspace number 80";
+          "${modifier}+9" = "workspace number 90";
+          "${modifier}+Shift+9" = "move container to workspace number 90";
+          "${modifier}+0" = "workspace number 100";
+          "${modifier}+Shift+0" = "move container to workspace number 100";
 
-        # Moving workspaces between screens
-        "${modifier}+Mod1+Up" = "move workspace to output up";
-        "${modifier}+Mod1+Down" = "move workspace to output down";
-        "${modifier}+Mod1+Left" = "move workspace to output left";
-        "${modifier}+Mod1+Right" = "move workspace to output right";
+          # Moving workspaces between screens
+          "${modifier}+Mod1+Up" = "move workspace to output up";
+          "${modifier}+Mod1+Down" = "move workspace to output down";
+          "${modifier}+Mod1+Left" = "move workspace to output left";
+          "${modifier}+Mod1+Right" = "move workspace to output right";
 
-        # swaync
-        "${modifier}+Shift+n" = "exec swaync-client -t -sw";
-        # Marks
-        "${modifier}+m" = ''
-          exec swaymsg "mark --toggle $(swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.focused==true) | .marks []' | wofi -d)" '';
-        "${modifier}+grave" = ''
-          exec swaymsg "[con_mark=$(swaymsg -t get_marks | jq -r '. []' | wofi -d)] focus"
-        '';
-      };
+          # swaync
+          "${modifier}+Shift+n" = "exec swaync-client -t -sw";
+          # Marks
+          "${modifier}+m" = ''
+            exec swaymsg "mark --toggle $(swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.focused==true) | .marks []' | wofi -d)" '';
+          "${modifier}+grave" = ''
+            exec swaymsg "[con_mark=$(swaymsg -t get_marks | jq -r '. []' | wofi -d)] focus"
+          '';
+        };
     };
 
     extraConfig = ''

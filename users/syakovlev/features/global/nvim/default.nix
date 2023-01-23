@@ -1,26 +1,33 @@
-{ inputs, pkgs, lib, ... }:
-let
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: let
   buildPlugin = name:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       pname = name;
       version = "master";
       src = builtins.getAttr name inputs;
     };
-  normalizeName =
-    let extension = name: "." + lib.last (lib.splitString "." name);
-    in name:
-    if lib.hasInfix "." name then
-      lib.removeSuffix (extension name) name
-    else
-      name;
+  normalizeName = let
+    extension = name: "." + lib.last (lib.splitString "." name);
+  in
+    name:
+      if lib.hasInfix "." name
+      then lib.removeSuffix (extension name) name
+      else name;
   configPlugins = plugins:
-    map (plug:
-      if builtins.pathExists ./nvim/${normalizeName plug.pname}.lua then {
+    map
+    (plug:
+      if builtins.pathExists ./nvim/${normalizeName plug.pname}.lua
+      then {
         type = "lua";
         plugin = plug;
         config = builtins.readFile ./nvim/${normalizeName plug.pname}.lua;
-      } else
-        plug) plugins;
+      }
+      else plug)
+    plugins;
 in {
   programs.neovim = {
     enable = true;
@@ -36,7 +43,7 @@ in {
       gopls
       rust-analyzer
       #rnix-lsp
-      nixfmt
+      #nixfmt
       nil
       yaml-language-server
     ];

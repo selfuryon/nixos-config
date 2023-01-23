@@ -1,13 +1,16 @@
-{ modulesPath, pkgs, ... }: {
-
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+{
+  modulesPath,
+  pkgs,
+  ...
+}: {
+  imports = [(modulesPath + "/profiles/qemu-guest.nix")];
 
   # Kernel parameters
   boot = {
-    initrd.kernelModules = [ "nvme" ];
+    initrd.kernelModules = ["nvme"];
 
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ ];
+    kernelModules = [];
 
     loader.grub = {
       enable = true;
@@ -15,7 +18,7 @@
       device = "/dev/vda";
     };
 
-    extraModulePackages = [ ];
+    extraModulePackages = [];
     cleanTmpDir = true;
   };
   zramSwap.enable = false;
@@ -25,5 +28,5 @@
     fsType = "ext4";
   };
 
-  swapDevices = [{ device = "/dev/vda2"; }];
+  swapDevices = [{device = "/dev/vda2";}];
 }

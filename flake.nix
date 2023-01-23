@@ -18,7 +18,7 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = { url = "github:hyprwm/Hyprland"; };
+    hyprland = {url = "github:hyprwm/Hyprland";};
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +31,7 @@
       url = "github:base16-project/base16-schemes";
       flake = false;
     };
+    treefmt-nix.url = "github:numtide/treefmt-nix";
 
     # Neovim plugins
     "syntax-tree-surfer" = {
@@ -43,56 +44,82 @@
     };
   };
 
-  outputs = { self, nixpkgs, deploy-rs, ... }@inputs:
-    let
-      inherit (self) outputs;
-      lib = nixpkgs.lib;
-      myLib = import ./lib.nix nixpkgs.lib;
+  outputs = {
+    self,
+    nixpkgs,
+    deploy-rs,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    lib = nixpkgs.lib;
+    myLib = import ./lib.nix nixpkgs.lib;
 
-      # Load inventory
-      # inventory = import ./machines/inventory.nix;
-      inventory = myLib.createInventory ./machines;
+    # Load inventory
+    # inventory = import ./machines/inventory.nix;
+    inventory = myLib.createInventory ./machines;
 
-      # Make system configuration, given hostname and system type
-      mkSystem = { hostname, system, users, ... }:
-        let userList = builtins.map (u: ./users/${u}) users;
-        in nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs hostname system; };
-          modules = [ (./machines/${hostname}) ] ++ userList;
-        };
-      # Make Deploy-rs node
-      mkDeployNode = { hostname, system, sshUser, sudo ? "sudo -u", ... }: {
-        hostname = "${hostname}";
-        sshUser = "${sshUser}";
-        sudo = "${sudo}";
-        profilesOrder = [ "system" ];
-        profiles = {
-          system = {
-            user = "root";
-            path = deploy-rs.lib."${system}".activate.nixos
-              self.nixosConfigurations.${hostname};
-          };
+    # Make system configuration, given hostname and system type
+    mkSystem = {
+      hostname,
+      system,
+      users,
+      ...
+    }: let
+      userList = builtins.map (u: ./users/${u}) users;
+    in
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs hostname system;};
+        modules = [./machines/${hostname}] ++ userList;
+      };
+    # Make Deploy-rs node
+    mkDeployNode = {
+      hostname,
+      system,
+      sshUser,
+      sudo ? "sudo -u",
+      ...
+    }: {
+      hostname = "${hostname}";
+      sshUser = "${sshUser}";
+      sudo = "${sudo}";
+      profilesOrder = ["system"];
+      profiles = {
+        system = {
+          user = "root";
+          path =
+            deploy-rs.lib."${system}".activate.nixos
+            self.nixosConfigurations.${hostname};
         };
       };
-    in {
-      overlays = import ./overlays;
-      homeManagerModules = import ./modules/home-manager;
-      nixosModules = import ./modules/nixos;
-      nixosConfigurations =
-        lib.mapAttrs (name: config: mkSystem config) inventory;
-
-      deploy.nodes = lib.mapAttrs (name: config: mkDeployNode config) inventory;
-
-      checks = builtins.mapAttrs
-        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
-
-      devShells.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux;
-        mkShell {
-          packages = [
-            inputs.deploy-rs.defaultPackage.x86_64-linux
-            inputs.ragenix.defaultPackage.x86_64-linux
-          ];
-        };
     };
+  in {
+    overlays = import ./overlays;
+    homeManagerModules = import ./modules/home-manager;
+    nixosModules = import ./modules/nixos;
+    nixosConfigurations =
+      lib.mapAttrs (name: config: mkSystem config) inventory;
+
+    deploy.nodes = lib.mapAttrs (name: config: mkDeployNode config) inventory;
+
+    checks =
+      builtins.mapAttrs
+      (system: deployLib: deployLib.deployChecks self.deploy)
+      deploy-rs.lib;
+
+    devShells.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux;
+      mkShell {
+        packages = [
+          inputs.deploy-rs.defaultPackage.x86_64-linux
+          inputs.ragenix.defaultPackage.x86_64-linux
+        ];
+      };
+    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper nixpkgs.legacyPackages.x86_64-linux {
+      projectRootFile = "flake.nix";
+      programs = {
+        alejandra.enable = true;
+        prettier.enable = true;
+      };
+    };
+  };
 }

@@ -38,15 +38,15 @@ require('formatter').setup({
         }
       end
     },
-    nix = {
-      function()
-        return {
-          exe = "nixfmt",
-          args = {},
-          stdin = true,
-        }
-      end
-    },
+    -- nix = {
+    --   function()
+    --     return {
+    --       exe = "nixfmt",
+    --       args = {},
+    --       stdin = true,
+    --     }
+    --   end
+    -- },
     terraform = {
       function()
         return {exe = "terraform", args = {"fmt", "-"}, stdin = true}

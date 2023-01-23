@@ -1,7 +1,12 @@
-{ inputs, pkgs, lib, ... }:
-let addons = inputs.firefox-addons.packages.${pkgs.system};
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: let
+  addons = inputs.firefox-addons.packages.${pkgs.system};
 in {
-  home.packages = with pkgs; [ tridactyl-native ];
+  home.packages = with pkgs; [tridactyl-native];
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
@@ -37,7 +42,7 @@ in {
         ${builtins.readFile ./firefox/arkenfox/user.js}
       '';
     };
-    profiles.video = { id = 3; };
+    profiles.video = {id = 3;};
   };
   xdg = {
     desktopEntries = {
@@ -46,8 +51,8 @@ in {
         genericName = "Web Browser";
         exec = "firefox -P work %U";
         terminal = false;
-        categories = [ "Application" "Network" "WebBrowser" ];
-        mimeType = [ "text/html" "text/xml" ];
+        categories = ["Application" "Network" "WebBrowser"];
+        mimeType = ["text/html" "text/xml"];
       };
       firefox-crypto = {
         name = "Firefox (Crypto)";

@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   # Network Stack configuration
   boot.kernel.sysctl = {
     # Forwarding

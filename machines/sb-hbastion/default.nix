@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     # Global configuration
     ../common/global

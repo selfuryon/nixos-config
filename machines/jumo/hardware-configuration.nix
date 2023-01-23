@@ -1,25 +1,29 @@
-{ config, pkgs, lib, modulesPath, ... }: {
-
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+{
+  config,
+  pkgs,
+  lib,
+  modulesPath,
+  ...
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   # Boot configuration
   boot = {
     #initrd.systemd.enable = true;
-    initrd.kernelModules = [ ];
-    initrd.availableKernelModules =
-      [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+    initrd.kernelModules = [];
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
 
     #kernelPackages = pkgs.linuxPackages_latest;
     kernelPackages = pkgs.linuxPackages_6_0;
-    kernelParams = [ "nohibernate" "elevator=none" ];
-    kernelModules = [ "kvm-intel" ];
+    kernelParams = ["nohibernate" "elevator=none"];
+    kernelModules = ["kvm-intel"];
 
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
 
-    extraModulePackages = [ ];
+    extraModulePackages = [];
     cleanTmpDir = true;
   };
 
@@ -46,7 +50,7 @@
     };
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   # Hardware configuration
   hardware = {

@@ -1,5 +1,9 @@
-{ inputs, config, pkgs, ... }:
-let
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   hostname = "${pkgs.nettools}/bin/hostname";
   dunstctl = "${pkgs.dunst}/bin/dunstctl";
@@ -42,11 +46,10 @@ in {
           #"custom/notifications"
           "mpris"
         ];
-        modules-center = [ "wlr/workspaces" ];
-        modules-right =
-          [ "network" "wireplumber" "battery" "clock" "custom/hostname" ];
+        modules-center = ["wlr/workspaces"];
+        modules-right = ["network" "wireplumber" "battery" "clock" "custom/hostname"];
 
-        "wlr/workspaces" = { on-click = "activate"; };
+        "wlr/workspaces" = {on-click = "activate";};
         "custom/nixos" = {
           exec = checkNixosUpdates;
           on-click = checkNixosUpdates;
@@ -77,7 +80,7 @@ in {
           format-calendar = "<span color='#ecc6d9'><b>{}</b></span>";
           format-calendar-weeks = "<span color='#99ffdd'><b>W{:%V}</b></span>";
           format-calendar-weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-          on-scroll = { calendar = 1; };
+          on-scroll = {calendar = 1;};
         };
         pulseaudio = {
           format = "{icon}  {volume}%";
@@ -86,7 +89,7 @@ in {
             headphone = "";
             headset = "";
             portable = "";
-            default = [ "" "" "" ];
+            default = ["" "" ""];
           };
           on-click = pavucontrol;
         };
@@ -109,7 +112,7 @@ in {
             warning = 30;
             critical = 15;
           };
-          format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+          format-icons = ["" "" "" "" "" "" "" "" "" ""];
           format = "{icon} {capacity}%";
           format-charging = " {capacity}%";
         };
@@ -125,7 +128,7 @@ in {
             Down: {bandwidthDownBits}'';
           on-click = "";
         };
-        "custom/hostname" = { exec = "echo $USER@$(${hostname})"; };
+        "custom/hostname" = {exec = "echo $USER@$(${hostname})";};
         "mpris" = {
           format = "{player_icon}";
           format-paused = "{status_icon}";

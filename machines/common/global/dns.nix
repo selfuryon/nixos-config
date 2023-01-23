@@ -1,7 +1,7 @@
-{ ... }: {
+{...}: {
   # DNS
   networking = {
-    nameservers = [ "127.0.0.1" "::1" ];
+    nameservers = ["127.0.0.1" "::1"];
     dhcpcd.extraConfig = "nohook resolv.conf";
   };
 
@@ -17,8 +17,7 @@
           "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
         ];
         cache_file = "/var/lib/dnscrypt-proxy2/public-resolvers.md";
-        minisign_key =
-          "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+        minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
       };
     };
   };

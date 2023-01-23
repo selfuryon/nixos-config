@@ -1,5 +1,9 @@
-{ pkgs, config, ... }: {
-  home.packages = with pkgs; [ wofi ];
+{
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = with pkgs; [wofi];
 
   xdg.configFile."wofi/config".text = ''
     allow_images=false
@@ -26,14 +30,14 @@
       font-family: "${config.themes.fontProfile.regular.family}";
     }
     #entry:selected {
-    	border-color: ${base0A}; 
+    	border-color: ${base0A};
     }
     #input {
     	background-color: ${base00};
-    	border-color: ${base02}; 
+    	border-color: ${base02};
     }
     #input:focus {
-    	border-color: ${base0A}; 
+    	border-color: ${base0A};
     }
   '';
 }

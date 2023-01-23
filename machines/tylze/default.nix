@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{inputs, ...}: {
   imports = with inputs.self.roles; [
     # Global configuration
     ../common/global

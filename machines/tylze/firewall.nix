@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # Firewall
   networking = {
     firewall.enable = false;
@@ -44,5 +44,4 @@
       '';
     };
   };
-
 }

@@ -1,14 +1,18 @@
-{ modulesPath, config, pkgs,lib, ... }: {
-
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+{
+  modulesPath,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
   # Kernel parameters
   boot = {
-    initrd.kernelModules = [ ];
-    initrd.availableKernelModules =
-      [ "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
+    initrd.kernelModules = [];
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod"];
 
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = ["kvm-intel"];
 
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -27,7 +31,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   #
 

@@ -1,13 +1,15 @@
-{ ... }: {
+{...}: {
   networking = {
     useDHCP = false;
     interfaces.ens3.useDHCP = false;
 
     # IPv4 configuration
-    interfaces.ens3.ipv4.addresses = [{
-      address = "185.251.89.102";
-      prefixLength = 22;
-    }];
+    interfaces.ens3.ipv4.addresses = [
+      {
+        address = "185.251.89.102";
+        prefixLength = 22;
+      }
+    ];
     defaultGateway = "185.251.88.1";
 
     # IPv6 configuration
