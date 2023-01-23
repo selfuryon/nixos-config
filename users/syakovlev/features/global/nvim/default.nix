@@ -40,10 +40,10 @@ in {
       EOF
     '';
     extraPackages = with pkgs; [
-      gopls
+      alejandra
+      nodePackages.prettier
       rust-analyzer
-      #rnix-lsp
-      #nixfmt
+      gopls
       nil
       yaml-language-server
     ];

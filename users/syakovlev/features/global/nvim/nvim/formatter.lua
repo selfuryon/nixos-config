@@ -13,12 +13,6 @@ require('formatter').setup({
         }
       end
     },
-    python = {
-      function() return {exe = "black", args = {"--safe"}, stdin = false} end
-    },
-    yaml = {
-      function() return {exe = "yamlfix", args = {"-"}, stdin = true} end
-    },
     rust = {
       function()
         return {
@@ -38,15 +32,37 @@ require('formatter').setup({
         }
       end
     },
-    -- nix = {
-    --   function()
-    --     return {
-    --       exe = "nixfmt",
-    --       args = {},
-    --       stdin = true,
-    --     }
-    --   end
-    -- },
+    nix = {
+      function()
+        return {
+          exe = "alejandra",
+          args = {},
+          stdin = true,
+        }
+      end
+    },
+    json = {
+      function()
+        return {
+          exe = "prettier",
+          args = {
+            "--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'
+          },
+          stdin = true
+        }
+      end
+    },
+    yaml = {
+      function()
+        return {
+          exe = "prettier",
+          args = {
+            "--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'
+          },
+          stdin = true
+        }
+      end
+    },
     terraform = {
       function()
         return {exe = "terraform", args = {"fmt", "-"}, stdin = true}

@@ -1,9 +1,6 @@
 -- lspsaga config
+require('lspsaga').setup({})
 local keymap = vim.keymap.set
-local saga = require('lspsaga')
-
---saga.init_lsp_saga()
-saga.setup({})
 
 keymap("n", "<leader>r", "<cmd>Lspsaga rename<CR>", { silent = true })
 keymap({"n","v"}, "<leader>a", "<cmd>Lspsaga code_action<CR>", { silent = true })
@@ -22,6 +19,5 @@ end, { silent = true })
 keymap("n", "]E", function()
   require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end, { silent = true })
-keymap("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
-keymap("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+keymap({"n", "t"}, "<A-t>", "<cmd>Lspsaga term_toggle<CR>")
 
