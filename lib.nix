@@ -1,4 +1,4 @@
-lib: rec {
+lib: {
   createInventory = let
     inventoryDirs = dir:
       builtins.attrNames (lib.filterAttrs
@@ -8,4 +8,6 @@ lib: rec {
   in
     dir:
       lib.genAttrs (inventoryDirs dir) (name: import (dir + /${name}/config.nix));
+
+  # Make system configuration, given hostname and system type
 }

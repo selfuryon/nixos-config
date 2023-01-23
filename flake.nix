@@ -56,13 +56,12 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    inherit (nixpkgs) lib;
-    myLib = import ./lib.nix nixpkgs.lib;
+    lib = import ./nix/lib {lib = nixpkgs.lib;} // nixpkgs.lib;
     system = "x86_64-linux";
 
     # Load inventory
     # inventory = import ./machines/inventory.nix;
-    inventory = myLib.createInventory ./machines;
+    inventory = lib.createInventory ./machines;
 
     # Make system configuration, given hostname and system type
     mkSystem = {
@@ -73,7 +72,7 @@
     }: let
       userList = builtins.map (u: ./users/${u}) users;
     in
-      nixpkgs.lib.nixosSystem {
+      lib.nixosSystem {
         inherit system;
         specialArgs = {inherit inputs outputs hostname system;};
         modules = [./machines/${hostname}] ++ userList;
