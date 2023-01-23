@@ -32,6 +32,7 @@
       flake = false;
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    mission-control.url = "github:Platonic-Systems/mission-control";
 
     # Neovim plugins
     "syntax-tree-surfer" = {
@@ -53,6 +54,7 @@
     inherit (self) outputs;
     lib = nixpkgs.lib;
     myLib = import ./lib.nix nixpkgs.lib;
+    system = "x86_64-linux";
 
     # Load inventory
     # inventory = import ./machines/inventory.nix;
@@ -107,14 +109,14 @@
       (system: deployLib: deployLib.deployChecks self.deploy)
       deploy-rs.lib;
 
-    devShells.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux;
+    devShells.${system}.default = with nixpkgs.legacyPackages.${system};
       mkShell {
         packages = [
-          inputs.deploy-rs.defaultPackage.x86_64-linux
-          inputs.ragenix.defaultPackage.x86_64-linux
+          inputs.deploy-rs.defaultPackage.${system}
+          inputs.ragenix.defaultPackage.${system}
         ];
       };
-    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper nixpkgs.legacyPackages.x86_64-linux {
+    formatter.${system} = inputs.treefmt-nix.lib.mkWrapper nixpkgs.legacyPackages.${system} {
       projectRootFile = "flake.nix";
       programs = {
         alejandra.enable = true;

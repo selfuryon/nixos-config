@@ -248,6 +248,24 @@
         "type": "github"
       }
     },
+    "mission-control": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1671493916,
+        "narHash": "sha256-7uvy37mfprmI3fbBw9E+baV1KZHR5zKfSNfPlSiliqo=",
+        "owner": "Platonic-Systems",
+        "repo": "mission-control",
+        "rev": "9acdaa469ebd3c2d6816f8a30c0c217a0da59fe2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Platonic-Systems",
+        "repo": "mission-control",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1673540789,
@@ -265,6 +283,22 @@
       }
     },
     "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1671249438,
+        "narHash": "sha256-5e+CcnbZA3/i2BRXbnzRS52Ly67MUNdZR+Zpbb2C65k=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "067bfc6c90a301572cec7da48f09c447a9a8eae0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1674211260,
         "narHash": "sha256-xU6Rv9sgnwaWK7tgCPadV6HhI2Y/fl4lKxJoG2+m9qs=",
@@ -312,7 +346,8 @@
         "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "nixpkgs": "nixpkgs_2",
+        "mission-control": "mission-control",
+        "nixpkgs": "nixpkgs_3",
         "ragenix": "ragenix",
         "syntax-tree-surfer": "syntax-tree-surfer",
         "treefmt-nix": "treefmt-nix",

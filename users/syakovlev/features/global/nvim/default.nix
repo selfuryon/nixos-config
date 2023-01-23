@@ -30,6 +30,7 @@
     plugins;
 in {
   programs.neovim = {
+    #package = inputs.neovim.packages."x86_64-linux".neovim;
     enable = true;
     viAlias = true;
     vimAlias = true;
