@@ -20,7 +20,7 @@
   configPlugins = plugins:
     map
     (plug:
-      if builtins.pathExists ./nvim/${normalizeName plug.pname}.lua
+      if (builtins.pathExists ./nvim/${normalizeName plug.pname}.lua)
       then {
         type = "lua";
         plugin = plug;

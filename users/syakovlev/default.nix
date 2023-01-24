@@ -7,7 +7,7 @@
   ...
 }: let
   userName = "syakovlev";
-  hostConfig = builtins.filter (p: builtins.pathExists p) [./${hostname}.nix];
+  hostConfig = builtins.filter builtins.pathExists [./${hostname}.nix];
 in {
   imports = hostConfig;
 

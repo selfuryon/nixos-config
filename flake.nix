@@ -56,12 +56,13 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    lib = import ./nix/lib {lib = nixpkgs.lib;} // nixpkgs.lib;
+    inherit (nixpkgs) lib;
+    mylib = import ./lib.nix nixpkgs.lib;
     system = "x86_64-linux";
 
     # Load inventory
     # inventory = import ./machines/inventory.nix;
-    inventory = lib.createInventory ./machines;
+    inventory = mylib.createInventory ./machines;
 
     # Make system configuration, given hostname and system type
     mkSystem = {

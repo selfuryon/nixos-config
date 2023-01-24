@@ -8,6 +8,4 @@ lib: {
   in
     dir:
       lib.genAttrs (inventoryDirs dir) (name: import (dir + /${name}/config.nix));
-
-  # Make system configuration, given hostname and system type
 }
