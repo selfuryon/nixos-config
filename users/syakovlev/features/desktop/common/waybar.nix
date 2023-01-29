@@ -7,15 +7,21 @@
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   hostname = "${pkgs.nettools}/bin/hostname";
   dunstctl = "${pkgs.dunst}/bin/dunstctl";
+  curl = "${pkgs.curl}/bin/curl";
+  jq = "${pkgs.jq}/bin/jq";
+  cat = "${pkgs.coreutils}/bin/cat"; 
+  cut = "${pkgs.coreutils-full}/bin/cut";
+
 
   checkNixosUpdates = pkgs.writeShellScript "checkUpdates.sh" ''
     UPDATE='{"text": "Update", "alt": "update", "class": "update"}'
     NO_UPDATE='{"text": "No Update", "alt": "noupdate", "class": "noupdate"}'
 
     GITHUB_URL="https://api.github.com/repos/NixOS/nixpkgs/git/refs/heads/nixos-unstable"
-    CURRENT_REVISION=$(nixos-version --revision)
-    REMOTE_REVISION=$(curl -s $GITHUB_URL | jq '.object.sha' -r )
-    [ $CURRENT_REVISION == $REMOTE_REVISION ] && echo $NO_UPDATE || echo $UPDATE
+    #CURRENT_REVISION=$(nixos-version --revision)
+    CURRENT_REVISION=$(${cat} /run/current-system/nixos-version | ${cut} -d. -f4)
+    REMOTE_REVISION=$(${curl} -s $GITHUB_URL | ${jq} '.object.sha' -r )
+    [[ $CURRENT_REVISION == ''${REMOTE_REVISION:0:7} ]] && echo $NO_UPDATE || echo $UPDATE
   '';
   dusntNotifications = pkgs.writeShellScript "dunstNotifications.sh" ''
     PAUSED='{"text": "Paused", "alt": "paused", "class": "paused"}'
