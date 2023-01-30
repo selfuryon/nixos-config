@@ -93,6 +93,7 @@
     insomnia
     keepassxc
     #libreoffice
+    onlyoffice-bin
     ledger-live-desktop
     megasync
     mpv
