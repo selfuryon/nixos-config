@@ -5,6 +5,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/libvirt.nix
     ../common/optional/network-manager.nix
+    ../common/optional/printer.nix
     # Local configuration
     ./hardware-configuration.nix
     ./firewall.nix
