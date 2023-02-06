@@ -10,27 +10,37 @@ in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
-    extensions = with addons; [
-      ublock-origin
-      auto-tab-discard
-      multi-account-containers
-      #languagetool
-      history-cleaner
-      keepassxc-browser
-      smart-referer
-      startpage-private-search
-      tridactyl
-    ];
     profiles.private = {
       id = 0;
+      extensions = with addons; [
+        ublock-origin
+        auto-tab-discard
+        multi-account-containers
+        #languagetool
+        history-cleaner
+        keepassxc-browser
+        smart-referer
+        startpage-private-search
+        tridactyl
+      ];
       extraConfig = ''
         ${builtins.readFile ./firefox/arkenfox/user.js}
-        ${builtins.readFile ./firefox/work.js}
+        ${builtins.readFile ./firefox/private.js}
       '';
       isDefault = true;
     };
     profiles.work = {
       id = 1;
+      extensions = with addons; [
+        ublock-origin
+        auto-tab-discard
+        multi-account-containers
+        history-cleaner
+        keepassxc-browser
+        smart-referer
+        startpage-private-search
+        tridactyl
+      ];
       extraConfig = ''
         ${builtins.readFile ./firefox/arkenfox/user.js}
         ${builtins.readFile ./firefox/work.js}
@@ -38,11 +48,29 @@ in {
     };
     profiles.crypto = {
       id = 2;
+      extensions = with addons; [
+        ublock-origin
+        multi-account-containers
+        smart-referer
+        startpage-private-search
+        tridactyl
+      ];
       extraConfig = ''
         ${builtins.readFile ./firefox/arkenfox/user.js}
       '';
     };
-    profiles.video = {id = 3;};
+    profiles.video = {
+      id = 3;
+      extensions = with addons; [
+        ublock-origin
+        multi-account-containers
+        history-cleaner
+        keepassxc-browser
+        smart-referer
+        startpage-private-search
+        tridactyl
+      ];
+    };
   };
   xdg = {
     desktopEntries = {
