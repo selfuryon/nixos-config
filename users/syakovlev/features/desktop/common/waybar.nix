@@ -9,9 +9,8 @@
   dunstctl = "${pkgs.dunst}/bin/dunstctl";
   curl = "${pkgs.curl}/bin/curl";
   jq = "${pkgs.jq}/bin/jq";
-  cat = "${pkgs.coreutils}/bin/cat"; 
+  cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils-full}/bin/cut";
-
 
   checkNixosUpdates = pkgs.writeShellScript "checkUpdates.sh" ''
     UPDATE='{"text": "Update", "alt": "update", "class": "update"}'
