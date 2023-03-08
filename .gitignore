@@ -1,3 +1,7 @@
+# Nix
 .envrc
-result
 .direnv
+.pre-commit-config.yaml
+
+# Build
+result
