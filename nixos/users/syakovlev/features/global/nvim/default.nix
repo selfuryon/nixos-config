@@ -82,7 +82,6 @@ in {
 
         # Others
         formatter-nvim
-        nvim-lint
         nvim-snippy
         nvim-autopairs
         vim-wordmotion

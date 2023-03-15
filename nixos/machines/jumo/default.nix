@@ -17,6 +17,8 @@
   networking.domain = "ys7.me";
   networking.hostId = "ea39aa79";
 
+  networking.firewall.trustedInterfaces = ["virbr0"];
+
   time.timeZone = "Asia/Nicosia";
   system.stateVersion = "23.05";
 }
