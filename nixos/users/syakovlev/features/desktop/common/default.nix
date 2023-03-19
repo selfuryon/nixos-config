@@ -101,6 +101,7 @@
     okular
     pavucontrol
     qbittorrent
+    librewolf
     #qutebrowser
     skypeforlinux
     slack
