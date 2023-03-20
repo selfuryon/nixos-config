@@ -1,8 +1,9 @@
-{...}: {
+{roles, ...}: {
   imports = [
     # Global configuration
-    ../common/global
-    ../common/optional/netbird.nix
+    roles.system.global.default
+    # Optional configuration
+    roles.system.optional.netbird
     # Local role
     ./hardware-configuration.nix
     ./networking.nix

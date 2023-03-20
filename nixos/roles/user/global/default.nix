@@ -1,9 +1,4 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.self.homeManagerModules
     ./cli

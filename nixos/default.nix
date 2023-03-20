@@ -8,7 +8,7 @@
 
   # Load inventory
   inventory = lib.inventory.createInventory ./machines;
-  #modules = lib.fs.rakeLeaves ./modules;
+  roles = lib.fs.rakeLeaves ./roles;
 
   overlays = import ./overlays;
 
@@ -23,7 +23,7 @@
   in
     lib.nixosSystem {
       inherit system;
-      specialArgs = {inherit inputs hostname system;};
+      specialArgs = {inherit inputs hostname system roles;};
       modules =
         [
           {
@@ -59,10 +59,7 @@
   };
 in {
   flake = {
-    homeManagerModules = import ./modules/home-manager;
-    nixosModules = import ./modules/nixos;
-    # homeManagerModules = modules.home-manager;
-    # nixosModules = modules.nixos;
+    homeManagerModules = import ./modules/homeManager;
     nixosConfigurations = lib.mapAttrs (name: mkSystem) inventory;
     deploy.nodes = lib.mapAttrs (name: mkDeployNode) inventory;
   };

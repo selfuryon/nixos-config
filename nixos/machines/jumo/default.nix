@@ -1,13 +1,14 @@
-{inputs, ...}: {
+{roles, ...}: {
   imports = [
     # Global configuration
-    ../common/global
-    ../common/optional/pipewire.nix
-    ../common/optional/libvirt.nix
-    ../common/optional/network-manager.nix
-    ../common/optional/printer.nix
-    ../common/optional/tailscale.nix
-    ../common/optional/netbird.nix
+    roles.system.global.default
+    # Optional configuration
+    roles.system.optional.pipewire
+    roles.system.optional.libvirt
+    roles.system.optional.network-manager
+    roles.system.optional.printer
+    roles.system.optional.tailscale
+    roles.system.optional.netbird
     # Local configuration
     ./hardware-configuration.nix
     ./zfs.nix

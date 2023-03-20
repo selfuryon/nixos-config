@@ -1,9 +1,8 @@
 {
   inputs,
-  config,
   hostname,
   pkgs,
-  lib,
+  roles,
   ...
 }: let
   userName = "syakovlev";
@@ -39,7 +38,10 @@ in {
   ];
 
   home-manager.users.${userName} = {
-    imports = [inputs.base16.homeManagerModule ./features/global];
+    imports = [
+      inputs.base16.homeManagerModule
+      roles.user.global.default
+    ];
     programs.home-manager.enable = true;
     home.stateVersion = "23.05";
     #scheme = "${inputs.base16-schemes}/google-light.yaml";

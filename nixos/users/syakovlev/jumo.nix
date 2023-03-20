@@ -1,14 +1,15 @@
 {
-  inputs,
-  hostname,
   pkgs,
-  lib,
+  roles,
   ...
 }: let
   userName = "syakovlev";
 in {
   home-manager.users.${userName} = {
-    imports = [./features/desktop/hyprland];
+    imports = [
+      #./features/desktop/hyprland
+      roles.user.desktop.hyprland.default
+    ];
   };
 
   security.pam.services.swaylock = {text = "auth include login";};
