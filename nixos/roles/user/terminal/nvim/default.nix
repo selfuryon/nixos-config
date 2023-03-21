@@ -17,17 +17,18 @@
       if lib.hasInfix "." name
       then lib.removeSuffix (extension name) name
       else name;
-  configPlugins = plugins:
+  configPlugins =
     map
     (plug:
-      if builtins.pathExists ./nvim/${normalizeName plug.pname}.lua
-      then {
-        type = "lua";
-        plugin = plug;
-        config = builtins.readFile ./nvim/${normalizeName plug.pname}.lua;
-      }
-      else plug)
-    plugins;
+      # TODO: statix parses paths like `./${hostname}.nix` wrong: https://github.com/nerdypepper/statix/issues/68
+        if builtins.pathExists (./. + "/nvim/${normalizeName plug.pname}.lua")
+        then {
+          type = "lua";
+          plugin = plug;
+          # TODO: statix parses paths like `./${hostname}.nix` wrong: https://github.com/nerdypepper/statix/issues/68
+          config = builtins.readFile (./. + "/nvim/${normalizeName plug.pname}.lua");
+        }
+        else plug);
 in {
   programs.neovim = {
     #package = inputs.neovim.packages."x86_64-linux".neovim;

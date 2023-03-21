@@ -6,7 +6,8 @@
   ...
 }: let
   userName = "syakovlev";
-  hostConfig = builtins.filter builtins.pathExists [./${hostname}.nix];
+  # TODO: statix parses paths like `./${hostname}.nix` wrong: https://github.com/nerdypepper/statix/issues/68
+  hostConfig = builtins.filter builtins.pathExists [(./. + "/${hostname}.nix")];
 in {
   imports = hostConfig;
 

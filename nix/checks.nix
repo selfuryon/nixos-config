@@ -1,4 +1,4 @@
-{inputs, ...}: {
+_: {
   perSystem = {
     config,
     pkgs,
@@ -11,7 +11,7 @@
       hooks = {
         alejandra.enable = true;
         prettier.enable = true;
-        #statix.enable = true;
+        statix.enable = true;
       };
     };
     # checks =

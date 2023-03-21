@@ -14,7 +14,7 @@
   inventory = let
     hosts = filterAttrs (_: hasSuffix "default.nix") machines;
   in
-    mapAttrs' (name: value: nameValuePair (head (splitString "." name)) value) hosts;
+    mapAttrs' (name: nameValuePair (head (splitString "." name))) hosts;
 
   deployInventory = lib.inventory.createInventory ./machines;
 
