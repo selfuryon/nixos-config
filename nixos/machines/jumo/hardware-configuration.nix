@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   modulesPath,
@@ -59,4 +58,6 @@
     ledger.enable = true;
   };
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

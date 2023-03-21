@@ -5,37 +5,36 @@
   ...
 }: let
   inherit (inputs) deploy-rs;
+  inherit (lib) fs filterAttrs hasSuffix mapAttrs' nameValuePair head splitString;
 
-  # Load inventory
-  inventory = lib.inventory.createInventory ./machines;
-  roles = lib.fs.rakeLeaves ./roles;
+  roles = fs.rakeLeaves ./roles;
+  users = fs.rakeLeaves ./users;
+  machines = fs.flattenTree {tree = fs.rakeLeaves ./machines;};
+
+  inventory = let
+    hosts = filterAttrs (_: hasSuffix "default.nix") machines;
+  in
+    mapAttrs' (name: value: nameValuePair (head (splitString "." name)) value) hosts;
+
+  deployInventory = lib.inventory.createInventory ./machines;
 
   overlays = import ./overlays;
+  defaultModules = [
+    {
+      nixpkgs = {
+        overlays = builtins.attrValues overlays;
+        config = {allowUnfree = true;};
+      };
+    }
+  ];
 
-  # Make system configuration, given hostname and system type
-  mkSystem = {
-    hostname,
-    system,
-    users,
-    ...
-  }: let
-    userList = builtins.map (u: ./users/${u}) users;
-  in
+  # Make system configuration
+  mkSystem = hostname: path:
     lib.nixosSystem {
-      inherit system;
-      specialArgs = {inherit inputs hostname system roles;};
-      modules =
-        [
-          {
-            nixpkgs = {
-              overlays = builtins.attrValues overlays;
-              config = {allowUnfree = true;};
-            };
-          }
-          ./machines/${hostname}
-        ]
-        ++ userList;
+      specialArgs = {inherit inputs hostname roles users;};
+      modules = defaultModules ++ [path];
     };
+
   # Make Deploy-rs node
   mkDeployNode = {
     hostname,
@@ -60,7 +59,7 @@
 in {
   flake = {
     homeManagerModules = import ./modules/homeManager;
-    nixosConfigurations = lib.mapAttrs (name: mkSystem) inventory;
-    deploy.nodes = lib.mapAttrs (name: mkDeployNode) inventory;
+    nixosConfigurations = lib.mapAttrs mkSystem inventory;
+    deploy.nodes = lib.mapAttrs (name: mkDeployNode) deployInventory;
   };
 }

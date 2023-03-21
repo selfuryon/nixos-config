@@ -40,7 +40,7 @@ in {
   home-manager.users.${userName} = {
     imports = [
       inputs.base16.homeManagerModule
-      roles.user.global.default
+      roles.user.terminal.default
     ];
     programs.home-manager.enable = true;
     home.stateVersion = "23.05";

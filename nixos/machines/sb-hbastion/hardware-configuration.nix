@@ -1,6 +1,7 @@
 {
   modulesPath,
   pkgs,
+  lib,
   ...
 }: {
   imports = [(modulesPath + "/profiles/qemu-guest.nix")];
@@ -28,4 +29,6 @@
     device = "/dev/vda3";
     fsType = "ext4";
   };
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

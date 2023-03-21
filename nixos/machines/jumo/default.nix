@@ -1,4 +1,8 @@
-{roles, ...}: {
+{
+  roles,
+  users,
+  ...
+}: {
   imports = [
     # Global configuration
     roles.system.global.default
@@ -9,6 +13,8 @@
     roles.system.optional.printer
     roles.system.optional.tailscale
     roles.system.optional.netbird
+    # Users
+    users.default
     # Local configuration
     ./hardware-configuration.nix
     ./zfs.nix

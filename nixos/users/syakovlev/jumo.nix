@@ -8,7 +8,7 @@ in {
   home-manager.users.${userName} = {
     imports = [
       #./features/desktop/hyprland
-      roles.user.desktop.hyprland.default
+      roles.user.gui.hyprland.default
     ];
   };
 

@@ -1,6 +1,7 @@
 {
   modulesPath,
   pkgs,
+  lib,
   ...
 }: {
   imports = [(modulesPath + "/profiles/qemu-guest.nix")];
@@ -29,4 +30,6 @@
   };
 
   swapDevices = [{device = "/dev/vda2";}];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
