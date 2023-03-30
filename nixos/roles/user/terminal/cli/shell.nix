@@ -21,6 +21,7 @@
     kns = "kubens";
     ks = "${pkgs.kubeswitch}/bin/switch";
     tf = "terraform";
+    tg = "terragrunt";
   };
 
   home.sessionVariables = {

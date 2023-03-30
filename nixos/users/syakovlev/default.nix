@@ -19,6 +19,8 @@ in {
     openssh.authorizedKeys.keyFiles = [./keys.pub];
   };
 
+  programs.fish.enable = true;
+
   security.sudo.extraRules = [
     {
       users = ["${userName}"];

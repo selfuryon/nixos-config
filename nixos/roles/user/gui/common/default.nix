@@ -50,7 +50,7 @@
 
         "inode/directory" = ["thunar.desktop"];
         "x-scheme-handler/mailto" = ["thunderbird.desktop"];
-        "x-scheme-handler/matrix" = ["fractal.desktop"];
+        "x-scheme-handler/matrix" = ["element.desktop"];
         "video/*" = ["vlc.desktop"];
         "application/pdf" = ["org.kde.okular"];
 
@@ -83,7 +83,7 @@
     dconf
     discord
     drawio
-    fractal
+    element-desktop
     gnome.file-roller
     grim
     gsettings-desktop-schemas
@@ -95,7 +95,7 @@
     libreoffice
     onlyoffice-bin
     ledger-live-desktop
-    megasync
+    #megasync
     mpv
     networkmanagerapplet
     okular
