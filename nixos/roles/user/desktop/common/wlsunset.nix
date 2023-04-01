@@ -1,4 +1,4 @@
-_: {
+{
   services.wlsunset = {
     enable = true;
     latitude = "55.7";

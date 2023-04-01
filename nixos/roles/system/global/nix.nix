@@ -1,6 +1,6 @@
 {
   inputs,
-  pkgs,
+  lib,
   ...
 }: {
   # Nix
@@ -34,5 +34,5 @@
   environment.etc.nixpkgs.source = inputs.nixpkgs;
 
   # Add each input as a registry
-  nix.registry = pkgs.lib.mapAttrs (_: v: {flake = v;}) inputs;
+  nix.registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
 }

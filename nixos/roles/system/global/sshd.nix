@@ -1,4 +1,4 @@
-_: {
+{
   users.groups.ssh = {};
   services.openssh = {
     enable = true;

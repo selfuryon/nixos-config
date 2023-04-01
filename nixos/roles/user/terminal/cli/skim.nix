@@ -1,4 +1,4 @@
-_: {
+{
   programs.skim = {
     enable = true;
     changeDirWidgetCommand = "fd --type d";

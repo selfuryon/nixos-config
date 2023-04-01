@@ -1,4 +1,4 @@
-_: {
+{
   # Git configuration
   xdg.configFile = {
     "git/private.signers".text = "selfuryon@pm.me ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmB+ZN4UTQ+5IOvGrlBoHrCxfpQH7EWtLNR3qUrnQl5 selfuryon@github [private] ";
