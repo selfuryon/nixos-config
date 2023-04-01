@@ -4,7 +4,6 @@
   lib,
   ...
 }: let
-  inherit (inputs) deploy-rs;
   inherit (lib) fs filterAttrs hasSuffix mapAttrs' nameValuePair head splitString;
 
   roles = fs.rakeLeaves ./roles;
@@ -16,9 +15,9 @@
   in
     mapAttrs' (name: nameValuePair (head (splitString "." name))) hosts;
 
-  deployInventory = lib.inventory.createInventory ./machines;
-
   overlays = import ./overlays;
+
+  # nixosConfigurations default modules
   defaultModules = [
     {
       nixpkgs = {
@@ -28,38 +27,54 @@
     }
   ];
 
-  # Make system configuration
-  mkSystem = hostname: path:
-    lib.nixosSystem {
-      specialArgs = {inherit inputs hostname roles users;};
-      modules = defaultModules ++ [path];
-    };
-
-  # Make Deploy-rs node
-  mkDeployNode = {
-    hostname,
-    system,
-    sshUser,
-    sudo ? "sudo -u",
-    ...
-  }: {
-    hostname = "${hostname}";
-    sshUser = "${sshUser}";
-    sudo = "${sudo}";
-    profilesOrder = ["system"];
-    profiles = {
-      system = {
-        user = "root";
-        path =
-          deploy-rs.lib."${system}".activate.nixos
-          self.nixosConfigurations.${hostname};
-      };
+  # colmena meta
+  colmenaMeta = {
+    meta = {
+      description = "My personal machines";
+      nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
+      specialArgs = let hostname = "rn-hbastion"; in {inherit inputs hostname roles users;};
     };
   };
+
+  # Make system configuration
+  mkSystem = _: path:
+    lib.nixosSystem {
+      specialArgs = {inherit inputs roles users;};
+      modules = defaultModules ++ [path];
+      extraModules = [inputs.colmena.nixosModules.deploymentOptions];
+    };
+
+  # Make colmena configuration
+  mkColmenaNodes = builtins.mapAttrs (name: value: {
+    nixpkgs.system = value.config.nixpkgs.system;
+    imports = value._module.args.modules;
+  });
+  # # Make Deploy-rs node
+  # mkDeployNode = {
+  #   hostname,
+  #   system,
+  #   sshUser,
+  #   sudo ? "sudo -u",
+  #   ...
+  # }: {
+  #   hostname = "${hostname}";
+  #   sshUser = "${sshUser}";
+  #   sudo = "${sudo}";
+  #   profilesOrder = ["system"];
+  #   profiles = {
+  #     system = {
+  #       user = "root";
+  #       path =
+  #         deploy-rs.lib."${system}".activate.nixos
+  #         self.nixosConfigurations.${hostname};
+  #     };
+  #   };
+  # };
 in {
   flake = {
     homeManagerModules = import ./modules/homeManager;
     nixosConfigurations = lib.mapAttrs mkSystem inventory;
-    deploy.nodes = lib.mapAttrs (name: mkDeployNode) deployInventory;
+    #deploy.nodes = lib.mapAttrs (name: mkDeployNode) deployInventory;
+    colmena = colmenaMeta // (mkColmenaNodes self.nixosConfigurations);
   };
 }

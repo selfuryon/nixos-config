@@ -13,9 +13,12 @@
     roles.system.optional.printer
     roles.system.optional.tailscale
     roles.system.optional.netbird
+    roles.system.optional.desktop
     # Users
     users.default
+    users.syakovlev.desktop
     # Local configuration
+    ./deploy.nix
     ./hardware-configuration.nix
     ./zfs.nix
   ];

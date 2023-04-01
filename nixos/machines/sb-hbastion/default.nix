@@ -11,6 +11,7 @@
     # Users
     users.default
     # Local role
+    ./deploy.nix
     ./hardware-configuration.nix
     ./networking.nix
   ];

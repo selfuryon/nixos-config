@@ -1,16 +1,11 @@
 {
   inputs,
-  hostname,
   pkgs,
   roles,
   ...
 }: let
   userName = "syakovlev";
-  # TODO: statix parses paths like `./${hostname}.nix` wrong: https://github.com/nerdypepper/statix/issues/68
-  hostConfig = builtins.filter builtins.pathExists [(./. + "/${hostname}.nix")];
 in {
-  imports = hostConfig;
-
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = ["wheel" "sudo" "doas" "video" "audio" "libvirtd" "usb" "ssh"];

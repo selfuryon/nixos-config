@@ -7,14 +7,14 @@
     ...
   }: let
     inherit (pkgs) mkShellNoCC;
-    inherit (inputs'.deploy-rs.packages) deploy-rs;
     inherit (inputs'.ragenix.packages) ragenix;
+    inherit (inputs'.colmena.packages) colmena;
     inherit (pkgs) statix;
   in {
     devShells.default = mkShellNoCC {
       name = "etherno-iac";
       inputsFrom = [config.mission-control.devShell];
-      packages = [deploy-rs ragenix statix];
+      packages = [ragenix statix colmena];
       shellHook = ''
         ${config.pre-commit.installationScript}
       '';

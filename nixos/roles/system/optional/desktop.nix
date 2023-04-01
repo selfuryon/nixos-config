@@ -1,19 +1,5 @@
-{
-  pkgs,
-  roles,
-  ...
-}: let
-  userName = "syakovlev";
-in {
-  home-manager.users.${userName} = {
-    imports = [
-      #./features/desktop/hyprland
-      roles.user.gui.hyprland.default
-    ];
-  };
-
+{pkgs, ...}: {
   security.pam.services.swaylock = {text = "auth include login";};
-  #security.pam.services.swaylock = {};
 
   security.polkit.enable = true;
   environment.systemPackages = with pkgs; [polkit_gnome];
