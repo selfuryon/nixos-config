@@ -4,8 +4,6 @@
   ...
 }: {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
-    inputs.ragenix.nixosModules.age
     ./dns.nix
     ./firewall.nix
     ./net-sysctl.nix

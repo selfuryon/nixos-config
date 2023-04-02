@@ -20,6 +20,10 @@
   # nixosConfigurations default modules
   defaultModules = [
     {
+      imports = [
+        inputs.home-manager.nixosModules.home-manager
+        inputs.ragenix.nixosModules.age
+      ];
       nixpkgs = {
         overlays = builtins.attrValues overlays;
         config = {allowUnfree = true;};
@@ -30,9 +34,9 @@
   # colmena meta
   colmenaMeta = {
     meta = {
-      description = "My personal machines";
+      description = "My NixOS machines";
       nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-      specialArgs = let hostname = "rn-hbastion"; in {inherit inputs hostname roles users;};
+      specialArgs = {inherit inputs roles users;};
     };
   };
 
@@ -49,32 +53,10 @@
     nixpkgs.system = value.config.nixpkgs.system;
     imports = value._module.args.modules;
   });
-  # # Make Deploy-rs node
-  # mkDeployNode = {
-  #   hostname,
-  #   system,
-  #   sshUser,
-  #   sudo ? "sudo -u",
-  #   ...
-  # }: {
-  #   hostname = "${hostname}";
-  #   sshUser = "${sshUser}";
-  #   sudo = "${sudo}";
-  #   profilesOrder = ["system"];
-  #   profiles = {
-  #     system = {
-  #       user = "root";
-  #       path =
-  #         deploy-rs.lib."${system}".activate.nixos
-  #         self.nixosConfigurations.${hostname};
-  #     };
-  #   };
-  # };
 in {
   flake = {
     homeManagerModules = import ./modules/homeManager;
     nixosConfigurations = lib.mapAttrs mkSystem inventory;
-    #deploy.nodes = lib.mapAttrs (name: mkDeployNode) deployInventory;
     colmena = colmenaMeta // (mkColmenaNodes self.nixosConfigurations);
   };
 }
