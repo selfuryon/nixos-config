@@ -45,11 +45,11 @@
     "base16-schemes": {
       "flake": false,
       "locked": {
-        "lastModified": 1679331339,
-        "narHash": "sha256-ZSul9NpLbRgMIla+IIijFwGWZhx+ShfY2KzNicLG8jY=",
+        "lastModified": 1680729003,
+        "narHash": "sha256-M9LHTL24/W4oqgbYRkz0B2qpNrkefTs98pfj3MxIXnU=",
         "owner": "base16-project",
         "repo": "base16-schemes",
-        "rev": "42d74711418db38b08575336fc03f30bd3799d1d",
+        "rev": "dc048afa066287a719ddbab62b3e19e4b5110cf0",
         "type": "github"
       },
       "original": {
@@ -668,11 +668,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679254736,
-        "narHash": "sha256-/jXpuCjXuLsle7GR7NVqE6InaXuvGwnPs/mrUiygzlc=",
+        "lastModified": 1680729839,
+        "narHash": "sha256-+AagxTHrzKgngG+guIWAIV5hX1HkkvMbDxbUq2IVwAM=",
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "rev": "e1f145d15db320fe5c5e99b90898ab87db7e8214",
+        "rev": "803c00db1191604d50766358dbc5be2de4fcb4e7",
         "type": "github"
       },
       "original": {
