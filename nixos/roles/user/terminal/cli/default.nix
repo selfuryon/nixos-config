@@ -32,6 +32,7 @@
     pango
     protonvpn-cli
     ripgrep
+    tcpdump
     #sequoia
     tree
     wget
