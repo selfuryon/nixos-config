@@ -23,7 +23,7 @@
     };
 
     extraModulePackages = [];
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
   };
 
   fileSystems = {

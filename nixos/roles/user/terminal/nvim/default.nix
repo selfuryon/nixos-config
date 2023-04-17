@@ -74,7 +74,7 @@ in {
         nvim-cmp
         cmp-nvim-lsp
         cmp-buffer
-        which-key-nvim
+        #which-key-nvim
 
         # Git
         diffview-nvim

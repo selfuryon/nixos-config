@@ -17,7 +17,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
   };
   zramSwap.enable = false;
 

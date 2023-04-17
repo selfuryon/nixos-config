@@ -95,7 +95,7 @@
     #libreoffice
     onlyoffice-bin
     ledger-live-desktop
-    #megasync
+    megasync
     mpv
     networkmanagerapplet
     okular

@@ -1,8 +1,20 @@
 -- github theme
 require('github-theme').setup({
-  theme_style = 'light',
-  sidebars = {"terminal"},
-  dark_sidebar = false
+  options = {
+    styles = {
+      comments = 'Italic',
+      functions = 'NONE',
+      keywords = 'Bold',
+      variables = 'Underline',
+    },
+    darken = {
+      floats = true,
+      sidebars = {
+        enable = true,
+        list = { 'qf', 'vista_kind', 'terminal', 'packer' },
+      },
+    },
+  },
 })
 
 vim.cmd ('colorscheme github_light')

@@ -20,7 +20,7 @@
     };
 
     extraModulePackages = [];
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
   };
   zramSwap.enable = false;
 

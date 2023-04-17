@@ -44,7 +44,10 @@
     };
 
     # Packages
-    hyprland = {url = "github:hyprwm/Hyprland";};
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";

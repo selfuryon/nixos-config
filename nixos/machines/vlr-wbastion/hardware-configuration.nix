@@ -20,7 +20,7 @@
       device = "/dev/vda";
     };
 
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
   };
 
   fileSystems."/" = {
