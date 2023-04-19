@@ -8,6 +8,7 @@
     paratype-pt-mono
     paratype-pt-serif
     font-awesome
+    dejavu_fonts
   ];
 
   themes.fontProfile = {

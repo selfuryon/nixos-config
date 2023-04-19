@@ -66,7 +66,7 @@ in {
 
       # Input configuration
       input."type:keyboard" = {
-        xkb_layout = "us,ru";
+        xkb_layout = "us,chm";
         xkb_options = "grp:shift_caps_switch";
       };
       input."type:touchpad" = {
