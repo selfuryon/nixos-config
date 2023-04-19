@@ -1,12 +1,6 @@
 -- github theme
 require('github-theme').setup({
   options = {
-    styles = {
-      comments = 'Italic',
-      functions = 'NONE',
-      keywords = 'Bold',
-      variables = 'Underline',
-    },
     darken = {
       floats = true,
       sidebars = {
