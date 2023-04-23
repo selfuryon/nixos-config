@@ -17,13 +17,12 @@
         "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
       ];
       trusted-users = ["root" "@wheel"];
+      auto-optimise-store = true;
+      keep-outputs = true;
+      keep-derivations = true;
+      experimental-features = "nix-command flakes repl-flake";
     };
 
-    extraOptions = ''
-      experimental-features = nix-command flakes repl-flake
-      keep-outputs = true
-      keep-derivations = true
-    '';
     gc = {
       automatic = true;
       dates = "weekly";

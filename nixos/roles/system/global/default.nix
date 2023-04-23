@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  self,
   ...
 }: {
   imports = [
@@ -26,10 +27,10 @@
   security.doas.enable = true;
   #security.sudo.enable = false;
 
-  # nixpkgs = {
-  #   overlays = builtins.attrValues outputs.overlays;
-  #   config = {allowUnfree = true;};
-  # };
+  nixpkgs = {
+    overlays = builtins.attrValues self.overlays;
+    config = {allowUnfree = true;};
+  };
 
   home-manager = {
     useGlobalPkgs = true;

@@ -15,8 +15,6 @@
   in
     mapAttrs' (name: nameValuePair (head (splitString "." name))) hosts;
 
-  overlays = import ./overlays;
-
   # nixosConfigurations default modules
   defaultModules = [
     {
@@ -24,39 +22,32 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.ragenix.nixosModules.age
       ];
-      nixpkgs = {
-        overlays = builtins.attrValues overlays;
-        config = {allowUnfree = true;};
-      };
     }
   ];
-
-  # colmena meta
-  colmenaMeta = {
-    meta = {
-      description = "My NixOS machines";
-      nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-      specialArgs = {inherit inputs roles users;};
-    };
-  };
 
   # Make system configuration
   mkSystem = _: path:
     lib.nixosSystem {
-      specialArgs = {inherit inputs roles users;};
+      specialArgs = {inherit inputs roles users self;};
       modules = defaultModules ++ [path];
       extraModules = [inputs.colmena.nixosModules.deploymentOptions];
     };
 
-  # Make colmena configuration
-  mkColmenaNodes = builtins.mapAttrs (name: value: {
-    nixpkgs.system = value.config.nixpkgs.system;
-    imports = value._module.args.modules;
-  });
+  mkColmenaNodes = conf:
+    {
+      meta = {
+        description = "My personal machines";
+        nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
+        nodeNixpkgs = builtins.mapAttrs (name: value: value.pkgs) conf;
+        nodeSpecialArgs = builtins.mapAttrs (name: value: value._module.specialArgs) conf;
+      };
+    }
+    // builtins.mapAttrs (name: value: {imports = value._module.args.modules;}) conf;
 in {
   flake = {
     homeManagerModules = import ./modules/homeManager;
+    overlays = import ./overlays;
     nixosConfigurations = lib.mapAttrs mkSystem inventory;
-    colmena = colmenaMeta // (mkColmenaNodes self.nixosConfigurations);
+    colmena = mkColmenaNodes self.nixosConfigurations;
   };
 }

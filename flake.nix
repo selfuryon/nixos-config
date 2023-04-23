@@ -89,9 +89,12 @@
       debug = true;
       imports = [
         ({inputs', ...}: {
+          # make pkgs available to all `perSystem` functions
+          _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
           # make custom lib available to all `perSystem` functions
           _module.args.lib = lib;
         })
+        inputs.flake-parts.flakeModules.easyOverlay
         inputs.flake-root.flakeModule
         inputs.mission-control.flakeModule
         inputs.pre-commit-hooks-nix.flakeModule

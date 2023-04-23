@@ -6,7 +6,6 @@
       "file:///home/syakovlev/mega"
       "file:///home/syakovlev/Downloads"
     ];
-    gtk3.extraConfig = {gtk-cursor-theme-name = "capitaine-cursors";};
     font = {
       package = pkgs.noto-fonts;
       name = "Inter";
@@ -19,6 +18,11 @@
     theme = {
       package = pkgs.orchis-theme;
       name = "Orchis-Light";
+    };
+    cursorTheme = {
+      package = pkgs.capitaine-cursors;
+      name = "capitaine-cursors";
+      size = 16;
     };
   };
 }

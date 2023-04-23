@@ -7,10 +7,13 @@
   imports = [inputs.hyprland.homeManagerModules.default ../common];
   home.packages = with pkgs; [
     wayland
+    pciutils
     swaybg
     glib # gsettings
-    qt5.qtwayland
-    libsForQt5.lightly
+    #qt5.qtwayland
+    qt6.qt5compat
+    qt6.qtwayland
+    #libsForQt5.lightly
     wlogout
   ];
   home.sessionVariables = {
@@ -20,14 +23,11 @@
 
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     QT_QPA_PLATFORM = "wayland;xcb";
-    #QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
 
-    _JAVA_AWT_WM_NONREPARENTING = 1;
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland,x11";
     GTK_USE_PORTAL = 1;
-    #NIXOS_OZONE_WL = 1;
   };
   wayland.windowManager.hyprland = {
     enable = true;
