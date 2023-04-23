@@ -3,6 +3,11 @@
   lib,
   ...
 }: {
+  # Map nixpkgs to /etc/nixpkgs
+  environment.etc.nixpkgs.source = inputs.nixpkgs;
+  # Map flake to /etc/self
+  environment.etc.self.source = inputs.self;
+
   # Nix
   nix = {
     settings = {
@@ -27,11 +32,9 @@
       automatic = true;
       dates = "weekly";
     };
+    # Add each input as a registry
+    registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
+    # Allow to use old nix commands with channel
+    nixPath = lib.mkForce ["nixpkgs=/etc/nixpkgs"];
   };
-
-  # Map nixpkgs to /etc/nixpkgs
-  environment.etc.nixpkgs.source = inputs.nixpkgs;
-
-  # Add each input as a registry
-  nix.registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
 }
