@@ -6,7 +6,6 @@
   perSystem = {
     config,
     pkgs,
-    lib,
     ...
   }: {
     treefmt.config = {

@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{
   imports = [
     ./checks.nix
     ./control.nix

@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.shellAliases = {
     cat = "${pkgs.bat}/bin/bat";
     gc = "git commit";

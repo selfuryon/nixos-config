@@ -10,7 +10,7 @@
       .override {withMediaPlayer = true;};
     insomnia =
       prev.insomnia.overrideAttrs
-      (oldAttrs: let
+      (_: let
         runtimeLibs = final.lib.makeLibraryPath (with final.pkgs; [curl glibc libudev0-shim nghttp2 openssl stdenv.cc.cc.lib]);
       in {
         preFixup = ''wrapProgram "$out/bin/insomnia" "''${gappsWrapperArgs[@]}" --prefix LD_LIBRARY_PATH : ${runtimeLibs} '';
