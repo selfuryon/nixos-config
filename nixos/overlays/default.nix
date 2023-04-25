@@ -5,10 +5,16 @@
   modifications = final: prev: {
     waybar =
       (
-        prev.waybar.overrideAttrs
-        (oldAttrs: {mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];})
+        prev.waybar.overrideAttrs (oldAttrs: {mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];})
       )
       .override {withMediaPlayer = true;};
+    insomnia =
+      prev.insomnia.overrideAttrs
+      (oldAttrs: let
+        runtimeLibs = final.lib.makeLibraryPath (with final.pkgs; [curl glibc libudev0-shim nghttp2 openssl stdenv.cc.cc.lib]);
+      in {
+        preFixup = ''wrapProgram "$out/bin/insomnia" "''${gappsWrapperArgs[@]}" --prefix LD_LIBRARY_PATH : ${runtimeLibs} '';
+      });
     # ledger-live-test = prev.ledger-live-desktop.overrideAttrs (_: {
     #     pname = "ledger-live-desktop";
     #     version = "2.57.0";
