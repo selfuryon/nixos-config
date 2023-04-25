@@ -2,14 +2,10 @@
   perSystem = {
     pkgs,
     config,
-    self',
     inputs',
     ...
   }: let
     inherit (pkgs) mkShellNoCC;
-    inherit (inputs'.ragenix.packages) ragenix;
-    inherit (inputs'.colmena.packages) colmena;
-    inherit (pkgs) statix;
   in {
     devShells.default = mkShellNoCC {
       name = "etherno-iac";
@@ -18,7 +14,11 @@
         config.mission-control.devShell
         #config.pre-commit.devShell
       ];
-      packages = [ragenix statix colmena];
+      packages = builtins.attrValues {
+        inherit (pkgs) statix;
+        inherit (inputs'.ragenix.packages) ragenix;
+        inherit (inputs'.colmena.packages) colmena;
+      };
       shellHook = ''
         ${config.pre-commit.installationScript}
       '';
