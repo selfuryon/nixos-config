@@ -1,4 +1,4 @@
-[![built with nix](https://img.shields.io/static/v1?logo=terraform&logoColor=white&label=&message=Built%20with%20Terraform&color=5277C3&style=for-the-badge)](https://nixos.org/)
+[![Nix](https://img.shields.io/static/v1?logo=nixos&logoColor=white&label=&message=Nix/NixOS&color=5277C3&style=for-the-badge)](https://nixos.org/)
 
 # My NixOS configurations (Flake)
 
