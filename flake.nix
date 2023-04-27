@@ -22,9 +22,12 @@
       url = "github:hercules-ci/pre-commit-hooks.nix/flakeModule";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mission-control.url = "github:Platonic-Systems/mission-control";
 
     # Utils
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -94,10 +97,6 @@
           # make custom lib available to all `perSystem` functions
           _module.args.lib = lib;
         })
-        inputs.flake-parts.flakeModules.easyOverlay
-        inputs.flake-root.flakeModule
-        inputs.mission-control.flakeModule
-        inputs.pre-commit-hooks-nix.flakeModule
         ./nix
         ./nixos
       ];

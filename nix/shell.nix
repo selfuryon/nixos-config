@@ -1,27 +1,20 @@
 {
   perSystem = {
     pkgs,
-    config,
     inputs',
     ...
   }: let
-    inherit (pkgs) mkShellNoCC;
+    inherit (pkgs) statix;
+    inherit (inputs'.ragenix.packages) ragenix;
+    inherit (inputs'.colmena.packages) colmena;
   in {
-    devShells.default = mkShellNoCC {
-      name = "etherno-iac";
-      inputsFrom = [
-        config.flake-root.devShell
-        config.mission-control.devShell
-        #config.pre-commit.devShell
+    devshells.default = {
+      name = "personal";
+      packages = [
+        statix
+        ragenix
+        colmena
       ];
-      packages = builtins.attrValues {
-        inherit (pkgs) statix;
-        inherit (inputs'.ragenix.packages) ragenix;
-        inherit (inputs'.colmena.packages) colmena;
-      };
-      shellHook = ''
-        ${config.pre-commit.installationScript}
-      '';
     };
   };
 }
