@@ -9,7 +9,7 @@
     ...
   }: {
     treefmt.config = {
-      inherit (config.flake-root) projectRootFile;
+      projectRootFile = ".git/config";
       package = pkgs.treefmt;
       programs = {
         alejandra.enable = true;
@@ -17,14 +17,5 @@
       };
     };
     formatter = config.treefmt.build.wrapper;
-
-    devshells.default.commands = [
-      {
-        category = "Tools";
-        name = "fmt";
-        help = "Format the source tree";
-        command = "nix fmt";
-      }
-    ];
   };
 }

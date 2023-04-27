@@ -17,7 +17,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    flake-root.url = "github:srid/flake-root";
     pre-commit-hooks-nix = {
       url = "github:hercules-ci/pre-commit-hooks.nix/flakeModule";
       inputs.nixpkgs.follows = "nixpkgs";
