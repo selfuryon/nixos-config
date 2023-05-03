@@ -5,14 +5,14 @@
 }: {
   imports = [
     ./alacritty.nix
-    ./firefox.nix
     ./dunst.nix
-    ./foot.nix
+    ./firefox.nix
     ./font.nix
+    ./foot.nix
     ./gtk.nix
-    ./qt.nix
     ./mpd.nix
     ./playerctl.nix
+    ./qt.nix
     ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix

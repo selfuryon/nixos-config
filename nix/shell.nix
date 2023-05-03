@@ -2,6 +2,7 @@
   perSystem = {
     pkgs,
     inputs',
+    config,
     ...
   }: let
     inherit (pkgs) statix;
@@ -15,6 +16,9 @@
         ragenix
         colmena
       ];
+      devshell.startup = {
+        pre-commit.text = config.pre-commit.installationScript;
+      };
     };
   };
 }
