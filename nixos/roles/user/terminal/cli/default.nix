@@ -27,6 +27,7 @@
     pijul
     htop
     kind
+    nixos-shell
     lsof
     p7zip
     pango
