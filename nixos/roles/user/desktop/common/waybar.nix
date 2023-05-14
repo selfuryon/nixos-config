@@ -190,7 +190,7 @@ in {
       border-bottom: 4px solid ${base0C};
       }
       #custom-nixos {
-      font-size: 24px;
+      font-size: 12px;
       background-color: ${base0C};
       color: ${base00};
       padding-left: 15px;

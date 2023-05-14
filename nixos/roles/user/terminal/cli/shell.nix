@@ -35,6 +35,10 @@
       enable = true;
       enableAliases = true;
     };
+    broot = {
+      enable = true;
+      settings.modal = true;
+    };
     jq.enable = true;
   };
 }
