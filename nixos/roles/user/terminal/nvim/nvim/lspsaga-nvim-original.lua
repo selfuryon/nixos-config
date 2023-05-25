@@ -33,10 +33,11 @@ local keymap = vim.keymap.set
 
 keymap("n", "<leader>r", "<cmd>Lspsaga rename<CR>", { silent = true })
 keymap({"n","v"}, "<leader>a", "<cmd>Lspsaga code_action<CR>", { silent = true })
-keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>",{ silent = true })
-keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
-keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>",{ silent = true })
+keymap("n","K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+keymap("n","gr", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>")
+keymap("n","gp", "<cmd>Lspsaga peek_definition<CR>")
 --
 -- Callhierarchy
 keymap("n", "gci", "<cmd>Lspsaga incoming_calls<CR>")

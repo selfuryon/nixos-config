@@ -1,4 +1,5 @@
 vim.cmd ('syntax enable')
+vim.cmd ('set awa')
 vim.cmd ('filetype plugin indent on')
 
 -- Global variables
