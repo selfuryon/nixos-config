@@ -1,4 +1,8 @@
-{roles, users, ...}: {
+{
+  roles,
+  users,
+  ...
+}: {
   imports = [
     # Global configuration
     roles.system.global.default
@@ -7,6 +11,7 @@
     # Users
     users.default
     # Local role
+    ./deploy.nix
     ./hardware-configuration.nix
     ./networking.nix
   ];
