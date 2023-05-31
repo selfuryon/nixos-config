@@ -4,6 +4,6 @@
     allowLocalDeployment = true;
     targetUser = "syakovlev";
     privilegeEscalationCommand = ["doas"];
-    tags = ["notebook"];
+    tags = ["notebook" "local"];
   };
 }

@@ -3,6 +3,6 @@
   deployment = {
     targetUser = "syakovlev";
     privilegeEscalationCommand = ["doas"];
-    tags = ["minipc"];
+    tags = ["minipc" "remote"];
   };
 }
