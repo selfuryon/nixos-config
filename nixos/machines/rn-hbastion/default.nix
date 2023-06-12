@@ -21,7 +21,7 @@
   networking.hostId = "0c61dae4";
 
   time.timeZone = "Etc/UTC";
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 
   services.netbird.enable = true;
 }

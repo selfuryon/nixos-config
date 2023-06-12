@@ -4,6 +4,16 @@
   ...
 }: let
   addons = inputs.firefox-addons.packages.${pkgs.system};
+  noToolBar = ''
+    #TabsToolbar {
+      visibility: collapse !important;
+      margin-bottom: 21px !important;
+    }
+
+    #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+      visibility: collapse !important;
+    }
+  '';
 in {
   home.packages = with pkgs; [tridactyl-native];
   programs.firefox = {
@@ -21,11 +31,14 @@ in {
         smart-referer
         startpage-private-search
         tridactyl
+        sidebery
       ];
       extraConfig = ''
         ${builtins.readFile ./firefox/arkenfox/user.js}
         ${builtins.readFile ./firefox/private.js}
       '';
+      settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
+      userChrome = noToolBar;
       isDefault = true;
     };
     profiles.work = {
@@ -39,11 +52,14 @@ in {
         smart-referer
         startpage-private-search
         tridactyl
+        sidebery
       ];
       extraConfig = ''
         ${builtins.readFile ./firefox/arkenfox/user.js}
         ${builtins.readFile ./firefox/work.js}
       '';
+      settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
+      userChrome = noToolBar;
     };
     profiles.crypto = {
       id = 2;
@@ -53,10 +69,13 @@ in {
         smart-referer
         startpage-private-search
         tridactyl
+        sidebery
       ];
       extraConfig = ''
         ${builtins.readFile ./firefox/arkenfox/user.js}
       '';
+      settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
+      userChrome = noToolBar;
     };
     profiles.video = {
       id = 3;
@@ -68,7 +87,10 @@ in {
         smart-referer
         startpage-private-search
         tridactyl
+        sidebery
       ];
+      settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
+      userChrome = noToolBar;
     };
   };
   xdg = {

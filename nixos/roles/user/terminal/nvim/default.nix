@@ -77,9 +77,9 @@ in {
         #which-key-nvim
 
         # Git
-        diffview-nvim
         gitsigns-nvim
         #neogit
+        #diffview-nvim
 
         # Others
         formatter-nvim
@@ -90,6 +90,8 @@ in {
         comment-nvim
         hop-nvim
         surround-nvim
+        #neorg
+        (buildPlugin "neorg")
       ];
   };
 }

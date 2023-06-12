@@ -56,10 +56,7 @@
     };
 
     # Styles
-    base16 = {
-      url = "github:SenchoPens/base16.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    base16.url = "github:SenchoPens/base16.nix";
     base16-schemes = {
       url = "github:base16-project/base16-schemes";
       flake = false;
@@ -72,6 +69,10 @@
     };
     "github-nvim-theme" = {
       url = "github:projekt0n/github-nvim-theme/v0.0.7";
+      flake = false;
+    };
+    "neorg" = {
+      url = "github:nvim-neorg/neorg/v5.0.0";
       flake = false;
     };
   };
