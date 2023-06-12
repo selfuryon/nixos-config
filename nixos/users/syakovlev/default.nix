@@ -42,27 +42,27 @@ in {
     ];
     programs.home-manager.enable = true;
     home.stateVersion = "23.05";
-    #scheme = "${inputs.base16-schemes}/google-light.yaml";
+    #scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
     scheme = {
-      slug = "github-light";
-      scheme = "Light theme";
+      slug = "catppuccin-latte";
+      scheme = "catppuccin latte";
       author = "selfuryon";
-      base00 = "ffffff"; # Default Background
-      base01 = "f5f5f5"; # Lighter Background (Used for status bars)
-      base02 = "c8c8fa"; # Selection Background
-      base03 = "969896"; # Comments, Invisibles, Line Highlighting
-      base04 = "e8e8e8"; # Dark Foreground (Used for status bars)
-      base05 = "333333"; # Default Foreground, Caret, Delimiters, Operators
-      base06 = "ffffff"; # Light Foreground (Not often used)
-      base07 = "ffffff"; # Light Foreground (Not often used)
-      base08 = "cc342b"; # Red
-      base09 = "0086b3"; # Orange
-      base0A = "fba922"; # Yellow
-      base0B = "198844"; # Green
-      base0C = "3971ed"; # Cyan
-      base0D = "3971ed"; # Blue
-      base0E = "a36ac7"; # Magenta
-      base0F = "333333"; # Brown
+      base00 = "eff1f5"; # base
+      base01 = "e6e9ef"; # mantle
+      base02 = "ccd0da"; # surface0
+      base03 = "bcc0cc"; # surface1
+      base04 = "acb0be"; # surface2
+      base05 = "4c4f69"; # text
+      base06 = "dc8a78"; # rosewater
+      base07 = "7287fd"; # lavender
+      base08 = "d20f39"; # red
+      base09 = "fe640b"; # peach
+      base0A = "df8e1d"; # yellow
+      base0B = "40a02b"; # green
+      base0C = "179299"; # teal
+      base0D = "1e66f5"; # blue
+      base0E = "8839ef"; # mauve
+      base0F = "dd7878"; # flamingo
     };
   };
 }

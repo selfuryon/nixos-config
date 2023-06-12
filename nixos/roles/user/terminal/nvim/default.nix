@@ -62,8 +62,7 @@ in {
         marks-nvim
         lualine-nvim
         lualine-lsp-progress
-        (buildPlugin "github-nvim-theme")
-        #nvim-base16
+        catppuccin-nvim
 
         # Tree-sitter
         nvim-treesitter.withAllGrammars
@@ -78,8 +77,6 @@ in {
 
         # Git
         gitsigns-nvim
-        #neogit
-        #diffview-nvim
 
         # Others
         formatter-nvim

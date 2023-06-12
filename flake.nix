@@ -58,17 +58,21 @@
     # Styles
     base16.url = "github:SenchoPens/base16.nix";
     base16-schemes = {
-      url = "github:base16-project/base16-schemes";
+      url = "github:tinted-theming/base16-schemes";
+      flake = false;
+    };
+    # catppuccin-base16 = {
+    #   url = "github:catppuccin/base16";
+    #   flake = false;
+    # };
+    catppuccin-alacritty = {
+      url = "github:catppuccin/alacritty";
       flake = false;
     };
 
     # Neovim plugins
     "syntax-tree-surfer" = {
       url = "github:ziontee113/syntax-tree-surfer";
-      flake = false;
-    };
-    "github-nvim-theme" = {
-      url = "github:projekt0n/github-nvim-theme/v0.0.7";
       flake = false;
     };
     "neorg" = {
