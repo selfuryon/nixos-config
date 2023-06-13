@@ -61,10 +61,6 @@
       url = "github:tinted-theming/base16-schemes";
       flake = false;
     };
-    # catppuccin-base16 = {
-    #   url = "github:catppuccin/base16";
-    #   flake = false;
-    # };
     catppuccin-alacritty = {
       url = "github:catppuccin/alacritty";
       flake = false;

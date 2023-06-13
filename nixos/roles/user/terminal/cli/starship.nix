@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   programs.starship = {
     enable = true;
     settings = {
@@ -36,13 +40,13 @@
         time_format = "%T";
       };
 
-      character = {
-        success_symbol = "[ I ](fg:#ffffff bg:#2da44e)";
-        error_symbol = "[ I ](fg:#ffffff bg:#cf222e)";
-        vicmd_symbol = "[ N ](fg:#ffffff bg:#0969da)";
-        vimcmd_replace_one_symbol = "[ r ](fg:#ffffff bg:#cf222e)";
-        vimcmd_replace_symbol = "[ R ](fg:#ffffff bg:#cf222e)";
-        vimcmd_visual_symbol = "[ V ](fg:#ffffff bg:#bf8700)";
+      character = with config.scheme.withHashtag; {
+        success_symbol = "[ I ](fg:#ffffff bg:${base0B})";
+        error_symbol = "[ I ](fg:#ffffff bg:${base08})";
+        vicmd_symbol = "[ N ](fg:#ffffff bg:${base0D})";
+        vimcmd_replace_one_symbol = "[ r ](fg:#ffffff bg:${base09})";
+        vimcmd_replace_symbol = "[ R ](fg:#ffffff bg:${base09})";
+        vimcmd_visual_symbol = "[ V ](fg:#ffffff bg:${base0F})";
       };
     };
   };

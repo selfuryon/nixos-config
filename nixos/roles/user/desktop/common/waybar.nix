@@ -6,7 +6,6 @@
 }: let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   hostname = "${pkgs.nettools}/bin/hostname";
-  dunstctl = "${pkgs.dunst}/bin/dunstctl";
   curl = "${pkgs.curl}/bin/curl";
   jq = "${pkgs.jq}/bin/jq";
   cat = "${pkgs.coreutils}/bin/cat";
@@ -21,14 +20,6 @@
     CURRENT_REVISION=$(${cat} /run/current-system/nixos-version | ${cut} -d. -f4)
     REMOTE_REVISION=$(${curl} -s $GITHUB_URL | ${jq} '.object.sha' -r )
     [[ $CURRENT_REVISION == ''${REMOTE_REVISION:0:7} ]] && echo $NO_UPDATE || echo $UPDATE
-  '';
-  dusntNotifications = pkgs.writeShellScript "dunstNotifications.sh" ''
-    PAUSED='{"text": "Paused", "alt": "paused", "class": "paused"}'
-    ENABLED='{"text": "Enabled", "alt": "enabled", "class": "enabled"}'
-    COUNT=$(${dunstctl} count waiting)
-    STATUS=$(${dunstctl} is-paused)
-
-    [ $STATUS == "true" ] && echo $PAUSED || echo $ENABLED
   '';
 in {
   programs.waybar = {
@@ -48,7 +39,6 @@ in {
           "custom/nixos"
           "tray"
           "idle_inhibitor"
-          #"custom/notifications"
           "mpris"
         ];
         modules-center = ["wlr/workspaces"];
@@ -66,26 +56,29 @@ in {
           };
           interval = 10800;
         };
-        "custom/notifications" = {
-          exec = dusntNotifications;
-          on-click = "${dunstctl} set-paused toggle";
-          return-type = "json";
-          format = "{icon}";
-          format-icons = {
-            paused = "";
-            enabled = "";
-          };
-        };
         clock = {
-          format = " {:%Y-%m-%d %H:%M}";
-          tooltip-format = ''
-            <big>{:%Y %B}</big>
-            <tt><small>{calendar}</small></tt>'';
-          today-format = "<span color='#ff6699'><b><u>{}</u></b></span>";
-          format-calendar = "<span color='#ecc6d9'><b>{}</b></span>";
-          format-calendar-weeks = "<span color='#99ffdd'><b>W{:%V}</b></span>";
-          format-calendar-weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-          on-scroll = {calendar = 1;};
+          format = "󱑌  {:%H:%M}";
+          format-alt = "󰸗 {:%B %d, %Y (%R)}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            on-scroll = 1;
+            on-click-right = "mode";
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+          };
+          actions = {
+            on-click-right = "mode";
+            on-click-forward = "tz_up";
+            on-click-backward = "tz_down";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
         };
         pulseaudio = {
           format = "{icon}  {volume}%";
@@ -99,8 +92,8 @@ in {
           on-click = pavucontrol;
         };
         wireplumber = {
-          format = " {volume}%";
-          format-muted = "   0%";
+          format = "  {volume}%";
+          format-muted = "󰝟  0%";
           on-click = pavucontrol;
         };
         idle_inhibitor = {
@@ -117,14 +110,14 @@ in {
             warning = 30;
             critical = 15;
           };
-          format-icons = ["" "" "" "" "" "" "" "" "" ""];
+          format-icons = ["󱊡" "󱊢" "󱊣"];
           format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
+          format-charging = "󱊥 {capacity}%";
         };
         network = {
           interval = 3;
           format-wifi = "   {essid}";
-          format-ethernet = " Connected";
+          format-ethernet = "󰈀  Connected";
           format-disconnected = "";
           tooltip-format = ''
             {ifname}
@@ -165,7 +158,7 @@ in {
       opacity: 0.95;
       padding: 0;
       background-color: ${base00};
-      border: 2px solid ${base0C};
+      border: 2px solid ${base0D};
       border-top-width: 4px;
       border-radius: 10px;
       }
@@ -187,11 +180,11 @@ in {
       }
       #workspaces button.focused,
       #workspaces button.active {
-      border-bottom: 4px solid ${base0C};
+      border-bottom: 4px solid ${base0D};
       }
       #custom-nixos {
       font-size: 12px;
-      background-color: ${base0C};
+      background-color: ${base0D};
       color: ${base00};
       padding-left: 15px;
       padding-right: 22px;
@@ -204,11 +197,14 @@ in {
       #custom-nixos.update {
       color: ${base08};
       }
+      #battery.warning {
+      background: ${base09};
+      }
       #battery.critical {
       background: ${base08};
       }
       #custom-hostname {
-      background-color: ${base0C};
+      background-color: ${base0D};
       color: ${base00};
       padding-left: 15px;
       padding-right: 18px;
