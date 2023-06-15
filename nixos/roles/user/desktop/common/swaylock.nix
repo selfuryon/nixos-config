@@ -1,10 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
-  home.packages = with pkgs; [swaylock];
+{config, ...}: {
   programs.swaylock = {
+    enable = true;
     settings = with config.scheme; {
       image = "/home/syakovlev/Pictures/lock.jpg";
 
