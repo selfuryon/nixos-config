@@ -87,8 +87,6 @@ in {
         comment-nvim
         hop-nvim
         surround-nvim
-        #neorg
-        (buildPlugin "neorg")
       ];
   };
 }

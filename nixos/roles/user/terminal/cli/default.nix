@@ -38,5 +38,6 @@
     tree
     wget
     yubikey-manager
+    zk
   ];
 }
