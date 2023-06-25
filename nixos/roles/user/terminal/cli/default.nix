@@ -5,13 +5,15 @@
     ./fzf.nix
     ./git.nix
     ./gpg.nix
-    ./shell.nix
     ./helix.nix
+    ./lazygit.nix
+    ./shell.nix
     ./skim.nix
     ./starship.nix
     ./zellij.nix
   ];
 
+  xdg.enable = true;
   home.packages = with pkgs; [
     rage
     signify

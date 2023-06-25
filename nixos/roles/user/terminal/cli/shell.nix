@@ -8,6 +8,7 @@
     gph = "git push";
     gl = "git ll";
     gpl = "git pull";
+    lg = "lazygit";
 
     nrs = "doas nixos-rebuild switch --flake path:/home/syakovlev/nixos-config";
     nrb = "doas nixos-rebuild build --flake path:/home/syakovlev/nixos-config";
