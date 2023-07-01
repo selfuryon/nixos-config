@@ -40,11 +40,16 @@ in {
           "tray"
           "idle_inhibitor"
           "mpris"
+          "hyprland/submap"
         ];
         modules-center = ["wlr/workspaces"];
         modules-right = ["network" "wireplumber" "battery" "clock" "custom/hostname"];
 
         "wlr/workspaces" = {on-click = "activate";};
+        "hyprland/submap" = {
+          format = "󱋜 {}";
+          max-length = 8;
+        };
         "custom/nixos" = {
           exec = checkNixosUpdates;
           on-click = checkNixosUpdates;
@@ -79,17 +84,6 @@ in {
             on-scroll-up = "shift_up";
             on-scroll-down = "shift_down";
           };
-        };
-        pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-muted = "   0%";
-          format-icons = {
-            headphone = "";
-            headset = "";
-            portable = "";
-            default = ["" "" ""];
-          };
-          on-click = pavucontrol;
         };
         wireplumber = {
           format = "  {volume}%";
@@ -132,12 +126,12 @@ in {
           format-paused = "{status_icon}";
           format-stopped = "{status_icon}";
           player-icons = {
-            default = "";
+            default = "";
             firefox = "";
           };
           status-icons = {
-            paused = "";
-            stopped = "";
+            paused = "󰏦";
+            stopped = "󰙧";
           };
         };
       };
@@ -183,7 +177,7 @@ in {
       border-bottom: 4px solid ${base0D};
       }
       #custom-nixos {
-      font-size: 12px;
+      font-size: 14px;
       background-color: ${base0D};
       color: ${base00};
       padding-left: 15px;

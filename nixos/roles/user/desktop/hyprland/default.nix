@@ -49,6 +49,8 @@
         col.inactive_border=0xff${base02}
         col.group_border_active=0xff${base0B}
         col.group_border=0xff${base04}
+
+        layout=master
       }
       decoration {
         active_opacity=1
@@ -100,9 +102,106 @@
         no_gaps_when_only=false
         split_width_multiplier=1.35
       }
+      master {
+        mfact=0.7
+      }
+
+      # Exec
+      exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+      exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+      exec-once=${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill
+
       # Mouse
       bindm=SUPER,mouse:272,movewindow
       bindm=SUPER,mouse:273,resizewindow
+
+      # Kill
+      bind=SUPER,q,killactive,
+      bind=SUPER_SHIFT,E,exit,
+
+      # Exec
+      bind=SUPER,return,exec,alacritty
+      bind=SUPER,d,exec,wofi --show drun
+      bind=SUPER_SHIFT,print,exec,sh -c 'slurp | grim -g - -t png - | wl-copy -t image/png'
+      bind=,print,exec,sh -c 'grim -g "$(slurp)" - | swappy -f -'
+      bind=SUPER_SHIFT,x,exec,${pkgs.swaylock}/bin/swaylock -f
+
+      # Float
+      bind=SUPER_SHIFT,space,togglefloating,
+      bind=SUPER,Tab,cyclenext,
+      bind=SUPER,Tab,bringactivetotop,
+
+      # Special
+      bind=SUPER,minus,togglespecialworkspace,minus
+      bind=SUPER_SHIFT,minus,movetoworkspace,special:minus
+      bind=SUPER,equal,togglespecialworkspace,equal
+      bind=SUPER_SHIFT,equal,movetoworkspace,special:equal
+
+      # Master orientation
+      bind=SUPER,F1,layoutmsg,orientationleft
+      bind=SUPER,F2,layoutmsg,orientationright
+      bind=SUPER,F3,layoutmsg,orientationtop
+      bind=SUPER,F4,layoutmsg,orientationbottom
+      bind=SUPER,F5,layoutmsg,orientationcenter
+
+      # Master bindings
+      bind=SUPER,i,layoutmsg, addmaster # add focused window to master stack
+      bind=SUPER+SHIFT,i,layoutmsg, removemaster # add focused window to master stack
+      bind=SUPER,m,layoutmsg,focusmaster
+
+      # Master layout
+      bind=SUPER,p,layoutmsg,cyclenext
+      bind=SUPER,n,layoutmsg,cycleprev
+      bind=SUPER_SHIFT,p,layoutmsg,swapnext
+      bind=SUPER_SHIFT,n,layoutmsg,swapprev
+
+      # Focus
+      bind=SUPER,h,movefocus,l
+      bind=SUPER,l,movefocus,r
+      bind=SUPER,k,movefocus,u
+      bind=SUPER,j,movefocus,d
+
+      # Tab
+      bind=SUPER,f,fullscreen,1
+      bind=SUPER,g,togglegroup,
+      bind=SUPER+SHIFT,g,moveoutofgroup,
+      bind=SUPER,bracketleft,changegroupactive,f
+      bind=SUPER,bracketright,changegroupactive,b
+
+      # Rules
+      windowrulev2=float,class:^(MEGAsync)$
+      windowrulev2=float,size 0 0, move 10 10,title:(Sharing Indicator)
+      windowrulev2=float,pin,class:(pavucontrol)
+
+       # Media
+      bind=,XF86AudioNext,exec,playerctl next
+      bind=,XF86AudioPrev,exec,playerctl previous
+      bind=,XF86AudioPlay,exec,playerctl play-pause
+      bind=,XF86AudioStop,exec,playerctl stop
+      bind=ALT,XF86AudioNext,exec,playerctld shift
+      bind=ALT,XF86AudioPrev,exec,playerctld unshift
+      bind=ALT,XF86AudioPlay,exec,systemctl --user restart playerctld
+      bind=,XF86AudioLowerVolume,exec,pamixer -d 5
+      bind=,XF86AudioMute,exec,pamixer -t
+      bind=,XF86AudioRaiseVolume,exec,pamixer -i 5
+      bind=,XF86MonBrightnessDown,exec,light -U 5
+      bind=,XF86MonBrightnessUp,exec,light -A 5
+
+      # Moves
+      bind=SUPER_SHIFT,h,movewindow,l
+      bind=SUPER_SHIFT,l,movewindow,r
+      bind=SUPER_SHIFT,k,movewindow,u
+      bind=SUPER_SHIFT,j,movewindow,d
+      bind=SUPER_SHIFT,1,submap,cws1
+      bind=SUPER_SHIFT,2,submap,cws2
+      bind=SUPER_SHIFT,3,submap,cws3
+      bind=SUPER_SHIFT,4,movetoworkspace,40
+      bind=SUPER_SHIFT,5,movetoworkspace,50
+      bind=SUPER_SHIFT,6,movetoworkspace,60
+      bind=SUPER_SHIFT,7,movetoworkspace,70
+      bind=SUPER_SHIFT,8,submap,cws8
+      bind=SUPER_SHIFT,9,movetoworkspace,90
+      bind=SUPER_SHIFT,0,movetoworkspace,10
 
       # Workspaces
       bind=SUPER,1,submap,ws1
@@ -115,6 +214,16 @@
       bind=SUPER,8,submap,ws8
       bind=SUPER,9,workspace,90
       bind=SUPER,0,workspace,100
+
+      # Resize submap
+      bind=SUPER,R,submap,resize
+      submap=resize
+      bind=,l,resizeactive,30 0
+      bind=,h,resizeactive,-30 0
+      bind=,k,resizeactive,0 -30
+      bind=,j,resizeactive,0 30
+      bind=,escape,submap,reset
+      submap=reset
 
       # Workspace submaps
       submap=ws1
@@ -295,27 +404,7 @@
       bind=,return,submap,reset
       submap=reset
 
-      # Focus
-      bind=SUPER,h,movefocus,l
-      bind=SUPER,l,movefocus,r
-      bind=SUPER,k,movefocus,u
-      bind=SUPER,j,movefocus,d
-      # Moves
-      bind=SUPERSHIFT,h,movewindow,l
-      bind=SUPERSHIFT,l,movewindow,r
-      bind=SUPERSHIFT,k,movewindow,u
-      bind=SUPERSHIFT,j,movewindow,d
-      bind=SUPERSHIFT,1,submap,cws1
-      bind=SUPERSHIFT,2,submap,cws2
-      bind=SUPERSHIFT,3,submap,cws3
-      bind=SUPERSHIFT,4,movetoworkspace,40
-      bind=SUPERSHIFT,5,movetoworkspace,50
-      bind=SUPERSHIFT,6,movetoworkspace,60
-      bind=SUPERSHIFT,7,movetoworkspace,70
-      bind=SUPERSHIFT,8,submap,cws8
-      bind=SUPERSHIFT,9,movetoworkspace,90
-      bind=SUPERSHIFT,0,movetoworkspace,10
-      # Submap moves
+      # Move Submap
       submap=cws1
       bind=,0,movetoworkspace,10
       bind=,0,submap,reset
@@ -415,60 +504,6 @@
       bind=,escape,submap,reset
       bind=,return,submap,reset
       submap=reset
-
-       # Media
-      bind=,XF86AudioNext,exec,playerctl next
-      bind=,XF86AudioPrev,exec,playerctl previous
-      bind=,XF86AudioPlay,exec,playerctl play-pause
-      bind=,XF86AudioStop,exec,playerctl stop
-      bind=ALT,XF86AudioNext,exec,playerctld shift
-      bind=ALT,XF86AudioPrev,exec,playerctld unshift
-      bind=ALT,XF86AudioPlay,exec,systemctl --user restart playerctld
-      bind=,XF86AudioLowerVolume,exec,pamixer -d 5
-      bind=,XF86AudioMute,exec,pamixer -t
-      bind=,XF86AudioRaiseVolume,exec,pamixer -i 5
-      bind=,XF86MonBrightnessDown,exec,light -U 5
-      bind=,XF86MonBrightnessUp,exec,light -A 5
-      # System
-      bind=SUPER,T,togglefloating,
-      bind=SUPERSHIFT,space,togglefloating,
-      bind=SUPERSHIFT,R,exec,hyprctl reload
-      #bind=SUPERSHIFT,E,exec,pkill Hyprland
-      bind=SUPERSHIFT,Q,killactive
-      bind=SUPER,return,exec,alacritty
-      bind=SUPER,D,exec,wofi --show drun
-      bind=SUPER,P,pseudo,
-      bind=SUPERSHIFT,print,exec,sh -c 'slurp | grim -g - -t png - | wl-copy -t image/png'
-      bind=SUPERSHIFT,x,exec,${pkgs.swaylock}/bin/swaylock -f
-      bind=,print,exec,sh -c 'grim -g "$(slurp)" - | swappy -f -'
-      # Special
-      bind=SUPER,minus,togglespecialworkspace,
-      bind=SUPERSHIFT,minus,movetoworkspace,special
-
-      # Split
-      bind=SUPER,F,fullscreen,
-      bind=SUPER,E,togglegroup,
-      bind=SUPER,L,changegroupactive,f
-      bind=SUPER,H,changegroupactive,b
-      bind=SUPER,apostrophe,changegroupactive,f
-      bind=SUPERSHIFT,apostrophe,changegroupactive,b
-
-      # Resize Mode with Alt + R : Press Escape to quit
-      bind=SUPER,R,submap,resize # will switch to a submap called resize
-      submap=resize # will start a submap called "resize"
-      bind=,l,resizeactive,30 0
-      bind=,h,resizeactive,-30 0
-      bind=,k,resizeactive,0 -30
-      bind=,j,resizeactive,0 30
-      bind=,escape,submap,reset # use reset to go back to the global submap
-      submap=reset # will reset the submap, meaning end the current one and return to the global one.
-      exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
-      exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
-      exec-once=${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill
-
-      windowrulev2=float,class:^(MEGAsync)$
-      windowrulev2=float,size 0 0, move 10 10,title:(Sharing Indicator)
-      windowrulev2=float,pin,class:(pavucontrol)
     '';
   };
 }

@@ -22,7 +22,7 @@
       ];
     };
     settings = {
-      theme = "github_light";
+      theme = "catppuccin_latte";
       keys.normal = {space.space = "file_picker";};
       editor = {
         auto-save = true;
