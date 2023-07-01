@@ -10,11 +10,10 @@
     pciutils
     swaybg
     glib # gsettings
-    #qt5.qtwayland
     qt6.qt5compat
     qt6.qtwayland
-    #libsForQt5.lightly
-    wlogout
+    wl-clipboard
+    cliphist
   ];
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
@@ -110,6 +109,8 @@
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
       exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
       exec-once=${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill
+      exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store
+      exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
 
       # Mouse
       bindm=SUPER,mouse:272,movewindow
@@ -167,11 +168,6 @@
       bind=SUPER+SHIFT,g,moveoutofgroup,
       bind=SUPER,bracketleft,changegroupactive,f
       bind=SUPER,bracketright,changegroupactive,b
-
-      # Rules
-      windowrulev2=float,class:^(MEGAsync)$
-      windowrulev2=float,size 0 0, move 10 10,title:(Sharing Indicator)
-      windowrulev2=float,pin,class:(pavucontrol)
 
        # Media
       bind=,XF86AudioNext,exec,playerctl next
@@ -504,6 +500,22 @@
       bind=,escape,submap,reset
       bind=,return,submap,reset
       submap=reset
+
+      # Rules
+      windowrule = float,^(pavucontrol)$
+      windowrule = float,^(nm-connection-editor)$
+      windowrule = float,^(polkit-gnome-authentication-agent-1)$
+
+      # common modals
+      windowrule = float,title:^(Open)$
+      windowrule = float,title:^(Choose Files)$
+      windowrule = float,title:^(Save As)$
+      windowrule = float,title:^(Confirm to replace files)$
+      windowrule = float,title:^(File Operation Progress)$
+
+      # Others
+      windowrulev2=float,class:^(MEGAsync)$
+      windowrulev2=float,size 0 0, move 10 10,title:(Sharing Indicator)
     '';
   };
 }

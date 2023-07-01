@@ -115,7 +115,6 @@
     vlc
     wf-recorder
     wireshark
-    wl-clipboard
     xdg-utils
     xfce.thunar
     xfce.thunar-media-tags-plugin

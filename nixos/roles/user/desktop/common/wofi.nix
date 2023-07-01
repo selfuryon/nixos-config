@@ -24,10 +24,14 @@
   # https://git.sr.ht/~knezi/base16-wofi
   xdg.configFile."wofi/style.css".text = with config.scheme.withHashtag; ''
     window {
+      border: 2px solid ${base0C};
     	background-color: ${base00};
     	color: ${base05};
       font-size: 13pt;
       font-family: "${config.themes.fontProfile.regular.family}";
+    }
+    #outer-box {
+      padding: 5px;
     }
     #entry:selected {
     	border-color: ${base0A};
