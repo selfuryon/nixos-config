@@ -118,7 +118,7 @@
 
       # Kill
       bind=SUPER,q,killactive,
-      bind=SUPER_SHIFT,E,exit,
+      bind=SUPER_SHIFT,E,exec,${pkgs.wlogout}/bin/wlogout
 
       # Exec
       bind=SUPER,return,exec,alacritty

@@ -67,6 +67,11 @@ require('formatter').setup({
       function()
         return {exe = "terraform", args = {"fmt", "-"}, stdin = true}
       end
+    },
+    cue = {
+      function()
+        return {exe = "cue", args = {"fmt", "-"}, stdin = true}
+      end
     }
   }
 })

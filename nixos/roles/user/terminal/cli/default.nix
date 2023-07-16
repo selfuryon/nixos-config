@@ -24,7 +24,7 @@
     curl
     fd
     xplr
-    nnn
+    ranger
     git
     pijul
     htop

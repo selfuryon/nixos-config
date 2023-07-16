@@ -48,6 +48,7 @@ in {
       gopls
       nil
       yaml-language-server
+      cuelsp
     ];
     plugins = with pkgs.vimPlugins;
       configPlugins [
