@@ -1,24 +1,33 @@
 {pkgs, ...}: {
   home.shellAliases = {
-    cat = "${pkgs.bat}/bin/bat";
-    gc = "git commit";
-    gd = "git diff";
-    ga = "git add";
-    gs = "git status";
-    gph = "git push";
-    gl = "git ll";
-    gpl = "git pull";
-    lg = "lazygit";
+    # Git
+    gc = "${pkgs.git}/bin/git commit";
+    gd = "${pkgs.git}/bin/git diff";
+    ga = "${pkgs.git}/bin/git add";
+    gs = "${pkgs.git}/bin/git status";
+    gph = "${pkgs.git}/bin/git push";
+    gl = "${pkgs.git}/bin/git ll";
+    gpl = "${pkgs.git}/bin/git pull";
+    lg = "${pkgs.lazygit}/bin/lazygit";
 
+    # Nix
     nrs = "doas nixos-rebuild switch --flake path:/home/syakovlev/nixos-config";
     nrb = "doas nixos-rebuild build --flake path:/home/syakovlev/nixos-config";
 
+    # Kubernetes
     k = "kubectl";
     kx = "kubectx";
     kns = "kubens";
-    ks = "${pkgs.kubeswitch}/bin/switch";
     tf = "terraform";
     tg = "terragrunt";
+
+    # Other
+    cat = "${pkgs.bat}/bin/bat --paging=never --style=plain";
+    ip = "ip --color --brief";
+    less = "${pkgs.bat}/bin/bat --paging=always";
+    more = "${pkgs.bat}/bin/bat --paging=always";
+    tree = "${pkgs.exa}/bin/exa --tree";
+    wget = "${pkgs.wget2}/bin/wget2";
   };
 
   home.sessionVariables = {
@@ -31,10 +40,15 @@
     bat = {
       enable = true;
       config.theme = "GitHub";
+      extraPackages = with pkgs.bat-extras; [
+        batwatch
+        prettybat
+      ];
     };
     exa = {
       enable = true;
       enableAliases = true;
+      icons = true;
     };
     broot = {
       enable = true;
