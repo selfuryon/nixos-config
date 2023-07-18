@@ -41,6 +41,7 @@
     procs
     curl
     fd
+    tldr
     git
     htop
     kind
