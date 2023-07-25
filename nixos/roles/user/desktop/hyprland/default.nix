@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [inputs.hyprland.homeManagerModules.default ../common];
+  disabledModules = ["services/window-managers/hyprland.nix"];
   home.packages = with pkgs; [
     wayland
     pciutils

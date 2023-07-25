@@ -1,6 +1,14 @@
 {
   programs = {
     zoxide.enable = true;
+    atuin = {
+      enable = true;
+      enableFishIntegration = true;
+      settings = {
+        style = "compact";
+        search_mode = "skim";
+      };
+    };
     fish = {
       enable = true;
       interactiveShellInit = ''

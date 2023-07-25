@@ -35,13 +35,11 @@
     bind
     bubblewrap
     cryfs
+    curl
     dua
     duf
     entr
-    procs
-    curl
     fd
-    tldr
     git
     htop
     kind
@@ -50,12 +48,14 @@
     p7zip
     pango
     pijul
+    procs
     protonvpn-cli
     rage
-    ranger
+    xplr
     ripgrep
     signify
     tcpdump
+    tldr
     tree
     wget
     xplr
