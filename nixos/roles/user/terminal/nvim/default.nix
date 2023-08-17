@@ -55,7 +55,7 @@ in {
         # LSP
         nvim-lspconfig
         lsp_signature-nvim
-        lspsaga-nvim-original
+        lspsaga-nvim
 
         # UI
         telescope-nvim

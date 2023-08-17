@@ -59,7 +59,7 @@
     tree
     wget
     xplr
-    yubikey-manager
+    #yubikey-manager
     zk
   ];
 }

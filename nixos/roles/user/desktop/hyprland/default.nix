@@ -54,11 +54,6 @@
       }
       decoration {
         active_opacity=1
-        blur=true
-        blur_ignore_opacity=true
-        blur_new_optimizations=true
-        blur_passes=3
-        blur_size=6  # old 12
         dim_inactive = true
         dim_strength = .105
         drop_shadow=true
@@ -70,6 +65,14 @@
         inactive_opacity=0.80
         col.shadow=0x44000000
         col.shadow_inactive=0x66000000
+
+        blur {
+          enabled=true
+          ignore_opacity=true
+          new_optimizations=true
+          passes=3
+          size=6  # old 12
+        }
       }
       animations {
         enabled=true

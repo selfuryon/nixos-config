@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
@@ -24,7 +23,7 @@
 in {
   programs.waybar = {
     enable = true;
-    package = inputs.hyprland.packages."x86_64-linux".waybar-hyprland;
+    package = pkgs.waybar-hyprland;
     systemd = {
       enable = true;
       target = "hyprland-session.target";
