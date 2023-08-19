@@ -1,0 +1,102 @@
+{
+  disko.devices = {
+    disk = {
+      nvme0n1 = {
+        type = "disk";
+        device = "/dev/nvme0n1";
+        content = {
+          type = "gpt";
+          partitions = {
+            esp = {
+              size = "512M";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+              };
+            };
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "zroot";
+              };
+            };
+          };
+        };
+      };
+      nvme1n1 = {
+        type = "disk";
+        device = "/dev/nvme1n1";
+        content = {
+          type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "zroot";
+              };
+            };
+          };
+        };
+      };
+    };
+    zpool = {
+      zroot = {
+        type = "zpool";
+        mode = "mirror";
+        rootFsOptions = {
+          compression = "zstd";
+          "com.sun:auto-snapshot" = "false";
+          mountpoint = "none";
+          encryption = "aes-256-gcm";
+          keyformat = "passphrase";
+          keylocation = "file:///tmp/secret.key";
+        };
+        postCreateHook = ''
+          zfs set keylocation="prompt" "zroot";
+        '';
+
+        datasets = {
+          nix = {
+            type = "zfs_fs";
+            mountpoint = "/nix";
+            options.mountpoint = "legacy";
+          };
+          state = {
+            type = "zfs_fs";
+            options."com.sun:auto-snapshot" = "true";
+          };
+          "state/system" = {
+            type = "zfs_fs";
+            mountpoint = "/state/system";
+            options.mountpoint = "legacy";
+          };
+          "state/home" = {
+            type = "zfs_fs";
+            mountpoint = "/state/home";
+            options.mountpoint = "legacy";
+          };
+        };
+      };
+    };
+    nodev = {
+      "/" = {
+        fsType = "tmpfs";
+        mountOptions = [
+          "size=8G"
+          "defaults"
+          "mode=755"
+        ];
+      };
+      "/tmp" = {
+        fsType = "tmpfs";
+        mountOptions = [
+          "size=500M"
+        ];
+      };
+    };
+  };
+}
