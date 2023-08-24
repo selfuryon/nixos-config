@@ -47,23 +47,44 @@
       zroot = {
         type = "zpool";
         mode = "mirror";
+        options = {
+          ashift = "13";
+          autotrim = "on";
+        };
         rootFsOptions = {
+          atime = "off";
+          relatime = "on";
           compression = "zstd";
-          "com.sun:auto-snapshot" = "false";
           mountpoint = "none";
+          dnodesize = "auto";
+          acltype = "posix";
+          xattr = "sa";
           encryption = "aes-256-gcm";
           keyformat = "passphrase";
           keylocation = "file:///tmp/secret.key";
+          "com.sun:auto-snapshot" = "false";
         };
         postCreateHook = ''
-          zfs set keylocation="prompt" "zroot";
+          zfs snapshot zroot/local/home@blank
         '';
 
         datasets = {
-          nix = {
+          local.type = "zfs_fs";
+          "local/reserved" = {
+            type = "zfs_fs";
+            options.reservation = "15G";
+          };
+          "local/nix" = {
             type = "zfs_fs";
             mountpoint = "/nix";
             options.mountpoint = "legacy";
+            options.relatime = "off";
+          };
+          "local/home" = {
+            type = "zfs_fs";
+            mountpoint = "/home";
+            options.mountpoint = "legacy";
+            postCreateHook = "zfs snapshot zroot/local/home@blank";
           };
           state = {
             type = "zfs_fs";
@@ -78,6 +99,12 @@
             type = "zfs_fs";
             mountpoint = "/state/home";
             options.mountpoint = "legacy";
+            options.recordsize = "1M";
+          };
+          "state/home/syakovlev" = {
+            type = "zfs_fs";
+            mountpoint = "/state/home/syakovlev";
+            options.mountpoint = "legacy";
           };
         };
       };
@@ -86,7 +113,7 @@
       "/" = {
         fsType = "tmpfs";
         mountOptions = [
-          "size=8G"
+          "size=2G"
           "defaults"
           "mode=755"
         ];

@@ -73,7 +73,7 @@
  * [1] https://blog.mozilla.org/nnethercote/2018/03/09/a-new-preferences-parser-for-firefox/ ***/
 user_pref(
   "_user.js.parrot",
-  "START: Oh yes, the Norwegian Blue... what's wrong with it?"
+  "START: Oh yes, the Norwegian Blue... what's wrong with it?",
 );
 
 /* 0000: disable about:config warning ***/
@@ -105,13 +105,13 @@ user_pref("browser.newtabpage.activity-stream.default.sites", "");
 /*** [SECTION 0200]: GEOLOCATION / LANGUAGE / LOCALE ***/
 user_pref(
   "_user.js.parrot",
-  "0200 syntax error: the parrot's definitely deceased!"
+  "0200 syntax error: the parrot's definitely deceased!",
 );
 /* 0201: use Mozilla geolocation service instead of Google if permission is granted [FF74+]
  * Optionally enable logging to the console (defaults to false) ***/
 user_pref(
   "geo.provider.network.url",
-  "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%"
+  "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%",
 );
 // user_pref("geo.provider.network.logging.enabled", true); // [HIDDEN PREF]
 /* 0202: disable using the OS's geolocation service ***/
@@ -132,7 +132,7 @@ user_pref("javascript.use_us_english_locale", true); // [HIDDEN PREF]
 /*** [SECTION 0300]: QUIETER FOX ***/
 user_pref(
   "_user.js.parrot",
-  "0300 syntax error: the parrot's not pinin' for the fjords!"
+  "0300 syntax error: the parrot's not pinin' for the fjords!",
 );
 /** RECOMMENDATIONS ***/
 /* 0320: disable recommendation pane in about:addons (uses Google Analytics) ***/
@@ -271,7 +271,7 @@ user_pref("browser.places.speculativeConnect.enabled", false);
 /*** [SECTION 0700]: DNS / DoH / PROXY / SOCKS / IPv6 ***/
 user_pref(
   "_user.js.parrot",
-  "0700 syntax error: the parrot's given up the ghost!"
+  "0700 syntax error: the parrot's given up the ghost!",
 );
 /* 0701: disable IPv6
  * IPv6 can be abused, especially with MAC addresses, and can leak with VPNs: assuming
@@ -406,7 +406,7 @@ user_pref("network.auth.subresource-http-auth-allow", 1);
 /*** [SECTION 1000]: DISK AVOIDANCE ***/
 user_pref(
   "_user.js.parrot",
-  "1000 syntax error: the parrot's gone to meet 'is maker!"
+  "1000 syntax error: the parrot's gone to meet 'is maker!",
 );
 /* 1001: disable disk cache
  * [SETUP-CHROME] If you think disk cache helps perf, then feel free to override this
@@ -604,7 +604,7 @@ user_pref("media.eme.enabled", false);
 /*** [SECTION 2400]: DOM (DOCUMENT OBJECT MODEL) ***/
 user_pref(
   "_user.js.parrot",
-  "2400 syntax error: the parrot's kicked the bucket!"
+  "2400 syntax error: the parrot's kicked the bucket!",
 );
 /* 2402: prevent scripts from moving and resizing open windows ***/
 user_pref("dom.disable_window_move_resize", true);
@@ -612,7 +612,7 @@ user_pref("dom.disable_window_move_resize", true);
 /*** [SECTION 2600]: MISCELLANEOUS ***/
 user_pref(
   "_user.js.parrot",
-  "2600 syntax error: the parrot's run down the curtain!"
+  "2600 syntax error: the parrot's run down the curtain!",
 );
 /* 2601: prevent accessibility services from accessing your browser [RESTART]
  * [1] https://support.mozilla.org/kb/accessibility-services ***/
@@ -698,7 +698,7 @@ user_pref("extensions.postDownloadThirdPartyPrompt", false);
 /*** [SECTION 2700]: ETP (ENHANCED TRACKING PROTECTION) ***/
 user_pref(
   "_user.js.parrot",
-  "2700 syntax error: the parrot's joined the bleedin' choir invisible!"
+  "2700 syntax error: the parrot's joined the bleedin' choir invisible!",
 );
 /* 2701: enable ETP Strict Mode [FF86+]
  * ETP Strict Mode enables Total Cookie Protection (TCP)
@@ -720,17 +720,17 @@ user_pref("privacy.partition.serviceWorkers", true); // [DEFAULT: true FF105+]
 /* 2720: enable APS (Always Partitioning Storage) ***/
 user_pref(
   "privacy.partition.always_partition_third_party_non_cookie_storage",
-  true
+  true,
 ); // [FF104+] [DEFAULT: true FF109+]
 user_pref(
   "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage",
-  false
+  false,
 ); // [FF105+] [DEFAULT: false FF109+]
 
 /*** [SECTION 2800]: SHUTDOWN & SANITIZING ***/
 user_pref(
   "_user.js.parrot",
-  "2800 syntax error: the parrot's bleedin' demised!"
+  "2800 syntax error: the parrot's bleedin' demised!",
 );
 /* 2810: enable Firefox to clear items on shutdown
  * [SETTING] Privacy & Security>History>Custom Settings>Clear history when Firefox closes | Settings ***/
@@ -846,7 +846,7 @@ user_pref("privacy.sanitize.timeSpan", 0);
 ***/
 user_pref(
   "_user.js.parrot",
-  "4500 syntax error: the parrot's popped 'is clogs"
+  "4500 syntax error: the parrot's popped 'is clogs",
 );
 /* 4501: enable privacy.resistFingerprinting [FF41+]
  * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a site exception via the urlbar
@@ -909,7 +909,7 @@ user_pref("webgl.disabled", true);
 ***/
 user_pref(
   "_user.js.parrot",
-  "5000 syntax error: the parrot's taken 'is last bow"
+  "5000 syntax error: the parrot's taken 'is last bow",
 );
 /* 5001: start Firefox in PB (Private Browsing) mode
  * [NOTE] In this mode all windows are "private windows" and the PB mode icon is not displayed
@@ -1083,7 +1083,7 @@ user_pref("extensions.webcompat-reporter.enabled", false); // [DEFAULT: false]
 /*** [SECTION 7000]: DON'T BOTHER ***/
 user_pref(
   "_user.js.parrot",
-  "7000 syntax error: the parrot's pushing up daisies!"
+  "7000 syntax error: the parrot's pushing up daisies!",
 );
 /* 7001: disable APIs
  * Location-Aware Browsing, Full Screen, offline cache (appCache)
@@ -1197,7 +1197,7 @@ user_pref(
 ***/
 user_pref(
   "_user.js.parrot",
-  "8000 syntax error: the parrot's crossed the Jordan"
+  "8000 syntax error: the parrot's crossed the Jordan",
 );
 /* 8001: prefsCleaner: reset items useless for anti-fingerprinting ***/
 // user_pref("browser.display.use_document_fonts", "");
@@ -1226,18 +1226,18 @@ user_pref(
 /*** [SECTION 9000]: NON-PROJECT RELATED ***/
 user_pref(
   "_user.js.parrot",
-  "9000 syntax error: the parrot's cashed in 'is chips!"
+  "9000 syntax error: the parrot's cashed in 'is chips!",
 );
 /* 9001: disable welcome notices ***/
 user_pref("browser.startup.homepage_override.mstone", "ignore");
 /* 9002: disable General>Browsing>Recommend extensions/features as you browse [FF67+] ***/
 user_pref(
   "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",
-  false
+  false,
 );
 user_pref(
   "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features",
-  false
+  false,
 );
 /* 9003: disable What's New toolbar icon [FF69+] ***/
 user_pref("browser.messaging-system.whatsNewPanel.enabled", false);
@@ -1251,7 +1251,7 @@ user_pref("browser.urlbar.showSearchTerms.enabled", false);
 ***/
 user_pref(
   "_user.js.parrot",
-  "9999 syntax error: the parrot's shuffled off 'is mortal coil!"
+  "9999 syntax error: the parrot's shuffled off 'is mortal coil!",
 );
 /* ESR102.x still uses all the following prefs
 // [NOTE] replace the * with a slash in the line above to re-enable them
@@ -1269,5 +1269,5 @@ user_pref("network.cookie.lifetimePolicy", 2);
 /* END: internal custom pref to test for syntax errors ***/
 user_pref(
   "_user.js.parrot",
-  "SUCCESS: No no he's not dead, he's, he's restin'!"
+  "SUCCESS: No no he's not dead, he's, he's restin'!",
 );

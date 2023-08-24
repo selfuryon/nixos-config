@@ -1,7 +1,31 @@
-{inputs, ...}: {
-  imports = [
-    inputs.impermanence.nixosModules.impermanence
-  ];
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [inputs.impermanence.nixosModules.impermanence];
+
+  fileSystems."/state/system".neededForBoot = true;
+  fileSystems."/state/home/syakovlev".neededForBoot = true;
+
+  boot.initrd.systemd.services.rollback = {
+    description = "Rollback ZFS datasets to a pristine state";
+    wantedBy = [
+      "initrd.target"
+    ];
+    after = [
+      "zfs-import-zroot.service"
+    ];
+    before = [
+      "sysroot.mount"
+    ];
+    path = [pkgs.zfs];
+    unitConfig.DefaultDependencies = "no";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      zfs rollback -r zroot/local/home@blank && echo "rollback complete"
+    '';
+  };
   environment.persistence."/state/system" = {
     hideMounts = true;
     directories = [
@@ -19,7 +43,7 @@
       }
     ];
   };
-  environment.persistence."/state/home" = {
+  environment.persistence."/state/home/syakovlev" = {
     hideMounts = true;
     users.syakovlev = {
       directories = [

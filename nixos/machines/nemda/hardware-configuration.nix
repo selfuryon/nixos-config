@@ -23,8 +23,6 @@
       kernelModules = ["zfs"];
       supportedFilesystems = ["zfs"];
     };
-
-    #zfs.extraPools = [ "zroot" ];
     zfs.requestEncryptionCredentials = true;
 
     #kernelPackages = pkgs.linuxPackages_latest;
@@ -46,7 +44,4 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-
-  fileSystems."/state/system".neededForBoot = true;
-  fileSystems."/state/home".neededForBoot = true;
 }
