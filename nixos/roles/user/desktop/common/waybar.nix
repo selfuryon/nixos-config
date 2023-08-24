@@ -23,7 +23,6 @@
 in {
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar-hyprland;
     systemd = {
       enable = true;
       target = "hyprland-session.target";
@@ -41,10 +40,10 @@ in {
           "mpris"
           "hyprland/submap"
         ];
-        modules-center = ["wlr/workspaces"];
+        modules-center = ["hyprland/workspaces"];
         modules-right = ["network" "wireplumber" "battery" "clock" "custom/hostname"];
 
-        "wlr/workspaces" = {on-click = "activate";};
+        "hyprland/workspaces" = {format = "{name}";};
         "hyprland/submap" = {
           format = "󱋜 {}";
           max-length = 8;
