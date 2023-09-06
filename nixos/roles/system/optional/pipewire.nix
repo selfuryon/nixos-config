@@ -18,12 +18,7 @@
     #wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      #inputs.xdph.packages.${pkgs.system}.xdg-desktop-portal-hyprland
-      (inputs.xdph.packages.${pkgs.system}.xdg-desktop-portal-hyprland.override {
-        hyprland-share-picker = inputs.xdph.packages.${pkgs.system}.hyprland-share-picker.override {
-          inherit (inputs) hypland;
-        };
-      })
+      inputs.xdph.packages.${pkgs.system}.xdg-desktop-portal-hyprland
     ];
   };
 }
