@@ -11,6 +11,7 @@
     ./git.nix
     ./gpg.nix
     ./helix.nix
+    ./kubernetes.nix
     ./lazygit.nix
     ./shell.nix
     ./skim.nix
@@ -46,6 +47,7 @@
     lsof
     nixos-shell
     p7zip
+    logseq
     pango
     pijul
     procs

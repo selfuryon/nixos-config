@@ -70,6 +70,10 @@
       url = "github:catppuccin/alacritty";
       flake = false;
     };
+    catppuccin-k9s = {
+      url = "github:catppuccin/k9s";
+      flake = false;
+    };
 
     # Neovim plugins
     "syntax-tree-surfer" = {

@@ -2,7 +2,7 @@
   gtk = {
     enable = true;
     gtk3.bookmarks = [
-      "file:///home/syakovlev/documents"
+      "file:///home/syakovlev/Documents"
       "file:///home/syakovlev/mega"
       "file:///home/syakovlev/Downloads"
     ];
@@ -15,9 +15,16 @@
       package = pkgs.tela-icon-theme;
       name = "Tela";
     };
+    # theme = {
+    #   package = pkgs.orchis-theme;
+    #   name = "Orchis-Light";
+    # };
     theme = {
-      package = pkgs.orchis-theme;
-      name = "Orchis-Light";
+      name = "Catppuccin-Latte";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["green"];
+        variant = "latte";
+      };
     };
     cursorTheme = {
       package = pkgs.capitaine-cursors;

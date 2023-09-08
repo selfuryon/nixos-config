@@ -93,8 +93,10 @@
         kb_variant=,chm
         kb_options=grp:shift_caps_switch
         follow_mouse=0
+        sensitivity=0.6
         touchpad {
           natural_scroll=true
+          scroll_factor=1.2
         }
       }
       dwindle {
