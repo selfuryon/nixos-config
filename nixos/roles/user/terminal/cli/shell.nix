@@ -26,7 +26,7 @@
     ip = "ip --color --brief";
     less = "${pkgs.bat}/bin/bat --paging=always";
     more = "${pkgs.bat}/bin/bat --paging=always";
-    tree = "${pkgs.exa}/bin/exa --tree";
+    tree = "${pkgs.eza}/bin/eza --tree";
     wget = "${pkgs.wget2}/bin/wget2";
   };
 
@@ -45,7 +45,7 @@
         prettybat
       ];
     };
-    exa = {
+    eza = {
       enable = true;
       enableAliases = true;
       icons = true;
