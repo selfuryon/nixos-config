@@ -15,10 +15,11 @@
     ./hardware-configuration.nix
     ./networking.nix
   ];
-
-  networking.hostName = "tylze";
-  networking.domain = "ys7.me";
-  networking.hostId = "ceb59ca1";
+  networking = {
+    hostName = "tylze";
+    domain = "ys7.me";
+    hostId = "ceb59ca1";
+  };
 
   time.timeZone = "Etc/UTC";
   system.stateVersion = "23.11";

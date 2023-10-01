@@ -22,10 +22,11 @@
     ./hardware-configuration.nix
     ./zfs.nix
   ];
-
-  networking.hostName = "jumo";
-  networking.domain = "ys7.me";
-  networking.hostId = "ea39aa79";
+  networking = {
+    hostName = "jumo";
+    domain = "ys7.me";
+    hostId = "ea39aa79";
+  };
 
   networking.firewall.trustedInterfaces = ["virbr0"];
 

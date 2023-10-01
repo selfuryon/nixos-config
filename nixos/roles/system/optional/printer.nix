@@ -1,5 +1,7 @@
 {
-  services.printing.enable = true;
-  services.avahi.enable = true;
-  services.avahi.openFirewall = true;
+  services = {
+    printing.enable = true;
+    avahi.enable = true;
+    avahi.openFirewall = true;
+  };
 }

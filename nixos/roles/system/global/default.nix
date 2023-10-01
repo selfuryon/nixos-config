@@ -11,6 +11,7 @@
     ./nix.nix
     ./podman.nix
     ./sshd.nix
+    ./sudo.nix
   ];
 
   # Select internationalisation properties.

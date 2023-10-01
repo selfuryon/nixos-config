@@ -19,78 +19,80 @@ in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
-    profiles.private = {
-      id = 0;
-      extensions = with addons; [
-        ublock-origin
-        auto-tab-discard
-        multi-account-containers
-        #languagetool
-        history-cleaner
-        keepassxc-browser
-        smart-referer
-        startpage-private-search
-        tridactyl
-        sidebery
-      ];
-      extraConfig = ''
-        ${builtins.readFile ./firefox/arkenfox/user.js}
-        ${builtins.readFile ./firefox/private.js}
-      '';
-      settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
-      userChrome = noToolBar;
-      isDefault = true;
-    };
-    profiles.work = {
-      id = 1;
-      extensions = with addons; [
-        ublock-origin
-        auto-tab-discard
-        multi-account-containers
-        history-cleaner
-        keepassxc-browser
-        smart-referer
-        startpage-private-search
-        tridactyl
-        sidebery
-      ];
-      extraConfig = ''
-        ${builtins.readFile ./firefox/arkenfox/user.js}
-        ${builtins.readFile ./firefox/work.js}
-      '';
-      settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
-      userChrome = noToolBar;
-    };
-    profiles.crypto = {
-      id = 2;
-      extensions = with addons; [
-        ublock-origin
-        multi-account-containers
-        smart-referer
-        startpage-private-search
-        tridactyl
-        sidebery
-      ];
-      extraConfig = ''
-        ${builtins.readFile ./firefox/arkenfox/user.js}
-      '';
-      settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
-      userChrome = noToolBar;
-    };
-    profiles.video = {
-      id = 3;
-      extensions = with addons; [
-        ublock-origin
-        multi-account-containers
-        history-cleaner
-        keepassxc-browser
-        smart-referer
-        startpage-private-search
-        tridactyl
-        sidebery
-      ];
-      settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
-      userChrome = noToolBar;
+    profiles = {
+      private = {
+        id = 0;
+        extensions = with addons; [
+          ublock-origin
+          auto-tab-discard
+          multi-account-containers
+          #languagetool
+          history-cleaner
+          keepassxc-browser
+          smart-referer
+          startpage-private-search
+          tridactyl
+          sidebery
+        ];
+        extraConfig = ''
+          ${builtins.readFile ./firefox/arkenfox/user.js}
+          ${builtins.readFile ./firefox/private.js}
+        '';
+        settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
+        userChrome = noToolBar;
+        isDefault = true;
+      };
+      work = {
+        id = 1;
+        extensions = with addons; [
+          ublock-origin
+          auto-tab-discard
+          multi-account-containers
+          history-cleaner
+          keepassxc-browser
+          smart-referer
+          startpage-private-search
+          tridactyl
+          sidebery
+        ];
+        extraConfig = ''
+          ${builtins.readFile ./firefox/arkenfox/user.js}
+          ${builtins.readFile ./firefox/work.js}
+        '';
+        settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
+        userChrome = noToolBar;
+      };
+      crypto = {
+        id = 2;
+        extensions = with addons; [
+          ublock-origin
+          multi-account-containers
+          smart-referer
+          startpage-private-search
+          tridactyl
+          sidebery
+        ];
+        extraConfig = ''
+          ${builtins.readFile ./firefox/arkenfox/user.js}
+        '';
+        settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
+        userChrome = noToolBar;
+      };
+      video = {
+        id = 3;
+        extensions = with addons; [
+          ublock-origin
+          multi-account-containers
+          history-cleaner
+          keepassxc-browser
+          smart-referer
+          startpage-private-search
+          tridactyl
+          sidebery
+        ];
+        settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
+        userChrome = noToolBar;
+      };
     };
   };
   xdg = {

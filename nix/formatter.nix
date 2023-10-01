@@ -10,6 +10,7 @@
   }: {
     treefmt.config = {
       projectRootFile = ".git/config";
+      settings.global.excludes = ["flake.lock"];
       package = pkgs.treefmt;
       programs = {
         alejandra.enable = true;

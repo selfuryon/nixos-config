@@ -16,10 +16,11 @@
     ./disks.nix
     ./networking.nix
   ];
-
-  networking.hostName = "cb-bastion";
-  networking.domain = "ys7.me";
-  networking.hostId = "c52e26ca";
+  networking = {
+    hostName = "cb-bastion";
+    domain = "ys7.me";
+    hostId = "c52e26ca";
+  };
 
   time.timeZone = "Etc/UTC";
   system.stateVersion = "23.11";

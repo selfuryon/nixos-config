@@ -16,25 +16,6 @@ in {
 
   programs.fish.enable = true;
 
-  security.sudo.extraRules = [
-    {
-      users = ["${userName}"];
-      commands = [
-        {
-          command = "ALL";
-          options = ["NOPASSWD" "SETENV"];
-        }
-      ];
-    }
-  ];
-
-  security.doas.extraRules = [
-    {
-      users = ["${userName}"];
-      noPass = true;
-    }
-  ];
-
   home-manager.users.${userName} = {
     imports = [
       inputs.base16.homeManagerModule

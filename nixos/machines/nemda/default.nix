@@ -24,10 +24,11 @@
     ./disko.nix
     ./impermanence.nix
   ];
-
-  networking.hostName = "nemda";
-  networking.domain = "ys7.me";
-  networking.hostId = "2185078f";
+  networking = {
+    hostName = "nemda";
+    domain = "ys7.me";
+    hostId = "2185078f";
+  };
 
   networking.firewall.trustedInterfaces = ["virbr0"];
 
