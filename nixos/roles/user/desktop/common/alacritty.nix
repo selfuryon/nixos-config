@@ -16,7 +16,7 @@
       };
       font = {
         normal.family = "${config.themes.fontProfile.monospace.family}";
-        size = 13.0;
+        size = 15.0;
       };
 
       selection.save_to_clipboard = true;

@@ -1,9 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     noto-fonts
-    #hermit
-    #b612
-    victor-mono
     paratype-pt-sans
     paratype-pt-mono
     paratype-pt-serif
@@ -15,7 +12,8 @@
     enable = true;
     monospace = {
       family = "JetBrainsMono Nerd Font";
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+      #family = "FantasqueSansM Nerd Font Mono";
+      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FantasqueSansMono"];};
     };
     regular = {
       family = "Inter";

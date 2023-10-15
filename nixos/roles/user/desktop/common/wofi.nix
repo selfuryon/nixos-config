@@ -27,7 +27,7 @@
       border: 2px solid ${base0C};
     	background-color: ${base00};
     	color: ${base05};
-      font-size: 13pt;
+      font-size: 15pt;
       font-family: "${config.themes.fontProfile.regular.family}";
     }
     #outer-box {
