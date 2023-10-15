@@ -16,6 +16,7 @@ in {
         ".ssh"
         ".local/share/keyrings"
         ".local/share/direnv"
+        ".config/cryptostore"
         # personal
         "src"
         "mega"

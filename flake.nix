@@ -51,7 +51,7 @@
     # Secrets
     ragenix = {
       url = "github:yaxitech/ragenix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Packages
