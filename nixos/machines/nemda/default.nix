@@ -14,6 +14,7 @@
     roles.system.optional.tailscale
     roles.system.optional.netbird
     roles.system.optional.desktop
+    roles.system.optional.impermanence
     # Users
     users.default
     users.syakovlev.desktop

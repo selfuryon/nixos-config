@@ -1,4 +1,9 @@
 {
+  home.persistence."/state/home/syakovlev" = {
+    directories = [
+      ".local/share/atuin"
+    ];
+  };
   programs = {
     zoxide.enable = true;
     atuin = {

@@ -55,14 +55,14 @@
     };
 
     # Packages
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.30.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    xdph = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprland = {
+    #   url = "github:hyprwm/Hyprland/v0.30.0";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # xdph = {
+    #   url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Styles
     base16.url = "github:SenchoPens/base16.nix";

@@ -1,12 +1,9 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./alacritty.nix
     ./dunst.nix
     ./firefox.nix
+    ./thunderbird.nix
     ./font.nix
     ./foot.nix
     ./gtk.nix
@@ -22,9 +19,7 @@
 
   programs.fish.loginShellInit = ''
     if test (tty) = /dev/tty1
-    systemd-cat -t hyprland ${
-      inputs.hyprland.packages."x86_64-linux".hyprland
-    }/bin/Hyprland
+    systemd-cat -t hyprland ${pkgs.hyprland}/bin/Hyprland
     end
   '';
 
@@ -108,7 +103,6 @@
     slurp
     swappy
     tdesktop
-    thunderbird
     tigervnc
     virt-manager
     virt-viewer

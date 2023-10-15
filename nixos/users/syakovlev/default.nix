@@ -6,9 +6,6 @@
 }: let
   userName = "syakovlev";
 in {
-  users.users.test = {
-    isNormalUser = true;
-  };
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = ["wheel" "sudo" "doas" "video" "audio" "libvirtd" "usb" "ssh" "wireshark"];

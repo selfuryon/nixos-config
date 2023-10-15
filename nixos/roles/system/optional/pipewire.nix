@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {
@@ -15,10 +11,9 @@
 
   xdg.portal = {
     enable = true;
-    #wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      inputs.xdph.packages.${pkgs.system}.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-hyprland
     ];
   };
 }

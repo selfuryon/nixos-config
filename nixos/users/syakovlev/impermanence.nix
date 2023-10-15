@@ -7,6 +7,7 @@ in {
     ];
     home.persistence."/state/home/syakovlev" = {
       directories = [
+        # global
         "Downloads"
         "Music"
         "Pictures"
@@ -15,7 +16,11 @@ in {
         ".ssh"
         ".local/share/keyrings"
         ".local/share/direnv"
+        # personal
         "src"
+        "mega"
+        "nixos-config"
+        "data"
       ];
       allowOther = true;
     };

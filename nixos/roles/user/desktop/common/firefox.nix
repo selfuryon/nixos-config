@@ -15,12 +15,18 @@
     }
   '';
 in {
+  home.persistence."/state/home/syakovlev".directories = [
+    ".mozilla/firefox/personal"
+    ".mozilla/firefox/work"
+    ".mozilla/firefox/video"
+    ".mozilla/firefox/crypto"
+  ];
   home.packages = with pkgs; [tridactyl-native];
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
     profiles = {
-      private = {
+      personal = {
         id = 0;
         extensions = with addons; [
           ublock-origin

@@ -1,11 +1,9 @@
 {
-  inputs,
   config,
   pkgs,
   ...
 }: {
-  imports = [inputs.hyprland.homeManagerModules.default ../common];
-  disabledModules = ["services/window-managers/hyprland.nix"];
+  imports = [../common];
   home.packages = with pkgs; [
     wayland
     pciutils
@@ -31,91 +29,107 @@
   };
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
-    recommendedEnvironment = true;
+    systemd.enable = true;
+    settings = with config.scheme; {
+      monitor = ",preferred,auto,1";
+      workspace = "eDP-1,11";
+      input = {
+        kb_layout = "us,ru";
+        kb_variant = ",chm";
+        kb_options = "grp:shift_caps_switch";
+        follow_mouse = 0;
+        sensitivity = "0.6";
+        touchpad = {
+          natural_scroll = true;
+          scroll_factor = "1.2";
+        };
+      };
+      master = {
+        mfact = "0.7";
+      };
+      general = {
+        layout = "master";
+
+        gaps_in = 15;
+        gaps_out = 20;
+        border_size = 3;
+        cursor_inactive_timeout = 4;
+
+        "col.active_border" = "0xff${base0C}";
+        "col.inactive_border" = "0xff${base02}";
+        "col.group_border_active" = "0xff${base0B}";
+        "col.group_border" = "0xff${base04}";
+      };
+      decoration = {
+        active_opacity = 1;
+        dim_inactive = true;
+        dim_strength = ".105";
+        drop_shadow = true;
+        fullscreen_opacity = "1.0";
+        rounding = 12;
+        shadow_offset = "3 3";
+        shadow_range = 12;
+
+        inactive_opacity = "0.80";
+        "col.shadow" = "0x44000000";
+        "col.shadow_inactive" = "0x66000000";
+
+        blur = {
+          enabled = true;
+          ignore_opacity = true;
+          new_optimizations = true;
+          passes = 3;
+          size = 6;
+        };
+      };
+      animations = {
+        enabled = true;
+        bezier = [
+          "easein,0.11, 0, 0.5, 0"
+          "easeout,0.5, 1, 0.89, 1"
+          "easeinout,0.45, 0, 0.55, 1"
+        ];
+        animation = [
+          "windowsIn,1,3,easeout,slide"
+          "windowsOut,1,3,easein,slide"
+          "windowsMove,1,3,easeout"
+          "fadeIn,1,3,easeout"
+          "fadeOut,1,3,easein"
+          "fadeSwitch,1,3,easeout"
+          "fadeShadow,1,3,easeout"
+          "fadeDim,1,3,easeout"
+          "border,1,3,easeout"
+          "workspaces,1,2,easeout,slide"
+        ];
+      };
+      # Rules
+      windowrule = [
+        "float,^(pavucontrol)$"
+        "float,^(nm-connection-editor)$"
+        "float,^(polkit-gnome-authentication-agent-1)$"
+
+        # common modals
+        "float,title:^(Open)$"
+        "float,title:^(Choose Files)$"
+        "float,title:^(Save As)$"
+        "float,title:^(Confirm to replace files)$"
+        "float,title:^(File Operation Progress)$"
+      ];
+
+      # Others
+      windowrulev2 = [
+        "float,class:^(MEGAsync)$"
+        "float,size 0 0, move 10 10,title:(Sharing Indicator)"
+      ];
+      exec-once = [
+        "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        "${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill"
+        "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store"
+        "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store"
+      ];
+    };
     extraConfig = with config.scheme; ''
-      monitor=,preferred,auto,1
-      workspace=eDP-1,11
-
-      general {
-        gaps_in=15
-        gaps_out=20
-        border_size=3
-        cursor_inactive_timeout=4
-
-        col.active_border=0xff${base0C}
-        col.inactive_border=0xff${base02}
-        col.group_border_active=0xff${base0B}
-        col.group_border=0xff${base04}
-
-        layout=master
-      }
-      decoration {
-        active_opacity=1
-        dim_inactive = true
-        dim_strength = .105
-        drop_shadow=true
-        fullscreen_opacity=1.0
-        rounding=12
-        shadow_offset=3 3
-        shadow_range=12 # old 20
-
-        inactive_opacity=0.80
-        col.shadow=0x44000000
-        col.shadow_inactive=0x66000000
-
-        blur {
-          enabled=true
-          ignore_opacity=true
-          new_optimizations=true
-          passes=3
-          size=6  # old 12
-        }
-      }
-      animations {
-        enabled=true
-        bezier=easein,0.11, 0, 0.5, 0
-        bezier=easeout,0.5, 1, 0.89, 1
-        bezier=easeinout,0.45, 0, 0.55, 1
-        animation=windowsIn,1,3,easeout,slide
-        animation=windowsOut,1,3,easein,slide
-        animation=windowsMove,1,3,easeout
-        animation=fadeIn,1,3,easeout
-        animation=fadeOut,1,3,easein
-        animation=fadeSwitch,1,3,easeout
-        animation=fadeShadow,1,3,easeout
-        animation=fadeDim,1,3,easeout
-        animation=border,1,3,easeout
-        animation=workspaces,1,2,easeout,slide
-      }
-      input {
-        kb_layout=us,ru
-        kb_variant=,chm
-        kb_options=grp:shift_caps_switch
-        follow_mouse=0
-        sensitivity=0.6
-        touchpad {
-          natural_scroll=true
-          scroll_factor=1.2
-        }
-      }
-      dwindle {
-        force_split=2
-        pseudotile=0 # enable pseudotiling on dwindle
-        no_gaps_when_only=false
-        split_width_multiplier=1.35
-      }
-      master {
-        mfact=0.7
-      }
-
-      # Exec
-      exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
-      exec-once=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
-      exec-once=${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill
-      exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store
-      exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
-
       # Mouse
       bindm=SUPER,mouse:272,movewindow
       bindm=SUPER,mouse:273,resizewindow
@@ -505,21 +519,6 @@
       bind=,return,submap,reset
       submap=reset
 
-      # Rules
-      windowrule = float,^(pavucontrol)$
-      windowrule = float,^(nm-connection-editor)$
-      windowrule = float,^(polkit-gnome-authentication-agent-1)$
-
-      # common modals
-      windowrule = float,title:^(Open)$
-      windowrule = float,title:^(Choose Files)$
-      windowrule = float,title:^(Save As)$
-      windowrule = float,title:^(Confirm to replace files)$
-      windowrule = float,title:^(File Operation Progress)$
-
-      # Others
-      windowrulev2=float,class:^(MEGAsync)$
-      windowrulev2=float,size 0 0, move 10 10,title:(Sharing Indicator)
     '';
   };
 }
