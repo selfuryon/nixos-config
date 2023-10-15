@@ -8,13 +8,19 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.disko.nixosModules.disko
+    inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
   # Boot configuration
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      # lanzaboote replace it
+      systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
+    };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
     };
 
     initrd = {

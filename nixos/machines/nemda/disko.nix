@@ -65,14 +65,13 @@
           "com.sun:auto-snapshot" = "false";
         };
         postCreateHook = ''
-          zfs snapshot zroot/local/home@blank
+          zfs set keylocation="prompt" "zroot";
         '';
-
         datasets = {
           local.type = "zfs_fs";
           "local/reserved" = {
             type = "zfs_fs";
-            options.reservation = "15G";
+            options.reservation = "30G";
           };
           "local/nix" = {
             type = "zfs_fs";
@@ -80,11 +79,16 @@
             options.mountpoint = "legacy";
             options.relatime = "off";
           };
-          "local/home" = {
+          system.type = "zfs_fs";
+          "system/root" = {
             type = "zfs_fs";
-            mountpoint = "/home";
-            options.mountpoint = "legacy";
-            postCreateHook = "zfs snapshot zroot/local/home@blank";
+            options.mountpoint = "none";
+            postCreateHook = "zfs snapshot zroot/system/root@blank";
+          };
+          "system/home" = {
+            type = "zfs_fs";
+            options.mountpoint = "none";
+            postCreateHook = "zfs snapshot zroot/system/home@blank";
           };
           state = {
             type = "zfs_fs";
@@ -99,12 +103,6 @@
             type = "zfs_fs";
             mountpoint = "/state/home";
             options.mountpoint = "legacy";
-            options.recordsize = "1M";
-          };
-          "state/home/syakovlev" = {
-            type = "zfs_fs";
-            mountpoint = "/state/home/syakovlev";
-            options.mountpoint = "legacy";
           };
         };
       };
@@ -113,7 +111,7 @@
       "/" = {
         fsType = "tmpfs";
         mountOptions = [
-          "size=2G"
+          "size=10G"
           "defaults"
           "mode=755"
         ];

@@ -4,11 +4,13 @@
     atuin = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
       settings = {
         style = "compact";
         search_mode = "skim";
       };
     };
+    nushell.enable = true;
     fish = {
       enable = true;
       interactiveShellInit = ''

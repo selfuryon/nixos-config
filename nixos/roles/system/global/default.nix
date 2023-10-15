@@ -23,7 +23,7 @@
 
   users.mutableUsers = false;
 
-  environment.systemPackages = with pkgs; [vim];
+  environment.systemPackages = with pkgs; [vim sbctl];
 
   security.doas.enable = true;
   #security.sudo.enable = false;

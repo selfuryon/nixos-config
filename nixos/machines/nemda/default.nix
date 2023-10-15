@@ -17,6 +17,7 @@
     # Users
     users.default
     users.syakovlev.desktop
+    users.syakovlev.impermanence
     # Local configuration
     ./deploy.nix
     ./hardware-configuration.nix

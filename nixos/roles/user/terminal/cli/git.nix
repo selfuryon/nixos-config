@@ -1,7 +1,7 @@
 {
   # Git configuration
   xdg.configFile = {
-    "git/private.signers".text = "selfuryon@pm.me ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmB+ZN4UTQ+5IOvGrlBoHrCxfpQH7EWtLNR3qUrnQl5 selfuryon@github [private] ";
+    "git/personal.signers".text = "selfuryon@pm.me ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmB+ZN4UTQ+5IOvGrlBoHrCxfpQH7EWtLNR3qUrnQl5 selfuryon@github [private] ";
     "git/p2p.signers".text = "sergey.y@p2p.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK4yECpHN63wsadiWhM1zx600c3a/AboAzbipz8DaXoh sergey.y@github [p2p]";
   };
   programs.git = {
@@ -25,11 +25,11 @@
       pull.rebase = true;
       push.autoSetupRemote = true;
       gpg.format = "ssh";
-      gpg.ssh.allowedSignersFile = "~/.config/git/private.signers";
+      gpg.ssh.allowedSignersFile = "~/.config/git/personal.signers";
     };
     signing = {
       signByDefault = true;
-      key = "~/.ssh/keys/private/github.pub";
+      key = "~/.ssh/keys/personal/github.pub";
     };
     delta = {
       enable = true;

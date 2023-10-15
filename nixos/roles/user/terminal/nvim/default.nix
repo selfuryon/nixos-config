@@ -5,7 +5,7 @@
   ...
 }: let
   buildPlugin = name:
-    pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pkgs.vimUtils.buildVimPlugin {
       pname = name;
       version = "master";
       src = builtins.getAttr name inputs;
