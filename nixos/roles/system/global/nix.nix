@@ -11,7 +11,7 @@
   # Nix
   nix = {
     settings = {
-      substituters = [
+      trusted-substituters = [
         "https://hyprland.cachix.org"
         "https://nix-community.cachix.org"
         "https://colmena.cachix.org"
