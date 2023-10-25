@@ -19,8 +19,13 @@
 
   programs.fish.loginShellInit = ''
     if test (tty) = /dev/tty1
-    systemd-cat -t hyprland ${pkgs.hyprland}/bin/Hyprland
+      systemd-cat -t hyprland ${pkgs.hyprland}/bin/Hyprland
     end
+  '';
+  programs.nushell.loginFile.text = ''
+    if (tty) == "/dev/tty1" {
+      systemd-cat -t hyprland ${pkgs.hyprland}/bin/Hyprland
+    }
   '';
 
   home.activation."mimeapps-remove" = {

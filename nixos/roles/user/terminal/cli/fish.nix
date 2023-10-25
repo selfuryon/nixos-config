@@ -2,6 +2,7 @@
   home.persistence."/state/home/syakovlev" = {
     directories = [
       ".local/share/atuin"
+      ".local/share/zoxide"
     ];
   };
   programs = {
@@ -15,7 +16,9 @@
         search_mode = "skim";
       };
     };
-    nushell.enable = true;
+    nushell = {
+      enable = true;
+    };
     fish = {
       enable = true;
       interactiveShellInit = ''
