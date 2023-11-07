@@ -15,6 +15,7 @@
     ./waybar.nix
     ./wlsunset.nix
     ./wofi.nix
+    ./wezterm.nix
   ];
 
   programs.fish.loginShellInit = ''
@@ -120,6 +121,6 @@
     xorg.xrdb
     xournal
     xwayland
-    zotero
+    #zotero
   ];
 }

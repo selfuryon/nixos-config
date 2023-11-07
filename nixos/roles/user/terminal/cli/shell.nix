@@ -12,6 +12,7 @@
 
     # Nix
     nrs = "doas nixos-rebuild switch --flake path:/home/syakovlev/nixos-config";
+    nfu = "nix flake update";
     nrb = "doas nixos-rebuild build --flake path:/home/syakovlev/nixos-config";
 
     # Kubernetes

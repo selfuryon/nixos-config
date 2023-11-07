@@ -20,7 +20,7 @@
     LANGUAGE = "en_US.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
-  fonts.fonts = [pkgs.terminus_font];
+  fonts.packages = [pkgs.terminus_font];
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -35,9 +35,11 @@
 
   nixpkgs = {
     overlays = builtins.attrValues self.overlays;
-    config = {allowUnfree = true;};
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = ["electron-24.8.6"];
+    };
   };
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
