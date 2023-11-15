@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  hyprland = "${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/Hyprland";
+in {
   imports = [
     ./alacritty.nix
     ./dunst.nix
@@ -20,12 +26,12 @@
 
   programs.fish.loginShellInit = ''
     if test (tty) = /dev/tty1
-      systemd-cat -t hyprland ${pkgs.hyprland}/bin/Hyprland
+      systemd-cat -t hyprland ${hyprland}
     end
   '';
   programs.nushell.loginFile.text = ''
     if (tty) == "/dev/tty1" {
-      systemd-cat -t hyprland ${pkgs.hyprland}/bin/Hyprland
+      systemd-cat -t hyprland ${hyprland}
     }
   '';
 

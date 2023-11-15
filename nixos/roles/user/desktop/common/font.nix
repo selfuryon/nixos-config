@@ -6,14 +6,16 @@
     paratype-pt-serif
     font-awesome
     dejavu_fonts
+    monaspace
   ];
 
   themes.fontProfile = {
     enable = true;
     monospace = {
+      #family = "Monaspace Neon";
+      #package = pkgs.monaspace;
       family = "JetBrainsMono Nerd Font";
-      #family = "FantasqueSansM Nerd Font Mono";
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "FantasqueSansMono"];};
+      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
     };
     regular = {
       family = "Inter";

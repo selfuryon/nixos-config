@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   ...
@@ -28,6 +29,7 @@
     GTK_USE_PORTAL = 1;
   };
   wayland.windowManager.hyprland = {
+    package = inputs.hyprland.packages.x86_64-linux.hyprland;
     enable = true;
     systemd.enable = true;
     settings = with config.scheme; {
@@ -57,8 +59,10 @@
 
         "col.active_border" = "0xff${base0C}";
         "col.inactive_border" = "0xff${base02}";
-        "col.group_border_active" = "0xff${base0B}";
-        "col.group_border" = "0xff${base04}";
+      };
+      group = {
+        "col.border_active" = "0xff${base0B}";
+        #"col.group_border" = "0xff${base04}";
       };
       decoration = {
         active_opacity = 1;

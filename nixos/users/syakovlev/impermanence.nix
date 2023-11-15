@@ -8,12 +8,7 @@ in {
     home.persistence."/state/home/syakovlev" = {
       directories = [
         # global
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Documents"
-        "Videos"
-        ".ssh"
+        ".config/Insomnia"
         ".config/Logseq"
         ".config/Slack"
         ".config/cryptostore"
@@ -25,10 +20,16 @@ in {
         ".local/share/data/Mega Limited/MEGAsync"
         ".local/share/direnv"
         ".local/share/keyrings"
-        "src"
+        ".ssh"
+        "Documents"
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Videos"
+        "data"
         "mega"
         "nixos-config"
-        "data"
+        "src"
       ];
       allowOther = true;
     };
