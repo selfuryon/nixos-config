@@ -15,11 +15,12 @@
   ];
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LANGUAGE = "en_US.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
-  };
+  i18n.defaultLocale = "en_GB.UTF-8";
+  # i18n.extraLocaleSettings = {
+  #   LANGUAGE = "en_US.UTF-8";
+  #   LC_TIME = "en_GB.UTF-8";
+  #   LC_ALL = "en_US.UTF-8";
+  # };
   fonts.packages = [pkgs.terminus_font];
   console = {
     font = "Lat2-Terminus16";

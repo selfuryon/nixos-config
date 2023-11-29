@@ -1,9 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  hyprland = "${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/Hyprland";
+{pkgs, ...}: let
+  # hyprland = "${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/Hyprland";
+  hyprland = "${pkgs.hyprland}/bin/Hyprland";
 in {
   imports = [
     ./alacritty.nix

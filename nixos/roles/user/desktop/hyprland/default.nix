@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   pkgs,
   ...
@@ -29,7 +28,7 @@
     GTK_USE_PORTAL = 1;
   };
   wayland.windowManager.hyprland = {
-    package = inputs.hyprland.packages.x86_64-linux.hyprland;
+    # package = inputs.hyprland.packages.x86_64-linux.hyprland;
     enable = true;
     systemd.enable = true;
     settings = with config.scheme; {
