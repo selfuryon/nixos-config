@@ -33,7 +33,10 @@
 
     #kernelPackages = pkgs.linuxPackages_latest;
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-    kernelParams = ["nohibernate" "elevator=none"];
+    kernelParams = [
+      "nohibernate"
+      "elevator=none"
+    ];
     kernelModules = ["kvm-intel" "zfs"];
     supportedFilesystems = ["zfs"];
 
@@ -46,6 +49,9 @@
     cpu.intel.updateMicrocode = true;
     bluetooth.enable = true;
     ledger.enable = true;
+    tuxedo-keyboard.enable = true;
+    tuxedo-rs.enable = true;
+    tuxedo-rs.tailor-gui.enable = true;
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

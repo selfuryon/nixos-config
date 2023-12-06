@@ -12,10 +12,10 @@
   themes.fontProfile = {
     enable = true;
     monospace = {
-      #family = "Monaspace Neon";
-      #package = pkgs.monaspace;
-      family = "JetBrainsMono Nerd Font";
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+      family = "Monaspace Neon";
+      package = pkgs.monaspace;
+      #family = "JetBrainsMono Nerd Font";
+      #package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
     };
     regular = {
       family = "Inter";

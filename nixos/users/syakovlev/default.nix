@@ -22,7 +22,7 @@ in {
       roles.user.terminal.default
     ];
     programs.home-manager.enable = true;
-    home.stateVersion = "23.11";
+    home.stateVersion = "24.05";
     scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
   };
 }
