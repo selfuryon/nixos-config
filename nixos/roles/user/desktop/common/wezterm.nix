@@ -9,10 +9,14 @@
 
       -- https://github.com/wez/wezterm/issues/4483
       config.enable_wayland = false
+
       config.color_scheme = "Catppuccin Latte"
+
       config.font = wezterm.font "${config.themes.fontProfile.monospace.family}"
-      --config.font = wezterm.font "Monaspace Neon"
       config.font_size = 15.0
+
+      config.harfbuzz_features = { 'ss01', 'ss02', 'ss03', 'ss06', 'calt', 'dlig' }
+
       return config
     '';
   };
