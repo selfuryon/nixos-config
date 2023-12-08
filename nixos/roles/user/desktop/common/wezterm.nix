@@ -15,7 +15,7 @@
       config.font = wezterm.font "${config.themes.fontProfile.monospace.family}"
       config.font_size = 15.0
 
-      config.harfbuzz_features = { 'ss01', 'ss02', 'ss03', 'ss06', 'calt', 'dlig' }
+      config.harfbuzz_features = { 'calt', 'liga', 'dlig','ss01', 'ss02', 'ss03', 'ss06' }
 
       return config
     '';

@@ -20,6 +20,7 @@ in {
         ".local/share/data/Mega Limited/MEGAsync"
         ".local/share/direnv"
         ".local/share/keyrings"
+        ".local/share/gnupg"
         ".ssh"
         "Documents"
         "Downloads"

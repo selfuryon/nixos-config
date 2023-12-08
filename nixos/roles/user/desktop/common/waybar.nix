@@ -136,7 +136,7 @@ in {
     };
     style = with config.scheme.withHashtag; ''
       * {
-      font-family: "${config.themes.fontProfile.regular.family}";
+      font-family: "${config.themes.fontProfile.regular.family}", "JetBrainsMono Nerd Font";
       font-size: 12pt;
       padding: 0 8px;
       }

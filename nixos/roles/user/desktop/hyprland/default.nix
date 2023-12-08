@@ -132,7 +132,7 @@
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store"
       ];
     };
-    extraConfig = with config.scheme; ''
+    extraConfig = ''
       # Mouse
       bindm=SUPER,mouse:272,movewindow
       bindm=SUPER,mouse:273,resizewindow

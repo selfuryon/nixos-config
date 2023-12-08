@@ -1,13 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    noto-fonts
-    paratype-pt-sans
-    paratype-pt-mono
-    paratype-pt-serif
-    font-awesome
-    dejavu_fonts
-    monaspace
-  ];
+  fonts.fontconfig.enable = true;
 
   themes.fontProfile = {
     enable = true;
@@ -18,8 +10,10 @@
       #package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
     };
     regular = {
-      family = "Inter";
-      package = pkgs.inter;
+      #family = "Inter";
+      #package = pkgs.inter;
+      family = "Monaspace Argon Var Medium";
+      package = pkgs.monaspace;
     };
   };
 }
