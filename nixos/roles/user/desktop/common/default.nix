@@ -87,6 +87,7 @@ in {
     dconf
     discord
     drawio
+    framesh
     element-desktop
     gnome.file-roller
     grim

@@ -26,7 +26,7 @@
     overlays = builtins.attrValues self.overlays;
     config = {
       allowUnfree = true;
-      permittedInsecurePackages = ["electron-24.8.6"];
+      permittedInsecurePackages = ["electron-25.9.0"];
     };
   };
   home-manager = {

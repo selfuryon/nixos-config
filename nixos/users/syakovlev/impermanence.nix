@@ -16,6 +16,8 @@ in {
         ".config/discord"
         ".config/helm"
         ".config/keepassxc"
+        ".config/frame"
+        ".config/Ledger Live"
         ".local/share/TelegramDesktop"
         ".local/share/data/Mega Limited/MEGAsync"
         ".local/share/direnv"

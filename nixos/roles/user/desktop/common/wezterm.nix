@@ -16,6 +16,7 @@
       config.font_size = 15.0
 
       config.harfbuzz_features = { 'calt', 'liga', 'dlig','ss01', 'ss02', 'ss03', 'ss06' }
+      config.audible_bell = "Disabled"
 
       return config
     '';
