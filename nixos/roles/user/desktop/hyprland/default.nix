@@ -142,7 +142,7 @@
       bind=SUPER_SHIFT,E,exec,${pkgs.wlogout}/bin/wlogout
 
       # Exec
-      bind=SUPER,return,exec,wezterm
+      bind=SUPER,return,exec,kitty
       bind=SUPER,d,exec,wofi --show drun
       bind=SUPER_SHIFT,print,exec,sh -c 'slurp | grim -g - -t png - | wl-copy -t image/png'
       bind=,print,exec,sh -c 'grim -g "$(slurp)" - | swappy -f -'

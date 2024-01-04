@@ -10,6 +10,7 @@ in {
     ./font.nix
     ./foot.nix
     ./gtk.nix
+    ./kitty.nix
     ./mpd.nix
     ./playerctl.nix
     ./qt.nix

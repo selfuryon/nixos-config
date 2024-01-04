@@ -4,14 +4,12 @@
   themes.fontProfile = {
     enable = true;
     monospace = {
-      family = "Monaspace Neon";
-      package = pkgs.monaspace;
-      #family = "JetBrainsMono Nerd Font";
-      #package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+      #family = "Monaspace Neon";
+      #package = pkgs.monaspace;
+      family = "JetBrainsMono";
+      package = pkgs.jetbrains-mono;
     };
     regular = {
-      #family = "Inter";
-      #package = pkgs.inter;
       family = "Monaspace Argon Var Medium";
       package = pkgs.monaspace;
     };

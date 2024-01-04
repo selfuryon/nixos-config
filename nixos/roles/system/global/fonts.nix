@@ -16,7 +16,7 @@
       julia-mono
       noto-fonts
       font-awesome
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
