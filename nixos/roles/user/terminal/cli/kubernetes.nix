@@ -9,5 +9,5 @@
     kubectl
     kubectx
   ];
-  xdg.configFile."k9s/skin.yml".source = "${inputs.catppuccin-k9s}/dist/latte.yml";
+  xdg.configFile."k9s/skins/catppuccin-latte.yaml".source = "${inputs.catppuccin-k9s}/dist/catppuccin-latte.yaml";
 }
