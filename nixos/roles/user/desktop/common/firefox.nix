@@ -30,15 +30,13 @@ in {
         id = 0;
         extensions = with addons; [
           ublock-origin
-          auto-tab-discard
           multi-account-containers
-          #languagetool
-          history-cleaner
+          grammarly
           keepassxc-browser
-          smart-referer
-          startpage-private-search
           tridactyl
           sidebery
+          proton-vpn
+          startpage-private-search
         ];
         extraConfig = ''
           ${builtins.readFile ./firefox/arkenfox/user.js}
@@ -52,14 +50,12 @@ in {
         id = 1;
         extensions = with addons; [
           ublock-origin
-          auto-tab-discard
           multi-account-containers
-          history-cleaner
           keepassxc-browser
-          smart-referer
-          startpage-private-search
           tridactyl
           sidebery
+          proton-vpn
+          startpage-private-search
         ];
         extraConfig = ''
           ${builtins.readFile ./firefox/arkenfox/user.js}
@@ -73,10 +69,10 @@ in {
         extensions = with addons; [
           ublock-origin
           multi-account-containers
-          smart-referer
-          startpage-private-search
           tridactyl
           sidebery
+          proton-vpn
+          startpage-private-search
         ];
         extraConfig = ''
           ${builtins.readFile ./firefox/arkenfox/user.js}
@@ -89,12 +85,11 @@ in {
         extensions = with addons; [
           ublock-origin
           multi-account-containers
-          history-cleaner
           keepassxc-browser
-          smart-referer
-          startpage-private-search
           tridactyl
           sidebery
+          proton-vpn
+          startpage-private-search
         ];
         settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
         userChrome = noToolBar;
