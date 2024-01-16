@@ -53,14 +53,12 @@
     procs
     protonvpn-cli
     rage
-    xplr
     ripgrep
     signify
     tcpdump
     tldr
     tree
     wget
-    xplr
     #yubikey-manager
     zk
   ];

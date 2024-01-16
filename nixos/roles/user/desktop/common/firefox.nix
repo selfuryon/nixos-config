@@ -31,7 +31,7 @@ in {
         extensions = with addons; [
           ublock-origin
           multi-account-containers
-          grammarly
+          #grammarly
           keepassxc-browser
           tridactyl
           sidebery
