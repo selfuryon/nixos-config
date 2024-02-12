@@ -17,6 +17,7 @@ in {
         ".config/helm"
         ".config/keepassxc"
         ".config/frame"
+        ".config/k9s"
         ".config/Ledger Live"
         ".local/share/TelegramDesktop"
         ".local/share/data/Mega Limited/MEGAsync"
