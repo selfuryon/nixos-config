@@ -26,7 +26,7 @@
     overlays = builtins.attrValues self.overlays;
     config = {
       allowUnfree = true;
-      permittedInsecurePackages = ["electron-25.9.0"];
+      permittedInsecurePackages = ["freeimage-unstable-2021-11-01"];
     };
   };
   home-manager = {

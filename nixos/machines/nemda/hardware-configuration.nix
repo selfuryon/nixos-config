@@ -49,7 +49,7 @@
     cpu.intel.updateMicrocode = true;
     bluetooth.enable = true;
     ledger.enable = true;
-    tuxedo-keyboard.enable = true;
+    #tuxedo-keyboard.enable = true;
     tuxedo-rs.enable = true;
     tuxedo-rs.tailor-gui.enable = true;
   };
