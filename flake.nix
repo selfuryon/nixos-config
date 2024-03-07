@@ -66,8 +66,8 @@
 
     # Styles
     base16.url = "github:SenchoPens/base16.nix";
-    base16-schemes = {
-      url = "github:tinted-theming/base16-schemes";
+    tt-schemes = {
+      url = "github:tinted-theming/schemes";
       flake = false;
     };
     catppuccin-alacritty = {

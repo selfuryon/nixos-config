@@ -28,6 +28,6 @@ in {
     ];
     programs.home-manager.enable = true;
     home.stateVersion = "24.05";
-    scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
+    scheme = "${inputs.tt-schemes}/base16/catppuccin-latte.yaml";
   };
 }
