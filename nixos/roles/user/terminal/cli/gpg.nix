@@ -10,8 +10,6 @@
 
   services.gpg-agent = {
     enable = true;
-    pinentryFlavor = "gnome3";
+    pinentryPackage = pkgs.pinentry-curses;
   };
-
-  home.packages = with pkgs; [pinentry-gtk2];
 }

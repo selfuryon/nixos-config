@@ -53,6 +53,7 @@
     procs
     protonvpn-cli
     rage
+    devenv
     ripgrep
     signify
     tcpdump
