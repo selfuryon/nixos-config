@@ -32,7 +32,6 @@ in {
         "Videos"
         "data"
         "mega"
-        "nixos-config"
         "src"
       ];
       allowOther = true;

@@ -11,9 +11,9 @@
     lg = "${pkgs.lazygit}/bin/lazygit";
 
     # Nix
-    nrs = "doas nixos-rebuild switch --flake path:/home/syakovlev/nixos-config";
+    nrs = "doas nixos-rebuild switch --flake path:/home/syakovlev/src/personal/nixos-config";
+    nrb = "doas nixos-rebuild build --flake path:/home/syakovlev/src/personal/nixos-config";
     nfu = "nix flake update";
-    nrb = "doas nixos-rebuild build --flake path:/home/syakovlev/nixos-config";
 
     # Kubernetes
     k = "kubectl";

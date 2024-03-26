@@ -12,7 +12,11 @@
     directories = [
       {
         directory = "/etc/secureboot";
-        mode = "u=rwx,g=rx,o=";
+        mode = "700";
+      }
+      {
+        directory = "/var/lib/libvirt";
+        mode = "777";
       }
       "/var/log"
       "/var/lib/bluetooth"
