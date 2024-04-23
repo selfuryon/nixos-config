@@ -25,14 +25,14 @@
     # Other
     cat = "${pkgs.bat}/bin/bat --paging=never --style=plain";
     ip = "ip --color --brief";
-    less = "${pkgs.bat}/bin/bat --paging=always";
+    # less = "${pkgs.tailspin}/bin/tspin";
     more = "${pkgs.bat}/bin/bat --paging=always";
     tree = "${pkgs.eza}/bin/eza --tree";
     wget = "${pkgs.wget2}/bin/wget2";
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
     KUBECONFIG = "/home/syakovlev/.config/kubernetes";
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
   };

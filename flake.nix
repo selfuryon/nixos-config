@@ -84,10 +84,6 @@
       url = "github:ziontee113/syntax-tree-surfer";
       flake = false;
     };
-    "neorg" = {
-      url = "github:nvim-neorg/neorg/v5.0.0";
-      flake = false;
-    };
   };
   outputs = inputs @ {
     nixpkgs,

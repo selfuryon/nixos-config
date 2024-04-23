@@ -58,6 +58,7 @@
     signify
     tcpdump
     tldr
+    tailspin
     tree
     wget
     #yubikey-manager

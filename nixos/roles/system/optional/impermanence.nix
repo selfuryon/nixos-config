@@ -18,6 +18,10 @@
         directory = "/var/lib/libvirt";
         mode = "777";
       }
+      {
+        directory = "/etc/nix";
+        mode = "777";
+      }
       "/var/log"
       "/var/lib/bluetooth"
       "/var/lib/nixos"
