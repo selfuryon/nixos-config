@@ -8,7 +8,7 @@
 
   gtk = {
     enable = true;
-    catppuccin.enable = true;
+    # catppuccin.enable = true;
     gtk3.extraConfig.gtk-application-prefer-dark-theme = false;
     gtk3.bookmarks = [
       "file:///home/syakovlev/Documents"
@@ -25,28 +25,30 @@
       package = pkgs.tela-icon-theme;
       name = "Tela";
     };
-    # theme = {
-    #   name = "Catppuccin-Latte";
-    #   package = pkgs.catppuccin-gtk.override {
-    #     accents = ["green"];
-    #     variant = "latte";
-    #   };
-    # };
-    # cursorTheme = {
-    #   package = pkgs.capitaine-cursors;
-    #   name = "capitaine-cursors";
-    #   size = 16;
-    # };
+    theme = {
+      name = "Catppuccin-Latte-Standard-Lavender-light";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["lavender"];
+        size = "standard";
+        variant = "latte";
+      };
+    };
+    cursorTheme = {
+      name = "Catppuccin-Latte-Lavender-Cursors";
+      package = pkgs.catppuccin-cursors.latteLavender;
+      size = 16;
+    };
   };
 
   dconf.settings."org/gnome/desktop/interface" = {
+    name = "Catppuccin-Latte-Standard-Lavender-light";
     color-scheme = "prefer-light";
   };
 
   dconf.settings = {
     # For Gnome shell
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Catppuccin-Latte-Standard-Lavender-Light";
+      name = "Catppuccin-Latte-Standard-Lavender-light";
     };
   };
 }
