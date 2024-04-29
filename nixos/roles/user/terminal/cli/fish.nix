@@ -21,6 +21,7 @@
     };
     fish = {
       enable = true;
+      catppuccin.enable = true;
       interactiveShellInit = ''
         fish_vi_key_bindings
         if status is-interactive; and set -q SSH_TTY;

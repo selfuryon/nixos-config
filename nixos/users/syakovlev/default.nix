@@ -19,13 +19,18 @@ in {
     ];
   };
 
+  catppuccin.flavour = "latte";
   programs.fish.enable = true;
 
   home-manager.users.${userName} = {
     imports = [
+      inputs.catppuccin.homeManagerModules.catppuccin
       inputs.base16.homeManagerModule
       roles.user.terminal.default
     ];
+
+    catppuccin.flavour = "latte";
+    catppuccin.accent = "lavender";
     programs.home-manager.enable = true;
     home.stateVersion = "24.05";
     scheme = "${inputs.tt-schemes}/base16/catppuccin-latte.yaml";

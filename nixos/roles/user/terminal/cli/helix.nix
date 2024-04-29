@@ -9,6 +9,7 @@
   ];
   programs.helix = {
     enable = true;
+    catppuccin.enable = true;
     languages = {
       language = [
         {
@@ -22,7 +23,7 @@
       ];
     };
     settings = {
-      theme = "catppuccin_latte";
+      # theme = "catppuccin_latte";
       keys.normal = {space.space = "file_picker";};
       editor = {
         auto-save = true;

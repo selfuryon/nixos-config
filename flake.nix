@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
     impermanence.url = "github:nix-community/impermanence";
     disko = {
       url = "github:nix-community/disko";
@@ -70,15 +71,6 @@
       url = "github:tinted-theming/schemes";
       flake = false;
     };
-    catppuccin-alacritty = {
-      url = "github:catppuccin/alacritty";
-      flake = false;
-    };
-    catppuccin-k9s = {
-      url = "github:catppuccin/k9s";
-      flake = false;
-    };
-
     # Neovim plugins
     "syntax-tree-surfer" = {
       url = "github:ziontee113/syntax-tree-surfer";

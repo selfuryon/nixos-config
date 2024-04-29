@@ -1,12 +1,13 @@
 {config, ...}: {
   programs.kitty = {
     enable = true;
+    catppuccin.enable = true;
     font = {
       inherit (config.themes.fontProfile.monospace) package;
       name = config.themes.fontProfile.monospace.family;
       size = 15;
     };
-    theme = "Catppuccin-Latte";
+    #theme = "Catppuccin-Latte";
     settings = {
       enable_audio_bell = false;
       term = "xterm-256color";

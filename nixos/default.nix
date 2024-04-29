@@ -19,6 +19,7 @@
   defaultModules = [
     {
       imports = [
+        inputs.catppuccin.nixosModules.catppuccin
         inputs.home-manager.nixosModules.home-manager
         inputs.ragenix.nixosModules.age
       ];

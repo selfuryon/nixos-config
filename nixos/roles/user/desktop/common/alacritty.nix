@@ -1,12 +1,9 @@
-{
-  inputs,
-  config,
-  ...
-}: {
+{config, ...}: {
   programs.alacritty = {
     enable = true;
+    catppuccin.enable = true;
     settings = {
-      import = ["${inputs.catppuccin-alacritty}/catppuccin-latte.yml"];
+      # import = ["${inputs.catppuccin-alacritty}/catppuccin-latte.yml"];
       env.TERM = "xterm-256color";
       window = {
         padding = {

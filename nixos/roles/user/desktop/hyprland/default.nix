@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [../common];
   home.packages = with pkgs; [
     wayland
@@ -21,6 +17,8 @@
 
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     QT_QPA_PLATFORM = "wayland;xcb";
+    #QT_QPA_PLATFORMTHEME="gtk2";
+    QT_STYLE_OVERRIDE = "kvantum";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
 
     SDL_VIDEODRIVER = "wayland";
@@ -30,8 +28,10 @@
   wayland.windowManager.hyprland = {
     # package = inputs.hyprland.packages.x86_64-linux.hyprland;
     enable = true;
+    catppuccin.enable = true;
     systemd.enable = true;
-    settings = with config.scheme; {
+    # settings = with config.scheme; {
+    settings = {
       monitor = ",preferred,auto,1";
       workspace = "eDP-1,11";
       input = {
@@ -56,11 +56,11 @@
         border_size = 3;
         cursor_inactive_timeout = 4;
 
-        "col.active_border" = "0xff${base0C}";
-        "col.inactive_border" = "0xff${base02}";
+        # "col.active_border" = "0xff${base0C}";
+        # "col.inactive_border" = "0xff${base02}";
       };
       group = {
-        "col.border_active" = "0xff${base0B}";
+        # "col.border_active" = "0xff${base0B}";
         #"col.group_border" = "0xff${base04}";
       };
       decoration = {
