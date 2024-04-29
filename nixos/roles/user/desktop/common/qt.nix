@@ -4,7 +4,7 @@
   ...
 }: let
   variant = "Latte";
-  accent = "Blue";
+  accent = "Lavender";
   kvantumThemePackage = pkgs.catppuccin-kvantum.override {
     inherit variant accent;
   };
@@ -38,7 +38,7 @@ in {
       target = "qt5ct/qt5ct.conf";
       text = lib.generators.toINI {} {
         Appearance = {
-          icon_theme = "Papirus-Light";
+          icon_theme = "Tela";
         };
       };
     };
@@ -47,7 +47,7 @@ in {
       target = "qt6ct/qt6ct.conf";
       text = lib.generators.toINI {} {
         Appearance = {
-          icon_theme = "Papirus-Light";
+          icon_theme = "Tela";
         };
       };
     };
