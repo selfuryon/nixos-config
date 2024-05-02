@@ -23,6 +23,7 @@
 in {
   programs.waybar = {
     enable = true;
+    catppuccin.enable = true;
     systemd = {
       enable = true;
       target = "hyprland-session.target";
@@ -134,7 +135,7 @@ in {
         };
       };
     };
-    style = with config.scheme.withHashtag; ''
+    style = ''
       * {
       font-family: "${config.themes.fontProfile.regular.family}", "JetBrainsMono Nerd Font";
       font-size: 12pt;
@@ -149,35 +150,35 @@ in {
       window#waybar.top {
       opacity: 0.95;
       padding: 0;
-      background-color: ${base00};
-      border: 2px solid ${base0D};
+      background-color: @base;
+      border: 2px solid @lavender;
       border-top-width: 4px;
       border-radius: 10px;
       }
       window#waybar {
-      color: ${base05};
+      color: @text;
       }
       #workspaces * {
       padding: 0 4px;
       }
       #workspaces button {
-      color: ${base05};
+      color: @text;
       border-radius: 0px;
       margin: 4px 2px;
-      border-bottom: 4px solid ${base02};
+      border-bottom: 4px solid @surface0;
       }
       #workspaces button.hidden {
-      background-color: ${base00};
-      color: ${base04};
+      background-color: @base;
+      color: @surface2;
       }
       #workspaces button.focused,
       #workspaces button.active {
-      border-bottom: 4px solid ${base0D};
+      border-bottom: 4px solid @lavender;
       }
       #custom-nixos {
       font-size: 14px;
-      background-color: ${base0D};
-      color: ${base00};
+      background-color: @lavender;
+      color: @base;
       padding-left: 15px;
       padding-right: 22px;
       margin-left: 0;
@@ -187,17 +188,17 @@ in {
       border-radius: 10px;
       }
       #custom-nixos.update {
-      color: ${base08};
+      color: @red;
       }
       #battery.warning {
-      background: ${base09};
+      background: @peach;
       }
       #battery.critical {
-      background: ${base08};
+      background: @red;
       }
       #custom-hostname {
-      background-color: ${base0D};
-      color: ${base00};
+      background-color: @lavender;
+      color: @base;
       padding-left: 15px;
       padding-right: 18px;
       margin-right: 0;
@@ -206,7 +207,7 @@ in {
       border-radius: 10px;
       }
       #tray {
-      color: ${base05};
+      color: @text;
       }
     '';
   };
