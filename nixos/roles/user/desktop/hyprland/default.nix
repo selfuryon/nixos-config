@@ -54,14 +54,9 @@
         gaps_in = 15;
         gaps_out = 20;
         border_size = 3;
-        cursor_inactive_timeout = 4;
-
-        # "col.active_border" = "0xff${base0C}";
-        # "col.inactive_border" = "0xff${base02}";
       };
-      group = {
-        # "col.border_active" = "0xff${base0B}";
-        #"col.group_border" = "0xff${base04}";
+      cursor = {
+        inactive_timeout = 4;
       };
       decoration = {
         active_opacity = 1;
