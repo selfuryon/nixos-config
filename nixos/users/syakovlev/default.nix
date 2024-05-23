@@ -19,7 +19,7 @@ in {
     ];
   };
 
-  catppuccin.flavour = "latte";
+  catppuccin.flavor = "latte";
   programs.fish.enable = true;
 
   home-manager.users.${userName} = {
@@ -29,7 +29,7 @@ in {
       roles.user.terminal.default
     ];
 
-    catppuccin.flavour = "latte";
+    catppuccin.flavor = "latte";
     catppuccin.accent = "lavender";
     programs.home-manager.enable = true;
     home.stateVersion = "24.05";
