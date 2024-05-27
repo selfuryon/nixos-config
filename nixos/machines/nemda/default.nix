@@ -35,5 +35,5 @@
   networking.firewall.trustedInterfaces = ["virbr0"];
 
   time.timeZone = "Asia/Nicosia";
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
