@@ -33,6 +33,9 @@
           display-messages = true;
           display-inlay-hints = false;
         };
+        soft-wrap = {
+          enable = true;
+        };
         cursor-shape = {
           insert = "bar";
           normal = "block";

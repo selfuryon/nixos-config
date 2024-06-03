@@ -121,6 +121,7 @@ in {
     wf-recorder
     wireshark
     xdg-utils
+    pcmanfm-qt
     xfce.thunar
     xfce.thunar-media-tags-plugin
     xorg.xrdb
