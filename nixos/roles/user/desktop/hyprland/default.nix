@@ -55,9 +55,9 @@
         gaps_out = 20;
         border_size = 3;
       };
-      cursor = {
-        inactive_timeout = 4;
-      };
+      # cursor = {
+      #   inactive_timeout = 4;
+      # };
       decoration = {
         active_opacity = 1;
         dim_inactive = true;
