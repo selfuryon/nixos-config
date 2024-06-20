@@ -1,4 +1,6 @@
 {pkgs, ...}: {
-  virtualisation.libvirtd.enable = true;
-  environment.systemPackages = with pkgs; [virtiofsd];
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.vhostUserPackages = [pkgs.virtiofsd];
+  };
 }
