@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  security.pam.services.swaylock = {text = "auth include login";};
+  security.pam.services.hyprlock = {};
 
   security.polkit.enable = true;
   environment.systemPackages = with pkgs; [polkit_gnome];
@@ -13,10 +13,5 @@
     light.enable = true;
   };
 
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-    };
-  };
+  hardware.graphics.enable = true;
 }

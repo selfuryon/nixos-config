@@ -14,8 +14,11 @@ in {
     ./mpd.nix
     ./playerctl.nix
     ./qt.nix
-    ./swayidle.nix
-    ./swaylock.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./hyprpaper.nix
+    #./swayidle.nix
+    #./swaylock.nix
     ./waybar.nix
     ./wlsunset.nix
     ./wofi.nix
@@ -90,13 +93,13 @@ in {
     drawio
     framesh
     element-desktop
-    gnome.file-roller
+    file-roller
     grim
     gsettings-desktop-schemas
     gtk-engine-murrine
     gtk_engines
     imv
-    insomnia
+    hoppscotch
     keepassxc
     libreoffice
     onlyoffice-bin

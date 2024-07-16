@@ -8,7 +8,8 @@
     catppuccin.enable = true;
     iconTheme = {
       name = "hicolor";
-      package = pkgs.tela-icon-theme;
+      #package = pkgs.tela-icon-theme;
+      package = pkgs.whitesur-icon-theme;
       size = "32x32";
     };
     # settings = with config.scheme.withHashtag; {

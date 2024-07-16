@@ -1,14 +1,14 @@
 {pkgs, ...}: {
   home.pointerCursor = {
-    name = "Catppuccin-Latte-Lavender-Cursors";
-    package = pkgs.catppuccin-cursors.latteLavender;
+    name = "WhiteSur-cursors";
+    package = pkgs.whitesur-cursors;
     gtk.enable = true;
     size = 16;
   };
 
   gtk = {
     enable = true;
-    catppuccin.enable = true;
+    #catppuccin.enable = true;
     gtk3.extraConfig.gtk-application-prefer-dark-theme = false;
     gtk3.bookmarks = [
       "file:///home/syakovlev/Documents"
@@ -22,22 +22,21 @@
       size = 12;
     };
     iconTheme = {
-      package = pkgs.tela-icon-theme;
-      name = "Tela";
+      #package = pkgs.tela-icon-theme;
+      package = pkgs.whitesur-icon-theme;
+      name = "WhiteSur-light";
     };
-    # theme = {
-    #   name = "Catppuccin-Latte-Standard-Lavender-light";
-    #   package = pkgs.catppuccin-gtk.override {
-    #     accents = ["lavender"];
-    #     size = "standard";
-    #     variant = "latte";
-    #   };
-    # };
-    # cursorTheme = {
-    # name = "Catppuccin-Latte-Lavender-Cursors";
-    # package = pkgs.catppuccin-cursors.latteLavender;
-    # size = 16;
-    # };
+    theme = {
+      name = "WhiteSur-Light";
+      package = pkgs.whitesur-gtk-theme.override {
+        colorVariants = ["Light"];
+      };
+    };
+    cursorTheme = {
+      name = "WhiteSur-cursors";
+      package = pkgs.whitesur-cursors;
+      size = 16;
+    };
   };
 
   # dconf.settings."org/gnome/desktop/interface" = {
@@ -45,10 +44,10 @@
   #   color-scheme = "prefer-light";
   # };
 
-  dconf.settings = {
-    # For Gnome shell
-    "org/gnome/shell/extensions/user-theme" = {
-      name = "Catppuccin-Latte-Standard-Lavender-light";
-    };
-  };
+  # dconf.settings = {
+  #   # For Gnome shell
+  #   "org/gnome/shell/extensions/user-theme" = {
+  #     name = "Catppuccin-Latte-Standard-Lavender-light";
+  #   };
+  # };
 }

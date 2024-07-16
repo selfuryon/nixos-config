@@ -38,7 +38,7 @@ in {
       target = "qt5ct/qt5ct.conf";
       text = lib.generators.toINI {} {
         Appearance = {
-          icon_theme = "Tela";
+          icon_theme = "WhiteSur-light";
         };
       };
     };
@@ -47,7 +47,7 @@ in {
       target = "qt6ct/qt6ct.conf";
       text = lib.generators.toINI {} {
         Appearance = {
-          icon_theme = "Tela";
+          icon_theme = "WhiteSur-light";
         };
       };
     };

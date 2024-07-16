@@ -59,7 +59,7 @@
     broot = {
       enable = true;
       settings = {
-        modal = true;
+        modal = false;
         verbs = [
           {
             invocation = "zellij-edit";

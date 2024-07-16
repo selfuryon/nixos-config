@@ -21,6 +21,7 @@
     QT_STYLE_OVERRIDE = "kvantum";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
 
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland,x11";
     GTK_USE_PORTAL = 1;
@@ -30,6 +31,7 @@
     enable = true;
     catppuccin.enable = true;
     systemd.enable = true;
+    systemd.variables = ["--all"];
     # settings = with config.scheme; {
     settings = {
       monitor = ",preferred,auto,1";
@@ -122,7 +124,7 @@
       exec-once = [
         "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        "${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill"
+        #"${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill"
         "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store"
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store"
       ];
@@ -141,7 +143,7 @@
       bind=SUPER,d,exec,wofi --show drun
       bind=SUPER_SHIFT,print,exec,sh -c 'slurp | grim -g - -t png - | wl-copy -t image/png'
       bind=,print,exec,sh -c 'grim -g "$(slurp)" - | swappy -f -'
-      bind=SUPER_SHIFT,x,exec,${pkgs.swaylock}/bin/swaylock -f
+      bind=SUPER_SHIFT,x,exec,${pkgs.hyprlock}/bin/hyprlock
 
       # Float
       bind=SUPER_SHIFT,space,togglefloating,
