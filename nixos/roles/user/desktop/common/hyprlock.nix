@@ -20,9 +20,9 @@
           monitor = "";
           dots_center = true;
           fade_on_empty = false;
-          font_color = "rgb(${base07})";
-          inner_color = "rgb(${base01})";
-          outer_color = "rgb(${base0C})";
+          font_color = "rgb(${base05})";
+          inner_color = "rgb(${base00})";
+          outer_color = "rgb(${base07})";
           outline_thickness = 5;
           #placeholder_text = "<i>Input Password...</i>";
           shadow_passes = 2;
