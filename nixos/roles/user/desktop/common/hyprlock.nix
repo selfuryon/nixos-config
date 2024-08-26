@@ -19,7 +19,7 @@
           position = "0, -80";
           monitor = "";
           dots_center = true;
-          fade_on_empty = false;
+          #fade_on_empty = false;
           font_color = "rgb(${base05})";
           inner_color = "rgb(${base00})";
           outer_color = "rgb(${base07})";

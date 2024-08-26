@@ -92,7 +92,6 @@ in {
     discord
     drawio
     framesh
-    element-desktop
     file-roller
     grim
     gsettings-desktop-schemas
@@ -110,7 +109,7 @@ in {
     okular
     pavucontrol
     qbittorrent
-    librewolf
+    #librewolf
     #qutebrowser
     skypeforlinux
     slack

@@ -1,6 +1,6 @@
 {config, ...}: {
   programs.wezterm = {
-    enable = true;
+    enable = false;
     extraConfig = ''
       local config = {}
       if wezterm.config_builder then

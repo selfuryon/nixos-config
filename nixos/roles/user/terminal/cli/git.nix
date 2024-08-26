@@ -32,7 +32,7 @@
       key = "~/.ssh/keys/personal/github.pub";
     };
     delta = {
-      enable = true;
+      enable = false;
       options = {
         light = true;
         theme = "Github";

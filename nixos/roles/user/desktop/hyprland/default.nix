@@ -27,12 +27,10 @@
     GTK_USE_PORTAL = 1;
   };
   wayland.windowManager.hyprland = {
-    # package = inputs.hyprland.packages.x86_64-linux.hyprland;
     enable = true;
     catppuccin.enable = true;
     systemd.enable = true;
     systemd.variables = ["--all"];
-    # settings = with config.scheme; {
     settings = {
       monitor = ",preferred,auto,1";
       workspace = "eDP-1,11";
@@ -56,10 +54,10 @@
         gaps_in = 15;
         gaps_out = 20;
         border_size = 3;
+
+        "col.active_border" = "$lavender";
+        "col.inactive_border" = "$surface1";
       };
-      # cursor = {
-      #   inactive_timeout = 4;
-      # };
       decoration = {
         active_opacity = 1;
         dim_inactive = true;
@@ -71,9 +69,6 @@
         shadow_range = 12;
 
         inactive_opacity = "0.80";
-        "col.shadow" = "0x44000000";
-        "col.shadow_inactive" = "0x66000000";
-
         blur = {
           enabled = true;
           ignore_opacity = true;
@@ -124,7 +119,6 @@
       exec-once = [
         "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        #"${pkgs.swaybg}/bin/swaybg -i /home/syakovlev/Pictures/wife2.jpg --mode fill"
         "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store"
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store"
       ];

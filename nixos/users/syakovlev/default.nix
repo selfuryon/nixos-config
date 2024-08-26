@@ -20,6 +20,7 @@ in {
   };
 
   catppuccin.flavor = "latte";
+  catppuccin.accent = "mauve";
   programs.fish.enable = true;
 
   home-manager.users.${userName} = {
@@ -30,7 +31,7 @@ in {
     ];
 
     catppuccin.flavor = "latte";
-    catppuccin.accent = "lavender";
+    catppuccin.accent = "mauve";
     programs.home-manager.enable = true;
     home.stateVersion = "24.11";
     scheme = "${inputs.tt-schemes}/base16/catppuccin-latte.yaml";
