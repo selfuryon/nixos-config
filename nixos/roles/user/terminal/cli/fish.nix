@@ -1,24 +1,5 @@
 {
-  home.persistence."/state/home/syakovlev" = {
-    directories = [
-      ".local/share/atuin"
-      ".local/share/zoxide"
-    ];
-  };
   programs = {
-    zoxide.enable = true;
-    atuin = {
-      enable = true;
-      enableFishIntegration = true;
-      enableNushellIntegration = true;
-      settings = {
-        style = "compact";
-        search_mode = "skim";
-      };
-    };
-    nushell = {
-      enable = true;
-    };
     fish = {
       enable = true;
       catppuccin.enable = true;

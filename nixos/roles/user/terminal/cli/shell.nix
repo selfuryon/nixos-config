@@ -38,10 +38,25 @@
   };
 
   programs = {
+    zoxide.enable = true;
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    atuin = {
+      enable = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+      settings = {
+        style = "compact";
+        search_mode = "skim";
+      };
+    };
     yazi = {
       enable = true;
       catppuccin.enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
     bat = {
       enable = true;
@@ -54,6 +69,7 @@
     eza = {
       enable = true;
       enableFishIntegration = true;
+      #enableNushellIntegration = true;
       icons = true;
     };
     broot = {

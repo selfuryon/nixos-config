@@ -7,6 +7,7 @@
   imports = [
     ./direnv.nix
     ./fish.nix
+    ./nushell.nix
     ./fzf.nix
     ./git.nix
     ./gpg.nix

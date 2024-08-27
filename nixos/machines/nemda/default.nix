@@ -1,6 +1,8 @@
 {
+  config,
   roles,
   users,
+  lib,
   ...
 }: {
   imports = [
@@ -34,6 +36,16 @@
 
   networking.firewall.trustedInterfaces = ["virbr0"];
 
+  programs.hyprland.enable = true;
+  programs.regreet = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${lib.getExe config.programs.hyprland.package}";
+        user = "syakovlev";
+      };
+    };
+  };
   time.timeZone = "Asia/Nicosia";
   system.stateVersion = "24.11";
 }

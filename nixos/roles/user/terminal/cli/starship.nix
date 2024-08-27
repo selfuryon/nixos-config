@@ -1,13 +1,9 @@
-{
-  lib,
-  config,
-  ...
-}: {
+{lib, ...}: {
   programs.starship = {
     enable = true;
     catppuccin.enable = true;
     settings = {
-      add_newline = false;
+      add_newline = true;
       format = lib.concatStrings [
         "$username"
         "$hostname"
@@ -41,13 +37,16 @@
         time_format = "%T";
       };
 
-      character = with config.scheme.withHashtag; {
-        success_symbol = "[ I ](fg:#ffffff bg:${base0B})";
-        error_symbol = "[ I ](fg:#ffffff bg:${base08})";
-        vicmd_symbol = "[ N ](fg:#ffffff bg:${base0D})";
-        vimcmd_replace_one_symbol = "[ r ](fg:#ffffff bg:${base09})";
-        vimcmd_replace_symbol = "[ R ](fg:#ffffff bg:${base09})";
-        vimcmd_visual_symbol = "[ V ](fg:#ffffff bg:${base0F})";
+      #character = with config.scheme.withHashtag; {
+      character = {
+        success_symbol = "𝛌(bold green)";
+        error_symbol = "𝛌(bold red)";
+        # success_symbol = "[ I ](fg:#ffffff bg:${base0B})";
+        # error_symbol = "[ I ](fg:#ffffff bg:${base08})";
+        # vicmd_symbol = "[ N ](fg:#ffffff bg:${base0D})";
+        # vimcmd_replace_one_symbol = "[ r ](fg:#ffffff bg:${base09})";
+        # vimcmd_replace_symbol = "[ R ](fg:#ffffff bg:${base09})";
+        # vimcmd_visual_symbol = "[ V ](fg:#ffffff bg:${base0F})";
       };
     };
   };

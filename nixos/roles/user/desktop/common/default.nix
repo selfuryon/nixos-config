@@ -31,7 +31,7 @@ in {
     end
   '';
   programs.nushell.loginFile.text = ''
-    if (tty) == "/dev/tty1" {
+    if (tty) == "/dev/tty3" {
       systemd-cat -t hyprland ${hyprland}
     }
   '';

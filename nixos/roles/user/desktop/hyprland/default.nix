@@ -122,6 +122,22 @@
         "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store"
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store"
       ];
+      env = [
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
+        "QT_STYLE_OVERRIDE,kvantum"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+
+        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+        "SDL_VIDEODRIVER,wayland"
+        "GDK_BACKEND,wayland,x11"
+        "GTK_USE_PORTAL,1"
+      ];
     };
     extraConfig = ''
       # Mouse

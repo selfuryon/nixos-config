@@ -9,7 +9,7 @@ in {
   users.users.${userName} = {
     isNormalUser = true;
     extraGroups = ["wheel" "sudo" "doas" "video" "audio" "libvirtd" "usb" "ssh" "wireshark"];
-    shell = pkgs.fish;
+    shell = pkgs.nushell;
     hashedPassword = "$6$skRJZuaIN8S0Ohgf$UwgLyx9DGZ8acjl/EwsaEnecPSZAwAwp42NS449CQpoLaGZKK7uo2GdiF0Tl6eMfIg6gxz5Rb6rudC34r5V0C/";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILIhSucTbstWJv0sC2tqoHB+f6HfsFR/nuUXLYPcRlGL sergey.y@default [private]"
