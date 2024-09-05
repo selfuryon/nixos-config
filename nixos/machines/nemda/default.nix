@@ -1,8 +1,6 @@
 {
-  config,
   roles,
   users,
-  lib,
   ...
 }: {
   imports = [
@@ -40,9 +38,9 @@
   programs.regreet = {
     enable = true;
     settings = {
-      default_session = {
-        command = "${lib.getExe config.programs.hyprland.package}";
-        user = "syakovlev";
+      background = {
+        fit = "Contain";
+        path = "/home/syakovlev/Pictures/login_screen.jpg";
       };
     };
   };
