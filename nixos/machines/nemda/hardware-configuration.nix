@@ -1,5 +1,5 @@
 {
-  config,
+  pkgs,
   lib,
   modulesPath,
   inputs,
@@ -31,8 +31,9 @@
     };
     zfs.requestEncryptionCredentials = true;
 
+    #kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+    kernelPackages = pkgs.linuxPackages_6_6;
     kernelParams = [
       "nohibernate"
       "elevator=none"

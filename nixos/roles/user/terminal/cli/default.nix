@@ -35,6 +35,7 @@
     #magic-wormhole
     #sequoia
     bind
+    insync
     bubblewrap
     cryfs
     curl

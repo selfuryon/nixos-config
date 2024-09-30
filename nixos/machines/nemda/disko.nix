@@ -90,6 +90,12 @@
             options.mountpoint = "none";
             postCreateHook = "zfs snapshot zroot/system/home@blank";
           };
+          "system/tmp" = {
+            type = "zfs_fs";
+            mountpoint = "/tmp";
+            options.mountpoint = "legacy";
+            postCreateHook = "zfs snapshot zroot/system/tmp@blank";
+          };
           state = {
             type = "zfs_fs";
             options."com.sun:auto-snapshot" = "true";
@@ -114,12 +120,6 @@
           "size=10G"
           "defaults"
           "mode=755"
-        ];
-      };
-      "/tmp" = {
-        fsType = "tmpfs";
-        mountOptions = [
-          "size=15G"
         ];
       };
     };
