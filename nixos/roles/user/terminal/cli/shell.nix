@@ -74,7 +74,6 @@
       enable = true;
       enableFishIntegration = true;
       #enableNushellIntegration = true;
-      icons = true;
     };
     broot = {
       enable = true;

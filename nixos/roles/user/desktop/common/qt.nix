@@ -3,8 +3,8 @@
   lib,
   ...
 }: let
-  variant = "Latte";
-  accent = "Lavender";
+  variant = "latte";
+  accent = "lavender";
   kvantumThemePackage = pkgs.catppuccin-kvantum.override {
     inherit variant accent;
   };
