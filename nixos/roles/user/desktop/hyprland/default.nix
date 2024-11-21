@@ -62,13 +62,15 @@
         active_opacity = 1;
         dim_inactive = true;
         dim_strength = ".105";
-        drop_shadow = true;
         fullscreen_opacity = "1.0";
         rounding = 12;
-        shadow_offset = "3 3";
-        shadow_range = 12;
 
         inactive_opacity = "0.80";
+        shadow = {
+          enabled = true;
+          offset = "3 3";
+          range = 12;
+        };
         blur = {
           enabled = true;
           ignore_opacity = true;
