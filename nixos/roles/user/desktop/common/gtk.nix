@@ -29,7 +29,7 @@
     theme = {
       name = "WhiteSur-Light";
       package = pkgs.whitesur-gtk-theme.override {
-        colorVariants = ["Light"];
+        colorVariants = ["light"];
       };
     };
     cursorTheme = {
