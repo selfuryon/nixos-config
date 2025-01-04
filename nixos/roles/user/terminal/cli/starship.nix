@@ -1,7 +1,7 @@
 {lib, ...}: {
+  catppuccin.starship.enable = true;
   programs.starship = {
     enable = true;
-    catppuccin.enable = true;
     settings = {
       add_newline = true;
       format = lib.concatStrings [

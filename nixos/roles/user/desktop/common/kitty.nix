@@ -1,7 +1,7 @@
 {config, ...}: {
+  catppuccin.kitty.enable = true;
   programs.kitty = {
     enable = true;
-    catppuccin.enable = true;
     font = {
       inherit (config.themes.fontProfile.monospace) package;
       name = config.themes.fontProfile.monospace.family;
@@ -12,6 +12,8 @@
       enable_audio_bell = false;
       term = "xterm-256color";
       copy_on_select = true;
+      hide_window_decorations = true;
+      window_margin_width = 6;
     };
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";

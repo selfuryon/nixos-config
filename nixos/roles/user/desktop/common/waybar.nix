@@ -21,9 +21,9 @@
     [[ $CURRENT_REVISION == ''${REMOTE_REVISION:0:7} ]] && echo $NO_UPDATE || echo $UPDATE
   '';
 in {
+  catppuccin.waybar.enable = true;
   programs.waybar = {
     enable = true;
-    catppuccin.enable = true;
     systemd = {
       enable = true;
       target = "hyprland-session.target";

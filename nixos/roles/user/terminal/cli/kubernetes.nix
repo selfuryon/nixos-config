@@ -5,8 +5,6 @@
     kubectx
   ];
 
-  programs.k9s = {
-    enable = true;
-    catppuccin.enable = true;
-  };
+  catppuccin.k9s.enable = true;
+  programs.k9s.enable = true;
 }

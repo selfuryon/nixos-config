@@ -127,7 +127,7 @@ in {
     xfce.thunar
     xfce.thunar-media-tags-plugin
     xorg.xrdb
-    xournal
+    xournalpp
     xwayland
     #zotero
   ];

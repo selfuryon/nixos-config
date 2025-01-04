@@ -7,9 +7,9 @@
     nil
     yaml-language-server
   ];
+  catppuccin.helix.enable = true;
   programs.helix = {
     enable = true;
-    catppuccin.enable = true;
     languages = {
       language = [
         {

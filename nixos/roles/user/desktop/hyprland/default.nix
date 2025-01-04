@@ -26,9 +26,9 @@
     GDK_BACKEND = "wayland,x11";
     GTK_USE_PORTAL = 1;
   };
+  catppuccin.hyprland.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
-    catppuccin.enable = true;
     systemd.enable = true;
     systemd.variables = ["--all"];
     settings = {
@@ -51,11 +51,11 @@
       general = {
         layout = "master";
 
-        gaps_in = 15;
+        gaps_in = 16;
         gaps_out = 20;
-        border_size = 3;
+        border_size = 6;
 
-        "col.active_border" = "$lavender";
+        "col.active_border" = "$sky $lavender 0deg";
         "col.inactive_border" = "$surface1";
       };
       decoration = {
