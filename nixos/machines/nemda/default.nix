@@ -1,6 +1,7 @@
 {
   roles,
   users,
+  lib,
   ...
 }: {
   imports = [
@@ -34,11 +35,13 @@
 
   networking.firewall.trustedInterfaces = ["virbr0"];
 
-  programs.hyprland.enable = true;
-  programs.regreet = {
-    enable = true;
-    settings = {
-      background = {
+  programs = {
+    hyprland.enable = true;
+    niri.enable = true;
+    xwayland.enable = lib.mkForce false;
+    regreet = {
+      enable = true;
+      settings.background = {
         fit = "Contain";
         path = "/home/syakovlev/Pictures/login_screen.jpg";
       };

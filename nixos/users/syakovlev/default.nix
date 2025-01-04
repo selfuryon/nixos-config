@@ -27,6 +27,7 @@ in {
     imports = [
       inputs.catppuccin.homeManagerModules.catppuccin
       inputs.base16.homeManagerModule
+      inputs.niri.homeModules.niri
       roles.user.terminal.default
     ];
 

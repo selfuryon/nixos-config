@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin.url = "github:catppuccin/nix";
     impermanence.url = "github:nix-community/impermanence";
     disko = {
@@ -90,7 +94,7 @@
       specialArgs = {inherit lib;};
     }
     {
-      debug = true;
+      debug = false;
       imports = [
         ({inputs', ...}: {
           # make pkgs available to all `perSystem` functions

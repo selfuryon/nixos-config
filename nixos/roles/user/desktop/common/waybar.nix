@@ -41,10 +41,11 @@ in {
           "mpris"
           "hyprland/submap"
         ];
-        modules-center = ["hyprland/workspaces"];
+        modules-center = ["hyprland/workspaces" "niri/workspaces"];
         modules-right = ["network" "wireplumber" "battery" "clock" "custom/hostname"];
 
         "hyprland/workspaces" = {format = "{name}";};
+        "niri/workspaces" = {format = "{value}";};
         "hyprland/submap" = {
           format = "󱋜 {}";
           max-length = 8;
