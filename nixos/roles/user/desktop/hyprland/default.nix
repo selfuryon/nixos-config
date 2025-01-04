@@ -31,6 +31,7 @@
     enable = true;
     systemd.enable = false; #uwsm enabled
     systemd.variables = ["--all"];
+    plugins = [pkgs.hyprlandPlugins.hyprscroller];
     settings = {
       monitor = ",preferred,auto,1";
       workspace = "eDP-1,11";
@@ -49,7 +50,7 @@
         mfact = "0.7";
       };
       general = {
-        layout = "master";
+        layout = "scroller";
 
         gaps_in = 16;
         gaps_out = 20;
