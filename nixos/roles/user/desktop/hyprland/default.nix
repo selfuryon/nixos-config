@@ -29,7 +29,7 @@
   catppuccin.hyprland.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false; #uwsm enabled
     systemd.variables = ["--all"];
     settings = {
       monitor = ",preferred,auto,1";

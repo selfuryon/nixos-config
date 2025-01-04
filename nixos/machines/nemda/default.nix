@@ -36,7 +36,12 @@
   networking.firewall.trustedInterfaces = ["virbr0"];
 
   programs = {
-    hyprland.enable = true;
+    uwsm.enable = true;
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+      xwayland.enable = true;
+    };
     niri.enable = true;
     xwayland.enable = lib.mkForce false;
     regreet = {
