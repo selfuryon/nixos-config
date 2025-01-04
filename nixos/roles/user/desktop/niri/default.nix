@@ -1,5 +1,10 @@
 {pkgs, ...}: {
   programs.niri.package = pkgs.niri;
+  # programs.niri.package = inputs.niri.packages."x86_64-linux".niri-unstable;
+
+  home.packages = with pkgs; [
+    xwayland-satellite
+  ];
   programs.niri.config = ''
     input {
         keyboard {
@@ -29,11 +34,11 @@
         gaps 24
         center-focused-column "never"
         preset-column-widths {
-            proportion 0.33333
+            proportion 0.3
             proportion 0.5
-            proportion 0.66667
+            proportion 0.7
         }
-        default-column-width { proportion 0.5; }
+        default-column-width { proportion 0.7; }
         focus-ring {
             width 6
             active-gradient from="#04a5e5" to="#7287fd" angle=180
@@ -50,34 +55,29 @@
         }
     }
 
-    // Add lines like this to spawn processes at startup.
-    // Note that running niri as a session supports xdg-desktop-autostart,
-    // which may be more convenient to use.
-    // See the binds section below for more spawn examples.
-    // spawn-at-startup "alacritty" "-e" "fish"
-
-    // Uncomment this line to ask the clients to omit their client-side decorations if possible.
-    // If the client will specifically ask for CSD, the request will be honored.
-    // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
-    // This option will also fix border/focus ring drawing behind some semitransparent windows.
-    // After enabling or disabling this, you need to restart the apps for this to take effect.
     prefer-no-csd
 
-    // You can change the path where screenshots are saved.
-    // A ~ at the front will be expanded to the home directory.
-    // The path is formatted with strftime(3) to give you the screenshot date and time.
+    workspace "term"
+    workspace "code"
+    workspace "browser"
+    workspace "mail"
+    workspace "im"
+    workspace "secret"
+    spawn-at-startup "xwayland-satellite"
+
+    environment {
+        DISPLAY ":0"
+    }
+
     screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-    // You can also set this to null to disable saving screenshots to disk.
-    // screenshot-path null
+    hotkey-overlay {
+        skip-at-startup
+    }
 
     animations {
         slowdown 2.0
     }
-
-    // Window rules let you adjust behavior for individual windows.
-    // Find more information on the wiki:
-    // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
     // Work around WezTerm's initial configure bug
     // by setting an empty default-column-width.
@@ -89,41 +89,20 @@
         default-column-width {}
     }
 
-    // Example: block out two password managers from screen capture.
-    // (This example rule is commented out with a "/-" in front.)
-    /-window-rule {
+    window-rule {
         match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-        match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
         block-out-from "screen-capture"
 
         // Use this instead if you want them visible on third-party screenshot tools.
         // block-out-from "screencast"
     }
 
-    // Example: enable rounded corners for all windows.
-    // (This example rule is commented out with a "/-" in front.)
     window-rule {
         geometry-corner-radius 12
         clip-to-geometry true
     }
 
     binds {
-        // Keys consist of modifiers separated by + signs, followed by an XKB key name
-        // in the end. To find an XKB name for a particular key, you may use a program
-        // like wev.
-        //
-        // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
-        // when running as a winit window.
-        //
-        // Most actions that you can bind here can also be invoked programmatically with
-        // `niri msg action do-something`.
-
-        // Mod-Shift-/, which is usually the same as Mod-?,
-        // shows a list of important hotkeys.
-        Mod+Shift+Slash { show-hotkey-overlay; }
-
-        // Suggested binds for running programs: terminal, app launcher, screen locker.
         Mod+T { spawn "kitty"; }
         Mod+Return { spawn "kitty"; }
         Mod+D { spawn "wofi" "--show" "drun"; }
@@ -332,6 +311,5 @@
         // moving the mouse or pressing any other key.
         Mod+Shift+P { power-off-monitors; }
     }
-
   '';
 }
