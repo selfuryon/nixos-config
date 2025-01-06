@@ -45,7 +45,19 @@ in {
         modules-right = ["network" "wireplumber" "battery" "clock" "custom/hostname"];
 
         "hyprland/workspaces" = {format = "{name}";};
-        "niri/workspaces" = {format = "{value}";};
+        "niri/workspaces" = {
+          format = "{icon}";
+          "format-icons" = {
+            term = "";
+            code = "";
+            browser = "";
+            mail = "󰊫";
+            im = "";
+            secret = "";
+            default = "";
+            #active= "";
+          };
+        };
         "hyprland/submap" = {
           format = "󱋜 {}";
           max-length = 8;
