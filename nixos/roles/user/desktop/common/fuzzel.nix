@@ -9,7 +9,7 @@
       main = {
         terminal = "${pkgs.kitty}/bin/kitty";
         layer = "overlay";
-        font = "${config.themes.fontProfile.regular.family}:size=18";
+        font = "${config.themes.fontProfile.regular.family}:size=16";
         dpi-aware = false;
         icon-theme = "WhiteSur-light";
         icon-enabled = true;
