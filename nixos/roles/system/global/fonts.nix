@@ -17,6 +17,7 @@
       noto-fonts
       font-awesome
       nerd-fonts.symbols-only
+      #lilex
     ];
 
     fontconfig = {
@@ -27,7 +28,7 @@
       };
     };
   };
-  catppuccin.tty.enable = true;
+  #catppuccin.tty.enable = true;
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";

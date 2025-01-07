@@ -3,9 +3,8 @@
   config,
   ...
 }: {
-  catppuccin.dunst.enable = true;
   services.dunst = {
-    enable = true;
+    enable = false;
     iconTheme = {
       name = "hicolor";
       #package = pkgs.tela-icon-theme;

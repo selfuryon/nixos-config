@@ -98,14 +98,14 @@
     }
 
     window-rule {
-        geometry-corner-radius 12
+        geometry-corner-radius 16
         clip-to-geometry true
     }
 
     binds {
         Mod+T { spawn "kitty"; }
         Mod+Return { spawn "kitty"; }
-        Mod+D { spawn "wofi" "--show" "drun"; }
+        Mod+D { spawn "fuzzel"; }
         Super+Alt+L { spawn "hyprlock"; }
 
         // You can also use a shell. Do this if you need pipes, multiple commands, etc.

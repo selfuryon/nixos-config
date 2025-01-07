@@ -8,7 +8,6 @@
 
   gtk = {
     enable = true;
-    #catppuccin.enable = true;
     gtk3.extraConfig.gtk-application-prefer-dark-theme = false;
     gtk3.bookmarks = [
       "file:///home/syakovlev/Documents"

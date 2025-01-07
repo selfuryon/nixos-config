@@ -41,8 +41,6 @@
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
   };
 
-  catppuccin.yazi.enable = true;
-  catppuccin.bat.enable = true;
   programs = {
     zoxide.enable = true;
     carapace = {

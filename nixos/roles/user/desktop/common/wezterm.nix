@@ -1,6 +1,6 @@
 {config, ...}: {
   programs.wezterm = {
-    enable = false;
+    enable = true;
     extraConfig = ''
       local config = {}
       if wezterm.config_builder then
@@ -8,7 +8,7 @@
       end
 
       -- https://github.com/wez/wezterm/issues/4483
-      config.enable_wayland = false
+      config.enable_wayland = true
 
       config.color_scheme = "Catppuccin Latte"
 

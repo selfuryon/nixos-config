@@ -34,7 +34,6 @@
   };
 
   networking.firewall.trustedInterfaces = ["virbr0"];
-
   programs = {
     uwsm.enable = true;
     hyprland = {

@@ -6,8 +6,9 @@
     gopls
     nil
     yaml-language-server
+    #lsp-ai
+    #helix-gpt
   ];
-  catppuccin.helix.enable = true;
   programs.helix = {
     enable = true;
     languages = {

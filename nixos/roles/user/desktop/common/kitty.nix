@@ -1,5 +1,4 @@
 {config, ...}: {
-  catppuccin.kitty.enable = true;
   programs.kitty = {
     enable = true;
     font = {

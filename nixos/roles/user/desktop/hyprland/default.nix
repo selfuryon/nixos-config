@@ -17,7 +17,7 @@
 
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     QT_QPA_PLATFORM = "wayland;xcb";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "kvantum";
     QT_STYLE_OVERRIDE = "kvantum";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
 
@@ -26,7 +26,6 @@
     GDK_BACKEND = "wayland,x11";
     GTK_USE_PORTAL = 1;
   };
-  catppuccin.hyprland.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; #uwsm enabled
@@ -153,7 +152,7 @@
 
       # Exec
       bind=SUPER,return,exec,kitty
-      bind=SUPER,d,exec,wofi --show drun
+      bind=SUPER,d,exec,fuzzel
       bind=SUPER_SHIFT,print,exec,sh -c 'slurp | grim -g - -t png - | wl-copy -t image/png'
       bind=,print,exec,sh -c 'grim -g "$(slurp)" - | swappy -f -'
       bind=SUPER_SHIFT,x,exec,${pkgs.hyprlock}/bin/hyprlock

@@ -5,6 +5,7 @@ in {
   imports = [
     ./alacritty.nix
     ./dunst.nix
+    ./swaync.nix
     ./firefox.nix
     ./thunderbird.nix
     ./font.nix
@@ -21,7 +22,8 @@ in {
     #./swaylock.nix
     ./waybar.nix
     ./wlsunset.nix
-    ./wofi.nix
+    #./wofi.nix
+    ./fuzzel.nix
     ./wezterm.nix
   ];
 
