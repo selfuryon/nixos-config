@@ -66,7 +66,7 @@ in {
             term = "";
             code = "";
             browser = "";
-            mail = "󰊫";
+            mail = "";
             im = "";
             secret = "";
             default = "";
