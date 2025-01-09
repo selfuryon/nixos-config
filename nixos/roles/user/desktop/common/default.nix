@@ -11,6 +11,7 @@ in {
     ./font.nix
     ./foot.nix
     ./gtk.nix
+    ./ghostty.nix
     ./kitty.nix
     ./mpd.nix
     ./playerctl.nix

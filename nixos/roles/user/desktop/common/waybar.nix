@@ -68,7 +68,7 @@ in {
             browser = "";
             mail = "";
             im = "";
-            secret = "";
+            secret = "󰟵";
             default = "";
             #active= "";
           };

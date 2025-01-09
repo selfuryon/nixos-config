@@ -5,8 +5,10 @@
 }: {
   home.packages = with pkgs; [
     #kvantumThemePackage
-    libsForQt5.qtstyleplugin-kvantum
+    # libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
     libsForQt5.qt5ct
+    kdePackages.qt6ct
     lxqt.lxqt-menu-data
     shared-mime-info
     pcmanfm-qt
