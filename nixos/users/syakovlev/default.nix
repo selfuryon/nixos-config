@@ -22,7 +22,7 @@ in {
   catppuccin = {
     enable = true;
     flavor = "latte";
-    accent = "mauve";
+    accent = "blue";
   };
   programs.fish.enable = true;
 
@@ -37,7 +37,7 @@ in {
     catppuccin = {
       enable = true;
       flavor = "latte";
-      accent = "mauve";
+      accent = "blue";
     };
     programs.home-manager.enable = true;
     home.stateVersion = "25.05";

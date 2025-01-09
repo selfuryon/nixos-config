@@ -11,7 +11,7 @@
         layer = "overlay";
         font = "${config.themes.fontProfile.regular.family}:size=16";
         dpi-aware = false;
-        icon-theme = "WhiteSur-light";
+        icon-theme = "Tela-circle";
         icon-enabled = true;
       };
     };

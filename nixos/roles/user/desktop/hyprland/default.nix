@@ -17,8 +17,7 @@
 
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     QT_QPA_PLATFORM = "wayland;xcb";
-    QT_QPA_PLATFORMTHEME = "kvantum";
-    QT_STYLE_OVERRIDE = "kvantum";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
 
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
@@ -132,7 +131,7 @@
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "QT_QPA_PLATFORM,wayland;xcb"
         "QT_QPA_PLATFORMTHEME,qt5ct"
-        "QT_STYLE_OVERRIDE,kvantum"
+        #"QT_STYLE_OVERRIDE,kvantum"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 
         "ELECTRON_OZONE_PLATFORM_HINT,wayland"

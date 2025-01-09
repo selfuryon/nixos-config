@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   hostname = "${pkgs.nettools}/bin/hostname";
   curl = "${pkgs.curl}/bin/curl";
@@ -69,7 +65,7 @@ in {
           "format-icons" = {
             term = "";
             code = "";
-            browser = "";
+            browser = "";
             mail = "󰊫";
             im = "";
             secret = "";
@@ -169,77 +165,79 @@ in {
     };
     style = ''
       * {
-      font-family: "${config.themes.fontProfile.regular.family}", "JetBrainsMono Nerd Font";
-      font-size: 12pt;
-      padding: 0 8px;
+        font-family: "Symbols Nerd Font Mono", "JetBrains Mono" ;
+        font-size: 12pt;
       }
-      .modules-right {
-      margin-right: -15px;
+
+      .modules-right * {
+        padding: 0 6px;
       }
-      .modules-left {
-      margin-left: -15px;
+      .modules-left * {
+        padding: 0 6px;
       }
-      window#waybar.top {
-      opacity: 0.95;
-      padding: 0;
-      background-color: @base;
-      border: 2px solid @lavender;
-      border-top-width: 4px;
-      border-radius: 10px;
-      }
+
       window#waybar {
-      color: @text;
+        opacity: 0.95;
+        background-color: @base;
+        border: 2px solid @blue;
+        border-top-width: 4px;
+        border-radius: 10px;
       }
+
       #workspaces * {
-      padding: 0 4px;
+        padding: 0 4px;
       }
+
       #workspaces button {
-      color: @text;
-      border-radius: 0px;
-      margin: 4px 2px;
-      border-bottom: 4px solid @surface0;
+        color: @text;
+        border-radius: 0px;
+        margin: 4px 2px;
+        border-bottom: 4px solid @surface0;
       }
+
       #workspaces button.hidden {
-      background-color: @base;
-      color: @surface2;
+        color: @surface2;
+        background-color: @base;
       }
+
       #workspaces button.focused,
       #workspaces button.active {
-      border-bottom: 4px solid @lavender;
+        border-bottom: 4px solid @blue;
       }
+
       #custom-nixos {
-      font-size: 14px;
-      background-color: @lavender;
-      color: @base;
-      padding-left: 15px;
-      padding-right: 22px;
-      margin-left: 0;
-      margin-right: 10px;
-      margin-top: 0;
-      margin-bottom: 0;
-      border-radius: 10px;
+        font-size: 14px;
+        color: @base;
+        background-color: @blue;
+        padding: 0 20px;
+        margin: 0 6px 0 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
       }
+
       #custom-nixos.update {
-      color: @red;
+        color: @red;
       }
+
       #battery.warning {
-      background: @peach;
+        background: @peach;
       }
+
       #battery.critical {
-      background: @red;
+        background: @red;
       }
+
       #custom-hostname {
-      background-color: @lavender;
-      color: @base;
-      padding-left: 15px;
-      padding-right: 18px;
-      margin-right: 0;
-      margin-top: 0;
-      margin-bottom: 0;
-      border-radius: 10px;
+        color: @base;
+        background-color: @blue;
+        padding: 0 20px;
+        margin: 0 0 0 6px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
       }
-      #tray {
-      color: @text;
+
+      #tray * {
+        color: @text;
       }
     '';
   };

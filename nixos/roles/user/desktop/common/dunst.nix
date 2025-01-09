@@ -6,9 +6,8 @@
   services.dunst = {
     enable = false;
     iconTheme = {
-      name = "hicolor";
-      #package = pkgs.tela-icon-theme;
-      package = pkgs.whitesur-icon-theme;
+      name = "Tela-circle";
+      package = pkgs.tela-circle-icon-theme;
       size = "32x32";
     };
     # settings = with config.scheme.withHashtag; {

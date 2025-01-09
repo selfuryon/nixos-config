@@ -17,6 +17,7 @@
       noto-fonts
       font-awesome
       nerd-fonts.symbols-only
+      nerd-fonts.symbols-only
       #lilex
     ];
 

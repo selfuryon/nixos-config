@@ -1,8 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.pointerCursor = {
-    name = "WhiteSur-cursors";
-    package = pkgs.whitesur-cursors;
+    # name = "Babita-Modern-Classic";
+    # package = pkgs.bibata-cursors;
+    name = "catppuccin-latte-dark-cursors";
+    package = pkgs.catppuccin-cursors.latteBlue;
     gtk.enable = true;
+    x11.enable = true;
     size = 16;
   };
 
@@ -16,24 +23,23 @@
     ];
     font = {
       package = pkgs.noto-fonts;
-      #name = config.themes.fontProfile.regular.family;
-      name = "Inter";
+      name = config.themes.fontProfile.regular.family;
       size = 12;
     };
     iconTheme = {
-      #package = pkgs.tela-icon-theme;
-      package = pkgs.whitesur-icon-theme;
-      name = "WhiteSur-light";
+      package = pkgs.tela-circle-icon-theme;
+      name = "Tela-circle";
     };
     theme = {
-      name = "WhiteSur-Light";
-      package = pkgs.whitesur-gtk-theme.override {
-        colorVariants = ["light"];
-      };
+      name = "Arc-Lighter";
+      package = pkgs.arc-theme;
+      # package = pkgs.orchis-theme.override {
+      #   colorVariants = ["light"];
+      # };
     };
     cursorTheme = {
-      name = "WhiteSur-cursors";
-      package = pkgs.whitesur-cursors;
+      name = "catppuccin-latte-dark-cursors";
+      package = pkgs.catppuccin-cursors.latteDark;
       size = 16;
     };
   };
