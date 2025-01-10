@@ -2,7 +2,7 @@
   security.pam.services.hyprlock = {};
 
   security.polkit.enable = true;
-  environment.systemPackages = with pkgs; [polkit_gnome];
+  environment.systemPackages = [pkgs.libsForQt5.polkit-kde-agent];
 
   services = {
     dbus.packages = [pkgs.gcr];

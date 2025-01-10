@@ -13,19 +13,15 @@
       monaspace
       inter
       jetbrains-mono
-      julia-mono
       noto-fonts
-      font-awesome
       nerd-fonts.symbols-only
-      nerd-fonts.symbols-only
-      #lilex
     ];
 
     fontconfig = {
       defaultFonts = {
-        serif = ["Monaspace Argon Var Medium"];
-        sansSerif = ["Monaspace Argon Var Medium"];
-        monospace = ["Monaspace Neon"];
+        serif = ["Noto Serif"];
+        sansSerif = ["Noto Sans"];
+        monospace = ["JetBrains Mono"];
       };
     };
   };

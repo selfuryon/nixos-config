@@ -5,14 +5,14 @@
   ...
 }: {
   imports = [
-    ./dns.nix
-    ./firewall.nix
-    ./fonts.nix
-    ./net-sysctl.nix
-    ./nix.nix
-    ./podman.nix
-    ./sshd.nix
-    ./sudo.nix
+    ./suites/dns.nix
+    ./suites/firewall.nix
+    ./suites/fonts.nix
+    ./suites/net-sysctl.nix
+    ./suites/nix.nix
+    ./suites/podman.nix
+    ./suites/sshd.nix
+    ./suites/sudo.nix
   ];
 
   users.mutableUsers = false;

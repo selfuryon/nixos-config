@@ -1,21 +1,14 @@
 {
   roles,
   users,
-  lib,
   ...
 }: {
   imports = [
     # Global configuration
-    roles.system.global.default
+    roles.system.notebook
     # Optional configuration
-    roles.system.optional.pipewire
-    roles.system.optional.libvirt
-    roles.system.optional.network-manager
-    roles.system.optional.printer
-    roles.system.optional.tailscale
-    roles.system.optional.netbird
-    roles.system.optional.desktop
-    roles.system.optional.impermanence
+    roles.system.suites.tailscale
+    roles.system.suites.impermanence
     # Users
     users.default
     users.syakovlev.desktop
@@ -35,14 +28,14 @@
 
   networking.firewall.trustedInterfaces = ["virbr0"];
   programs = {
-    uwsm.enable = true;
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
-    };
+    # uwsm.enable = false;
+    # hyprland = {
+    #   enable = false;
+    #   withUWSM = true;
+    #   xwayland.enable = true;
+    # };
+    # xwayland.enable = lib.mkForce false;
     niri.enable = true;
-    xwayland.enable = lib.mkForce false;
     regreet = {
       enable = true;
       settings.background = {
