@@ -53,20 +53,12 @@
   };
 
   programs = {
+    niri.enable = true;
     # uwsm.enable = false;
     # hyprland = {
     #   enable = false;
     #   withUWSM = true;
     #   xwayland.enable = true;
-    # };
-    # xwayland.enable = lib.mkForce false;
-    niri.enable = true;
-    # regreet = {
-    #   enable = true;
-    #   settings.background = {
-    #     fit = "Contain";
-    #     path = "/home/syakovlev/Pictures/login_screen.jpg";
-    #   };
     # };
   };
   time.timeZone = "Asia/Nicosia";
