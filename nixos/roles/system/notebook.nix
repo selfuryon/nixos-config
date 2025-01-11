@@ -7,6 +7,6 @@
     ./suites/libvirt.nix
     ./suites/network-manager.nix
     ./suites/pipewire.nix
-    ./suites/printer.nix
+    #./suites/printer.nix
   ];
 }

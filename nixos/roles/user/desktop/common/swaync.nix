@@ -6,10 +6,10 @@
   home.packages = with pkgs; [
     swaynotificationcenter
   ];
-  xdg.portal.config.niri.screencast = {
-    exec_before = ''swaync-client --inhibitor-add "xdg-desktop-portal-wlr"'';
-    exec_after = ''swaync-client --inhibitor-remove "xdg-desktop-portal-wlr"'';
-  };
+  # xdg.portal.config.niri.screencast = {
+  #   exec_before = ''swaync-client --inhibitor-add "xdg-desktop-portal-wlr"'';
+  #   exec_after = ''swaync-client --inhibitor-remove "xdg-desktop-portal-wlr"'';
+  # };
   services.swaync = {
     enable = true;
     settings = {

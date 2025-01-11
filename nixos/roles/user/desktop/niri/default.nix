@@ -4,14 +4,33 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
+    nautilus # for GNOME Portal File Picker
   ];
+  xdg.portal = {
+    enable = true;
+    configPackages = [pkgs.xdg-desktop-portal-gnome];
+    extraPortals = [pkgs.xdg-desktop-portal-gnome];
+  };
   programs.niri.config = ''
+    environment {
+        QT_AUTO_SCREEN_SCALE_FACTOR "1"
+        QT_QPA_PLATFORM "wayland;xcb"
+        QT_QPA_PLATFORMTHEME "qt5ct"
+        QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
+        ELECTRON_OZONE_PLATFORM_HINT "wayland"
+        SDL_VIDEODRIVER "wayland"
+        GDK_BACKEND "wayland,x11"
+
+        DISPLAY ":0"
+    }
+
     input {
         keyboard {
             xkb {
-                layout "us,ru";
-                variant ",chm";
-                options "grp:shift_caps_switch";
+                layout "us,ru"
+                variant ",chm"
+                options "grp:shift_caps_switch"
             }
         }
 
@@ -64,10 +83,6 @@
     workspace "im"
     workspace "secret"
     spawn-at-startup "xwayland-satellite"
-
-    environment {
-        DISPLAY ":0"
-    }
 
     screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
