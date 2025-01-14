@@ -51,6 +51,7 @@
     bluetooth.enable = true;
     ledger.enable = true;
     #tuxedo-keyboard.enable = true;
+    keyboard.zsa.enable = true;
     tuxedo-rs.enable = true;
     tuxedo-rs.tailor-gui.enable = true;
   };
