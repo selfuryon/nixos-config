@@ -21,6 +21,7 @@
         ELECTRON_OZONE_PLATFORM_HINT "wayland"
         SDL_VIDEODRIVER "wayland"
         GDK_BACKEND "wayland,x11"
+        GTK_USE_PORTAL "1"
 
         DISPLAY ":0"
     }
@@ -94,6 +95,11 @@
         slowdown 2.0
     }
 
+    window-rule {
+        geometry-corner-radius 16
+        clip-to-geometry true
+    }
+
     // Work around WezTerm's initial configure bug
     // by setting an empty default-column-width.
     window-rule {
@@ -104,6 +110,16 @@
         default-column-width {}
     }
 
+    // Open the Firefox Picture-in-Picture window at the bottom-left corner of the screen
+    // with a small gap.
+    window-rule {
+        match app-id="firefox$" title="^Picture-in-Picture$"
+
+        open-floating true
+        default-floating-position x=32 y=32 relative-to="bottom-left"
+    }
+
+    // Block KeePassXC from screencasts
     window-rule {
         match app-id=r#"^org\.keepassxc\.KeePassXC$"#
         block-out-from "screen-capture"
@@ -112,9 +128,10 @@
         // block-out-from "screencast"
     }
 
-    window-rule {
-        geometry-corner-radius 16
-        clip-to-geometry true
+    // Block out swaync notifications from screencasts.
+    layer-rule {
+        match namespace="^swaync-.+$"
+        block-out-from "screencast"
     }
 
     binds {
@@ -305,6 +322,10 @@
         // Finer height adjustments when in column with other windows.
         Mod+Shift+Minus { set-window-height "-10%"; }
         Mod+Shift+Equal { set-window-height "+10%"; }
+
+        // Move the focused window between the floating and the tiling layout.
+        Mod+V       { toggle-window-floating; }
+        Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
         // Actions to switch layouts.
         // Note: if you uncomment these, make sure you do NOT have
