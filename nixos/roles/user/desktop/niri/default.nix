@@ -85,7 +85,7 @@
     workspace "secret"
     spawn-at-startup "xwayland-satellite"
 
-    screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+    screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%dT%H-%M-%S.png"
 
     hotkey-overlay {
         skip-at-startup
