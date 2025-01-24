@@ -21,6 +21,7 @@ in {
         ".config/k9s"
         ".config/keepassxc"
         ".ipfs"
+        ".ollama"
         ".local/share/TelegramDesktop"
         ".local/share/atuin"
         ".local/share/data/Mega Limited/MEGAsync"
