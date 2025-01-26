@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     xwayland-satellite
     nautilus # for GNOME Portal File Picker
+    wdisplays
   ];
   xdg.portal = {
     enable = true;
@@ -44,10 +45,18 @@
         }
     }
 
+    output "HDMI-A-1" {
+        mode "3840x2160@59.997"
+        scale 1.5
+        transform "normal"
+        position x=0 y=0
+    }
+
     output "eDP-1" {
         mode "1920x1080@120.030"
         scale 1
         transform "normal"
+        position x=0 y=1440
     }
 
     layout {
