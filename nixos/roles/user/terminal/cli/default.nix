@@ -65,5 +65,6 @@
     wget
     #yubikey-manager
     zk
+    devenv
   ];
 }

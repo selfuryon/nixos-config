@@ -7,6 +7,20 @@
     nautilus # for GNOME Portal File Picker
     wdisplays
   ];
+  systemd.user.services.xwayland-satellite = {
+    Unit = {
+      PartOf = ["graphical-session.target"];
+      After = ["graphical-session.target"];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+      ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
+      Restart = "on-failure";
+      KillMode = "mixed";
+    };
+    Install.WantedBy = ["graphical-session.target"];
+  };
   xdg.portal = {
     enable = true;
     configPackages = [pkgs.xdg-desktop-portal-gnome];
@@ -92,7 +106,7 @@
     workspace "mail"
     workspace "im"
     workspace "secret"
-    spawn-at-startup "xwayland-satellite"
+    //spawn-at-startup "xwayland-satellite"
 
     screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%dT%H-%M-%S.png"
 
