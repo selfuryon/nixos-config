@@ -4,16 +4,6 @@
   ...
 }: let
   addons = inputs.firefox-addons.packages.${pkgs.system};
-  noToolBar = ''
-    #TabsToolbar {
-      visibility: collapse !important;
-      margin-bottom: 21px !important;
-    }
-
-    #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-      visibility: collapse !important;
-    }
-  '';
 in {
   home.persistence."/state/home/syakovlev".directories = [
     ".mozilla/firefox/personal"
@@ -24,14 +14,12 @@ in {
   home.packages = with pkgs; [tridactyl-native];
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
+    package = pkgs.firefox-beta;
     profiles = {
       personal = {
         id = 0;
         extensions = with addons; [
           ublock-origin
-          multi-account-containers
-          #grammarly
           keepassxc-browser
           tridactyl
           sidebery
@@ -42,15 +30,18 @@ in {
           ${builtins.readFile ./firefox/arkenfox/user.js}
           ${builtins.readFile ./firefox/private.js}
         '';
-        settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
-        userChrome = noToolBar;
+        settings = {
+          "sidebar.revamp" = true;
+          "sidebar.verticalTabs" = true;
+          "sidebar.revamp.round-content-area" = true;
+          "browser.tabs.groups.enabled" = true;
+        };
         isDefault = true;
       };
       work = {
         id = 1;
         extensions = with addons; [
           ublock-origin
-          multi-account-containers
           keepassxc-browser
           tridactyl
           sidebery
@@ -61,14 +52,17 @@ in {
           ${builtins.readFile ./firefox/arkenfox/user.js}
           ${builtins.readFile ./firefox/work.js}
         '';
-        settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
-        userChrome = noToolBar;
+        settings = {
+          "sidebar.revamp" = true;
+          "sidebar.verticalTabs" = true;
+          "sidebar.revamp.round-content-area" = true;
+          "browser.tabs.groups.enabled" = true;
+        };
       };
       crypto = {
         id = 2;
         extensions = with addons; [
           ublock-origin
-          multi-account-containers
           tridactyl
           sidebery
           proton-vpn
@@ -77,22 +71,29 @@ in {
         extraConfig = ''
           ${builtins.readFile ./firefox/arkenfox/user.js}
         '';
-        settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
-        userChrome = noToolBar;
+        settings = {
+          "sidebar.revamp" = true;
+          "sidebar.verticalTabs" = true;
+          "sidebar.revamp.round-content-area" = true;
+          "browser.tabs.groups.enabled" = true;
+        };
       };
       video = {
         id = 3;
         extensions = with addons; [
           ublock-origin
-          multi-account-containers
           keepassxc-browser
           tridactyl
           sidebery
           proton-vpn
           startpage-private-search
         ];
-        settings = {"toolkit.legacyUserProfileCustomizations.stylesheets" = true;};
-        userChrome = noToolBar;
+        settings = {
+          "sidebar.revamp" = true;
+          "sidebar.verticalTabs" = true;
+          "sidebar.revamp.round-content-area" = true;
+          "browser.tabs.groups.enabled" = true;
+        };
       };
     };
   };
@@ -101,7 +102,7 @@ in {
       firefox-work = {
         name = "Firefox (Work)";
         genericName = "Web Browser";
-        exec = "firefox -P work %U";
+        exec = "firefox-beta -P work %U";
         terminal = false;
         categories = ["Application" "Network" "WebBrowser"];
         mimeType = ["text/html" "text/xml"];
@@ -109,13 +110,13 @@ in {
       firefox-crypto = {
         name = "Firefox (Crypto)";
         genericName = "Web Browser";
-        exec = "firefox -P crypto %U";
+        exec = "firefox-beta -P crypto %U";
         terminal = false;
       };
       firefox-video = {
         name = "Firefox (Video)";
         genericName = "Web Browser";
-        exec = "firefox -P video %U";
+        exec = "firefox-beta -P video %U";
         terminal = false;
       };
     };
