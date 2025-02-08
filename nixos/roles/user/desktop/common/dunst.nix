@@ -6,8 +6,9 @@
   services.dunst = {
     enable = false;
     iconTheme = {
-      name = "Tela-circle";
-      package = pkgs.tela-circle-icon-theme;
+      name = "Zafiro-icons-Light";
+      #package = pkgs.tela-circle-icon-theme;
+      package = pkgs.zafiro-icons;
       size = "32x32";
     };
     # settings = with config.scheme.withHashtag; {

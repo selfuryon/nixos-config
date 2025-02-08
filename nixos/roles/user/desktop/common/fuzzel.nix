@@ -11,7 +11,7 @@
         layer = "overlay";
         font = "${config.themes.fontProfile.regular.family}:size=16";
         dpi-aware = false;
-        icon-theme = "Tela-circle";
+        icon-theme = "Zafiro-icons-Light";
         icon-enabled = true;
       };
     };

@@ -12,7 +12,6 @@
     lxqt.lxqt-menu-data
     shared-mime-info
     pcmanfm-qt
-    arc-kde-theme
   ];
   catppuccin.kvantum.enable = false;
   qt = {
@@ -24,17 +23,17 @@
     };
   };
   xdg.configFile = {
-    "Kvantum/Arc".source = "${pkgs.arc-kde-theme}/share/Kvantum/Arc";
+    # "Kvantum/Arc".source = "${pkgs.arc-kde-theme}/share/Kvantum/Arc";
     "Kvantum/kvantum.kvconfig".text = ''
       [General]
-      theme=Arc
+      theme=KvArc
     '';
 
     qt5ct = {
       target = "qt5ct/qt5ct.conf";
       text = lib.generators.toINI {} {
         Appearance = {
-          icon_theme = "Tela-circle";
+          icon_theme = "Zafiro-icons-Light";
         };
       };
     };
@@ -43,7 +42,7 @@
       target = "qt6ct/qt6ct.conf";
       text = lib.generators.toINI {} {
         Appearance = {
-          icon_theme = "Tela-circle";
+          icon_theme = "Zafiro-icons-Light";
         };
       };
     };

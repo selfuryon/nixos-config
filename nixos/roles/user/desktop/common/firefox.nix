@@ -103,20 +103,21 @@ in {
         name = "Firefox (Work)";
         genericName = "Web Browser";
         exec = "firefox-beta -P work %U";
+        icon = "firefox";
         terminal = false;
-        categories = ["Application" "Network" "WebBrowser"];
-        mimeType = ["text/html" "text/xml"];
       };
       firefox-crypto = {
         name = "Firefox (Crypto)";
         genericName = "Web Browser";
         exec = "firefox-beta -P crypto %U";
+        icon = "firefox";
         terminal = false;
       };
       firefox-video = {
         name = "Firefox (Video)";
         genericName = "Web Browser";
         exec = "firefox-beta -P video %U";
+        icon = "firefox";
         terminal = false;
       };
     };
