@@ -132,6 +132,7 @@ in {
     xorg.xrdb
     xournalpp
     xwayland
+    insomnia
     #zotero
   ];
 }
