@@ -109,7 +109,7 @@ in {
     megasync
     mpv
     networkmanagerapplet
-    okular
+    kdePackages.okular
     pavucontrol
     qbittorrent
     #librewolf

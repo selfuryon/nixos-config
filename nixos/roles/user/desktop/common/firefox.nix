@@ -18,7 +18,7 @@ in {
     profiles = {
       personal = {
         id = 0;
-        extensions = with addons; [
+        extensions.packages = with addons; [
           ublock-origin
           keepassxc-browser
           tridactyl
@@ -40,7 +40,7 @@ in {
       };
       work = {
         id = 1;
-        extensions = with addons; [
+        extensions.packages = with addons; [
           ublock-origin
           keepassxc-browser
           tridactyl
@@ -61,7 +61,7 @@ in {
       };
       crypto = {
         id = 2;
-        extensions = with addons; [
+        extensions.packages = with addons; [
           ublock-origin
           tridactyl
           sidebery
@@ -80,7 +80,7 @@ in {
       };
       video = {
         id = 3;
-        extensions = with addons; [
+        extensions.packages = with addons; [
           ublock-origin
           keepassxc-browser
           tridactyl
