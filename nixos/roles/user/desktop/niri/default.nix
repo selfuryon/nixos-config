@@ -150,11 +150,39 @@
         // Use this instead if you want them visible on third-party screenshot tools.
         // block-out-from "screencast"
     }
+    // Indicate screencasted windows with red colors.
+    window-rule {
+        match is-window-cast-target=true
+
+        focus-ring {
+            active-color "#f38ba8"
+            inactive-color "#7d0d2d"
+        }
+
+        border {
+            inactive-color "#7d0d2d"
+        }
+
+        shadow {
+            color "#7d0d2d70"
+        }
+
+        tab-indicator {
+            active-color "#f38ba8"
+            inactive-color "#7d0d2d"
+        }
+    }
 
     // Block out swaync notifications from screencasts.
     layer-rule {
         match namespace="^swaync-.+$"
         block-out-from "screencast"
+    }
+    layer-rule {
+        match namespace="^launcher$"
+        shadow {
+            on
+        }
     }
 
     binds {
@@ -349,6 +377,7 @@
         // Move the focused window between the floating and the tiling layout.
         Mod+V       { toggle-window-floating; }
         Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+        Mod+W { toggle-column-tabbed-display; }
 
         // Actions to switch layouts.
         // Note: if you uncomment these, make sure you do NOT have
