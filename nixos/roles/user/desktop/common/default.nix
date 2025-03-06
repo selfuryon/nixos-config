@@ -88,6 +88,7 @@ in {
   home.packages = with pkgs; [
     adwaita-qt
     libsForQt5.lightly
+    google-chrome
     brave
     capitaine-cursors
     crosvm

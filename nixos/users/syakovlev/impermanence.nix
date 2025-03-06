@@ -9,6 +9,7 @@ in {
       directories = [
         # global
         ".config/BraveSoftware"
+        ".config/google-chrome"
         ".config/Insomnia"
         ".config/Ledger Live"
         ".config/Logseq"
