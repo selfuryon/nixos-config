@@ -49,8 +49,9 @@
     lsof
     nixos-shell
     p7zip
-    logseq
+    # logseq
     pango
+    rclone
     pijul
     procs
     protonvpn-cli

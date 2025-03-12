@@ -18,6 +18,7 @@ in {
         ".config/dconf"
         ".config/discord"
         ".config/frame"
+        ".config/rclone"
         ".config/helm"
         ".config/k9s"
         ".config/keepassxc"
