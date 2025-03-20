@@ -69,7 +69,7 @@
       ];
     };
     eza = {
-      enable = true;
+      enable = false;
       enableFishIntegration = true;
       #enableNushellIntegration = true;
     };

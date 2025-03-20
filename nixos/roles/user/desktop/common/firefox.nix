@@ -11,7 +11,7 @@ in {
   home.packages = with pkgs; [tridactyl-native];
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
+    package = pkgs.firefox-beta;
     profiles = {
       personal = {
         id = 0;

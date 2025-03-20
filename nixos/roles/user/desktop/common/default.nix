@@ -101,6 +101,7 @@ in {
     gsettings-desktop-schemas
     gtk-engine-murrine
     gtk_engines
+    joplin-desktop
     imv
     hoppscotch
     keepassxc
