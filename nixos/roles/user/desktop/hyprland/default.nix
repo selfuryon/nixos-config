@@ -1,35 +1,9 @@
 {pkgs, ...}: {
   imports = [../common];
-  home.packages = with pkgs; [
-    wayland
-    pciutils
-    swaybg
-    glib # gsettings
-    qt6.qt5compat
-    qt6.qtwayland
-    wl-clipboard
-    cliphist
-  ];
-  home.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-
-    QT_AUTO_SCREEN_SCALE_FACTOR = 1;
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-    SDL_VIDEODRIVER = "wayland";
-    GDK_BACKEND = "wayland,x11";
-    GTK_USE_PORTAL = 1;
-  };
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; #uwsm enabled
     systemd.variables = ["--all"];
-    plugins = [pkgs.hyprlandPlugins.hyprscroller];
     settings = {
       monitor = ",preferred,auto,1";
       workspace = "eDP-1,11";

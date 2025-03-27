@@ -1,8 +1,10 @@
 {pkgs, ...}: {
+  imports = [../common];
   programs.niri.package = pkgs.niri;
   # programs.niri.package = inputs.niri.packages."x86_64-linux".niri-unstable;
 
   home.packages = with pkgs; [
+    wayland
     xwayland-satellite
     nautilus # for GNOME Portal File Picker
     wdisplays
