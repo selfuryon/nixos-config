@@ -130,6 +130,7 @@ in {
     xdg-utils
     pcmanfm-qt
     xfce.thunar
+    kdePackages.dolphin
     xfce.thunar-media-tags-plugin
     xorg.xrdb
     xournalpp
