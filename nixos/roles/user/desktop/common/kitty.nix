@@ -3,7 +3,7 @@
     enable = true;
     font = {
       inherit (config.themes.fontProfile.monospace) package;
-      name = config.themes.fontProfile.monospace.family;
+      name = "family=\"${config.themes.fontProfile.monospace.family}\" features=\"+ss12\"";
       size = 15;
     };
     #theme = "Catppuccin-Latte";

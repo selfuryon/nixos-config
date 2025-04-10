@@ -12,6 +12,7 @@
       terminus_font
       monaspace
       inter
+      input-fonts
       jetbrains-mono
       noto-fonts
       nerd-fonts.symbols-only

@@ -4,8 +4,10 @@
   themes.fontProfile = {
     enable = true;
     monospace = {
-      family = "JetBrains Mono";
-      package = pkgs.jetbrains-mono;
+      # family = "JetBrains Mono";
+      # package = pkgs.jetbrains-mono;
+      family = "Input Mono Narrow";
+      package = pkgs.input-fonts;
     };
     regular = {
       family = "Noto Sans";

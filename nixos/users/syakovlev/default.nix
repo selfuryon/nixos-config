@@ -28,7 +28,7 @@ in {
 
   home-manager.users.${userName} = {
     imports = [
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.catppuccin.homeModules.catppuccin
       inputs.base16.homeManagerModule
       inputs.niri.homeModules.niri
       roles.user.terminal.default

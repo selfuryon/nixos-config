@@ -26,6 +26,7 @@
     overlays = builtins.attrValues self.overlays;
     config = {
       allowUnfree = true;
+      input-fonts.acceptLicense = true;
       permittedInsecurePackages = [
         "freeimage-unstable-2021-11-01"
         "electron-28.3.3"
