@@ -74,7 +74,7 @@
       #enableNushellIntegration = true;
     };
     broot = {
-      enable = true;
+      enable = false;
       settings = {
         imports = lib.mkForce ["verbs.hjson" "skins/native-16.hjson"];
         modal = false;

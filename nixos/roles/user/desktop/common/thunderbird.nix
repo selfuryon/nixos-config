@@ -1,6 +1,6 @@
 {
   home.persistence."/state/home/syakovlev".directories = [
-    ".thunderbird/personal"
+    ".thunderbird"
   ];
   programs.thunderbird = {
     enable = true;

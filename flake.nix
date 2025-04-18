@@ -32,7 +32,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     pre-commit-hooks-nix = {
-      url = "github:hercules-ci/pre-commit-hooks.nix/flakeModule";
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
