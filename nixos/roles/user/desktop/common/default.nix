@@ -49,10 +49,10 @@ in {
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/html" = ["firefox.desktop" "firefox-work.desktop"];
-        "x-scheme-handler/http" = ["firefox.desktop" "firefox-work.desktop"];
-        "x-scheme-handler/https" = ["firefox.desktop" "firefox-work.desktop"];
-        "image/*" = ["firefox.desktop" "firefox-work.desktop"];
+        "text/html" = ["firefox-beta.desktop"];
+        "x-scheme-handler/http" = ["firefox-beta.desktop"];
+        "x-scheme-handler/https" = ["firefox-beta.desktop"];
+        "image/*" = ["firefox-beta.desktop"];
 
         "application/zip" = ["org.gnome.FileRoller.desktop"];
         "application/rar" = ["org.gnome.FileRoller.desktop"];
