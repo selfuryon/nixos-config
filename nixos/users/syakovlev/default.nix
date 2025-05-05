@@ -39,6 +39,8 @@ in {
       flavor = "latte";
       accent = "blue";
     };
+    # https://github.com/catppuccin/nix/issues/552
+    catppuccin.mako.enable = false;
     programs.home-manager.enable = true;
     home.stateVersion = "25.05";
     scheme = "${inputs.tt-schemes}/base16/catppuccin-latte.yaml";
