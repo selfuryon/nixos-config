@@ -89,6 +89,14 @@
             active-gradient from="#1e66f5" to="#7287fd" angle=45
             inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         }
+        tab-indicator {
+            width 8
+            gap 8
+            length total-proportion=1.0
+            position "left"
+            active-color "#8839ef"
+            inactive-color "#ccd0da"
+        }
         border {
             off
         }
