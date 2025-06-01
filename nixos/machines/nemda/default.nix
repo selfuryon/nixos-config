@@ -28,6 +28,11 @@ in {
     hostName = "nemda";
     domain = "ys7.me";
     hostId = "2185078f";
+    extraHosts = ''
+      127.1.27.1 dirk-01
+      127.1.27.2 dirk-02
+      127.1.27.3 dirk-03
+    '';
   };
   services.greetd = {
     enable = true;

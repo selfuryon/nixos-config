@@ -90,8 +90,10 @@ in {
     libsForQt5.lightly
     google-chrome
     brave
+    kdePackages.kwallet
     capitaine-cursors
     crosvm
+    zed-editor
     dconf
     discord
     drawio
@@ -116,7 +118,6 @@ in {
     qbittorrent
     #librewolf
     #qutebrowser
-    skypeforlinux
     slack
     slurp
     swappy
