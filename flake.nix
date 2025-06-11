@@ -11,6 +11,9 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # helix = {
+    #   url = "github:helix-editor/helix";
+    # };
     catppuccin.url = "github:catppuccin/nix";
     impermanence.url = "github:nix-community/impermanence";
     disko = {
@@ -51,13 +54,13 @@
     };
 
     # Deploy
-    colmena.url = "github:zhaofengli/colmena";
+    # colmena.url = "github:zhaofengli/colmena";
 
     # Secrets
-    ragenix = {
-      url = "github:yaxitech/ragenix";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ragenix = {
+    #   url = "github:yaxitech/ragenix";
+    #   #inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Packages
     # hyprland = {

@@ -87,7 +87,7 @@
         focus-ring {
             width 6
             active-gradient from="#1e66f5" to="#7287fd" angle=45
-            inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+            inactive-gradient from="#acb0be" to="#ccd0da" angle=45 relative-to="workspace-view"
         }
         tab-indicator {
             width 8
@@ -165,21 +165,21 @@
         match is-window-cast-target=true
 
         focus-ring {
-            active-color "#f38ba8"
-            inactive-color "#7d0d2d"
+            active-color "#d20f39"
+            inactive-color "#e64553"
         }
 
         border {
-            inactive-color "#7d0d2d"
+            inactive-color "#e64553"
         }
 
         shadow {
-            color "#7d0d2d70"
+            color "#e6455370"
         }
 
         tab-indicator {
-            active-color "#f38ba8"
-            inactive-color "#7d0d2d"
+            active-color "#d20f39"
+            inactive-color "#e64553"
         }
     }
 
