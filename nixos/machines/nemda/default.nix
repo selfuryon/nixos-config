@@ -66,6 +66,15 @@ in {
     };
   };
 
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "-";
+      item = "nofile";
+      value = "unlimited";
+    }
+  ];
+
   programs = {
     niri.enable = true;
     # uwsm.enable = false;
