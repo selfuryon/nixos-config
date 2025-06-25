@@ -90,6 +90,12 @@
             options.mountpoint = "none";
             postCreateHook = "zfs snapshot zroot/system/home@blank";
           };
+          "system/containers" = {
+            type = "zfs_fs";
+            mountpoint = "/containers";
+            options.mountpoint = "legacy";
+            postCreateHook = "zfs snapshot zroot/system/containers@blank";
+          };
           "system/tmp" = {
             type = "zfs_fs";
             mountpoint = "/tmp";

@@ -47,6 +47,7 @@
 
   # Hardware configuration
   hardware = {
+    graphics.enable = true;
     cpu.intel.updateMicrocode = true;
     bluetooth.enable = true;
     ledger.enable = true;
