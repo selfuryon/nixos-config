@@ -23,6 +23,7 @@ in {
         ".config/helm"
         ".config/k9s"
         ".config/keepassxc"
+        ".config/Insync"
         ".ipfs"
         ".ollama"
         ".local/share/TelegramDesktop"
@@ -40,6 +41,7 @@ in {
         "Videos"
         "data"
         "mega"
+        "cloud"
         "src"
       ];
       allowOther = true;

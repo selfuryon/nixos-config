@@ -44,5 +44,11 @@ in {
     programs.home-manager.enable = true;
     home.stateVersion = "25.05";
     scheme = "${inputs.tt-schemes}/base16/catppuccin-latte.yaml";
+    services.podman = {
+      enable = true;
+      settings.storage.storage = {
+        graphroot = "/containers/syakovlev";
+      };
+    };
   };
 }
