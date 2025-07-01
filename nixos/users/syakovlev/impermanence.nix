@@ -8,6 +8,7 @@ in {
     home.persistence."/state/home/syakovlev" = {
       directories = [
         # global
+        ".cargo"
         ".config/BraveSoftware"
         ".config/google-chrome"
         ".config/Insomnia"
@@ -40,7 +41,6 @@ in {
         "Pictures"
         "Videos"
         "data"
-        "mega"
         "cloud"
         "src"
       ];
