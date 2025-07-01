@@ -22,6 +22,10 @@
   security.doas.enable = true;
   #security.sudo.enable = false;
 
+  systemd.user.extraConfig = ''
+    DefaultLimitNOFILE=infinity
+  '';
+
   nixpkgs = {
     overlays = builtins.attrValues self.overlays;
     config = {
