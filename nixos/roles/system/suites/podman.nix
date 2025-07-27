@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  networking.firewall.trustedInterfaces = ["podman0" "podman1" "podman2"];
+  networking.firewall.allowedUDPPorts = [
+    53 # DNS
+    5353 # Multicast
+  ];
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;

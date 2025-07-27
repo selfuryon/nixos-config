@@ -34,6 +34,7 @@
   home.packages = with pkgs; [
     #magic-wormhole
     #sequoia
+    claude-code
     bind
     insync
     bubblewrap

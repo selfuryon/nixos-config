@@ -6,15 +6,16 @@
   addons = inputs.firefox-addons.packages.${pkgs.system};
 in {
   home.persistence."/state/home/syakovlev".directories = [
-    ".mozilla/firefox/personal"
+    ".mozilla/firefox"
   ];
   home.packages = with pkgs; [tridactyl-native];
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-beta;
     profiles = {
-      personal = {
+      default = {
         id = 0;
+        extensions.force = true;
         extensions.packages = with addons; [
           ublock-origin
           keepassxc-browser
