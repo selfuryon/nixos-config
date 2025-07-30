@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   # Map nixpkgs to /etc/nixpkgs
@@ -10,6 +11,7 @@
 
   # Nix
   nix = {
+    package = pkgs.nixVersions.nix_2_30;
     settings = {
       trusted-substituters = [
         "https://hyprland.cachix.org"
