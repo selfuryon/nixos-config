@@ -32,7 +32,7 @@
     # less = "${pkgs.tailspin}/bin/tspin";
     more = "${pkgs.bat}/bin/bat --paging=always";
     tree = "${pkgs.eza}/bin/eza --tree";
-    wget = "${pkgs.wget2}/bin/wget2";
+    # wget = "${pkgs.wget2}/bin/wget2";
   };
 
   home.sessionVariables = {
