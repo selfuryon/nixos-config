@@ -38,7 +38,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/xsessions:${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --time --theme border=blue;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red";
+        command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/xsessions:${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --time --theme border=blue;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red";
         user = "greeter";
       };
     };

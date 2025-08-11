@@ -7,7 +7,6 @@
     enable = false;
     iconTheme = {
       name = "Zafiro-icons-Light";
-      #package = pkgs.tela-circle-icon-theme;
       package = pkgs.zafiro-icons;
       size = "32x32";
     };

@@ -27,7 +27,6 @@
       size = 12;
     };
     iconTheme = {
-      #package = pkgs.tela-circle-icon-theme;
       package = pkgs.zafiro-icons;
       name = "Zafiro-icons-Light";
     };
