@@ -87,7 +87,7 @@ in {
 
   home.packages = with pkgs; [
     adwaita-qt
-    libsForQt5.lightly
+    darkly-qt5
     google-chrome
     brave
     kdePackages.kwallet

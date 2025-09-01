@@ -2,7 +2,7 @@
   security.pam.services.hyprlock = {};
 
   security.polkit.enable = true;
-  environment.systemPackages = [pkgs.libsForQt5.polkit-kde-agent];
+  environment.systemPackages = [pkgs.kdePackages.polkit-kde-agent-1];
 
   services = {
     dbus.packages = [pkgs.gcr];
