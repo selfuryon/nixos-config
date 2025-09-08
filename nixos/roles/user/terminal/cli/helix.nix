@@ -21,7 +21,17 @@
             args = [];
           };
         }
+        {
+          name = "cue";
+          language-servers = ["cue"];
+        }
       ];
+      language-server = {
+        cue = {
+          command = "cue";
+          args = ["lsp" "serve"];
+        };
+      };
     };
     settings = {
       # theme = "catppuccin_latte";
