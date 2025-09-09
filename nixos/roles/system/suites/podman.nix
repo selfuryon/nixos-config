@@ -1,5 +1,10 @@
-{pkgs, ...}: {
-  networking.firewall.trustedInterfaces = ["podman0" "podman1" "podman2"];
+{ pkgs, ... }:
+{
+  networking.firewall.trustedInterfaces = [
+    "podman0"
+    "podman1"
+    "podman2"
+  ];
   networking.firewall.allowedUDPPorts = [
     53 # DNS
     5353 # Multicast
@@ -10,5 +15,9 @@
     dockerCompat = true;
     defaultNetwork.settings.dns_enabled = true;
   };
-  environment.systemPackages = [pkgs.dive pkgs.podman-tui pkgs.podman-compose];
+  environment.systemPackages = [
+    pkgs.dive
+    pkgs.podman-tui
+    pkgs.podman-compose
+  ];
 }

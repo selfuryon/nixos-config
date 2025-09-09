@@ -1,7 +1,8 @@
-{pkgs, ...}: {
-  networking.firewall.trustedInterfaces = ["virbr0"];
+{ pkgs, ... }:
+{
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
   virtualisation.libvirtd = {
     enable = true;
-    qemu.vhostUserPackages = [pkgs.virtiofsd];
+    qemu.vhostUserPackages = [ pkgs.virtiofsd ];
   };
 }

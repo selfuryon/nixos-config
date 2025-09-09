@@ -7,7 +7,9 @@
         font = "JetBrainsMono Nerd Font:size=13";
         dpi-aware = "no";
       };
-      scrollback = {lines = 10000;};
+      scrollback = {
+        lines = 10000;
+      };
       cursor = {
         style = "beam";
         blink = "yes";

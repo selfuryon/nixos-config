@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   programs.swaylock = {
     enable = true;
     settings = with config.scheme; {

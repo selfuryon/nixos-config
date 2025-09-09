@@ -4,7 +4,8 @@
   modulesPath,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.disko.nixosModules.disko
@@ -25,9 +26,15 @@
 
     initrd = {
       systemd.enable = true;
-      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-      kernelModules = ["zfs"];
-      supportedFilesystems = ["zfs"];
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+      ];
+      kernelModules = [ "zfs" ];
+      supportedFilesystems = [ "zfs" ];
     };
     zfs.requestEncryptionCredentials = true;
 
@@ -38,10 +45,13 @@
       "nohibernate"
       "elevator=none"
     ];
-    kernelModules = ["kvm-intel" "zfs"];
-    supportedFilesystems = ["zfs"];
+    kernelModules = [
+      "kvm-intel"
+      "zfs"
+    ];
+    supportedFilesystems = [ "zfs" ];
 
-    extraModulePackages = [];
+    extraModulePackages = [ ];
     tmp.cleanOnBoot = true;
   };
 

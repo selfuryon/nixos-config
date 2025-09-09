@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  imports = [../common];
+{ pkgs, ... }:
+{
+  imports = [ ../common ];
   programs.niri.package = pkgs.niri;
   # programs.niri.package = inputs.niri.packages."x86_64-linux".niri-unstable;
 
@@ -11,8 +12,8 @@
   ];
   systemd.user.services.xwayland-satellite = {
     Unit = {
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session.target"];
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
     };
 
     Service = {
@@ -21,12 +22,12 @@
       Restart = "on-failure";
       KillMode = "mixed";
     };
-    Install.WantedBy = ["graphical-session.target"];
+    Install.WantedBy = [ "graphical-session.target" ];
   };
   xdg.portal = {
     enable = true;
-    configPackages = [pkgs.xdg-desktop-portal-gnome];
-    extraPortals = [pkgs.xdg-desktop-portal-gnome];
+    configPackages = [ pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
   };
   programs.niri.config = ''
     environment {

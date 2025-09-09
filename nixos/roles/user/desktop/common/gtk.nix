@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   home.pointerCursor = {
     # name = "Babita-Modern-Classic";
     # package = pkgs.bibata-cursors;

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {
@@ -11,8 +12,8 @@
 
   xdg.portal = {
     enable = true;
-    configPackages = [pkgs.xdg-desktop-portal-gnome];
-    extraPortals = [pkgs.xdg-desktop-portal-gnome];
+    configPackages = [ pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     #extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 }

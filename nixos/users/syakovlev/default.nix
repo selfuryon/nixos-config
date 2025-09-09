@@ -3,12 +3,24 @@
   pkgs,
   roles,
   ...
-}: let
+}:
+let
   userName = "syakovlev";
-in {
+in
+{
   users.users.${userName} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "sudo" "doas" "video" "audio" "libvirtd" "usb" "ssh" "wireshark"];
+    extraGroups = [
+      "wheel"
+      "sudo"
+      "doas"
+      "video"
+      "audio"
+      "libvirtd"
+      "usb"
+      "ssh"
+      "wireshark"
+    ];
     shell = pkgs.nushell;
     hashedPassword = "$6$skRJZuaIN8S0Ohgf$UwgLyx9DGZ8acjl/EwsaEnecPSZAwAwp42NS449CQpoLaGZKK7uo2GdiF0Tl6eMfIg6gxz5Rb6rudC34r5V0C/";
     openssh.authorizedKeys.keys = [

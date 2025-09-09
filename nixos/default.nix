@@ -3,16 +3,26 @@
   inputs,
   lib,
   ...
-}: let
-  inherit (lib) fs filterAttrs hasSuffix mapAttrs' nameValuePair head splitString;
+}:
+let
+  inherit (lib)
+    fs
+    filterAttrs
+    hasSuffix
+    mapAttrs'
+    nameValuePair
+    head
+    splitString
+    ;
 
   roles = fs.rakeLeaves ./roles;
   users = fs.rakeLeaves ./users;
-  machines = fs.flattenTree {tree = fs.rakeLeaves ./machines;};
+  machines = fs.flattenTree { tree = fs.rakeLeaves ./machines; };
 
-  inventory = let
-    hosts = filterAttrs (_: hasSuffix "default.nix") machines;
-  in
+  inventory =
+    let
+      hosts = filterAttrs (_: hasSuffix "default.nix") machines;
+    in
     mapAttrs' (name: nameValuePair (head (splitString "." name))) hosts;
 
   # nixosConfigurations default modules
@@ -27,10 +37,18 @@
   ];
 
   # Make system configuration
-  mkSystem = _: path:
+  mkSystem =
+    _: path:
     lib.nixosSystem {
-      specialArgs = {inherit inputs roles users self;};
-      modules = defaultModules ++ [path];
+      specialArgs = {
+        inherit
+          inputs
+          roles
+          users
+          self
+          ;
+      };
+      modules = defaultModules ++ [ path ];
       # extraModules = [inputs.colmena.nixosModules.deploymentOptions];
     };
   # mkColmenaNodes = conf:
@@ -43,7 +61,8 @@
   #     };
   #   }
   #   // builtins.mapAttrs (_: value: {imports = value._module.args.modules;}) conf;
-in {
+in
+{
   flake = {
     homeManagerModules = import ./modules/homeManager;
     overlays = import ./overlays;

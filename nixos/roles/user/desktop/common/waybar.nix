@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   hostname = "${pkgs.nettools}/bin/hostname";
   curl = "${pkgs.curl}/bin/curl";
@@ -16,7 +17,8 @@
     REMOTE_REVISION=$(${curl} -s $GITHUB_URL | ${jq} '.object.sha' -r )
     [[ $CURRENT_REVISION == ''${REMOTE_REVISION:0:7} ]] && echo $NO_UPDATE || echo $UPDATE
   '';
-in {
+in
+{
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -33,10 +35,22 @@ in {
           "mpris"
           "hyprland/submap"
         ];
-        modules-center = ["hyprland/workspaces" "niri/workspaces"];
-        modules-right = ["custom/notifications" "network" "wireplumber" "battery" "clock" "custom/hostname"];
+        modules-center = [
+          "hyprland/workspaces"
+          "niri/workspaces"
+        ];
+        modules-right = [
+          "custom/notifications"
+          "network"
+          "wireplumber"
+          "battery"
+          "clock"
+          "custom/hostname"
+        ];
 
-        "hyprland/workspaces" = {format = "{name}";};
+        "hyprland/workspaces" = {
+          format = "{name}";
+        };
         "custom/notifications" = {
           "tooltip" = false;
           "format" = "{icon}";
@@ -128,7 +142,11 @@ in {
             warning = 30;
             critical = 15;
           };
-          format-icons = ["󱊡" "󱊢" "󱊣"];
+          format-icons = [
+            "󱊡"
+            "󱊢"
+            "󱊣"
+          ];
           format = "{icon} {capacity}%";
           format-charging = "󱊥 {capacity}%";
         };
@@ -144,7 +162,9 @@ in {
             Down: {bandwidthDownBits}'';
           on-click = "";
         };
-        "custom/hostname" = {exec = "echo $USER@$(${hostname})";};
+        "custom/hostname" = {
+          exec = "echo $USER@$(${hostname})";
+        };
         "mpris" = {
           format = "{player_icon}";
           format-paused = "{status_icon}";

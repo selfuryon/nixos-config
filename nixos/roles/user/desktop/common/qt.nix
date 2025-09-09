@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     #kvantumThemePackage
     # libsForQt5.qtstyleplugin-kvantum
@@ -31,7 +32,7 @@
 
     qt5ct = {
       target = "qt5ct/qt5ct.conf";
-      text = lib.generators.toINI {} {
+      text = lib.generators.toINI { } {
         Appearance = {
           icon_theme = "Zafiro-icons-Light";
         };
@@ -40,7 +41,7 @@
 
     qt6ct = {
       target = "qt6ct/qt6ct.conf";
-      text = lib.generators.toINI {} {
+      text = lib.generators.toINI { } {
         Appearance = {
           icon_theme = "Zafiro-icons-Light";
         };

@@ -1,6 +1,8 @@
-{roles, ...}: let
+{ roles, ... }:
+let
   userName = "syakovlev";
-in {
+in
+{
   home-manager.users.${userName} = {
     imports = [
       #roles.user.desktop.hyprland.default

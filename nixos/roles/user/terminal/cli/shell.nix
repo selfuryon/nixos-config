@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   home.shellAliases = {
     # Git
     gc = "${pkgs.git}/bin/git commit";
@@ -76,7 +77,10 @@
     broot = {
       enable = true;
       settings = {
-        imports = lib.mkForce ["verbs.hjson" "skins/native-16.hjson"];
+        imports = lib.mkForce [
+          "verbs.hjson"
+          "skins/native-16.hjson"
+        ];
         modal = false;
         verbs = [
           {

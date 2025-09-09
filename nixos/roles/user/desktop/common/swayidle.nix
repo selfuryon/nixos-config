@@ -1,7 +1,9 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   hyprctl = "${pkgs.hyprland}/bin/hyprctl";
   # hyprctl = "${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl";
-in {
+in
+{
   services.swayidle = {
     enable = true;
     events = [

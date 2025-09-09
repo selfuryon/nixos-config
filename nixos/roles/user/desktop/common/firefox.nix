@@ -2,13 +2,15 @@
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   addons = inputs.firefox-addons.packages.${pkgs.system};
-in {
+in
+{
   home.persistence."/state/home/syakovlev".directories = [
     ".mozilla/firefox"
   ];
-  home.packages = with pkgs; [tridactyl-native];
+  home.packages = with pkgs; [ tridactyl-native ];
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-beta;

@@ -1,6 +1,8 @@
-{inputs, ...}: let
+{ inputs, ... }:
+let
   userName = "syakovlev";
-in {
+in
+{
   home-manager.users.${userName} = {
     imports = [
       inputs.impermanence.nixosModules.home-manager.impermanence

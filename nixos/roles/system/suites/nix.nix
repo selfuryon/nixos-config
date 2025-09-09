@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   # Map nixpkgs to /etc/nixpkgs
   environment.etc.nixpkgs.source = inputs.nixpkgs;
   # Map flake to /etc/self
@@ -25,7 +26,10 @@
         "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       ];
-      trusted-users = ["root" "@wheel"];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       auto-optimise-store = true;
       keep-outputs = true;
       keep-derivations = true;
@@ -37,8 +41,8 @@
       dates = "weekly";
     };
     # Add each input as a registry
-    registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
+    registry = lib.mapAttrs (_: v: { flake = v; }) inputs;
     # Allow to use old nix commands with channel
-    nixPath = lib.mkForce ["nixpkgs=/etc/nixpkgs"];
+    nixPath = lib.mkForce [ "nixpkgs=/etc/nixpkgs" ];
   };
 }

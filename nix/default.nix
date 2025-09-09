@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     inputs.flake-parts.flakeModules.easyOverlay
     inputs.devshell.flakeModule

@@ -4,9 +4,11 @@
   roles,
   users,
   ...
-}: let
+}:
+let
   override.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
-in {
+in
+{
   imports = [
     # Global configuration
     roles.system.notebook

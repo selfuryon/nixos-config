@@ -1,9 +1,10 @@
-{pkgs, ...}: {
-  imports = [../common];
+{ pkgs, ... }:
+{
+  imports = [ ../common ];
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = false; #uwsm enabled
-    systemd.variables = ["--all"];
+    systemd.enable = false; # uwsm enabled
+    systemd.variables = [ "--all" ];
     settings = {
       monitor = ",preferred,auto,1";
       workspace = "eDP-1,11";

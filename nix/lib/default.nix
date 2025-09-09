@@ -1,6 +1,8 @@
-lib: let
+lib:
+let
   inventory = import ./inventory.nix lib;
   fs = import ./fs.nix lib;
-in {
+in
+{
   inherit inventory fs;
 }

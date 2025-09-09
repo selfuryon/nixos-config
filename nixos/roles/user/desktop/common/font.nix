@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   fonts.fontconfig.enable = true;
 
   themes.fontProfile = {

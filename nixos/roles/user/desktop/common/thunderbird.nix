@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.persistence."/state/home/syakovlev".directories = [
     ".thunderbird"
   ];

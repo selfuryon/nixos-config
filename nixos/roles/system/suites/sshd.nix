@@ -1,5 +1,5 @@
 {
-  users.groups.ssh = {};
+  users.groups.ssh = { };
   services.openssh = {
     enable = true;
     settings = {

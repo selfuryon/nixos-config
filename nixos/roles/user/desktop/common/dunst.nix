@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   services.dunst = {
     enable = false;
     iconTheme = {

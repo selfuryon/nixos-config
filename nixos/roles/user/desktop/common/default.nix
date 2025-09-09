@@ -1,7 +1,9 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   # hyprland = "${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/Hyprland";
   hyprland = "${pkgs.hyprland}/bin/Hyprland";
-in {
+in
+{
   imports = [
     ./alacritty.nix
     ./dunst.nix
@@ -40,8 +42,8 @@ in {
   '';
 
   home.activation."mimeapps-remove" = {
-    before = ["checkLinkTargets"];
-    after = [];
+    before = [ "checkLinkTargets" ];
+    after = [ ];
     data = "rm -f /home/syakovlev/.config/mimeapps.list";
   };
 
@@ -49,27 +51,27 @@ in {
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/html" = ["firefox-beta.desktop"];
-        "x-scheme-handler/http" = ["firefox-beta.desktop"];
-        "x-scheme-handler/https" = ["firefox-beta.desktop"];
-        "image/*" = ["firefox-beta.desktop"];
+        "text/html" = [ "firefox-beta.desktop" ];
+        "x-scheme-handler/http" = [ "firefox-beta.desktop" ];
+        "x-scheme-handler/https" = [ "firefox-beta.desktop" ];
+        "image/*" = [ "firefox-beta.desktop" ];
 
-        "application/zip" = ["org.gnome.FileRoller.desktop"];
-        "application/rar" = ["org.gnome.FileRoller.desktop"];
-        "application/7z" = ["org.gnome.FileRoller.desktop"];
-        "application/*tar" = ["org.gnome.FileRoller.desktop"];
+        "application/zip" = [ "org.gnome.FileRoller.desktop" ];
+        "application/rar" = [ "org.gnome.FileRoller.desktop" ];
+        "application/7z" = [ "org.gnome.FileRoller.desktop" ];
+        "application/*tar" = [ "org.gnome.FileRoller.desktop" ];
 
-        "inode/directory" = ["thunar.desktop"];
-        "x-scheme-handler/mailto" = ["thunderbird.desktop"];
-        "x-scheme-handler/matrix" = ["element.desktop"];
-        "video/*" = ["vlc.desktop"];
-        "application/pdf" = ["org.kde.okular"];
+        "inode/directory" = [ "thunar.desktop" ];
+        "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
+        "x-scheme-handler/matrix" = [ "element.desktop" ];
+        "video/*" = [ "vlc.desktop" ];
+        "application/pdf" = [ "org.kde.okular" ];
 
-        "application/vnd.oasis.opendocument.text" = ["writer.desktop"];
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = ["writer.desktop"];
-        "application/msword" = ["writer.desktop"];
-        "application/vnd.oasis.opendocument.spreadsheet" = ["calc.desktop"];
-        "text/csv" = ["calc.desktop"];
+        "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ];
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
+        "application/msword" = [ "writer.desktop" ];
+        "application/vnd.oasis.opendocument.spreadsheet" = [ "calc.desktop" ];
+        "text/csv" = [ "calc.desktop" ];
       };
     };
 
@@ -80,7 +82,10 @@ in {
         exec = "megasync -platform xcb";
         icon = "mega";
         terminal = false;
-        categories = ["Network" "System"];
+        categories = [
+          "Network"
+          "System"
+        ];
       };
     };
   };

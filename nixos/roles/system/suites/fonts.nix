@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
   # i18n.extraLocaleSettings = {
@@ -20,9 +21,9 @@
 
     fontconfig = {
       defaultFonts = {
-        serif = ["Noto Serif"];
-        sansSerif = ["Noto Sans"];
-        monospace = ["JetBrains Mono"];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
+        monospace = [ "JetBrains Mono" ];
       };
     };
   };

@@ -3,7 +3,8 @@
   inputs,
   self,
   ...
-}: {
+}:
+{
   imports = [
     ./suites/dns.nix
     ./suites/firewall.nix
@@ -17,7 +18,10 @@
 
   users.mutableUsers = false;
 
-  environment.systemPackages = with pkgs; [vim sbctl];
+  environment.systemPackages = with pkgs; [
+    vim
+    sbctl
+  ];
 
   security.doas.enable = true;
   #security.sudo.enable = false;
@@ -41,6 +45,6 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
   };
 }

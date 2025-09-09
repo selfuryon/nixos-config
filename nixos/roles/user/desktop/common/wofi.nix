@@ -2,8 +2,9 @@
   pkgs,
   config,
   ...
-}: {
-  home.packages = with pkgs; [wofi];
+}:
+{
+  home.packages = with pkgs; [ wofi ];
 
   xdg.configFile."wofi/config".text = ''
     allow_images=false
