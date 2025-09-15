@@ -25,9 +25,6 @@
         {
           name = "cue";
           language-servers = [ "cuelsp" ];
-          formatter = {
-            args = [ ];
-          };
         }
       ];
       language-server = {

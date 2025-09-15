@@ -127,7 +127,7 @@ in
     slurp
     swappy
     tdesktop
-    tigervnc
+    # tigervnc
     virt-manager
     virt-viewer
     vlc
