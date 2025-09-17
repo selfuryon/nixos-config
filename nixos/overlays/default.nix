@@ -14,8 +14,8 @@
       src = prev.fetchFromGitHub {
         owner = "cue-lang";
         repo = "cue";
-        rev = "f5454200d80ac6941038b0de1de2770f241d2832"; # master branch
-        hash = "sha256-RrK+UO0ARX3Z0w/jVlJnetz2CFe4s8SmrmNr4C8NQQw=";
+        rev = "139b17aa44444936b2598bdb3b5116b810db8096"; # master branch
+        hash = "sha256-dpNyDU7MVowRJnW3Y+1oOTxHA7tpghCxB9Md0E+b3Ms=";
       };
       vendorHash = "sha256-41YjukhiqNMrFGFuNKUewVYFQsLODDEdhuMg2GyzPsI=";
     });
