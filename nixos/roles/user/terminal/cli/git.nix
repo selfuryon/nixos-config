@@ -1,8 +1,11 @@
 {
   # Git configuration
   xdg.configFile = {
-    "git/personal.signers".text =
-      "selfuryon@pm.me ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmB+ZN4UTQ+5IOvGrlBoHrCxfpQH7EWtLNR3qUrnQl5 selfuryon@github [private] ";
+    "git/personal.signers".text = ''
+      selfuryon@pm.me ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmB+ZN4UTQ+5IOvGrlBoHrCxfpQH7EWtLNR3qUrnQl5 selfuryon@github [private]
+      sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOacgO1zUpZZQjFdgVjuJgZsTDATpAcgv1R2499P++FrAAAABHNzaDo= sergey.y@yubikey-blue [private] 
+      sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIC3+NdnJ1kFk8wxyJ/mI5giVwSbnLmzhcyO+/AdhcEcMAAAABHNzaDo= sergey.y@yubikey-grey [private]
+    '';
     "git/p2p.signers".text =
       "sergey.y@p2p.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK4yECpHN63wsadiWhM1zx600c3a/AboAzbipz8DaXoh sergey.y@github [p2p]";
   };
@@ -10,18 +13,6 @@
     enable = true;
     userName = "Sergey Yakovlev";
     userEmail = "selfuryon@pm.me";
-    # includes = [
-    #   {
-    #     condition = "gitdir:~/src/p2p/";
-    #     contents = {
-    #       user = {
-    #         email = "sergey.y@p2p.org";
-    #         signingKey = "~/.ssh/keys/p2p/github.pub";
-    #       };
-    #       gpg.ssh.allowedSignersFile = "~/.config/git/p2p.signers";
-    #     };
-    #   }
-    # ];
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = true;
