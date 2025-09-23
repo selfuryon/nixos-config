@@ -10,20 +10,20 @@
     nautilus # for GNOME Portal File Picker
     wdisplays
   ];
-  systemd.user.services.xwayland-satellite = {
-    Unit = {
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-    };
+  # systemd.user.services.xwayland-satellite = {
+  #   Unit = {
+  #     PartOf = [ "graphical-session.target" ];
+  #     After = [ "graphical-session.target" ];
+  #   };
 
-    Service = {
-      ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
-      ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
-      Restart = "on-failure";
-      KillMode = "mixed";
-    };
-    Install.WantedBy = [ "graphical-session.target" ];
-  };
+  #   Service = {
+  #     ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+  #     ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
+  #     Restart = "on-failure";
+  #     KillMode = "mixed";
+  #   };
+  #   Install.WantedBy = [ "graphical-session.target" ];
+  # };
   xdg.portal = {
     enable = true;
     configPackages = [ pkgs.xdg-desktop-portal-gnome ];
@@ -32,7 +32,7 @@
   programs.niri.config = ''
     environment {
         QT_AUTO_SCREEN_SCALE_FACTOR "1"
-        QT_QPA_PLATFORM "wayland;xcb"
+        QT_QPA_PLATFORM "wayland"
         QT_QPA_PLATFORMTHEME "qt5ct"
         QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
@@ -41,7 +41,7 @@
         GDK_BACKEND "wayland,x11"
         GTK_USE_PORTAL "1"
 
-        DISPLAY ":0"
+        NIXOS_OZONE_WL "1"
     }
 
     input {
@@ -62,18 +62,18 @@
         }
     }
 
-    output "HDMI-A-1" {
-        mode "3840x2160@59.997"
-        scale 1.5
-        transform "normal"
-        position x=0 y=0
-    }
+    // output "HDMI-A-1" {
+    //     mode "3840x2160@59.997"
+    //     scale 1.5
+    //     transform "normal"
+    //     position x=0 y=0
+    // }
 
     output "eDP-1" {
         mode "1920x1080@120.030"
         scale 1
         transform "normal"
-        position x=0 y=1440
+        position x=0 y=0
     }
 
     layout {
@@ -117,7 +117,10 @@
     workspace "mail"
     workspace "im"
     workspace "secret"
-    //spawn-at-startup "xwayland-satellite"
+    xwayland-satellite {
+        path "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
+    }
+
 
     screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%dT%H-%M-%S.png"
 

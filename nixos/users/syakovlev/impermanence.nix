@@ -31,7 +31,6 @@ in
         ".ollama"
         ".local/share/TelegramDesktop"
         ".local/share/atuin"
-        ".local/share/data/Mega Limited/MEGAsync"
         ".local/share/direnv"
         ".local/share/gnupg"
         ".local/share/keyrings"
