@@ -112,9 +112,10 @@ in
     imv
     hoppscotch
     keepassxc
-    libreoffice
+    # libreoffice
     onlyoffice-bin
     ledger-live-desktop
+    megasync
     mpv
     networkmanagerapplet
     kdePackages.okular

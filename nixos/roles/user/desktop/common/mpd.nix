@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     # ario
     mpc_cli
-    pamixer
+    # pamixer
   ];
   services.mpd = {
     enable = true;
