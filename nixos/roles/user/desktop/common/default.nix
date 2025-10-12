@@ -101,6 +101,7 @@ in
     zed-editor
     dconf
     discord
+    vesktop
     drawio
     framesh
     file-roller

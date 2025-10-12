@@ -21,6 +21,7 @@ in
         ".config/cryptostore"
         ".config/dconf"
         ".config/discord"
+        ".config/Vencord"
         ".config/frame"
         ".config/rclone"
         ".config/helm"
