@@ -6,8 +6,6 @@
       sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOacgO1zUpZZQjFdgVjuJgZsTDATpAcgv1R2499P++FrAAAABHNzaDo= sergey.y@yubikey-blue [private] 
       sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIC3+NdnJ1kFk8wxyJ/mI5giVwSbnLmzhcyO+/AdhcEcMAAAABHNzaDo= sergey.y@yubikey-grey [private]
     '';
-    "git/p2p.signers".text =
-      "sergey.y@p2p.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK4yECpHN63wsadiWhM1zx600c3a/AboAzbipz8DaXoh sergey.y@github [p2p]";
   };
   programs.git = {
     enable = true;
@@ -22,7 +20,7 @@
     };
     signing = {
       signByDefault = true;
-      key = "~/.ssh/keys/personal/github.pub";
+      key = "~/.ssh/keys/personal/yubikey-blue.pub";
     };
     delta = {
       enable = false;
