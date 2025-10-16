@@ -133,7 +133,7 @@
     }
 
     window-rule {
-        geometry-corner-radius 16
+        geometry-corner-radius 20
         clip-to-geometry true
     }
 
@@ -197,6 +197,14 @@
         shadow {
             on
         }
+    }
+    layer-rule {
+        match namespace="^quickshell-overview$"
+        place-within-backdrop true
+    }
+
+    debug {
+        honor-xdg-activation-with-invalid-serial
     }
 
     binds {
