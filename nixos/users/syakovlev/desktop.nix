@@ -1,4 +1,4 @@
-{ roles, ... }:
+{ inputs, roles, ... }:
 let
   userName = "syakovlev";
 in
@@ -6,6 +6,7 @@ in
   home-manager.users.${userName} = {
     imports = [
       roles.user.desktop.niri.default
+      inputs.noctalia.homeModules.default
     ];
   };
 }

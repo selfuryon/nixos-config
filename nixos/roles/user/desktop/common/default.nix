@@ -1,8 +1,4 @@
 { pkgs, ... }:
-let
-  # hyprland = "${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/Hyprland";
-  hyprland = "${pkgs.hyprland}/bin/Hyprland";
-in
 {
   imports = [
     ./alacritty.nix
@@ -21,25 +17,23 @@ in
     ./hyprlock.nix
     ./hypridle.nix
     ./hyprpaper.nix
-    #./swayidle.nix
-    #./swaylock.nix
     ./waybar.nix
+    ./noctalia.nix
     ./wlsunset.nix
-    #./wofi.nix
     ./fuzzel.nix
     ./wezterm.nix
   ];
 
-  programs.fish.loginShellInit = ''
-    if test (tty) = /dev/tty1
-      systemd-cat -t hyprland ${hyprland}
-    end
-  '';
-  programs.nushell.loginFile.text = ''
-    if (tty) == "/dev/tty3" {
-      systemd-cat -t hyprland ${hyprland}
-    }
-  '';
+  # programs.fish.loginShellInit = ''
+  #   if test (tty) = /dev/tty1
+  #     systemd-cat -t hyprland ${hyprland}
+  #   end
+  # '';
+  # programs.nushell.loginFile.text = ''
+  #   if (tty) == "/dev/tty3" {
+  #     systemd-cat -t hyprland ${hyprland}
+  #   }
+  # '';
 
   home.activation."mimeapps-remove" = {
     before = [ "checkLinkTargets" ];

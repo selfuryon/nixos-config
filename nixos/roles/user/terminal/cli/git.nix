@@ -37,7 +37,7 @@
         };
       };
     };
-    aliases = {
+    settings.aliases = {
       co = "checkout";
       ci = "commit";
       st = "status";

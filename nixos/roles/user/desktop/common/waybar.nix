@@ -33,10 +33,8 @@ in
           "tray"
           "idle_inhibitor"
           "mpris"
-          "hyprland/submap"
         ];
         modules-center = [
-          "hyprland/workspaces"
           "niri/workspaces"
         ];
         modules-right = [
@@ -47,10 +45,6 @@ in
           "clock"
           "custom/hostname"
         ];
-
-        "hyprland/workspaces" = {
-          format = "{name}";
-        };
         "custom/notifications" = {
           "tooltip" = false;
           "format" = "{icon}";
@@ -83,10 +77,6 @@ in
             default = "";
             #active= "";
           };
-        };
-        "hyprland/submap" = {
-          format = "󱋜 {}";
-          max-length = 8;
         };
         "custom/nixos" = {
           exec = checkNixosUpdates;
