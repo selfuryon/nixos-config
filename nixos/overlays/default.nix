@@ -14,10 +14,10 @@
       src = prev.fetchFromGitHub {
         owner = "cue-lang";
         repo = "cue";
-        rev = "d4f9bfb3c5e4a06b58ab4dc9c5f96cf77ac79841"; # master branch
-        hash = "sha256-dpNyDU7MVowRJnW3Y+1oOTxHA7tpghCxB9Md0E+b3Ms=";
+        rev = "v0.15.0"; # master branch
+        hash = "sha256-yyvIjaOElEHR75o+DgVOG1EklXaWGdjvv15iMvfbkeA=";
       };
-      vendorHash = "sha256-41YjukhiqNMrFGFuNKUewVYFQsLODDEdhuMg2GyzPsI=";
+      vendorHash = "sha256-ivFw62+pg503EEpRsdGSQrFNah87RTUrRXUSPZMFLG4=";
     });
   };
 }

@@ -56,7 +56,7 @@
     rclone
     pijul
     procs
-    protonvpn-cli
+    # protonvpn-cli
     rage
     devenv
     ripgrep

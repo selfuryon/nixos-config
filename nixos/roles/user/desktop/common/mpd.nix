@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     # ario
-    mpc_cli
+    mpc
     # pamixer
   ];
   services.mpd = {

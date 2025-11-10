@@ -36,9 +36,7 @@
       allowUnfree = true;
       input-fonts.acceptLicense = true;
       permittedInsecurePackages = [
-        "freeimage-unstable-2021-11-01"
-        "electron-28.3.3"
-        "electron-27.3.11"
+        "electron-36.9.5"
       ];
     };
   };

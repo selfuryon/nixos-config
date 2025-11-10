@@ -9,40 +9,40 @@
   };
   programs.git = {
     enable = true;
-    userName = "Sergey Yakovlev";
-    userEmail = "selfuryon@pm.me";
-    extraConfig = {
+    settings = {
+      user.name = "Sergey Yakovlev";
+      user.email = "selfuryon@pm.me";
       init.defaultBranch = "main";
       pull.rebase = true;
       push.autoSetupRemote = true;
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/.config/git/personal.signers";
+      aliases = {
+        co = "checkout";
+        ci = "commit";
+        st = "status";
+        br = "branch";
+        ll = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) <%an>%C(reset)%C(bold yellow)%d%C(reset)' --all";
+      };
     };
     signing = {
       signByDefault = true;
       key = "~/.ssh/keys/personal/yubikey-blue.pub";
     };
-    delta = {
-      enable = false;
-      options = {
-        light = true;
-        theme = "Github";
-        features = "decoration";
-        whitespace-error-style = "22 reverse";
-        line-numbers = true;
-        decoration = {
-          commit-decoration-style = "bold yellow box ul";
-          file-style = "bold yellow ul";
-          file-decoration-style = "none";
-        };
+  };
+  programs.delta = {
+    enable = false;
+    options = {
+      light = true;
+      theme = "Github";
+      features = "decoration";
+      whitespace-error-style = "22 reverse";
+      line-numbers = true;
+      decoration = {
+        commit-decoration-style = "bold yellow box ul";
+        file-style = "bold yellow ul";
+        file-decoration-style = "none";
       };
-    };
-    settings.aliases = {
-      co = "checkout";
-      ci = "commit";
-      st = "status";
-      br = "branch";
-      ll = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) <%an>%C(reset)%C(bold yellow)%d%C(reset)' --all";
     };
   };
 }

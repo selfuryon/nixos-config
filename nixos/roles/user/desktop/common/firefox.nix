@@ -23,7 +23,6 @@ in
           keepassxc-browser
           tridactyl
           sidebery
-          proton-vpn
           startpage-private-search
         ];
         extraConfig = ''

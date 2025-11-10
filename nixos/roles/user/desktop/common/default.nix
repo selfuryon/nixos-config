@@ -46,6 +46,7 @@
       enable = true;
       defaultApplications = {
         "text/html" = [ "firefox-beta.desktop" ];
+        # "text/html" = [ "google-chrome.desktop" ];
         "x-scheme-handler/http" = [ "firefox-beta.desktop" ];
         "x-scheme-handler/https" = [ "firefox-beta.desktop" ];
         "image/*" = [ "firefox-beta.desktop" ];
@@ -107,8 +108,8 @@
     imv
     hoppscotch
     keepassxc
-    # libreoffice
-    onlyoffice-bin
+    libreoffice
+    onlyoffice-desktopeditors
     ledger-live-desktop
     megasync
     mpv
@@ -121,7 +122,7 @@
     slack
     slurp
     swappy
-    tdesktop
+    telegram-desktop
     # tigervnc
     virt-manager
     virt-viewer
@@ -129,7 +130,7 @@
     wf-recorder
     wireshark
     xdg-utils
-    pcmanfm-qt
+    # pcmanfm-qt
     xfce.thunar
     kdePackages.dolphin
     xfce.thunar-media-tags-plugin

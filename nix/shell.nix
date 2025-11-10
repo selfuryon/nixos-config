@@ -7,15 +7,28 @@
       ...
     }:
     let
-      inherit (pkgs) statix;
+      inherit (pkgs) statix talosctl kubernetes-helm;
       # inherit (inputs'.ragenix.packages) ragenix;
       # inherit (inputs'.colmena.packages) colmena;
     in
     {
       devshells.default = {
         name = "personal";
+        env = [
+          {
+            name = "TALOSCONFIG";
+            eval = "$PRJ_ROOT/.secrets/talos/config";
+
+          }
+          {
+            name = "KUBECONFIG";
+            eval = "$PRJ_ROOT/.secrets/kubernetes/config";
+          }
+        ];
         packages = [
           statix
+          talosctl
+          kubernetes-helm
           # ragenix
           # colmena
         ];

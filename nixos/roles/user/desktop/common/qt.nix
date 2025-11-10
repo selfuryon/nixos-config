@@ -12,7 +12,6 @@
     kdePackages.qt6ct
     lxqt.lxqt-menu-data
     shared-mime-info
-    pcmanfm-qt
   ];
   catppuccin.kvantum.enable = false;
   qt = {
