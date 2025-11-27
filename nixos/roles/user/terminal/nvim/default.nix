@@ -33,7 +33,7 @@ in
 {
   programs.neovim = {
     #package = inputs.neovim.packages."x86_64-linux".neovim;
-    enable = true;
+    enable = false;
     viAlias = true;
     vimAlias = true;
     withRuby = false;
@@ -63,7 +63,7 @@ in
         telescope-nvim
         nvim-tree-lua
         marks-nvim
-        lualine-nvim
+        # lualine-nvim
         lualine-lsp-progress
         catppuccin-nvim
 

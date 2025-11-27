@@ -18,7 +18,7 @@
     ./hypridle.nix
     ./hyprpaper.nix
     ./waybar.nix
-    ./noctalia.nix
+    # ./noctalia.nix
     ./wlsunset.nix
     ./fuzzel.nix
     ./wezterm.nix
@@ -113,6 +113,7 @@
     ledger-live-desktop
     megasync
     mpv
+    zoom-us
     networkmanagerapplet
     kdePackages.okular
     pavucontrol
