@@ -95,7 +95,7 @@
     crosvm
     zed-editor
     dconf
-    discord
+    # discord
     vesktop
     drawio
     framesh
