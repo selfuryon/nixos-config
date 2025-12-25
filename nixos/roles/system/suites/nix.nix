@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  pkgs,
   ...
 }:
 {
@@ -12,7 +11,7 @@
 
   # Nix
   nix = {
-    package = pkgs.nixVersions.nix_2_30;
+    # package = pkgs.nixVersions.nix_2_30;
     settings = {
       trusted-substituters = [
         "https://hyprland.cachix.org"
