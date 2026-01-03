@@ -31,6 +31,7 @@ in
         ".config/Insync"
         ".ipfs"
         ".config/claude"
+        ".claude"
         ".local/share/claude"
         ".ollama"
         ".local/share/TelegramDesktop"
