@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.persistence."/state/home/syakovlev".directories = [
+  home.persistence."/state".directories = [
     ".thunderbird"
   ];
   home.packages = with pkgs; [

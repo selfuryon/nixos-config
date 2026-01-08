@@ -36,6 +36,7 @@
     #magic-wormhole
     #sequoia
     claude-code
+    gh
     bind
     insync
     bubblewrap

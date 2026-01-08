@@ -8,7 +8,7 @@
     pre-commit.settings = {
       excludes = [ "flake.lock" ];
       hooks = {
-        nixfmt-rfc-style.enable = true;
+        nixfmt.enable = true;
         prettier.enable = true;
         statix.enable = true;
         deadnix.enable = true;

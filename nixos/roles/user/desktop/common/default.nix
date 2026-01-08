@@ -111,7 +111,7 @@
     libreoffice
     onlyoffice-desktopeditors
     ledger-live-desktop
-    megasync
+    # megasync
     mpv
     zoom-us
     networkmanagerapplet
@@ -132,9 +132,9 @@
     wireshark
     xdg-utils
     # pcmanfm-qt
-    xfce.thunar
+    thunar
     kdePackages.dolphin
-    xfce.thunar-media-tags-plugin
+    thunar-media-tags-plugin
     xorg.xrdb
     xournalpp
     xwayland

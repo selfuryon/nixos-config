@@ -1,13 +1,12 @@
-{ inputs, ... }:
 let
   userName = "syakovlev";
 in
 {
   home-manager.users.${userName} = {
-    imports = [
-      inputs.impermanence.nixosModules.home-manager.impermanence
-    ];
-    home.persistence."/state/home/syakovlev" = {
+    # imports = [
+    #   inputs.impermanence.nixosModules.home-manager.impermanence
+    # ];
+    home.persistence."/state" = {
       directories = [
         # global
         ".cargo"
@@ -50,7 +49,6 @@ in
         "cloud"
         "src"
       ];
-      allowOther = true;
     };
   };
 }

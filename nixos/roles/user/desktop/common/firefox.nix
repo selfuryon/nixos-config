@@ -7,7 +7,7 @@ let
   addons = inputs.firefox-addons.packages.${pkgs.system};
 in
 {
-  home.persistence."/state/home/syakovlev".directories = [
+  home.persistence."/state".directories = [
     ".mozilla/firefox"
   ];
   home.packages = with pkgs; [ tridactyl-native ];
