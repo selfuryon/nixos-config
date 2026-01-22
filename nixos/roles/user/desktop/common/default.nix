@@ -93,7 +93,7 @@
     kdePackages.kwallet
     capitaine-cursors
     crosvm
-    zed-editor
+    # zed-editor
     dconf
     # discord
     vesktop
@@ -138,7 +138,7 @@
     xorg.xrdb
     xournalpp
     xwayland
-    insomnia
+    bruno
     #zotero
     wayland
     pciutils

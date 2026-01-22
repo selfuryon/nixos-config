@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 {
@@ -33,6 +34,7 @@
   };
 
   home.packages = with pkgs; [
+    inputs.rip.packages.${pkgs.stdenv.hostPlatform.system}.default
     #magic-wormhole
     #sequoia
     claude-code

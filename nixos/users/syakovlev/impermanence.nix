@@ -12,7 +12,7 @@ in
         ".cargo"
         ".config/BraveSoftware"
         ".config/google-chrome"
-        ".config/Insomnia"
+        ".config/bruno"
         ".config/Ledger Live"
         ".config/Joplin"
         ".config/joplin-desktop"

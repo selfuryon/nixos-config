@@ -11,18 +11,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # quickshell = {
-    #   url = "github:outfoxxed/quickshell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # noctalia = {
-    #   url = "github:noctalia-dev/noctalia-shell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   # inputs.quickshell.follows = "quickshell"; # Use same quickshell version
-    # };
-    # helix = {
-    #   url = "github:helix-editor/helix";
-    # };
+    rip = {
+      url = "github:cesarferreira/rip";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin.url = "github:catppuccin/nix";
     impermanence.url = "github:nix-community/impermanence";
     disko = {
@@ -31,10 +23,6 @@
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons = {
