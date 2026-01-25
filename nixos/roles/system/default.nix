@@ -22,6 +22,7 @@
     vim
     sbctl
   ];
+  services.upower.enable = true;
 
   security.doas.enable = true;
   #security.sudo.enable = false;

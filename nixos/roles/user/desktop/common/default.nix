@@ -17,8 +17,9 @@
     ./hyprlock.nix
     ./hypridle.nix
     ./hyprpaper.nix
-    ./waybar.nix
-    # ./noctalia.nix
+    # ./waybar.nix  # disabled
+    # ./ashell.nix  # disabled
+    ./noctalia.nix
     ./wlsunset.nix
     ./fuzzel.nix
     ./wezterm.nix
