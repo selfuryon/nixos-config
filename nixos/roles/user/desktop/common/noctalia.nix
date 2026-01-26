@@ -9,7 +9,10 @@ let
   noctaliaColors = config.programs.noctalia-shell.colors;
 in
 {
-  home.packages = [ inputs.noctalia.packages.${pkgs.system}.default ];
+  home.packages = [
+    inputs.noctalia.packages.${pkgs.system}.default
+    pkgs.quickshell
+  ];
 
   systemd.user.services.noctalia-shell = {
     Unit = {
@@ -82,7 +85,7 @@ in
             {
               id = "Workspace";
               hideUnoccupied = false;
-              labelMode = "none";
+              labelMode = "icon";
               showApplications = false;
               iconScale = 0.8;
               enableScrollWheel = true;
@@ -152,6 +155,15 @@ in
             }
             {
               id = "plugin:tailscale";
+              defaultSettings = {
+                compactMode = false;
+                defaultPeerAction = "copy-ip";
+                hideDisconnected = false;
+                pingCount = 5;
+                refreshInterval = 5000;
+                showIpAddress = true;
+                showPeerCount = true;
+              };
             }
           ];
         };
@@ -180,6 +192,7 @@ in
         dimmerOpacity = 0.2;
         animationSpeed = 1;
         telemetryEnabled = false;
+        enableLockScreenCountdown = false;
       };
 
       location = {
@@ -233,6 +246,14 @@ in
         transitionType = "random";
         transitionDuration = 1500;
         setWallpaperOnAllMonitors = true;
+      };
+
+      sessionMenu = {
+        enableCountdown = false;
+      };
+
+      dock = {
+        enabled = false;
       };
     };
 

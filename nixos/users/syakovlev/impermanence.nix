@@ -16,6 +16,8 @@ in
         ".config/Ledger Live"
         ".config/Joplin"
         ".config/joplin-desktop"
+        ".config/Logseq"
+        ".logseq"
         ".config/Slack"
         ".config/cryptostore"
         ".config/dconf"

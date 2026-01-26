@@ -2,8 +2,8 @@
 {
   imports = [
     ./alacritty.nix
-    ./dunst.nix
-    ./swaync.nix
+    # ./dunst.nix  # disabled, using noctalia notifications
+    # ./swaync.nix  # disabled, using noctalia notifications
     ./firefox.nix
     ./thunderbird.nix
     ./font.nix
@@ -14,9 +14,9 @@
     ./mpd.nix
     ./playerctl.nix
     ./qt.nix
-    ./hyprlock.nix
+    # ./hyprlock.nix
     ./hypridle.nix
-    ./hyprpaper.nix
+    # ./hyprpaper.nix
     # ./waybar.nix  # disabled
     # ./ashell.nix  # disabled
     ./noctalia.nix
