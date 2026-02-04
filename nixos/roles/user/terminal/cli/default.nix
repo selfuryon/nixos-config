@@ -54,7 +54,6 @@
     lsof
     nixos-shell
     p7zip
-    # logseq
     pango
     rclone
     pijul

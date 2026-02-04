@@ -105,7 +105,6 @@
     gsettings-desktop-schemas
     gtk-engine-murrine
     gtk_engines
-    joplin-desktop
     imv
     hoppscotch
     keepassxc
@@ -133,6 +132,7 @@
     wireshark
     xdg-utils
     # pcmanfm-qt
+    obsidian
     thunar
     kdePackages.dolphin
     thunar-media-tags-plugin

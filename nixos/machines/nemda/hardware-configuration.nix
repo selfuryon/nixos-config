@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   modulesPath,
   inputs,
@@ -39,8 +38,8 @@
     zfs.requestEncryptionCredentials = true;
 
     #kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-    #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_6_6;
+    # kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_6_6;
     kernelParams = [
       "nohibernate"
       "elevator=none"
@@ -53,6 +52,12 @@
 
     extraModulePackages = [ ];
     tmp.cleanOnBoot = true;
+
+    # Use legacy HDA driver and fix ALC256 pin configuration
+    # extraModprobeConfig = ''
+    #   options snd_intel_dspcfg dsp_driver=1
+    #   options snd_hda_intel model=dell-headset-multi power_save=0
+    # '';
   };
 
   # Hardware configuration

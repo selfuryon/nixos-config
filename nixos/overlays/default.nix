@@ -10,14 +10,15 @@
   #     .override {withMediaPlayer = true;};
   # };
   cue = _: prev: {
-    cue-master = prev.cue.overrideAttrs (_: {
+    cue-master = prev.cue.overrideAttrs (_: rec {
+      version = "0.16.0-alpha.1";
       src = prev.fetchFromGitHub {
         owner = "cue-lang";
         repo = "cue";
-        rev = "v0.15.0"; # master branch
-        hash = "sha256-yyvIjaOElEHR75o+DgVOG1EklXaWGdjvv15iMvfbkeA=";
+        rev = "v${version}";
+        hash = "sha256-V6U8/b4e+2oULOiEC9oMSYF2ytd/1wMRbxA0Oq6Il74=";
       };
-      vendorHash = "sha256-ivFw62+pg503EEpRsdGSQrFNah87RTUrRXUSPZMFLG4=";
+      vendorHash = "sha256-ojUHe3AxblAaLwaB+GmxCie1AywHFnGnMyhwTw7RBsw=";
     });
   };
 }

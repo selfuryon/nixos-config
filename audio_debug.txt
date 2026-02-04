@@ -1,0 +1,430 @@
+=== TUXEDO InfinityBook Pro Gen8 Audio Debug Report ===
+Generated: Sun  1 Feb 02:19:32 EET 2026
+
+=== System Info ===
+Kernel: 6.12.67
+OS: NixOS 26.05.20260126.bfc1b8a (Yarara)
+
+=== PCI Audio Device ===
+00:1f.3 Audio device: Intel Corporation Raptor Lake-P/U/H cAVS (rev 01) (prog-if 80 [HDA compatible with vendor specific extensions])
+	DeviceName: Onboard - Sound
+	Subsystem: AIstone Global Limited Device 124b
+	Flags: bus master, fast devsel, latency 32, IRQ 218, IOMMU group 12
+	Memory at 601d170000 (64-bit, non-prefetchable) [size=16K]
+	Memory at 601d000000 (64-bit, non-prefetchable) [size=1M]
+	Capabilities: <access denied>
+	Kernel driver in use: snd_hda_intel
+	Kernel modules: snd_hda_intel, snd_soc_avs, snd_sof_pci_intel_tgl
+
+00:1f.4 SMBus: Intel Corporation Alder Lake PCH-P SMBus Host Controller (rev 01)
+	DeviceName: Onboard - Other
+	Subsystem: AIstone Global Limited Device 124a
+	Flags: medium devsel, IRQ 16, IOMMU group 12
+	Memory at 601d17c000 (64-bit, non-prefetchable) [size=256]
+	I/O ports at efa0 [size=32]
+	Kernel driver in use: i801_smbus
+	Kernel modules: i2c_i801
+
+00:1f.5 Serial bus controller: Intel Corporation Alder Lake-P PCH SPI Controller (rev 01)
+	DeviceName: Onboard - Other
+
+=== Sound Cards ===
+ 0 [PCH            ]: HDA-Intel - HDA Intel PCH
+                      HDA Intel PCH at 0x601d170000 irq 218
+
+=== Sound Card Directory ===
+total 0
+dr-xr-xr-x  13 root root 0 Feb  1 01:57 .
+dr-xr-xr-x 654 root root 0 Feb  1 01:57 ..
+dr-xr-xr-x  44 root root 0 Feb  1 01:57 card0
+-r--r--r--   1 root root 0 Feb  1 02:15 cards
+-r--r--r--   1 root root 0 Feb  1 02:15 devices
+-r--r--r--   1 root root 0 Feb  1 02:15 hwdep
+-r--r--r--   1 root root 0 Feb  1 02:15 modules
+dr-xr-xr-x   4 root root 0 Feb  1 02:15 oss
+lrwxrwxrwx   1 root root 5 Feb  1 02:15 PCH -> card0
+-r--r--r--   1 root root 0 Feb  1 02:15 pcm
+dr-xr-xr-x   6 root root 0 Feb  1 02:15 seq
+-r--r--r--   1 root root 0 Feb  1 02:15 timers
+-r--r--r--   1 root root 0 Feb  1 02:15 version
+
+=== Card0 Contents ===
+total 0
+dr-xr-xr-x 44 root root 0 Feb  1 01:57 .
+dr-xr-xr-x 13 root root 0 Feb  1 01:57 ..
+-r--r--r--  1 root root 0 Feb  1 02:15 codec#2
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.0
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.1
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.10
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.11
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.12
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.13
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.14
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.15
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.16
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.17
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.18
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.19
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.2
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.20
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.21
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.22
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.23
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.24
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.25
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.26
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.27
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.28
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.29
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.3
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.30
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.31
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.32
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.33
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.34
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.35
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.4
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.5
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.6
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.7
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.8
+-rw-r--r--  1 root root 0 Feb  1 02:15 eld#2.9
+-r--r--r--  1 root root 0 Feb  1 02:15 id
+dr-xr-xr-x  4 root root 0 Feb  1 01:57 pcm3p
+dr-xr-xr-x  4 root root 0 Feb  1 01:57 pcm7p
+dr-xr-xr-x  4 root root 0 Feb  1 01:57 pcm8p
+dr-xr-xr-x  4 root root 0 Feb  1 01:57 pcm9p
+
+=== Codec Info ===
+--- /proc/asound/card0/codec#2 ---
+Codec: Intel Raptor Lake P HDMI
+Address: 2
+AFG Function Id: 0x1 (unsol 0)
+Vendor Id: 0x8086281f
+Subsystem Id: 0x80860101
+Revision Id: 0x100000
+No Modem Function Group found
+Default PCM:
+    rates [0x0]:
+    bits [0x0]:
+    formats [0x0]:
+Default Amp-In caps: N/A
+Default Amp-Out caps: N/A
+State of AFG node 0x01:
+  Power states:  D0 D3 CLKSTOP EPSS
+  Power: setting=D0, actual=D0, Clock-stop-OK
+GPIO: io=0, o=0, i=0, unsolicited=0, wake=0
+Node 0x03 [Audio Output] wcaps 0x6611: 8-Channels Digital
+  Converter: stream=0, channel=0
+  Digital: Enabled
+  Digital category: 0x0
+  IEC Coding Type: 0x0
+  PCM:
+    rates [0x7f0]: 32000 44100 48000 88200 96000 176400 192000
+    bits [0x1a]: 16 24 32
+    formats [0x5]: PCM AC3
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+Node 0x04 [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+Node 0x05 [Audio Output] wcaps 0x6611: 8-Channels Digital
+  Converter: stream=0, channel=0
+  Digital: Enabled
+  Digital category: 0x0
+  IEC Coding Type: 0x0
+  PCM:
+    rates [0x7f0]: 32000 44100 48000 88200 96000 176400 192000
+    bits [0x1a]: 16 24 32
+    formats [0x5]: PCM AC3
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+Node 0x06 [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+Node 0x07 [Audio Output] wcaps 0x6611: 8-Channels Digital
+  Converter: stream=0, channel=0
+  Digital: Enabled
+  Digital category: 0x0
+  IEC Coding Type: 0x0
+  PCM:
+    rates [0x7f0]: 32000 44100 48000 88200 96000 176400 192000
+    bits [0x1a]: 16 24 32
+    formats [0x5]: PCM AC3
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+Node 0x08 [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+Node 0x09 [Audio Output] wcaps 0x6611: 8-Channels Digital
+  Converter: stream=0, channel=0
+  Digital: Enabled
+  Digital category: 0x0
+  IEC Coding Type: 0x0
+  PCM:
+    rates [0x7f0]: 32000 44100 48000 88200 96000 176400 192000
+    bits [0x1a]: 16 24 32
+    formats [0x5]: PCM AC3
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+Node 0x0a [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+Node 0x0b [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+Node 0x0c [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+Node 0x0d [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+Node 0x0e [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+Node 0x0f [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x00 0x00]
+  Pincap 0x09000094: OUT Detect HBR HDMI DP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+    Conn = Digital, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+  Pin-ctls: 0x00:
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+  Devices: 0
+  Connection: 0
+
+=== Sysfs Sound Devices ===
+total 0
+drwxr-xr-x  2 root root 0 Feb  1 02:15 .
+drwxr-xr-x 67 root root 0 Feb  1 01:57 ..
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 card0 -> ../../devices/pci0000:00/0000:00:1f.3/sound/card0
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 controlC0 -> ../../devices/pci0000:00/0000:00:1f.3/sound/card0/controlC0
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 hwC0D2 -> ../../devices/pci0000:00/0000:00:1f.3/sound/card0/hwC0D2
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 pcmC0D3p -> ../../devices/pci0000:00/0000:00:1f.3/sound/card0/pcmC0D3p
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 pcmC0D7p -> ../../devices/pci0000:00/0000:00:1f.3/sound/card0/pcmC0D7p
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 pcmC0D8p -> ../../devices/pci0000:00/0000:00:1f.3/sound/card0/pcmC0D8p
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 pcmC0D9p -> ../../devices/pci0000:00/0000:00:1f.3/sound/card0/pcmC0D9p
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 seq -> ../../devices/virtual/sound/seq
+lrwxrwxrwx  1 root root 0 Feb  1 01:57 timer -> ../../devices/virtual/sound/timer
+
+=== HDA Codecs in Sysfs ===
+afg
+chip_name
+clear
+dev
+device
+driver_pin_configs
+hints
+init_pin_configs
+init_verbs
+mfg
+modelname
+power
+power_off_acct
+power_on_acct
+reconfig
+revision_id
+subsystem
+subsystem_id
+uevent
+user_pin_configs
+vendor_id
+vendor_name
+
+=== Loaded Sound Modules ===
+snd_seq_dummy          12288  0
+snd_hrtimer            12288  1
+snd_seq               114688  7 snd_seq_dummy
+snd_seq_device         16384  1 snd_seq
+snd_sof_pci_intel_tgl    16384  0
+snd_sof_pci_intel_cnl    20480  1 snd_sof_pci_intel_tgl
+snd_sof_intel_hda_generic    45056  2 snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+soundwire_intel        86016  1 snd_sof_intel_hda_generic
+snd_sof_intel_hda_common   200704  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_soc_hdac_hda       28672  1 snd_sof_intel_hda_common
+snd_sof_intel_hda_mlink    36864  3 soundwire_intel,snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_sof_intel_hda      20480  2 snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_hda_codec_hdmi     98304  1
+snd_sof_pci            24576  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_sof_xtensa_dsp     16384  1 snd_sof_intel_hda_generic
+snd_sof               479232  5 snd_sof_pci,snd_sof_intel_hda_common,snd_sof_intel_hda_generic,snd_sof_intel_hda,snd_sof_pci_intel_cnl
+snd_sof_utils          16384  1 snd_sof
+snd_soc_acpi_intel_match   126976  3 snd_sof_intel_hda_generic,snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+snd_soc_acpi           16384  2 snd_soc_acpi_intel_match,snd_sof_intel_hda_generic
+snd_soc_avs           241664  0
+snd_soc_hda_codec      28672  1 snd_soc_avs
+snd_hda_ext_core       36864  6 snd_soc_avs,snd_soc_hda_codec,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda_mlink,snd_sof_intel_hda
+snd_soc_core          462848  6 snd_soc_avs,snd_soc_hda_codec,soundwire_intel,snd_sof,snd_sof_intel_hda_common,snd_soc_hdac_hda
+snd_compress           32768  2 snd_soc_avs,snd_soc_core
+ac97_bus               12288  1 snd_soc_core
+snd_pcm_dmaengine      16384  1 snd_soc_core
+snd_hda_intel          69632  1
+snd_intel_dspcfg       40960  5 snd_soc_avs,snd_hda_intel,snd_sof,snd_sof_intel_hda_common,snd_sof_intel_hda_generic
+snd_intel_sdw_acpi     16384  2 snd_intel_dspcfg,snd_sof_intel_hda_generic
+snd_hda_codec         221184  6 snd_soc_avs,snd_hda_codec_hdmi,snd_soc_hda_codec,snd_hda_intel,snd_soc_hdac_hda,snd_sof_intel_hda
+snd_hda_core          143360  9 snd_soc_avs,snd_hda_codec_hdmi,snd_soc_hda_codec,snd_hda_intel,snd_hda_ext_core,snd_hda_codec,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda
+snd_hwdep              20480  1 snd_hda_codec
+snd_pcm               188416  12 snd_soc_avs,snd_hda_codec_hdmi,snd_hda_intel,snd_hda_codec,soundwire_intel,snd_sof,snd_sof_intel_hda_common,snd_compress,snd_soc_core,snd_sof_utils,snd_hda_core,snd_pcm_dmaengine
+snd_timer              53248  3 snd_seq,snd_hrtimer,snd_pcm
+snd                   155648  15 snd_seq,snd_seq_device,snd_hda_codec_hdmi,snd_hwdep,snd_hda_intel,snd_hda_codec,snd_sof,snd_timer,snd_compress,snd_soc_core,snd_pcm
+soundcore              16384  1 snd
+
+=== DSP Driver Setting ===
+0
+
+=== Kernel Audio Logs (dmesg via journalctl) ===
+Feb 01 01:56:49 nemda kernel: software IO TLB: area num 32.
+Feb 01 01:56:49 nemda kernel: rcu: RCU calculated value of scheduler-enlistment delay is 100 jiffies.
+Feb 01 01:56:49 nemda kernel: Calibrating delay loop (skipped), value calculated using timer frequency.. 5836.80 BogoMIPS (lpj=2918400)
+Feb 01 01:56:49 nemda kernel: PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+Feb 01 01:56:49 nemda kernel: software IO TLB: mapped [mem 0x0000000053295000-0x0000000057295000] (64MB)
+Feb 01 01:57:06 nemda systemd[1]: Mounting /home/syakovlev/.config/BraveSoftware...
+Feb 01 01:57:06 nemda systemd[1]: Mounted /home/syakovlev/.config/BraveSoftware.
+Feb 01 01:57:07 nemda kernel: snd_hda_intel 0000:00:1f.3: enabling device (0000 -> 0002)
+Feb 01 01:57:07 nemda kernel: pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Feb 01 01:57:09 nemda kernel: snd_hda_intel 0000:00:1f.3: bound 0000:00:02.0 (ops i915_audio_component_bind_ops [i915])
+Feb 01 01:57:09 nemda kernel: hdaudio hdaudioC0D0: no AFG or MFG node found
+Feb 01 01:57:09 nemda kernel: input: HDA Intel PCH HDMI/DP,pcm=3 as /devices/pci0000:00/0000:00:1f.3/sound/card0/input18
+Feb 01 01:57:09 nemda kernel: input: HDA Intel PCH HDMI/DP,pcm=7 as /devices/pci0000:00/0000:00:1f.3/sound/card0/input19
+Feb 01 01:57:09 nemda kernel: input: HDA Intel PCH HDMI/DP,pcm=8 as /devices/pci0000:00/0000:00:1f.3/sound/card0/input20
+Feb 01 01:57:09 nemda kernel: input: HDA Intel PCH HDMI/DP,pcm=9 as /devices/pci0000:00/0000:00:1f.3/sound/card0/input21
+
+=== PipeWire Status ===
+PipeWire 'pipewire-0' [1.4.9, syakovlev@nemda, cookie:630094675]
+ └─ Clients:
+        34. .xdg-desktop-portal-wrapped         [1.4.9, syakovlev@nemda, pid:3251]
+        35. WirePlumber                         [1.4.9, syakovlev@nemda, pid:3327]
+        43. WirePlumber [export]                [1.4.9, syakovlev@nemda, pid:3327]
+        51. .quickshell-wrapped                 [1.4.9, syakovlev@nemda, pid:3220]
+        62. pipewire                            [1.4.9, syakovlev@nemda, pid:4467]
+        68. Google Chrome input                 [1.4.9, syakovlev@nemda, pid:6712]
+        69. Brave input                         [1.4.9, syakovlev@nemda, pid:7943]
+        71. Chromium input                      [1.4.9, syakovlev@nemda, pid:8765]
+        72. Chromium input                      [1.4.9, syakovlev@nemda, pid:9420]
+        73. .Telegram-wrapped                   [1.4.9, syakovlev@nemda, pid:8576]
+        74. wpctl                               [1.4.9, syakovlev@nemda, pid:54277]
+        75. Firefox                             [1.4.9, syakovlev@nemda, pid:4977]
+
+Audio
+ ├─ Devices:
+ │      44. Built-in Audio                      [alsa]
+ │  
+ ├─ Sinks:
+ │  *   63. Dummy Output                        [vol: 1.00]
+ │  
+ ├─ Sources:
+ │  
+ ├─ Filters:
+ │  
+ └─ Streams:
+
+Video
+ ├─ Devices:
+ │      52. FHD Webcam                          [v4l2]
+ │      53. FHD Webcam                          [v4l2]
+ │      54. FHD Webcam                          [v4l2]
+ │      55. FHD Webcam                          [v4l2]
+ │      56. FHD Webcam: FHD Webcam              [libcamera]
+ │      57. FHD Webcam: IR Camera               [libcamera]
+ │  
+ ├─ Sinks:
+ │  
+ ├─ Sources:
+ │  *   58. FHD Webcam (V4L2)                  
+ │      60. FHD Webcam (V4L2)                  
+ │  
+ ├─ Filters:
+ │  
+ └─ Streams:
+
+Settings
+ └─ Default Configured Devices:
+
+=== DMI System Info ===
+TUXEDO InfinityBook Pro Gen8 (MK1)
+Standard
+N.1.10A05
+

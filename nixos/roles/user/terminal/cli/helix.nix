@@ -70,7 +70,7 @@
         WantedBy = [ "default.target" ];
       };
       Service = {
-        ExecStart = "${pkgs.cue}/bin/cue lsp -vv serve -listen=unix;%t/cuelsp";
+        ExecStart = "${pkgs.cue-master}/bin/cue lsp -vv serve -listen=unix;%t/cuelsp";
         ExecStopPost = "/run/current-system/sw/bin/rm -f %t/cuelsp";
         Restart = "always";
         RestartSec = 3;
