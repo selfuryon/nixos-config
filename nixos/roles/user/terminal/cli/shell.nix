@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 {
@@ -37,9 +38,11 @@
   };
 
   home.sessionVariables = {
+    # nushell envs: nixos/roles/user/terminal/cli/nushell.nix
     EDITOR = "hx";
-    KUBECONFIG = "/home/syakovlev/.config/kubernetes";
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
+    KUBECONFIG = "${config.xdg.configHome}/kubernetes";
+    CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
   };
 
   programs = {

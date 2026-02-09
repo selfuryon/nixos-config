@@ -15,7 +15,7 @@
     ./playerctl.nix
     ./qt.nix
     # ./hyprlock.nix
-    ./hypridle.nix
+    # ./hypridle.nix
     # ./hyprpaper.nix
     # ./waybar.nix  # disabled
     # ./ashell.nix  # disabled

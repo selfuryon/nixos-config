@@ -31,6 +31,7 @@ in
         ".config/claude"
         ".claude"
         ".local/share/claude"
+        ".config/gh"
         ".ollama"
         ".local/share/TelegramDesktop"
         ".local/share/atuin"

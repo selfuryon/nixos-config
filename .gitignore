@@ -1,3 +1,6 @@
+# Claude
+.claude/settings.local.json
+
 # Nix
 .envrc
 .direnv

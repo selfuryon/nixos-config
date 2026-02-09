@@ -52,12 +52,6 @@
 
     extraModulePackages = [ ];
     tmp.cleanOnBoot = true;
-
-    # Use legacy HDA driver and fix ALC256 pin configuration
-    # extraModprobeConfig = ''
-    #   options snd_intel_dspcfg dsp_driver=1
-    #   options snd_hda_intel model=dell-headset-multi power_save=0
-    # '';
   };
 
   # Hardware configuration

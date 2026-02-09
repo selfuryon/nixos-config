@@ -18,7 +18,8 @@
       '';
       envFile.text = ''
         $env.EDITOR = "hx"
-        $env.KUBECONFIG = "/home/syakovlev/.config/kubernetes"
+        $env.CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
+        $env.KUBECONFIG = "${config.xdg.configHome}/kubernetes"
         $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent"
         $env.GNUPGHOME = "${config.xdg.dataHome}/gnupg"
       '';
@@ -31,6 +32,9 @@
         gl = "${pkgs.git}/bin/git ll";
         gpl = "${pkgs.git}/bin/git pull";
         lg = "${pkgs.lazygit}/bin/lazygit";
+        zj = "${pkgs.zellij}/bin/zellij";
+        zjs = "${pkgs.zellij}/bin/zellij -s";
+        zja = "${pkgs.zellij}/bin/zellij a";
 
         # Nix
         nrs = "doas nixos-rebuild switch --flake path:/home/syakovlev/src/personal/nixos-config";
