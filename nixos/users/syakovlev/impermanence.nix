@@ -28,6 +28,7 @@ in
         ".config/keepassxc"
         ".config/Insync"
         ".ipfs"
+        ".config/nix"
         ".config/claude"
         ".claude"
         ".local/share/claude"

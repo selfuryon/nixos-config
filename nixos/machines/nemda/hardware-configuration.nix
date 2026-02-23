@@ -52,6 +52,17 @@
 
     extraModulePackages = [ ];
     tmp.cleanOnBoot = true;
+
+    # Blacklist broken audio codec modules (ALC256 causes unexpected shutdowns)
+    blacklistedKernelModules = [
+      "snd_hda_intel"
+      "snd_sof"
+      "snd_sof_pci"
+      "snd_sof_pci_intel_tgl"
+      "snd_sof_pci_intel_cnl"
+      "snd_sof_intel_hda_common"
+      "snd_sof_intel_hda_generic"
+    ];
   };
 
   # Hardware configuration

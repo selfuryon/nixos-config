@@ -17,6 +17,7 @@
       push.autoSetupRemote = true;
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/.config/git/personal.signers";
+      url."git@github.com:p2p-org/".insteadOf = "https://github.com/p2p-org/";
       aliases = {
         co = "checkout";
         ci = "commit";
