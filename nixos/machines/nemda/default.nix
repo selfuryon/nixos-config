@@ -1,6 +1,6 @@
 {
   pkgs,
-  config,
+  inputs,
   roles,
   users,
   ...
@@ -36,14 +36,19 @@ in
       127.1.27.3 dirk-03
     '';
   };
-  services.greetd = {
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/xsessions:${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --time --theme border=blue;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red";
+  #       user = "greeter";
+  #     };
+  #   };
+  # };
+  services.displayManager.dms-greeter = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/xsessions:${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --time --theme border=blue;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red";
-        user = "greeter";
-      };
-    };
+    compositor.name = "niri";
+    package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
   # this is a life saver.
@@ -56,16 +61,16 @@ in
     systemd-hibernate = override;
     systemd-hybrid-sleep = override;
     systemd-suspend-then-hibernate = override;
-    greetd.serviceConfig = {
-      Type = "idle";
-      StandardInput = "tty";
-      StandardOutput = "tty";
-      StandardError = "journal"; # Without this errors will spam on screen
-      # Without these bootlogs will spam on screen
-      TTYReset = true;
-      TTYVHangup = true;
-      TTYVTDisallocate = true;
-    };
+    # greetd.serviceConfig = {
+    #   Type = "idle";
+    #   StandardInput = "tty";
+    #   StandardOutput = "tty";
+    #   StandardError = "journal"; # Without this errors will spam on screen
+    #   # Without these bootlogs will spam on screen
+    #   TTYReset = true;
+    #   TTYVHangup = true;
+    #   TTYVTDisallocate = true;
+    # };
   };
 
   security.pam.loginLimits = [

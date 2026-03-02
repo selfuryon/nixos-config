@@ -27,6 +27,7 @@ in
         ".config/k9s"
         ".config/keepassxc"
         ".config/Insync"
+        ".local/state/DankMaterialShell"
         ".ipfs"
         ".config/nix"
         ".config/claude"

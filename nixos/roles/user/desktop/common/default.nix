@@ -2,8 +2,8 @@
 {
   imports = [
     ./alacritty.nix
-    # ./dunst.nix  # disabled, using noctalia notifications
-    # ./swaync.nix  # disabled, using noctalia notifications
+    # ./dunst.nix  # disabled, using DMS notifications
+    # ./swaync.nix  # disabled, using DMS notifications
     ./firefox.nix
     ./thunderbird.nix
     ./font.nix
@@ -19,7 +19,7 @@
     # ./hyprpaper.nix
     # ./waybar.nix  # disabled
     # ./ashell.nix  # disabled
-    ./noctalia.nix
+    ./dms.nix
     ./wlsunset.nix
     ./fuzzel.nix
     ./wezterm.nix
@@ -46,11 +46,11 @@
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/html" = [ "firefox-beta.desktop" ];
+        "text/html" = [ "firefox.desktop" ];
         # "text/html" = [ "google-chrome.desktop" ];
-        "x-scheme-handler/http" = [ "firefox-beta.desktop" ];
-        "x-scheme-handler/https" = [ "firefox-beta.desktop" ];
-        "image/*" = [ "firefox-beta.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
+        "image/*" = [ "firefox.desktop" ];
 
         "application/zip" = [ "org.gnome.FileRoller.desktop" ];
         "application/rar" = [ "org.gnome.FileRoller.desktop" ];
@@ -136,7 +136,7 @@
     thunar
     kdePackages.dolphin
     thunar-media-tags-plugin
-    xorg.xrdb
+    xrdb
     xournalpp
     xwayland
     bruno

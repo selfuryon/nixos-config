@@ -13,7 +13,7 @@ in
   home.packages = with pkgs; [ tridactyl-native ];
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-beta;
+    package = pkgs.firefox; # TODO: switch back to firefox-beta when hydra builds 148.0b15
     profiles = {
       default = {
         id = 0;

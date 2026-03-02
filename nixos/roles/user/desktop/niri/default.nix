@@ -199,8 +199,20 @@
         }
     }
     layer-rule {
-        match namespace="^quickshell-overview$"
+        match namespace="^dms:workspace-overview$"
         place-within-backdrop true
+    }
+    layer-rule {
+        match namespace="^dms:bar$"
+        place-within-backdrop false
+    }
+    layer-rule {
+        match namespace="^dms:clipboard$"
+        block-out-from "screencast"
+    }
+    layer-rule {
+        match namespace="^dms:notification-popup$"
+        block-out-from "screencast"
     }
 
     debug {

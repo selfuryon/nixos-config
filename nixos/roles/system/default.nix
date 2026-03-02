@@ -21,6 +21,7 @@
   environment.systemPackages = with pkgs; [
     vim
     sbctl
+    git # needed by nix to fetch git+https:// flake inputs
   ];
   services.upower.enable = true;
 

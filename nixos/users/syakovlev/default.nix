@@ -41,7 +41,8 @@ in
   home-manager.users.${userName} = {
     imports = [
       inputs.catppuccin.homeModules.catppuccin
-      inputs.noctalia.homeModules.default
+      inputs.dms.homeModules.dank-material-shell
+      inputs.dms.homeModules.niri
       inputs.base16.homeManagerModule
       inputs.niri.homeModules.niri
       roles.user.terminal.default

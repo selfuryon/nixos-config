@@ -31,6 +31,7 @@ let
       imports = [
         inputs.catppuccin.nixosModules.catppuccin
         inputs.home-manager.nixosModules.home-manager
+        inputs.dms.nixosModules.greeter
         # inputs.ragenix.nixosModules.age
       ];
     }
