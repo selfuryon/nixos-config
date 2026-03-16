@@ -113,7 +113,6 @@
     ledger-live-desktop
     # megasync
     mpv
-    zoom-us
     networkmanagerapplet
     kdePackages.okular
     pavucontrol
