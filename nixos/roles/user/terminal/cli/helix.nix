@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     nixfmt
-    nodePackages.prettier
+    prettier
     rust-analyzer
     gopls
     nil
