@@ -29,7 +29,8 @@
       ];
       language-server = {
         cuelsp = {
-          command = "${pkgs.cue-master}/bin/cue";
+          # command = "${pkgs.cue-master}/bin/cue";
+          command = "${pkgs.cue}/bin/cue";
           args = [
             "lsp"
             "-remote=unix;/run/user/1000/cuelsp" # TODO: find a way to use XDG_RUNTIME_DIR
@@ -70,7 +71,8 @@
         WantedBy = [ "default.target" ];
       };
       Service = {
-        ExecStart = "${pkgs.cue-master}/bin/cue lsp -vv serve -listen=unix;%t/cuelsp";
+        # ExecStart = "${pkgs.cue-master}/bin/cue lsp -vv serve -listen=unix;%t/cuelsp";
+        ExecStart = "${pkgs.cue}/bin/cue lsp -vv serve -listen=unix;%t/cuelsp";
         ExecStopPost = "/run/current-system/sw/bin/rm -f %t/cuelsp";
         Restart = "always";
         RestartSec = 3;
