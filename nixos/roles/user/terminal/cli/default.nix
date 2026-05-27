@@ -67,6 +67,7 @@
     tldr
     # tailspin
     tree
+    uv
     wget
     #yubikey-manager
     zk
