@@ -36,6 +36,7 @@
       supportedFilesystems = [ "zfs" ];
     };
     zfs.requestEncryptionCredentials = true;
+    zfs.forceImportRoot = false;
 
     #kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     # kernelPackages = pkgs.linuxPackages_latest;
