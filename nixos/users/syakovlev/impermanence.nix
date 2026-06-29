@@ -28,6 +28,7 @@ in
         ".config/keepassxc"
         ".config/Insync"
         ".local/state/DankMaterialShell"
+        ".local/share/Anki2"
         ".ipfs"
         ".config/nix"
         ".config/claude"

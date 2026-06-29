@@ -88,6 +88,7 @@
 
   home.packages = with pkgs; [
     adwaita-qt
+    anki
     # darkly-qt5
     google-chrome
     brave

@@ -57,7 +57,7 @@ in
     };
     catppuccin.gtk.icon.enable = false;
     programs.home-manager.enable = true;
-    home.stateVersion = "26.05";
+    home.stateVersion = "26.11";
     scheme = "${inputs.tt-schemes}/base16/catppuccin-latte.yaml";
     services.podman = {
       enable = true;

@@ -9,10 +9,17 @@ in
 {
   home.persistence."/state".directories = [
     ".mozilla/firefox"
+    ".config/mozilla/firefox"
   ];
   home.packages = with pkgs; [ tridactyl-native ];
   programs.firefox = {
     enable = true;
+    # The firefox package hardcodes MOZ_LEGACY_PROFILES=1, so the browser reads
+    # ~/.mozilla/firefox. Pin configPath to match — otherwise (with
+    # stateVersion >= 25.05) home-manager writes the profile to the XDG path
+    # ~/.config/mozilla/firefox, which firefox never reads. This legacy path is
+    # also the one persisted in impermanence.nix.
+    configPath = ".mozilla/firefox";
     package = pkgs.firefox; # TODO: switch back to firefox-beta when hydra builds 148.0b15
     profiles = {
       default = {
