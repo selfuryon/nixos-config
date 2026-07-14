@@ -5,6 +5,7 @@
 }:
 {
   home.pointerCursor = {
+    enable = true;
     # name = "Babita-Modern-Classic";
     # package = pkgs.bibata-cursors;
     name = "catppuccin-latte-dark-cursors";

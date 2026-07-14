@@ -37,6 +37,7 @@
       input-fonts.acceptLicense = true;
       permittedInsecurePackages = [
         "electron-36.9.5"
+        "pnpm-10.29.2"
       ];
     };
   };
