@@ -7,7 +7,7 @@
 {
   imports = [ inputs.impermanence.nixosModules.impermanence ];
 
-  programs.fuse.enable = true; # provides setuid fusermount wrapper (needed by cryfs et al.)
+  # programs.fuse.enable = true; # provides setuid fusermount wrapper (needed by cryfs et al.)
   programs.fuse.userAllowOther = true;
   environment.persistence."/state/system" = {
     hideMounts = true;

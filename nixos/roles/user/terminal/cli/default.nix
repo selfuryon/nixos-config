@@ -42,7 +42,8 @@
     bind
     insync
     bubblewrap
-    cryfs
+    # cryfs
+    gocryptfs
     curl
     dua
     duf
