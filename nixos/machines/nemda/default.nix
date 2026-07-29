@@ -84,6 +84,7 @@ in
 
   programs = {
     niri.enable = true;
+    niri.package = inputs.niri.packages.${pkgs.system}.niri-stable;
     # uwsm.enable = false;
     # hyprland = {
     #   enable = false;

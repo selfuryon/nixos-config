@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [ ../common ];
-  programs.niri.package = pkgs.niri;
-  # programs.niri.package = inputs.niri.packages."x86_64-linux".niri-unstable;
+  programs.niri.package = inputs.niri.packages.${pkgs.system}.niri-stable;
+  # programs.niri.package = inputs.niri.packages.${pkgs.system}.niri-unstable;
+  # programs.niri.package = pkgs.niri;
 
   home.packages = with pkgs; [
     wayland
