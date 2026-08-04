@@ -88,7 +88,7 @@
 
   home.packages = with pkgs; [
     adwaita-qt
-    anki
+    # anki  # disabled: build broken upstream, https://github.com/NixOS/nixpkgs/issues/548443
     # darkly-qt5
     google-chrome
     brave
@@ -104,8 +104,6 @@
     file-roller
     grim
     gsettings-desktop-schemas
-    gtk-engine-murrine
-    gtk_engines
     imv
     hoppscotch
     keepassxc

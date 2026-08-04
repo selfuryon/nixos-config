@@ -33,11 +33,8 @@
       name = "Zafiro-icons-Light";
     };
     theme = {
-      name = "Arc-Lighter";
-      package = pkgs.arc-theme;
-      # package = pkgs.orchis-theme.override {
-      #   colorVariants = ["light"];
-      # };
+      name = "adw-gtk3";
+      package = pkgs.adw-gtk3;
     };
     cursorTheme = {
       name = "catppuccin-latte-dark-cursors";
