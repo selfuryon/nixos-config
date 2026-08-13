@@ -33,11 +33,15 @@
     };
   };
 
+  # codex defaults to ~/.codex; point it at XDG_CONFIG_HOME instead.
+  home.sessionVariables.CODEX_HOME = "${config.xdg.configHome}/codex";
+
   home.packages = with pkgs; [
     inputs.rip.packages.${pkgs.stdenv.hostPlatform.system}.default
     #magic-wormhole
     #sequoia
     claude-code
+    codex
     gh
     bind
     insync

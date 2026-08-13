@@ -8,7 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      url = "github:sodiboo/niri-flake";
+      # sodiboo/niri-flake is unmaintained; using the actively updated
+      # community fork (github.com/sodiboo/niri-flake/issues/1813).
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rip = {

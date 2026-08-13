@@ -34,6 +34,7 @@ in
         ".config/claude"
         ".claude"
         ".local/share/claude"
+        ".config/codex"
         ".config/gh"
         ".ollama"
         ".local/share/TelegramDesktop"
