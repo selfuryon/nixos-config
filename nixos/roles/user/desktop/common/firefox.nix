@@ -33,7 +33,7 @@ in
           startpage-private-search
         ];
         extraConfig = ''
-          ${builtins.readFile ./firefox/arkenfox/user.js}
+          ${builtins.readFile "${inputs.arkenfox}/user.js"}
           ${builtins.readFile ./firefox/private.js}
         '';
         settings = {
@@ -41,6 +41,15 @@ in
           "sidebar.verticalTabs" = true;
           "sidebar.revamp.round-content-area" = true;
           "browser.tabs.groups.enabled" = true;
+
+          # Session restore: firefox has no SIGTERM handler, so it dies instantly
+          # at logout and never writes sessionstore.jsonlz4 - the session is
+          # always recovered from sessionstore-backups/recovery.jsonlz4. Write
+          # that more often, and keep longer undo lists (defaults: 25 tabs,
+          # 5 windows) so closed tabs survive heavy tab churn.
+          "browser.sessionstore.interval" = 5000;
+          "browser.sessionstore.max_tabs_undo" = 100;
+          "browser.sessionstore.max_windows_undo" = 15;
         };
         isDefault = true;
       };

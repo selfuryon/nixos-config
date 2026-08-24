@@ -31,6 +31,12 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    arkenfox = {
+      # user.js privacy hardening baseline, read verbatim into the firefox
+      # profile; overrides live in roles/user/desktop/common/firefox/*.js.
+      url = "github:arkenfox/user.js";
+      flake = false;
+    };
     # noctalia = {
     #   url = "github:noctalia-dev/noctalia-shell";
     #   inputs.nixpkgs.follows = "nixpkgs";
