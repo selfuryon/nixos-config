@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }:
@@ -15,6 +16,22 @@
            algorithm: "fuzzy"    # prefix or fuzzy
          }
         }
+      '';
+      # Nushell 0.115 deduplicates `$env.config.keybindings` by `name`, and atuin's
+      # init script registers both its Ctrl-R and Up bindings as `atuin`; the Up one
+      # silently drops the Ctrl-R one, leaving nushell's builtin `history_menu` on
+      # Ctrl-R. Re-add the atuin search binding under its own name, ordered past
+      # atuin's own snippet (mkOrder 2000) so `_atuin_search_cmd` is defined.
+      extraConfig = lib.mkOrder 2500 ''
+        $env.config.keybindings = (
+          $env.config.keybindings | append {
+            name: atuin_search
+            modifier: control
+            keycode: char_r
+            mode: [emacs, vi_normal, vi_insert]
+            event: { send: executehostcommand cmd: (_atuin_search_cmd) }
+          }
+        )
       '';
       envFile.text = ''
         $env.EDITOR = "hx"

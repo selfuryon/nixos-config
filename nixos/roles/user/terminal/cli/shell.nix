@@ -57,7 +57,8 @@
       enableNushellIntegration = true;
       settings = {
         style = "compact";
-        search_mode = "skim";
+        # "skim" was removed in atuin 18.x; "daemon-fuzzy" needs the atuin daemon
+        search_mode = "fuzzy";
       };
     };
     yazi = {
