@@ -17,21 +17,24 @@
          }
         }
       '';
-      # Nushell 0.115 deduplicates `$env.config.keybindings` by `name`, and atuin's
-      # init script registers both its Ctrl-R and Up bindings as `atuin`; the Up one
-      # silently drops the Ctrl-R one, leaving nushell's builtin `history_menu` on
-      # Ctrl-R. Re-add the atuin search binding under its own name, ordered past
-      # atuin's own snippet (mkOrder 2000) so `_atuin_search_cmd` is defined.
-      extraConfig = lib.mkOrder 2500 ''
-        $env.config.keybindings = (
-          $env.config.keybindings | append {
-            name: atuin_search
-            modifier: control
-            keycode: char_r
-            mode: [emacs, vi_normal, vi_insert]
-            event: { send: executehostcommand cmd: (_atuin_search_cmd) }
-          }
-        )
+      # Manual replacement for `programs.atuin.enableNushellIntegration`, which
+      # sources atuin's init script verbatim. That script registers both its
+      # Ctrl-R and its Up keybinding under the name `atuin`, and nushell >= 0.115
+      # warns about shared keybinding names on every startup. Give every binding
+      # past the first a unique name. mkOrder 2000 matches home-manager, so the
+      # script still lands after fzf and keeps Ctrl-R.
+      extraConfig = lib.mkOrder 2000 ''
+        source ${
+          pkgs.runCommand "atuin-nushell-config.nu"
+            {
+              nativeBuildInputs = [ pkgs.writableTmpDirAsHomeHook ];
+            }
+            ''
+              ${lib.getExe config.programs.atuin.package} init nu \
+                | awk '{ if ($0 ~ /^ *name: atuin$/) { n++; if (n > 1) sub(/name: atuin$/, "name: atuin_" n) } print }' \
+                > "$out"
+            ''
+        }
       '';
       envFile.text = ''
         $env.EDITOR = "hx"

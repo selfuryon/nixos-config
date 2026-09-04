@@ -35,7 +35,10 @@
       auto-optimise-store = true;
       keep-outputs = true;
       keep-derivations = true;
-      experimental-features = "nix-command flakes";
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       netrc-file = "/etc/nix/netrc";
       extra-sandbox-paths = [ "/etc/nix/netrc" ];
     };

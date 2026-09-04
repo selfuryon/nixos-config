@@ -54,7 +54,10 @@
     atuin = {
       enable = true;
       enableFishIntegration = true;
-      enableNushellIntegration = true;
+      # Integration is wired up manually below: atuin's own init script registers
+      # both its Ctrl-R and Up keybindings under the name `atuin`, and nushell
+      # >= 0.115 warns on every startup that multiple keybindings share a name.
+      enableNushellIntegration = false;
       settings = {
         style = "compact";
         # "skim" was removed in atuin 18.x; "daemon-fuzzy" needs the atuin daemon
