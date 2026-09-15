@@ -17,6 +17,13 @@
       url = "github:cesarferreira/rip";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sofka = {
+      # Kubernetes TUI; upstream flake, no packaging in nixpkgs yet. Tracks main
+      # for unreleased fixes, so the nkl-sofka Cachix cache (tagged builds only)
+      # will not hit and following our nixpkgs costs nothing.
+      url = "github:nklmilojevic/sofka";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin.url = "github:catppuccin/nix";
     impermanence.url = "github:nix-community/impermanence";
     disko = {
@@ -43,6 +50,12 @@
     # };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dank-greeter = {
+      # Split out of DankMaterialShell; the old `dms.nixosModules.greeter` is
+      # now a warning stub. Tracks master; the repo has no stable branch yet.
+      url = "github:AvengeMedia/dank-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

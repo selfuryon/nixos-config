@@ -24,6 +24,14 @@
         directory = "/etc/nix";
         mode = "777";
       }
+      {
+        # greetd preStart rebuilds this from the store each boot, but keeping it
+        # avoids re-copying wallpapers and losing the greeter's own state.
+        directory = "/var/lib/dms-greeter";
+        user = "greeter";
+        group = "greeter";
+        mode = "0750";
+      }
       "/var/log"
       "/var/lib/bluetooth"
       "/var/lib/nixos"

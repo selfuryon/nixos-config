@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   roles,
@@ -45,10 +46,21 @@ in
   #     };
   #   };
   # };
-  services.displayManager.dms-greeter = {
+  programs.dms-greeter = {
     enable = true;
     compositor.name = "niri";
-    package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    # Give the greeter the same DMS look as the desktop. These are the
+    # home-manager-generated store paths rather than configHome = $HOME:
+    # .config/DankMaterialShell is not persisted and greetd has no ordering
+    # against home-manager-syakovlev.service, so $HOME would race an empty dir.
+    configFiles =
+      let
+        hm = config.home-manager.users.syakovlev;
+      in
+      [
+        hm.xdg.configFile."DankMaterialShell/settings.json".source
+        hm.xdg.stateFile."DankMaterialShell/session.json".source
+      ];
   };
 
   # this is a life saver.
@@ -84,7 +96,7 @@ in
 
   programs = {
     niri.enable = true;
-    niri.package = inputs.niri.packages.${pkgs.system}.niri-stable;
+    niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
     # uwsm.enable = false;
     # hyprland = {
     #   enable = false;

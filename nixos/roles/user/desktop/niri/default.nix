@@ -1,8 +1,8 @@
 { pkgs, inputs, ... }:
 {
   imports = [ ../common ];
-  programs.niri.package = inputs.niri.packages.${pkgs.system}.niri-stable;
-  # programs.niri.package = inputs.niri.packages.${pkgs.system}.niri-unstable;
+  programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
+  # programs.niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
   # programs.niri.package = pkgs.niri;
 
   home.packages = with pkgs; [

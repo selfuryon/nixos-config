@@ -1,3 +1,31 @@
+{ pkgs, ... }:
+let
+  # One derivation, referenced twice: as the theme file in ~/.config and as an
+  # absolute customThemeFile. The greeter resolves customThemeFile itself with
+  # plain `[ -f ]`, which cannot expand a leading "~", so the path must be real.
+  catppuccinLatteTheme = (pkgs.formats.json { }).generate "catppuccin-latte.json" {
+    light = {
+      primary = "#1e66f5";
+      primaryText = "#eff1f5";
+      primaryContainer = "#bcc0cc";
+      secondary = "#209fb5";
+      surfaceTint = "#1e66f5";
+      surface = "#eff1f5";
+      surfaceText = "#4c4f69";
+      surfaceVariant = "#e6e9ef";
+      surfaceVariantText = "#6c6f85";
+      surfaceContainer = "#e6e9ef";
+      surfaceContainerHigh = "#dce0e8";
+      surfaceContainerHighest = "#ccd0da";
+      background = "#eff1f5";
+      backgroundText = "#4c4f69";
+      outline = "#9ca0b0";
+      error = "#d20f39";
+      warning = "#df8e1d";
+      info = "#1e66f5";
+    };
+  };
+in
 {
   programs.dank-material-shell = {
     enable = true;
@@ -27,7 +55,7 @@
     };
     settings = {
       currentThemeName = "custom";
-      customThemeFile = "~/.config/DankMaterialShell/themes/catppuccin-latte.json";
+      customThemeFile = "${catppuccinLatteTheme}";
 
       barConfigs = [
         {
@@ -91,27 +119,6 @@
     };
   };
 
-  xdg.configFile."DankMaterialShell/themes/catppuccin-latte.json".text = builtins.toJSON {
-    light = {
-      primary = "#1e66f5";
-      primaryText = "#eff1f5";
-      primaryContainer = "#bcc0cc";
-      secondary = "#209fb5";
-      surfaceTint = "#1e66f5";
-      surface = "#eff1f5";
-      surfaceText = "#4c4f69";
-      surfaceVariant = "#e6e9ef";
-      surfaceVariantText = "#6c6f85";
-      surfaceContainer = "#e6e9ef";
-      surfaceContainerHigh = "#dce0e8";
-      surfaceContainerHighest = "#ccd0da";
-      background = "#eff1f5";
-      backgroundText = "#4c4f69";
-      outline = "#9ca0b0";
-      error = "#d20f39";
-      warning = "#df8e1d";
-      info = "#1e66f5";
-    };
-  };
+  xdg.configFile."DankMaterialShell/themes/catppuccin-latte.json".source = catppuccinLatteTheme;
 
 }
