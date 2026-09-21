@@ -11,9 +11,9 @@ layout {
 
     tab name="git"
 
-    tab name="code" focus=true
+    tab name="claude"
 
-    tab name="cli"
+    tab name="code" focus=true
 
     tab name="cli"
 }
