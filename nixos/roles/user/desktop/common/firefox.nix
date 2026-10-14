@@ -41,6 +41,7 @@ in
           "sidebar.verticalTabs" = true;
           "sidebar.revamp.round-content-area" = true;
           "browser.tabs.groups.enabled" = true;
+          "browser.nova.enabled" = true;
 
           # Session restore: firefox has no SIGTERM handler, so it dies instantly
           # at logout and never writes sessionstore.jsonlz4 - the session is
