@@ -5,7 +5,7 @@ let
   userName = "syakovlev";
 in
 {
-  flake.modules.nixos.${userName} =
+  flake.modules.nixos.syakovlev =
     { pkgs, ... }:
     {
       users.users.${userName} = {
