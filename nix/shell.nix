@@ -2,14 +2,11 @@
   perSystem =
     {
       pkgs,
-      # inputs',
       config,
       ...
     }:
     let
       inherit (pkgs) statix talosctl kubernetes-helm;
-      # inherit (inputs'.ragenix.packages) ragenix;
-      # inherit (inputs'.colmena.packages) colmena;
     in
     {
       devshells.default = {
@@ -29,8 +26,6 @@
           statix
           talosctl
           kubernetes-helm
-          # ragenix
-          # colmena
         ];
         devshell.startup = {
           pre-commit.text = config.pre-commit.installationScript;

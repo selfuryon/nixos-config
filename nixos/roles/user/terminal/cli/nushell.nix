@@ -57,8 +57,8 @@
         zja = "${pkgs.zellij}/bin/zellij a";
 
         # Nix
-        nrs = "doas nixos-rebuild switch --flake path:/home/syakovlev/src/personal/nixos-config";
-        nrb = "doas nixos-rebuild build --flake path:/home/syakovlev/src/personal/nixos-config";
+        nrs = "doas nixos-rebuild switch --flake path:${config.home.homeDirectory}/src/personal/nixos-config";
+        nrb = "doas nixos-rebuild build --flake path:${config.home.homeDirectory}/src/personal/nixos-config";
         nfu = "nix flake update";
 
         # Kubernetes

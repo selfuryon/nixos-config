@@ -19,9 +19,9 @@
     enable = true;
     gtk3.extraConfig.gtk-application-prefer-dark-theme = false;
     gtk3.bookmarks = [
-      "file:///home/syakovlev/Documents"
-      "file:///home/syakovlev/cloud"
-      "file:///home/syakovlev/Downloads"
+      "file://${config.home.homeDirectory}/Documents"
+      "file://${config.home.homeDirectory}/cloud"
+      "file://${config.home.homeDirectory}/Downloads"
     ];
     font = {
       package = pkgs.noto-fonts;
@@ -43,15 +43,4 @@
     };
   };
 
-  # dconf.settings."org/gnome/desktop/interface" = {
-  #   name = "Catppuccin-Latte-Standard-Lavender-light";
-  #   color-scheme = "prefer-light";
-  # };
-
-  # dconf.settings = {
-  #   # For Gnome shell
-  #   "org/gnome/shell/extensions/user-theme" = {
-  #     name = "Catppuccin-Latte-Standard-Lavender-light";
-  #   };
-  # };
 }

@@ -44,10 +44,6 @@
       url = "github:arkenfox/user.js";
       flake = false;
     };
-    # noctalia = {
-    #   url = "github:noctalia-dev/noctalia-shell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -78,39 +74,11 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    statix = {
-      url = "github:nerdypepper/statix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Deploy
-    # colmena.url = "github:zhaofengli/colmena";
-
-    # Secrets
-    # ragenix = {
-    #   url = "github:yaxitech/ragenix";
-    #   #inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # Packages
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland/v0.32.3";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # xdph = {
-    #   url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     # Styles
     base16.url = "github:SenchoPens/base16.nix";
     tt-schemes = {
       url = "github:tinted-theming/schemes";
-      flake = false;
-    };
-    # Neovim plugins
-    "syntax-tree-surfer" = {
-      url = "github:ziontee113/syntax-tree-surfer";
       flake = false;
     };
   };

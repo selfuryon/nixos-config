@@ -21,7 +21,6 @@ in
     users.syakovlev.desktop
     users.syakovlev.impermanence
     # Local configuration
-    ./deploy.nix
     ./hardware-configuration.nix
     ./zfs.nix
     ./disko.nix
@@ -37,15 +36,6 @@ in
       127.1.27.3 dirk-03
     '';
   };
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/xsessions:${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session --time --theme border=blue;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red";
-  #       user = "greeter";
-  #     };
-  #   };
-  # };
   programs.dms-greeter = {
     enable = true;
     compositor.name = "niri";
@@ -63,10 +53,6 @@ in
       ];
   };
 
-  # this is a life saver.
-  # literally no documentation about this anywhere.
-  # might be good to write about this...
-  # https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/
   systemd.services = {
     # intel_pstate is already on the "powersave" governor; bias the hardware
     # (HWP) towards efficiency instead of the default balance_performance.
@@ -137,16 +123,6 @@ in
     systemd-hibernate = override;
     systemd-hybrid-sleep = override;
     systemd-suspend-then-hibernate = override;
-    # greetd.serviceConfig = {
-    #   Type = "idle";
-    #   StandardInput = "tty";
-    #   StandardOutput = "tty";
-    #   StandardError = "journal"; # Without this errors will spam on screen
-    #   # Without these bootlogs will spam on screen
-    #   TTYReset = true;
-    #   TTYVHangup = true;
-    #   TTYVTDisallocate = true;
-    # };
   };
 
   security.pam.loginLimits = [
@@ -161,12 +137,6 @@ in
   programs = {
     niri.enable = true;
     niri.package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
-    # uwsm.enable = false;
-    # hyprland = {
-    #   enable = false;
-    #   withUWSM = true;
-    #   xwayland.enable = true;
-    # };
   };
   time.timeZone = "Asia/Nicosia";
   system.stateVersion = "25.05";

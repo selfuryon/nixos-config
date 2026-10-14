@@ -36,17 +36,24 @@
   # codex defaults to ~/.codex; point it at XDG_CONFIG_HOME instead.
   home.sessionVariables.CODEX_HOME = "${config.xdg.configHome}/codex";
 
+  my.persist.directories = [
+    ".config/claude"
+    ".claude"
+    ".local/share/claude"
+    ".config/codex"
+    ".config/gh"
+    ".config/rclone"
+    ".config/Insync"
+  ];
+
   home.packages = with pkgs; [
     inputs.rip.packages.${pkgs.stdenv.hostPlatform.system}.default
-    #magic-wormhole
-    #sequoia
     claude-code
     codex
     gh
     bind
     insync
     bubblewrap
-    # cryfs
     gocryptfs
     curl
     dua
@@ -63,19 +70,15 @@
     rclone
     pijul
     procs
-    # protonvpn-cli
     rage
     devenv
     ripgrep
     signify
     tcpdump
     tldr
-    # tailspin
     tree
     uv
     wget
-    #yubikey-manager
     zk
-    devenv
   ];
 }

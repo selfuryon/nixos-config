@@ -1,9 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./alacritty.nix
-    # ./dunst.nix  # disabled, using DMS notifications
-    # ./swaync.nix  # disabled, using DMS notifications
     ./firefox.nix
     ./thunderbird.nix
     ./font.nix
@@ -14,32 +12,16 @@
     ./mpd.nix
     ./playerctl.nix
     ./qt.nix
-    # ./hyprlock.nix
-    # ./hypridle.nix
-    # ./hyprpaper.nix
-    # ./waybar.nix  # disabled
-    # ./ashell.nix  # disabled
     ./dms.nix
     ./wlsunset.nix
     ./fuzzel.nix
     ./wezterm.nix
   ];
 
-  # programs.fish.loginShellInit = ''
-  #   if test (tty) = /dev/tty1
-  #     systemd-cat -t hyprland ${hyprland}
-  #   end
-  # '';
-  # programs.nushell.loginFile.text = ''
-  #   if (tty) == "/dev/tty3" {
-  #     systemd-cat -t hyprland ${hyprland}
-  #   }
-  # '';
-
   home.activation."mimeapps-remove" = {
     before = [ "checkLinkTargets" ];
     after = [ ];
-    data = "rm -f /home/syakovlev/.config/mimeapps.list";
+    data = "rm -f ${config.xdg.configHome}/mimeapps.list";
   };
 
   xdg = {
@@ -47,7 +29,6 @@
       enable = true;
       defaultApplications = {
         "text/html" = [ "firefox.desktop" ];
-        # "text/html" = [ "google-chrome.desktop" ];
         "x-scheme-handler/http" = [ "firefox.desktop" ];
         "x-scheme-handler/https" = [ "firefox.desktop" ];
         "image/*" = [ "firefox.desktop" ];
@@ -70,34 +51,33 @@
         "text/csv" = [ "calc.desktop" ];
       };
     };
-
-    # desktopEntries = {
-    #   megasync = {
-    #     name = "Megasync (Wayland)";
-    #     genericName = "File Synchronizer";
-    #     exec = "megasync -platform xcb";
-    #     icon = "mega";
-    #     terminal = false;
-    #     categories = [
-    #       "Network"
-    #       "System"
-    #     ];
-    #   };
-    # };
   };
+
+  # State of the GUI apps below.
+  my.persist.directories = [
+    ".config/BraveSoftware"
+    ".config/google-chrome"
+    ".config/bruno"
+    ".config/Ledger Live"
+    ".config/obsidian"
+    ".config/Slack"
+    ".config/dconf"
+    ".config/vesktop"
+    ".config/Vencord"
+    ".config/frame"
+    ".config/keepassxc"
+    ".local/share/TelegramDesktop"
+  ];
 
   home.packages = with pkgs; [
     adwaita-qt
     # anki  # disabled: build broken upstream, https://github.com/NixOS/nixpkgs/issues/548443
-    # darkly-qt5
     google-chrome
     brave
     kdePackages.kwallet
     capitaine-cursors
     crosvm
-    # zed-editor
     dconf
-    # discord
     vesktop
     drawio
     framesh
@@ -110,26 +90,21 @@
     libreoffice
     onlyoffice-desktopeditors
     ledger-live-desktop
-    # megasync
     mpv
     networkmanagerapplet
     kdePackages.okular
     pavucontrol
     qbittorrent
-    #librewolf
-    #qutebrowser
     slack
     slurp
     swappy
     telegram-desktop
-    # tigervnc
     virt-manager
     virt-viewer
     vlc
     wf-recorder
     wireshark
     xdg-utils
-    # pcmanfm-qt
     obsidian
     thunar
     kdePackages.dolphin
@@ -138,7 +113,6 @@
     xournalpp
     xwayland
     bruno
-    #zotero
     wayland
     pciutils
     swaybg
@@ -148,20 +122,4 @@
     wl-clipboard
     cliphist
   ];
-
-  # home.sessionVariables = {
-  #   XDG_CURRENT_DESKTOP = "Niri";
-  #   XDG_SESSION_TYPE = "wayland";
-  #   XDG_SESSION_DESKTOP = "Niri";
-
-  #   QT_AUTO_SCREEN_SCALE_FACTOR = 1;
-  #   QT_QPA_PLATFORM = "wayland;xcb";
-  #   QT_QPA_PLATFORMTHEME = "qt5ct";
-  #   QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-
-  #   ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-  #   SDL_VIDEODRIVER = "wayland";
-  #   GDK_BACKEND = "wayland,x11";
-  #   GTK_USE_PORTAL = 1;
-  # };
 }

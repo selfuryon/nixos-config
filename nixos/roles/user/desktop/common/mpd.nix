@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = with pkgs; [
     # ario
@@ -7,7 +7,7 @@
   ];
   services.mpd = {
     enable = true;
-    musicDirectory = /home/syakovlev/data/music;
+    musicDirectory = "${config.home.homeDirectory}/data/music";
     extraConfig = ''
       audio_output {
         type "pipewire"

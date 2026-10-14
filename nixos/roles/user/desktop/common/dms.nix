@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   # One derivation, referenced twice: as the theme file in ~/.config and as an
   # absolute customThemeFile. The greeter resolves customThemeFile itself with
@@ -51,7 +51,7 @@ in
       longitude = 32.4244;
       weatherLocation = "Paphos, Cyprus";
       weatherCoordinates = "34.7754,32.4244";
-      wallpaperPath = "/home/syakovlev/Pictures/Wallpapers/explorer-robot.png";
+      wallpaperPath = "${config.home.homeDirectory}/Pictures/Wallpapers/explorer-robot.png";
     };
     settings = {
       currentThemeName = "custom";
@@ -120,5 +120,6 @@ in
   };
 
   xdg.configFile."DankMaterialShell/themes/catppuccin-latte.json".source = catppuccinLatteTheme;
+  my.persist.directories = [ ".local/state/DankMaterialShell" ];
 
 }

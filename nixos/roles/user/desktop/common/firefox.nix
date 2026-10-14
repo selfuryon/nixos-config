@@ -7,7 +7,7 @@ let
   addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
-  home.persistence."/state".directories = [
+  my.persist.directories = [
     ".mozilla/firefox"
     ".config/mozilla/firefox"
   ];
@@ -56,15 +56,4 @@ in
       };
     };
   };
-  # xdg = {
-  #   desktopEntries = {
-  #     firefox-work = {
-  #       name = "Firefox (Work)";
-  #       genericName = "Web Browser";
-  #       exec = "firefox-beta -P work %U";
-  #       icon = "firefox";
-  #       terminal = false;
-  #     };
-  #   };
-  # };
 }

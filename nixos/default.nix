@@ -32,7 +32,16 @@ let
         inputs.catppuccin.nixosModules.catppuccin
         inputs.home-manager.nixosModules.home-manager
         inputs.dank-greeter.nixosModules.default
-        # inputs.ragenix.nixosModules.age
+      ];
+      # home-manager modules available to every user; they only declare
+      # options, so importing them is free until something enables them.
+      home-manager.sharedModules = [
+        self.homeManagerModules
+        inputs.catppuccin.homeModules.catppuccin
+        inputs.dms.homeModules.dank-material-shell
+        inputs.dms.homeModules.niri
+        inputs.base16.homeManagerModule
+        inputs.niri.homeModules.niri
       ];
     }
   ];
@@ -50,24 +59,11 @@ let
           ;
       };
       modules = defaultModules ++ [ path ];
-      # extraModules = [inputs.colmena.nixosModules.deploymentOptions];
     };
-  # mkColmenaNodes = conf:
-  #   {
-  #     meta = {
-  #       description = "My personal machines";
-  #       nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-  #       nodeNixpkgs = builtins.mapAttrs (_: value: value.pkgs) conf;
-  #       nodeSpecialArgs = builtins.mapAttrs (_: value: value._module.specialArgs) conf;
-  #     };
-  #   }
-  #   // builtins.mapAttrs (_: value: {imports = value._module.args.modules;}) conf;
 in
 {
   flake = {
     homeManagerModules = import ./modules/homeManager;
-    overlays = import ./overlays;
     nixosConfigurations = lib.mapAttrs mkSystem inventory;
-    # colmena = mkColmenaNodes self.nixosConfigurations;
   };
 }

@@ -2,48 +2,19 @@ let
   userName = "syakovlev";
 in
 {
-  home-manager.users.${userName} = {
-    # imports = [
-    #   inputs.impermanence.nixosModules.home-manager.impermanence
-    # ];
-    home.persistence."/state" = {
-      directories = [
-        # global
+  home-manager.users.${userName} =
+    { config, ... }:
+    {
+      # Programs declare their own paths via my.persist next to their config;
+      # only data and tools without a module of their own are listed here.
+      my.persist.directories = [
         ".cargo"
-        ".config/BraveSoftware"
-        ".config/google-chrome"
-        ".config/bruno"
-        ".config/Ledger Live"
-        ".config/obsidian"
-        ".config/Slack"
         ".config/cryptostore"
-        ".config/dconf"
-        # ".config/discord"
-        ".config/vesktop"
-        ".config/Vencord"
-        ".config/frame"
-        ".config/rclone"
-        ".config/helm"
-        ".config/k9s"
-        ".config/keepassxc"
-        ".config/Insync"
-        ".local/state/DankMaterialShell"
-        ".local/state/sofka"
-        ".local/share/Anki2"
-        ".ipfs"
         ".config/nix"
-        ".config/claude"
-        ".claude"
-        ".local/share/claude"
-        ".config/codex"
-        ".config/gh"
-        ".ollama"
-        ".local/share/TelegramDesktop"
-        ".local/share/atuin"
-        ".local/share/direnv"
-        ".local/share/gnupg"
+        ".ipfs"
+        ".local/share/Anki2"
         ".local/share/keyrings"
-        ".local/share/zoxide"
+        ".ollama"
         ".ssh"
         "Documents"
         "Downloads"
@@ -54,6 +25,9 @@ in
         "cloud"
         "src"
       ];
+
+      home.persistence."/state" = {
+        inherit (config.my.persist) directories files;
+      };
     };
-  };
 }

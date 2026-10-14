@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  self,
   ...
 }:
 {
@@ -31,7 +30,6 @@
   systemd.user.settings.Manager.DefaultLimitNOFILE = "infinity";
 
   nixpkgs = {
-    overlays = builtins.attrValues self.overlays;
     config = {
       allowUnfree = true;
       input-fonts.acceptLicense = true;

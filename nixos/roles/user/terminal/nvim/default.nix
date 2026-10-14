@@ -1,16 +1,9 @@
 {
-  #inputs,
   pkgs,
   lib,
   ...
 }:
 let
-  # buildPlugin = name:
-  #   pkgs.vimUtils.buildVimPlugin {
-  #     pname = name;
-  #     version = "master";
-  #     src = builtins.getAttr name inputs;
-  #   };
   normalizeName =
     let
       extension = name: "." + lib.last (lib.splitString "." name);
@@ -69,7 +62,6 @@ in
 
         # Tree-sitter
         nvim-treesitter.withAllGrammars
-        #(buildPlugin "syntax-tree-surfer")
         playground
 
         # Completion

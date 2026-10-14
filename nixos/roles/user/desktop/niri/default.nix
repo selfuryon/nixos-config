@@ -11,20 +11,6 @@
     nautilus # for GNOME Portal File Picker
     wdisplays
   ];
-  # systemd.user.services.xwayland-satellite = {
-  #   Unit = {
-  #     PartOf = [ "graphical-session.target" ];
-  #     After = [ "graphical-session.target" ];
-  #   };
-
-  #   Service = {
-  #     ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
-  #     ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
-  #     Restart = "on-failure";
-  #     KillMode = "mixed";
-  #   };
-  #   Install.WantedBy = [ "graphical-session.target" ];
-  # };
   xdg.portal = {
     enable = true;
     configPackages = [ pkgs.xdg-desktop-portal-gnome ];
@@ -188,11 +174,6 @@
         }
     }
 
-    // Block out swaync notifications from screencasts.
-    layer-rule {
-        match namespace="^swaync-.+$"
-        block-out-from "screencast"
-    }
     layer-rule {
         match namespace="^launcher$"
         shadow {
@@ -224,7 +205,7 @@
         Mod+T { spawn "kitty"; }
         Mod+Return { spawn "kitty"; }
         Mod+D { spawn "fuzzel"; }
-        Super+Alt+L { spawn "hyprlock"; }
+        Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
 
         // You can also use a shell. Do this if you need pipes, multiple commands, etc.
         // Note: the entire command goes as a single argument in the end.
