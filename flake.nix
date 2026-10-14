@@ -56,6 +56,7 @@
     };
 
     # flake-parts
+    import-tree.url = "github:vic/import-tree";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -82,36 +83,8 @@
       flake = false;
     };
   };
-  outputs =
-    inputs@{
-      nixpkgs,
-      flake-parts,
-      ...
-    }:
-    let
-      lib = nixpkgs.lib.extend (final: _: import ./nix/lib final);
-    in
-    flake-parts.lib.mkFlake
-      {
-        inherit inputs;
-        # make custom lib available to parent functions
-        specialArgs = { inherit lib; };
-      }
-      {
-        debug = false;
-        imports = [
-          (
-            { inputs', ... }:
-            {
-              # make pkgs available to all `perSystem` functions
-              _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
-              # make custom lib available to all `perSystem` functions
-              _module.args.lib = lib;
-            }
-          )
-          ./nix
-          ./nixos
-        ];
-        systems = [ "x86_64-linux" ];
-      };
+  # Dendritic layout: every file under ./modules is a flake-parts module,
+  # loaded automatically. NixOS/home-manager config lives in
+  # flake.modules.<class>.<aspect>; hosts pick the aspects they need.
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }

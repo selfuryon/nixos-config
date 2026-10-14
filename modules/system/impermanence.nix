@@ -1,0 +1,74 @@
+{ inputs, ... }:
+{
+  flake.modules.nixos.impermanence =
+    {
+      lib,
+      config,
+      ...
+    }:
+    {
+      imports = [ inputs.impermanence.nixosModules.impermanence ];
+
+      # Every home-manager user persists what its programs declare in my.persist.
+      home-manager.sharedModules = [
+        ({ config, ... }: {
+          home.persistence."/state" = {
+            inherit (config.my.persist) directories files;
+          };
+        })
+      ];
+
+      programs.fuse.enable = true; # provides setuid fusermount wrapper (needed by cryfs et al.)
+      programs.fuse.userAllowOther = true;
+      environment.persistence."/state/system" = {
+        hideMounts = true;
+        directories = [
+          {
+            directory = "/etc/secureboot";
+            mode = "700";
+          }
+          {
+            directory = "/var/lib/libvirt";
+            mode = "777";
+          }
+          {
+            directory = "/etc/nix";
+            mode = "777";
+          }
+          {
+            # greetd preStart rebuilds this from the store each boot, but keeping it
+            # avoids re-copying wallpapers and losing the greeter's own state.
+            directory = "/var/lib/dms-greeter";
+            user = "greeter";
+            group = "greeter";
+            mode = "0750";
+          }
+          "/var/log"
+          "/var/lib/bluetooth"
+          "/var/lib/nixos"
+          "/var/lib/tailscale"
+          "/var/lib/systemd/coredump"
+          "/etc/NetworkManager/system-connections"
+        ];
+        files = [
+          "/etc/machine-id"
+          "/etc/ssh/ssh_host_ed25519_key"
+          "/etc/ssh/ssh_host_ed25519_key.pub"
+          "/etc/ssh/ssh_host_rsa_key"
+          "/etc/ssh/ssh_host_rsa_key.pub"
+        ];
+      };
+      system.activationScripts."10-persistent-dirs".text =
+        let
+          mkHomePersist =
+            user:
+            lib.optionalString user.createHome ''
+              mkdir -p /state/home/${user.name}
+              chown ${user.name}:${user.group} /state/home/${user.name}
+              chmod ${user.homeMode} /state/home/${user.name}
+            '';
+          users = lib.attrValues config.users.users;
+        in
+        lib.concatLines (map mkHomePersist users);
+    };
+}

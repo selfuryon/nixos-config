@@ -6,33 +6,34 @@ Here is my NixOS/home-manager configuration.
 
 Some highlights:
 
-- Multiple different type hosts (notebook, vps, servers)
-- [flake.parts](https://flake.parts/) as a framework
-- [colmena](https://github.com/zhaofengli/colmena/) for deploying configuration
-- [ragenix](https://github.com/yaxitech/ragenix) for secret management
-- Mesh network via [netbird](https://netbird.io/)
-- WM is [hyprland](https://hyprland.org/)
+- [flake.parts](https://flake.parts/) with the [dendritic pattern](https://github.com/mightyiam/dendritic)
+- [niri](https://github.com/YaLTeR/niri) + [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell)
+- ZFS root with [impermanence](https://github.com/nix-community/impermanence), secure boot via [lanzaboote](https://github.com/nix-community/lanzaboote)
 
 ## Structure
 
-My current flake structure:
+Every `.nix` file under `modules/` is a flake-parts module, loaded automatically
+by [import-tree](https://github.com/vic/import-tree) (paths starting with `_`
+are skipped). Files are grouped by feature, not by configuration class: a file
+contributes to one or more _aspects_ `flake.modules.<class>.<aspect>`, where
+`<class>` is `nixos` or `homeManager`. One file may configure the same feature
+for both classes (e.g. `desktop/niri.nix`).
 
-- `nix` contains basic nix flake configuration like devShell, packages, applications, checks and so on:
-  - `checks` contains additional checks for pre-commit hook and `nix flake check`
-  - `control` manages `mission-control` configuration
-  - `formatter` configures treefmt parameters
-  - `shell` manages devShell configuration
-  - `lib` extends nixpkgs.lib with additional functions
-- `nixos` contains a bunch of configurations for NixOS hosts
-  - `machines` contains folders with per host individual configurations like deploy, hardware and network.
-  - `modules` contains different modules for `NixOS` and `home-manager`
-  - `overlays` is overlays for nixpkgs
-  - `roles` defines typical small suites used for the configuration of a `system` and `home-manager` modules
-  - `secrets` contains age encrypted secrets for hosts
-  - `users` manages a basic user configutaions
+- `flake` – flake-level setup: systems, devshell, formatter, pre-commit hooks
+- `system` – `nixos.base` plus optional aspects (`tailscale`, `impermanence`, `netbird`, `printer`)
+- `desktop` – `nixos.desktop` and `homeManager.desktop`: niri, DMS, browsers, terminals, apps
+- `cli` – `homeManager.cli`: shells, editors, git, kubernetes tooling
+- `home` – home-manager wiring and `homeManager.base` options (`my.persist`, font profile)
+- `theme` – catppuccin for both classes
+- `users` – `nixos.<user>` aspects
+- `hosts/<name>` – `nixos.<name>` aspect and `nixosConfigurations.<name>`; a host imports the aspects it needs
+
+Programs declare the paths they want persisted via `my.persist.directories`
+next to their config; hosts with the `impermanence` aspect map them into
+`home.persistence`.
 
 Inspiration:
 
+- https://github.com/mightyiam/dendritic
 - https://github.com/Misterio77/nix-config
 - https://github.com/balsoft/nixos-config
-- https://github.com/aldoborrero/templates

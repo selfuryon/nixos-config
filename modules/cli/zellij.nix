@@ -1,0 +1,28 @@
+{
+  flake.modules.homeManager.cli =
+    { config, lib, ... }:
+    {
+      programs.zellij = {
+        enable = true;
+        settings = {
+          default_shell = lib.getExe config.programs.nushell.package;
+          ui.pane_frames.rounded_corners = true;
+          # theme = "catppuccin-latte";
+          keybinds = {
+            "shared_except \"locked\"" = {
+              "bind \"Alt f\"" = {
+                "LaunchPlugin \"filepicker\"" = {
+                  #floating=true;
+                  close_on_selection = true;
+                };
+              };
+            };
+          };
+        };
+      };
+      xdg.configFile."zellij/layouts" = {
+        source = ./zellij/layouts;
+        recursive = true;
+      };
+    };
+}
