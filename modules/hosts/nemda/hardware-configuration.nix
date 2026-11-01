@@ -3,6 +3,7 @@
   flake.modules.nixos.nemda =
     {
       lib,
+      pkgs,
       modulesPath,
       ...
     }:
@@ -26,7 +27,6 @@
         };
 
         initrd = {
-          systemd.enable = true;
           availableKernelModules = [
             "xhci_pci"
             "thunderbolt"
@@ -43,6 +43,24 @@
         #kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
         # kernelPackages = pkgs.linuxPackages_latest;
         # kernelPackages = pkgs.linuxPackages_6_6;
+        # tuxedo-drivers 4.20.1 re-runs make with an explicit $(MAKEFLAGS) on the
+        # shell command line, which breaks on the `cmd_sign=...$(space)$@` flag
+        # nixpkgs now passes to kernel modules. The sub-make already inherits
+        # MAKEFLAGS through the environment, so drop the explicit copy. Its
+        # modules_install also runs depmod into $out; those modules.* indexes
+        # collide with the kernel's in the system module tree, so drop them.
+        kernelPackages = pkgs.linuxPackages.extend (
+          _: prev: {
+            tuxedo-drivers = prev.tuxedo-drivers.overrideAttrs (old: {
+              postPatch = (old.postPatch or "") + ''
+                substituteInPlace Makefile --replace-fail ' $(MAKEFLAGS)' ""
+              '';
+              postInstall = (old.postInstall or "") + ''
+                rm -f $out/lib/modules/*/modules.*
+              '';
+            });
+          }
+        );
         kernelParams = [
           "nohibernate"
           "elevator=none"

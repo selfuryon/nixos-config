@@ -56,7 +56,9 @@
         zoxide.enable = true;
         carapace = {
           enable = true;
-          enableNushellIntegration = true;
+          # Integration is wired up manually in nushell.nix: carapace's completer
+          # declares the positional `spans` parameter, deprecated in nushell 0.116.
+          enableNushellIntegration = false;
         };
         atuin = {
           enable = true;

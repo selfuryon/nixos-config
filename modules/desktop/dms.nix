@@ -129,8 +129,10 @@
         };
       };
 
-      xdg.configFile."DankMaterialShell/themes/catppuccin-latte.json".source = catppuccinLatteTheme;
-      my.persist.directories = [ ".local/state/DankMaterialShell" ];
+      xdg.configFile."dms/themes/catppuccin-latte.json".source = catppuccinLatteTheme;
+      # The shell writes its own session.json at runtime; let the module's copy win.
+      xdg.stateFile."dms/session.json".force = true;
+      my.persist.directories = [ ".local/state/dms" ];
 
     };
 }

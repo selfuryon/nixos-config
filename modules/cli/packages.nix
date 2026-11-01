@@ -39,7 +39,23 @@
         codex
         gh
         bind
-        insync
+        # The 3.9.11 .deb ships QtWebEngineProcess.debug, a split-debug ELF that
+        # autoPatchelfHook fails to patch. stdenvNoCC is used only for the inner
+        # insync-pkg derivation, so drop the .debug files there before fixup.
+        (insync.override (prev: {
+          stdenvNoCC = prev.stdenvNoCC // {
+            mkDerivation =
+              args:
+              prev.stdenvNoCC.mkDerivation (
+                args
+                // {
+                  postInstall = (args.postInstall or "") + ''
+                    find $out -name '*.debug' -delete
+                  '';
+                }
+              );
+          };
+        }))
         bubblewrap
         gocryptfs
         curl

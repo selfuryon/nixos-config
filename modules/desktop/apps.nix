@@ -65,7 +65,6 @@
         dconf
         vesktop
         drawio
-        framesh
         file-roller
         grim
         gsettings-desktop-schemas

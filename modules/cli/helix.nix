@@ -9,6 +9,7 @@
         gopls
         nil
         yaml-language-server
+        marksman
         #lsp-ai
         #helix-gpt
       ];

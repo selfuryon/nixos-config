@@ -38,15 +38,15 @@ in
         compositor.name = "niri";
         # Give the greeter the same DMS look as the desktop. These are the
         # home-manager-generated store paths rather than configHome = $HOME:
-        # .config/DankMaterialShell is not persisted and greetd has no ordering
+        # .config/dms is not persisted and greetd has no ordering
         # against home-manager-syakovlev.service, so $HOME would race an empty dir.
         configFiles =
           let
             hm = config.home-manager.users.syakovlev;
           in
           [
-            hm.xdg.configFile."DankMaterialShell/settings.json".source
-            hm.xdg.stateFile."DankMaterialShell/session.json".source
+            hm.xdg.configFile."dms/settings.json".source
+            hm.xdg.stateFile."dms/session.json".source
           ];
       };
 
