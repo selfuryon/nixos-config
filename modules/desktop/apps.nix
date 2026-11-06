@@ -72,7 +72,7 @@
         hoppscotch
         keepassxc
         libreoffice
-        onlyoffice-desktopeditors
+        # onlyoffice-desktopeditors # depends on gtk2, which is marked broken in nixpkgs
         ledger-live-desktop
         mpv
         networkmanagerapplet

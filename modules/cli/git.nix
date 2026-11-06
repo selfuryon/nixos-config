@@ -3,9 +3,8 @@
     # Git configuration
     xdg.configFile = {
       "git/personal.signers".text = ''
-        selfuryon@pm.me ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmB+ZN4UTQ+5IOvGrlBoHrCxfpQH7EWtLNR3qUrnQl5 selfuryon@github [private]
-        sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOacgO1zUpZZQjFdgVjuJgZsTDATpAcgv1R2499P++FrAAAABHNzaDo= yubikey-blue [private]
-        sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIP4nC3WpNBQDVMqmu9OOjoipj2lFuGJqYxierC1xjec8AAAABHNzaDo= yubikey-grey [private]
+        selfuryon@pm.me sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOacgO1zUpZZQjFdgVjuJgZsTDATpAcgv1R2499P++FrAAAABHNzaDo= yubikey-blue [private]
+        selfuryon@pm.me sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIP4nC3WpNBQDVMqmu9OOjoipj2lFuGJqYxierC1xjec8AAAABHNzaDo= yubikey-grey [private]
       '';
     };
     programs.git = {
