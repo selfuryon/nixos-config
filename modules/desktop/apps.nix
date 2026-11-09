@@ -58,7 +58,7 @@
         adwaita-qt
         # anki  # disabled: build broken upstream, https://github.com/NixOS/nixpkgs/issues/548443
         google-chrome
-        brave
+        # brave # removed from nixpkgs: no committers among maintainers to unblock security issues
         kdePackages.kwallet
         capitaine-cursors
         crosvm

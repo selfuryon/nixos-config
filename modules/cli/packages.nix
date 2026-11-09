@@ -36,7 +36,7 @@
       home.packages = with pkgs; [
         inputs.rip.packages.${pkgs.stdenv.hostPlatform.system}.default
         claude-code
-        codex
+        # codex # build broken: cargo hook forces AWS_LC_SYS_USE_SYSTEM=1, but the package has no aws-lc
         gh
         bind
         # The 3.9.11 .deb ships QtWebEngineProcess.debug, a split-debug ELF that
