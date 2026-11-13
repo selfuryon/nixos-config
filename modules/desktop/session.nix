@@ -7,6 +7,9 @@
       # Polkit agent is DankMaterialShell's built-in one (see dms.nix).
       environment.systemPackages = with pkgs; [
         brightnessctl
+        # polkitd only reads actions from the system profile; KeePassXC itself is a
+        # home-manager package, so its Quick Unlock action must be linked here too.
+        keepassxc
       ];
 
       services = {

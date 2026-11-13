@@ -13,6 +13,18 @@
         services.polkit-1.u2f.enable = true;
       };
 
+      # polkit >= 126 runs its PAM helper as a sandboxed socket-activated unit with no
+      # devices and no /home, so pam_u2f can see neither the key nor u2f_keys.
+      systemd.services."polkit-agent-helper@".serviceConfig = {
+        PrivateDevices = false;
+        # Appended to upstream's /dev/null; policy stays strict.
+        DeviceAllow = [
+          "char-hidraw rw" # the keys
+          "/dev/urandom r" # pam_u2f reads its challenge from here
+        ];
+        ProtectHome = "read-only";
+      };
+
       environment.systemPackages = [ pkgs.pam_u2f ]; # pamu2fcfg
     };
 
