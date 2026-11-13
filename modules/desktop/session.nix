@@ -4,8 +4,8 @@
     {
 
       security.polkit.enable = true;
+      # Polkit agent is DankMaterialShell's built-in one (see dms.nix).
       environment.systemPackages = with pkgs; [
-        kdePackages.polkit-kde-agent-1
         brightnessctl
       ];
 
