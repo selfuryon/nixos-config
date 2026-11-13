@@ -3,6 +3,8 @@
   inputs = {
     # Nix stuff
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Only for packages dropped from unstable (brave); no security updates there either.
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

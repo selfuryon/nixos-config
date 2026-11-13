@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.desktop =
     { pkgs, config, ... }:
@@ -58,7 +59,9 @@
         adwaita-qt
         # anki  # disabled: build broken upstream, https://github.com/NixOS/nixpkgs/issues/548443
         google-chrome
-        # brave # removed from nixpkgs: no committers among maintainers to unblock security issues
+        # Removed from unstable (no committers among maintainers to unblock
+        # security issues); taken from the stable release until we move off it.
+        inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.brave
         kdePackages.kwallet
         capitaine-cursors
         crosvm
