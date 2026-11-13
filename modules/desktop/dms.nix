@@ -3,7 +3,12 @@
   flake.modules.nixos.desktop.imports = [ inputs.dank-greeter.nixosModules.default ];
 
   flake.modules.homeManager.desktop =
-    { pkgs, config, ... }:
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
     let
       # One derivation, referenced twice: as the theme file in ~/.config and as an
       # absolute customThemeFile. The greeter resolves customThemeFile itself with
@@ -129,9 +134,20 @@
         };
       };
 
-      xdg.configFile."dms/themes/catppuccin-latte.json".source = catppuccinLatteTheme;
-      # The shell writes its own session.json at runtime; let the module's copy win.
-      xdg.stateFile."dms/session.json".force = true;
+      xdg = {
+        configFile = {
+          "dms/themes/catppuccin-latte.json".source = catppuccinLatteTheme;
+          # The shell shows a changelog once per major.minor and remembers it via this
+          # marker, but ~/.config is not persisted, so it reappeared on every boot.
+          # Only existence matters.
+          "dms/.changelog-${lib.versions.majorMinor config.programs.dank-material-shell.package.version}" = {
+            text = "";
+            force = true; # the shell may have written a real one this boot
+          };
+        };
+        # The shell writes its own session.json at runtime; let the module's copy win.
+        stateFile."dms/session.json".force = true;
+      };
       my.persist.directories = [ ".local/state/dms" ];
 
     };
